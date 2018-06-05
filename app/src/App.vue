@@ -1,7 +1,7 @@
 <template>
  <div id="app">
    <header>
-   <h1>Climbing Locations</h1>
+    <img src="./assets/logoWhite.png">
    </header>
    <Locations/>
  </div>
@@ -30,8 +30,14 @@ export default {
     
   }
   header {
-    border: solid .3px;
-    background-image: 
+    border: solid black .3px;
+    background-image: url('https://www.nps.gov/thingstodo/images/ISKY_MesaArch_1.jpg?width=950&quality=90&mode=crop');
+    background-size: cover;
+    background-position-y:75%;
+  }
+  header img {
+    height: 100px;
+    width: 500px;
   }
   body {
    margin: 0px;
