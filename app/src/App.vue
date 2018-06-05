@@ -10,6 +10,7 @@
 
 <script>
 import Motorcycles from './components/Motorcycles';
+
 export default {
 
   components: {

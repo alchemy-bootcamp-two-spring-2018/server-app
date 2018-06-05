@@ -8,11 +8,15 @@
       :motorcycle="motorcycle"
       />
     </ul>
+    
+    <AddMotorcycle/>
+
   </div>
 </template>
 
 <script>
 import Motorcycle from './Motorcycle';
+import AddMotorcycle from './AddMotorcycle';
 import { getMotorcycles } from '../services/api';
 
 export default {
@@ -30,7 +34,8 @@ export default {
   },
 
   components: {
-    Motorcycle
+    Motorcycle,
+    AddMotorcycle
   }
 
 };
