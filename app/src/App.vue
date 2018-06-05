@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>
+      <h1>Glucose "Buddy" WIP</h1>
+    </header>
+    <main>
+      <GlucoseLogs/>
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GlucoseLogs from './components/GlucoseLog.vue';
+
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    GlucoseLogs
   }
 }
 </script>
