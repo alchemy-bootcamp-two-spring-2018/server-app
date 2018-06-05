@@ -1,8 +1,8 @@
 <template id="subscription-template">
-  <article>
-    <h3>{{ subscription.service }}</h3>
-    <p>Monthly Price: {{ subscription.price }}</p>
-    <p>Does it have ads? <strong>{{ ads }}</strong></p>
+  <article :style="{backgroundColor: subscription.bg_color}">
+    <h3 :style="{color: subscription.font_color}">{{ subscription.service }}</h3>
+    <p :style="{color: subscription.font_color}">Monthly Price: {{ subscription.price }}</p>
+    <p :style="{color: subscription.font_color}">Includes ads: <strong>{{ ads }}</strong></p>
   </article>
 </template>
 

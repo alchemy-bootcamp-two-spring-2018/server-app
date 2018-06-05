@@ -23,6 +23,7 @@
         v-model="subscription.ads">
         <label for="false">No</label>
       </label>
+
       <label>
         <button type="submit">Add</button>
       </label>

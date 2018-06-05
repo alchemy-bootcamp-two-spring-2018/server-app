@@ -2,21 +2,29 @@
   {
     "service": "Netflix",
     "price": 10,
-    "ads": false
+    "ads": false,
+    "bg_color": "#db0000",
+    "font_color": "#ffffff"
   },
   {
     "service": "HBO Now",
     "price": 15,
-    "ads": false
+    "ads": false,
+    "bg_color": "#000000",
+    "font_color": "#ffffff"
   },
   {
     "service": "Hulu",
     "price": 8,
-    "ads": true
+    "ads": true,
+    "bg_color": "#3dbb3d",
+    "font_color": "#ffffff"
   },
   {
     "service": "Amazon Prime Video",
     "price": 9,
-    "ads": false
+    "ads": false,
+    "bg_color": "#232f3e",
+    "font_color": "#ff9900"
   }
 ]
