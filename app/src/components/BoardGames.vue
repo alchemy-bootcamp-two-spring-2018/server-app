@@ -13,6 +13,7 @@
 import BoardGame from './BoardGame';
 import AddBoardGame from './AddBoardGame';
 import { getBoardGames } from '../services/api';
+import { addBoardGame } from '../services/api';
 
 export default {
   data() {
@@ -32,7 +33,10 @@ export default {
   },
   methods: {
     handleAdd(boardGame) {
-      console.log(boardGame);
+      addBoardGame(boardGame)
+        .then(saved => {
+          this.boardGames.push(saved);
+        });
     }
   }
 };
