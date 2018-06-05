@@ -9,6 +9,7 @@
 <script>
 import WalrusesComponent from './components/WalrusesComponent.vue';
 
+
 export default {
   name: 'app',
   components: {
