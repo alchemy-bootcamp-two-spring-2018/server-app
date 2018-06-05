@@ -16,8 +16,12 @@
 
       <label>
         Has ads:
-        <input type="text" name="ads" required
+        <input type="radio" id="true" :value="true" required
         v-model="subscription.ads">
+        <label for="true">Yes</label>
+        <input type="radio" id="false" :value="false" required
+        v-model="subscription.ads">
+        <label for="false">No</label>
       </label>
       <label>
         <button type="submit">Add</button>
