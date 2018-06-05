@@ -10,6 +10,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "cors": "^2.8.4",
     "vue": "^2.5.16"
   },
   "devDependencies": {
