@@ -1,0 +1,38 @@
+[
+  {
+    "day": "Monday",
+    "beforeBreakfast": "70",
+    "afterBreakfast": "75",
+    "beforeLunch": "140",
+    "afterLunch": "90",
+    "beforeDinner": "153",
+    "afterDinner": "85"
+  },
+  {
+    "day": "Tuesday",
+    "beforeBreakfast": "100",
+    "afterBreakfast": "120",
+    "beforeLunch": "85",
+    "afterLunch": "112",
+    "beforeDinner": "200",
+    "afterDinner": "95"
+  },
+  {
+    "day": "Wednesday",
+    "beforeBreakfast": "65",
+    "afterBreakfast": "110",
+    "beforeLunch": "85",
+    "afterLunch": "95",
+    "beforeDinner": "120",
+    "afterDinner": "110"
+  },
+  {
+    "day": "Thursday",
+    "beforeBreakfast": "70",
+    "afterBreakfast": "90",
+    "beforeLunch": "120",
+    "afterLunch": "110",
+    "beforeDinner": "170",
+    "afterDinner": "150"
+  }
+]
