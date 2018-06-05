@@ -22,7 +22,7 @@ app.post('/api/subscriptions', (req, res) => {
   const raw = fs.readFileSync(dataPath);
   const data = JSON.parse(raw);
   data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data));
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
   res.send(req.body);
 });
 
