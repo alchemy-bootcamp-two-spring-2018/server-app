@@ -1,0 +1,23 @@
+[
+  {
+    "year": 2015,
+    "make": "Kawasaki",
+    "model": "Ninja",
+    "color": "White",
+    "sold": true
+  },
+  {
+    "year": 2018,
+    "make": "Ducati",
+    "model": "Monster",
+    "color": "Red",
+    "sold": false
+  },
+  {
+    "year": 2013,
+    "make": "Ducati",
+    "model": "Scrambler",
+    "color": "Black",
+    "sold": true
+  } 
+]
