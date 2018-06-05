@@ -5,7 +5,7 @@ export function getWalruses() {
   .then(response => response.json());
 }
 
-export function addWalrus() {
+export function addWalrus(walrus) {
   return fetch('http://localhost:3000/api/walruses', {
   method: 'POST',  
   headers: { 'Content-Type': 'application/json' },

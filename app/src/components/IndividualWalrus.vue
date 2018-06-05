@@ -1,15 +1,15 @@
-<template id="individual-walrus-teamplate">
+<template id="individual-walrus-template">
   <article>
-    <h3>Name: {{ walruses.name }}</h3>
-    <p>Type: {{ walruses.type }}</p>
-    <p>Weight: {{ walruses.type }}</p>
-    <p>Fictional? {{ walruses.type }}</p>
-    <p>Description: {{ walruses.type }}</p>
+    <h3>Name: {{ walrus.name }}</h3>
+    <p>Type: {{ walrus.type }}</p>
+    <p>Weight: {{ walrus.weight }}</p>
+    <p>Fictional? {{ walrus.fictional }}</p>
+    <p>Description: {{ walrus.description }}</p>
   </article>
 </template>
 
 <script>
 export default {
-  props: ['walruses']
+  props: ['walrus']
 }
 </script>

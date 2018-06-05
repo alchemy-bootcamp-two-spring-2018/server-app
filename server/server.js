@@ -5,9 +5,9 @@ const express = require('express');
 const app = express();
 
 //import cors 'middleware' to enable our server to do CORS 
-//const cors = require('cors');
+const cors = require('cors');
 // register it
-//app.use(cors());
+app.use(cors());
 
 // register express "middleware"   for converting incoming
 //request body to deserialized request.body property
@@ -26,7 +26,7 @@ const dataPath = 'data/walruses.json';
 // app.<method>(<path>, handler)
 app.get('/api/walruses', (req, res) => {
   // fs files paths are relative to pwd where Node was started
-  const raw = fs.readFileSync(dataPath)
+  const raw = fs.readFileSync(dataPath);
   // make into js array with objects
   const data = JSON.parse(raw);
   res.send(data);

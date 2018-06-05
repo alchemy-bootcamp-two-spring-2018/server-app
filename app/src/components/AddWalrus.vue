@@ -5,31 +5,31 @@
       <label>
         Name:
         <input type="text" name="name" placeholder="Name" required
-          v-model="walruses.name">
+          v-model="walrus.name">
       </label>
 
       <label>
         Weight:
         <input type="number" name="weight" placeholder="" required
-          v-model="walruses.weight">
+          v-model="walrus.weight">
       </label>
 
       <label>
         Type:
         <input type="text" name="type" placeholder="" required
-          v-model="walruses.type">
+          v-model="walrus.type">
       </label>
 
       <label>
         Founded:
         <input type="text" name="fictional" placeholder="true" required
-          v-model="walruses.fictional">
+          v-model="walrus.fictional">
       </label>
 
       <label>
         Description:
         <textarea name="body" rows="8" cols="40" required 
-          v-model="walruses.description"></textarea>
+          v-model="walrus.description"></textarea>
       </label>
       
       <label>
@@ -58,15 +58,15 @@ export default {
   },
   data() {
     return {
-      walruses: initWalrus()
+      walrus: initWalrus()
     };
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.walruses)
+      this.onAdd(this.walrus)
         // this fires when save is complete and data added to nieghborhoods array
         .then(() => {
-          this.walruses = initWalrus();
+          this.walrus = initWalrus();
         });
     }
   }

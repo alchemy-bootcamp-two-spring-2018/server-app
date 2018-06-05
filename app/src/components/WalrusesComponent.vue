@@ -3,7 +3,7 @@
     <h2>List of Notable Walruses</h2>
     <p v-if="!walruses">Hauling Out Walruses....</p>
     <ul v-else class="list">
-      <WalrusesComponent
+      <IndividualWalrus
         v-for="walrus in walruses"
         :key="walrus.name"
         :walrus="walrus"
@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import WalrusesComponent from './WalrusesComponent';
+import IndividualWalrus from './IndividualWalrus';
 import AddWalrus from './AddWalrus.vue';
-import { getWalruses, AddWalrus, addWalrus } from '../services/api';
+import { getWalruses, addWalrus } from '../services/api';
 
 export default {
   data() {
@@ -31,12 +31,12 @@ export default {
       });
   },
   components: {
-    WalrusesComponent,
+    IndividualWalrus,
     AddWalrus
   },
   methods: {
-    handleAdd(walruses) {
-      return addWalrus(walruses)
+    handleAdd(walrus) {
+      return addWalrus(walrus)
       .then(saved => {
         this.walruses.push(saved);
       });
