@@ -15,7 +15,7 @@
 <script>
 import GlucoseLog from './GlucoseLog';
 import AddGlucoseLog from './AddGlucoseLog.vue';
-// import { getGlucoseLogs, addGlucoseLog } from '../services/api';
+import { getGlucoseLogs, addGlucoseLog } from '../services/api';
 
 export default {
   data() {
