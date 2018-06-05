@@ -1,0 +1,22 @@
+[
+  {
+    "service": "Netflix",
+    "price": 10,
+    "ads": false
+  },
+  {
+    "service": "HBO Now",
+    "price": 15,
+    "ads": false
+  },
+  {
+    "service": "Hulu",
+    "price": "Portland",
+    "ads": true
+  },
+  {
+    "service": "Amazon Prime Video",
+    "price": 9,
+    "ads": false
+  }
+]
