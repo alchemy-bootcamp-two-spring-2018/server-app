@@ -3,22 +3,22 @@
     <form @submit.prevent="handleSubmit">
       <label>
         Year:
-        <input type="text" name="year" placeholder="year" required>
+        <input type="text" name="year" placeholder="Year" required>
       </label>
 
       <label>
         Make:
-        <input type="text" name="year" placeholder="year" required>
+        <input type="text" name="make" placeholder="Make" required>
       </label>
 
       <label>
         Model:
-        <input type="text" name="year" placeholder="year" required>
+        <input type="text" name="model" placeholder="Model" required>
       </label>
 
       <label>
         Color:
-        <select required>
+        <select name="color" required>
           <option>Red</option>
           <option>Blue</option>
           <option>White</option>
@@ -33,7 +33,7 @@
 
       <label>
         Sold:
-        
+        <input type="checkbox" name="sold" required>
       </label>
     </form>
 
@@ -61,6 +61,14 @@ export default {
 
 </script>
 
-<style>
-
+<style scoped>
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+label {
+  margin: 10px;
+}
 </style>

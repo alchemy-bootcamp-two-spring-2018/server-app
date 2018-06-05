@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <h2>Make: {{ motorcycle.make }}</h2>
     <p>Model: {{ motorcycle.model }}</p>
     <p>Year: {{ motorcycle.year }}</p>

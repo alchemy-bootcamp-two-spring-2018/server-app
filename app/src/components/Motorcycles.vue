@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>Favorite Motorcycles</h1>
+  <div class="motorcycles">
     <ul>
       <Motorcycle
       v-for="motorcycle in motorcycles"
@@ -42,5 +41,10 @@ export default {
 </script>
 
 <style scoped>
+.motorcycles {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 10px;
+}
 
 </style>
