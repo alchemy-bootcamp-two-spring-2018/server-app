@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "The Node Server file",
-  "main": "index.js",
+  "main": "http-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:watch": "nodemon server.js",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Markalope",
   "license": "ISC",
