@@ -3,22 +3,22 @@
     <form @submit.prevent="handleSubmit">
       <label>
         Year:
-        <input type="text" name="year" placeholder="Year" required>
+        <input type="text" name="year" placeholder="Year" required v-model="motorcycle.year">
       </label>
 
       <label>
         Make:
-        <input type="text" name="make" placeholder="Make" required>
+        <input type="text" name="make" placeholder="Make" required v-model="motorcycle.make">
       </label>
 
       <label>
         Model:
-        <input type="text" name="model" placeholder="Model" required>
+        <input type="text" name="model" placeholder="Model" required v-model="motorcycle.model">
       </label>
 
       <label>
         Color:
-        <select name="color" required>
+        <select name="color" required v-model="motorcycle.color">
           <option>Red</option>
           <option>Blue</option>
           <option>White</option>
@@ -33,7 +33,7 @@
 
       <label>
         Sold:
-        <input type="checkbox" name="sold" required>
+        <input type="checkbox" name="sold" required v-model="motorcycle.sold">
       </label>
     </form>
 
@@ -44,18 +44,23 @@
 
 const initMotorcycle = () => {
   return {
-    id: Number,
-    year: Number,
+    id: '',
+    year: '',
     make: '',
     model: '',
-    color: '',
-    sold: Boolean
+    color: 'Red',
+    sold: false
   };
 };
 
 export default {
 
-  props: ['motorcycle']
+  data() {
+    return {
+      motorcycle: initMotorcycle()
+    };
+  }
+
 
 };
 
@@ -71,4 +76,5 @@ form {
 label {
   margin: 10px;
 }
+
 </style>
