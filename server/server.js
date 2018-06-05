@@ -11,10 +11,10 @@ const app = express();
 
 // register express "middleware" for converting incoming
 // request body to de-serialized request.body property
-//app.use(express.json());
+app.use(express.json());
 
 // require our "mock" data
-//const programs = require('./data/npr-programs.json');
+const programs = require('./data/npr-programs.json');
 
 // temp solution to updating data...
 const fs = require('fs');
@@ -22,18 +22,17 @@ const fs = require('fs');
 const dataPath = 'data/npr-programs.json';
 
 app.get('/', (req, res) => {
-  res.send('You\'ve been got!');
-}
-);
+  res.send('Gotten!');
+});
 
 // app.<method>(<path>, handler)
-// app.get('/api/programs', (req, res) => {
-//   // fs file paths are relative to pwd (cwd) aka where you started node
-//   const raw = fs.readFileSync(dataPath);
-//   // make into js array with objects
-//   const data = JSON.parse(raw);
-//   res.send(data);
-// });
+app.get('/data/programs', (req, res) => {
+  // fs file paths are relative to pwd (cwd) aka where you started node
+  const raw = fs.readFileSync(dataPath);
+  // make into js array with objects
+  const data = JSON.parse(raw);
+  res.send(data);
+});
 
 // app.post('/api/neighborhoods', (req, res) => {
 //   console.log(req.method, req.url, req.body);
