@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import Programs from './components/Programs';
 
 export default {
   name: 'app',

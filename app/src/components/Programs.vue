@@ -3,22 +3,22 @@
   <h2>NPR Programs</h2>
   <!-- <p v-if="!neighborhoods">Loading neighborhoods...</p> -->
   <!-- <ul v-else class="list"> -->
-  <ul class="list">
+  <!-- <ul class="list">
     <Program
       v-for="program in programs"
       :key="program.title"
       :program="program"
     />
-  </ul>
+  </ul> -->
   <!-- <AddNeighborhood :on-add="handleAdd"/> -->
 </section>
 </template>
 
 <script>
-import Program from './Program';
+// import Program from './Program';
 // import AddNeighborhood from './AddNeighborhood.vue';
 // import { getNeighborhoods, addNeighborhood } from '../services/api';
-import getPrograms from '../services/api';
+import { getPrograms } from '../services/api';
 
 export default {
   data() {
@@ -27,13 +27,13 @@ export default {
     };
   },
   created() {
-    getPrograms()
-      .then(programs => {
-        this.programs = programs;
-      });
+     getPrograms()
+       .then(programs => {
+         this.programs = programs;
+       });
   },
   components: { 
-    Programs,
+    //Program
     // AddNeighborhood 
   },
   methods: {

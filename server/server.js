@@ -5,16 +5,16 @@ const express = require('express');
 const app = express();
 
 // import cors "middleware" to enable our server to do CORS
-//const cors = require('cors');
+const cors = require('cors');
 // register it
-//app.use(cors());
+app.use(cors());
 
 // register express "middleware" for converting incoming
 // request body to de-serialized request.body property
 app.use(express.json());
 
 // require our "mock" data
-const programs = require('./data/npr-programs.json');
+// const programs = require('./data/npr-programs.json');
 
 // temp solution to updating data...
 const fs = require('fs');
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 // app.<method>(<path>, handler)
-app.get('/data/programs', (req, res) => {
+app.get('/api/programs', (req, res) => {
   // fs file paths are relative to pwd (cwd) aka where you started node
   const raw = fs.readFileSync(dataPath);
   // make into js array with objects
