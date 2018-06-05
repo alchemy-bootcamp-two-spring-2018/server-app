@@ -31,8 +31,8 @@ export default {
     AddBoardGame
   },
   methods: {
-    handleAdd() {
-      console.log('added info');
+    handleAdd(boardGame) {
+      console.log(boardGame);
     }
   }
 };
