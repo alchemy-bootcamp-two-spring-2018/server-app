@@ -13,6 +13,4 @@ app.get('/api/boardGames', (req, res) => {
   res.send(boardGames);
 });
 
-
-
 app.listen(3000);
