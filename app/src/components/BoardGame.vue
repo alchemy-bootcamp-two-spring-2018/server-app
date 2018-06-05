@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h3>item</h3>
+    <h3>{{ boardGame.name }}</h3>
   </div>
 </template>
 
 <script>
 export default {
 
+  props: ['boardGame']
 };
 </script>
 

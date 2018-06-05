@@ -2,15 +2,29 @@
   <div class="board-games-list">
     <h2>list</h2>
     <BoardGame
-      v-for="n in 4"
-      :key="n"
+      v-for="boardGame in boardGames"
+      :key="boardGame.name"
+      :boardGame="boardGame"
     />
   </div>
 </template>
 
 <script>
 import BoardGame from './BoardGame';
+import { getBoardGames } from '../services/api.js'
+
 export default {
+  data() {
+    return {
+      boardGames: null
+    };
+  },
+  created() {
+    getBoardGames()
+      .then(boardGames => {
+        this.boardGames = boardGames;
+      });
+  },
   components: {
     BoardGame
   }
