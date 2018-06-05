@@ -9,7 +9,7 @@
         :subscription="subscription"
       />
     </ul>
-    <AddSubscription :on-add="handleAdd"/>
+    <AddSubscription :onAdd="handleAdd"/>
   </section>
 </template>
 
