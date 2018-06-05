@@ -1,23 +1,30 @@
 const express = require('express');
-
 const app = express();
-
 const cors = require('cors');
-app.use(cors());
 
+app.use(cors());
 app.use(express.json());
 
-// enter const
+const podcasts = require('./date/podcasts.json');
+const fs = require('fs');
+const dataPath = 'data/podcasts.json';
 
-//path to file
+//method(<path><handler>)
+app.get('/api/podcasts', (req, res) => {
+    const raw = fs.readFileSync(dataPath);
+    const data = JSON.parse(raw);
+    res.send(data);
+});
 
-//method
-//fs file
-//make js into array
+app.post('/api/podcasts', (req, res) = {
+    console.log(req.method, req.url, req.body);
+    const raw = fs.readFileSync(dataPath);
+    const data = JSON.parse(raw);
+    data.push(req.body);
+    fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 
-//post
-
-//send back objects
+    res.send(req.body);
+});
 
 app.use((req, res) => {
     console.log(req.method, req.url, req.body.name);
