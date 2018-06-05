@@ -4,7 +4,7 @@
       <h1>Glucose "Buddy" WIP</h1>
     </header>
     <main>
-      <GlucoseLogs/>
+      <GlucoseLogs />
     </main>
   </div>
 </template>
