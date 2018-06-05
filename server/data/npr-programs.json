@@ -1,0 +1,31 @@
+[
+    {
+        "show":"All Things Considered",
+        "host":"Audie Cornish",
+        "audienceSize":123456,
+        "yearStarted":"1971",
+        "description":"Humor..."
+    },
+    {
+        "show":"Wait, Wait, Don't Tell Me",
+        "host":"Peter Sagal",
+        "audienceSize":20000,
+        "yearStarted":"1998",
+        "description":"News...."
+    },
+    {
+        "show":"Fresh Air",
+        "host":"Terry Gross",
+        "audienceSize":500000,
+        "yearStarted":"1975",
+        "description":"Interviews...."
+    },
+    {
+        "show":"Morning Edition",
+        "host":"Rachel Martin",
+        "audienceSize":30000,
+        "yearStarted":"1979",
+        "description":"News..."
+    }
+]
+    
