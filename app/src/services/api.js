@@ -5,11 +5,11 @@ export function getPrograms() {
     .then(response => response.json());
 }
 
-//   export function addNeighborhood(neighborhood) {
-//     return fetch('http://localhost:3000/api/neighborhoods', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(neighborhood)
-//     })
-//       .then(response => response.json());
-//   }
+export function addProgram(program) {
+  return fetch('http://localhost:3000/api/programs', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(program)
+  })
+    .then(response => response.json());
+}

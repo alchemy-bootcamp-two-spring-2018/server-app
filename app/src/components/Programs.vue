@@ -1,24 +1,22 @@
 <template>
 <section>
   <h2>NPR Programs</h2>
-  <!-- <p v-if="!neighborhoods">Loading neighborhoods...</p> -->
-  <!-- <ul v-else class="list"> -->
-  <!-- <ul class="list">
+  <p v-if="!programs">Loading list of npr programs...</p>
+  <ul v-else class="list">
     <Program
       v-for="program in programs"
       :key="program.title"
       :program="program"
     />
-  </ul> -->
-  <!-- <AddNeighborhood :on-add="handleAdd"/> -->
+  </ul>
+  <AddProgram :onAdd="handleAdd"/>
 </section>
 </template>
 
 <script>
-// import Program from './Program';
-// import AddNeighborhood from './AddNeighborhood.vue';
-// import { getNeighborhoods, addNeighborhood } from '../services/api';
-import { getPrograms } from '../services/api';
+import Program from './Program';
+import AddProgram from './AddProgram.vue';
+import { getPrograms, addProgram } from '../services/api';
 
 export default {
   data() {
@@ -33,16 +31,17 @@ export default {
        });
   },
   components: { 
-    //Program
-    // AddNeighborhood 
+    Program,
+    AddProgram 
   },
+
   methods: {
-    // handleAdd(neighborhood) {
-    //   return addNeighborhood(neighborhood)
-    //     .then(saved => {
-    //       this.neighborhoods.push(saved);
-    //     });
-    // }
+    handleAdd(program) {
+      return addProgram(program)
+        .then(saved => {
+          this.programs.push(saved);
+        });
+    }
   }
 };
 </script>

@@ -13,17 +13,10 @@ app.use(cors());
 // request body to de-serialized request.body property
 app.use(express.json());
 
-// require our "mock" data
-// const programs = require('./data/npr-programs.json');
-
 // temp solution to updating data...
 const fs = require('fs');
 // path to data file:
 const dataPath = 'data/npr-programs.json';
-
-app.get('/', (req, res) => {
-  res.send('Gotten!');
-});
 
 // app.<method>(<path>, handler)
 app.get('/api/programs', (req, res) => {
@@ -34,26 +27,19 @@ app.get('/api/programs', (req, res) => {
   res.send(data);
 });
 
-// app.post('/api/neighborhoods', (req, res) => {
-//   console.log(req.method, req.url, req.body);
-//   // fs file paths are relative to pwd (cwd) aka where you started node
-//   const raw = fs.readFileSync(dataPath)
-//   // make into js array with objects
-//   const data = JSON.parse(raw);
-//   // push our new object into array
-//   data.push(req.body);
-//   // save file
-//   fs.writeFileSync(dataPath, JSON.stringify(data));
-
-//   // send back object
-//   res.send(req.body);
-// });
-
-// app.use((req, res) => {
-//     console.log(req.method, req.url, req.body.name);
-//     res.send({ error: 'path not found' });
-// });
-
+app.post('/api/programs', (req, res) => {
+  console.log(req.method, req.url, req.body);
+  // fs file paths are relative to pwd (cwd) aka where you started node
+  const raw = fs.readFileSync(dataPath);
+  // make into js array with objects
+  const data = JSON.parse(raw);
+  // push our new object into array
+  data.push(req.body);
+  // save file
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
+  // send back object
+  res.send(req.body);
+});
 
 // start "listening" (run) the app (server)
 app.listen(3000, () => console.log('app running...'));

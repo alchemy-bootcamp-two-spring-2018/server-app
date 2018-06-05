@@ -1,8 +1,9 @@
 <template>
   <article>
     <h3>{{ program.title }}</h3>
-    <p>Host: {{ program.city }}</p>
+    <p>Host: {{ program.host }}</p>
     <p>First aired: {{ program.yearStarted }}</p>
+    <p>Airs daily? {{ program.daily }}
     <p>Audience Size: {{ program.audienceSize }}</p>
     <p>Description:  {{program.description}}</p>
   </article>

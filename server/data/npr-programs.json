@@ -1,31 +1,34 @@
 [
-    {
-        "title":"All Things Considered",
-        "host":"Audie Cornish",
-        "audienceSize":123456,
-        "yearStarted":"1971",
-        "description":"Humor..."
-    },
-    {
-        "title":"Wait, Wait, Don't Tell Me",
-        "host":"Peter Sagal",
-        "audienceSize":20000,
-        "yearStarted":"1998",
-        "description":"News...."
-    },
-    {
-        "title":"Fresh Air",
-        "host":"Terry Gross",
-        "audienceSize":500000,
-        "yearStarted":"1975",
-        "description":"Interviews...."
-    },
-    {
-        "title":"Morning Edition",
-        "host":"Rachel Martin",
-        "audienceSize":30000,
-        "yearStarted":"1979",
-        "description":"News..."
-    }
+  {
+    "title": "All Things Considered",
+    "host": "Audie Cornish",
+    "audienceSize": 123456,
+    "yearStarted": "1971",
+    "daily": true,
+    "description": "News..."
+  },
+  {
+    "title": "Wait, Wait, Don't Tell Me",
+    "host": "Peter Sagal",
+    "audienceSize": 20000,
+    "yearStarted": "1998",
+    "daily": false,
+    "description": "Humor/Current Events...."
+  },
+  {
+    "title": "Fresh Air",
+    "host": "Terry Gross",
+    "audienceSize": 500000,
+    "yearStarted": "1975",
+    "daily": true,
+    "description": "Interviews...."
+  },
+  {
+    "title": "Morning Edition",
+    "host": "Rachel Martin",
+    "audienceSize": 30000,
+    "yearStarted": "1979",
+    "daily": true,
+    "description": "News..."
+  }
 ]
-    
