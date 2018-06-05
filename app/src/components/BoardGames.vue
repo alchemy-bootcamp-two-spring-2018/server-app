@@ -1,16 +1,17 @@
 <template>
   <div class="board-games-list">
-    <h2>list</h2>
     <BoardGame
       v-for="boardGame in boardGames"
       :key="boardGame.name"
       :boardGame="boardGame"
     />
+    <AddBoardGame :onAdd="handleAdd"/>
   </div>
 </template>
 
 <script>
 import BoardGame from './BoardGame';
+import AddBoardGame from './AddBoardGame';
 import { getBoardGames } from '../services/api';
 
 export default {
@@ -26,7 +27,13 @@ export default {
       });
   },
   components: {
-    BoardGame
+    BoardGame,
+    AddBoardGame
+  },
+  methods: {
+    handleAdd() {
+      console.log('added info');
+    }
   }
 };
 </script>

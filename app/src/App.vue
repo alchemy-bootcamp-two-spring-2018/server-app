@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>Board Games</h1>
+      <h1>Cool Board Games</h1>
     </header>
     <main>
       <BoardGames />
