@@ -1,0 +1,44 @@
+[
+  {
+    "name":"Thunder Island Brewing",
+    "description":"A scenic spot on the banks of the Columbia River with great food, micro brews, and a mix of sunny and shaded tables.",
+    "neighborhood":"Thunder Island, Cascade Locks",
+    "power-outlets": false, 
+    "rating": 5
+  },
+  {
+    "name":"Bailey's Tap Room",
+    "description":"bustling beer bar full of professionals having meetings or enjoying happy hour. Tech networking spot.",
+    "neighborhood":"Downtown Portland",
+    "power-outlets": false, 
+    "rating": 3
+  },
+  {
+    "name":"Good Coffee",
+    "description":"Sunny, quiet coffee shop with compact seating. Good for two or 3, not big groups. Great coffee!",
+    "neighborhood":"Buckman, SE Portland",
+    "power-outlets": true, 
+    "rating": 4
+  },
+  {
+    "name":"Good Coffee",
+    "description":"great espresso, clean and usually always a seat near an outlet.",
+    "neighborhood":"SE Division",
+    "power-outlets": true, 
+    "rating": 4
+  },
+  {
+    "name":"Breakside Brewing",
+    "description":"nice patio space and big windows. good beer and food. ",
+    "neighborhood":"NE Dekum",
+    "power-outlets": false, 
+    "rating": 3
+  },
+  {
+    "name":"Coffee Time",
+    "description":"Full of people working so it is pretty quiet and chill. Friendly staff, sidewalk seating available.",
+    "neighborhood":"NW Alphabet District",
+    "power-outlets": true, 
+    "rating": 3
+  }
+]
