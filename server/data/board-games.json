@@ -1,6 +1,7 @@
 [
   {
     "name": "Azul",
+    "minPlayers": 2,
     "maxPlayers": 4,
     "owned": true,
     "published": 2017,
@@ -9,6 +10,7 @@
   },
   {
     "name": "Scythe",
+    "minPlayers": 1,
     "maxPlayers": 7,
     "owned": true,
     "published": 2016,
@@ -17,6 +19,7 @@
   },
   {
     "name": "Terraforming Mars",
+    "minPlayers": 1,
     "maxPlayers": 5,
     "owned": false,
     "published": 2016,
@@ -25,6 +28,7 @@
   },
   {
     "name": "Codenames",
+    "minPlayers": 2,
     "maxPlayers": 8,
     "owned": true,
     "published": 2015,

@@ -11,7 +11,7 @@
 
 <script>
 import BoardGame from './BoardGame';
-import { getBoardGames } from '../services/api.js'
+import { getBoardGames } from '../services/api';
 
 export default {
   data() {
