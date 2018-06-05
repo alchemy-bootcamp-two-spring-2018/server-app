@@ -4,7 +4,7 @@
     <ul>
       <GlucoseLog
         v-for="glucoseLog in glucoseLogs"
-        :key="glucoseLog.day"
+        :key="glucoseLog.date"
         :glucoseLog = "glucoseLog"
       />
     </ul>

@@ -7,7 +7,7 @@ export function getGlucoseLogs() {
     .then(response => response.json());
 }
  
-export function addGlucoseLog() {
+export function addGlucoseLog(glucoseLog) {
   return fetch('http://localhost:3000/api/glucoseLogs', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

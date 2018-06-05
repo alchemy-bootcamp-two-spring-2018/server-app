@@ -3,6 +3,11 @@
     <h1>Add Log Component</h1>
     <form @submit.prevent="handleSubmit">
       <label>
+        Date:
+        <input v-model="glucoseLog.date" placeholder="mm/dd/yy" required>
+      </label>
+
+      <label>
         Day:
         <input v-model="glucoseLog.day" placeholder="Day" required>
       </label>
@@ -48,7 +53,8 @@
 
 const initGlucoseLog = () => {
   return {
-    day: 'Tuesday',
+    date: '',
+    day: '',
     beforeBreakfast: '',
     afterBreakfast: '',
     beforeLunch: '',

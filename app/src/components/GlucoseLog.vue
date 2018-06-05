@@ -1,7 +1,8 @@
 <template id="log-template">
   <article>
     <h2>Allo, das ist Log!</h2>
-    <h2>{{ glucoseLog.day }}</h2>
+    <h2>{{ glucoseLog.date }}</h2>
+    <p>Day: {{ glucoseLog.day }}</p>
     <p>Before Breakfast: {{ glucoseLog.beforeBreakfast }}</p>
     <p>After Breakfast: {{ glucoseLog.afterBreakfast }}</p>
     <p>Before Lunch: {{ glucoseLog.beforeLunch }}</p>
