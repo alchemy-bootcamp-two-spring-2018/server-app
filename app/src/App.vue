@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import GlucoseLogs from './components/GlucoseLog.vue';
+import GlucoseLogs from './components/GlucoseLogs.vue';
 
 
 export default {

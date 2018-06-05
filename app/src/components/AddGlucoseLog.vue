@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <h3>Add Log Component</h3>
   </div>
 </template>
 
