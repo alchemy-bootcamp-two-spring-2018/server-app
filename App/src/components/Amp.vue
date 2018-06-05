@@ -4,7 +4,7 @@
     <p>Country of Origin: {{amp.country}}</p>
     <p>Introduced: {{ amp.introduced }}</p>
     <p class="tubes">
-      Uses tubes:<template>
+      Uses tubes:
       <strong>{{ tubes }}</strong>
     </p>
     
