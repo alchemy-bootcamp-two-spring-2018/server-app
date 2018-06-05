@@ -5,9 +5,9 @@ const express = require('express');
 const app = express();
 
 //import cors 'middleware' to enable our server to do CORS 
-const cors = require('cors');
+//const cors = require('cors');
 // register it
-app.use(cors());
+//app.use(cors());
 
 // register express "middleware"   for converting incoming
 //request body to deserialized request.body property
