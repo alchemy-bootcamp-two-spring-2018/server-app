@@ -1,16 +1,36 @@
 <template>
   <div>
     <h1>Rappers</h1>
+    <ul>
+      <Rapper
+      v-for="rapper in rappers"
+      :key="rapper.name"
+      :rapper="rapper"
+      />
+    </ul>
   </div>
 </template>
 
 <script>
 import Rapper from './Rapper'
 import AddRapper from './AddRapper'
-import { getRappers } from '.. '
+import { getRappers } from '../services/api'
 
 export default {
-  
+  data() {
+    return {
+      rappers: null
+    };
+  },
+  created() {
+    getRappers()
+      .then(rappers => {
+        this.rappers = rappers;
+      });
+  },
+  components: {
+    Rapper,
+  }
 }
 </script>
 

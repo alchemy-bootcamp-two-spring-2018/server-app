@@ -2,33 +2,33 @@
 [{
     "name":"Kanye West",
     "from":"Chicago, IL",
-    "Notable Albums":"The College Dropout,, Graduation My Beautiful Dark Twisted Fantasy",
-    "Nicknames":"Yeezus, Ye",
-    "Associated Acts": "Jay-Z(usually best buds), No I.D.(mentor)",
+    "albums":"The College Dropout,, Graduation My Beautiful Dark Twisted Fantasy",
+    "aka":"Yeezus, Ye",
+    "affiliates": "Jay-Z(usually best buds), No I.D.(mentor)",
     "Is alive": true
 },
 {
     "name":"Jay-Z",
     "from":"Brooklyn, NY",
-    "Notable Albums":"Reasonable Doubt, The BluePrint Vol. 1, The Black Album",
-    "Nicknames":"Hov, Yung",
-    "Associated Acts(and affiliation)": "Kanye West(usually best buds), Timbaland(made most famous songs together), Nas(beef)",
+    "albums":"Reasonable Doubt, The BluePrint Vol. 1, The Black Album",
+    "aka":"Hov, Yung",
+    "affiliates": "Kanye West(usually best buds), Timbaland(made most famous songs together), Nas(beef)",
     "Is alive": true
 },
 {
     "name":"Tupac Shakur",
     "from":"Harlem, NY",
-    "Notable Albums":"All Eyez on Me, Me Against the World",
-    "Nicknames":"Pac, Makaveli",
-    "Associated Acts(and affiliation)": "Notorious B.I.G(beef), Jada Pinkett Smith(besties), Snoop Doog(friends and collaborators)",
+    "albums":"All Eyez on Me, Me Against the World",
+    "aka":"Pac, Makaveli",
+    "affiliates": "Notorious B.I.G(beef), Jada Pinkett Smith(besties), Snoop Doog(friends and collaborators)",
     "Is alive": false
 },
 {
     "name":"Andre 3000",
     "from":"Atlanta, GA",
-    "Notable Albums":"ATLiens, Aquemini, Stankonia",
-    "Nicknames":"Dre, Three Stacks",
-    "Associated Acts(and affiliation)": "Outkast(member), Big Boi(other half of Outkast), Erykah Badu(have a kid together)",
+    "albums":"ATLiens, Aquemini, Stankonia",
+    "aka":"Dre, Three Stacks",
+    "affiliates": "Outkast(member), Big Boi(other half of Outkast), Erykah Badu(have a kid together)",
     "Is alive": true
 }
 ]
