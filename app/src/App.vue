@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import Motorcycles from './components/Motorcycles'
+import Motorcycles from './components/Motorcycles';
 export default {
 
   components: {
     Motorcycles
   }
  
-}
+};
 </script>
 
 <style>
