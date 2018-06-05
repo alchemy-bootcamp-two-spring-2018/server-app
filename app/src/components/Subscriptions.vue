@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="subscription-section">
     <h2>Streaming Service Subscriptions</h2>
     <p v-if="!subscriptions">Loading subscriptions...</p>
     <ul v-else class="list">

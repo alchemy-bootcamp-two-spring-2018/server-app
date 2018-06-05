@@ -2,29 +2,33 @@
   <section class="add-subscription">
     <h1>New Subscription</h1>
     <form @submit.prevent="handleSubmit">
-      <label>
+      <label class="input-row">
         Name:
         <input type="text" name="service" required
         v-model="subscription.service">
       </label>
 
-      <label>
+      <label class="input-row">
         Price:
-        <input type="text" name="price" required
+        <input type="number" name="price" required
         v-model="subscription.price">
       </label>
 
-      <label>
+      <label class="input-row">
         Has ads:
-        <input type="radio" id="true" :value="true" required
-        v-model="subscription.ads">
-        <label for="true">Yes</label>
-        <input type="radio" id="false" :value="false" required
-        v-model="subscription.ads">
-        <label for="false">No</label>
+        <section class="input-small">
+          <input type="radio" id="true" :value="true" required
+          v-model="subscription.ads">
+          <label for="true">Yes</label>
+        </section>
+        <section class="input-small">
+          <input type="radio" id="false" :value="false" required
+          v-model="subscription.ads">
+          <label for="false">No</label>
+        </section>
       </label>
 
-      <label>
+      <label class="input-button">
         <button type="submit">Add</button>
       </label>
     </form>

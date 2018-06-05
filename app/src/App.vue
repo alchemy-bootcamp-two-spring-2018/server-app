@@ -28,15 +28,23 @@ body{
   align-items: center;
   flex-direction: column;
   width: 75%;
-  height: 700px;
+  /* height: 700px; */
   margin: 0 auto;
   padding-bottom: 50px;
   text-align: center
 }
 
+#subscription-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
 ul {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   list-style-type: none;
@@ -55,5 +63,44 @@ article {
   width: 225px;
   height: 250px;
   border-radius: 5px;
+}
+
+.add-subscription {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  background: #eee;
+  width: 40%;
+  border-radius: 3px;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.input-small {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.input-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+button {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+input {
+  margin-left: 5px;
 }
 </style>
