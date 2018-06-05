@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      glucoseLog: initGlucoseLog();
+      glucoseLog: initGlucoseLog()
     }
   },
   methods: {

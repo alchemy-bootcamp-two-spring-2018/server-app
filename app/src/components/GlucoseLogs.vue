@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import GlucoseLog from './components/GlucoseLog.vue';
-import AddGlucoseLog from './components/AddGlucoseLog.vue';
+import GlucoseLog from './GlucoseLog';
+import AddGlucoseLog from './AddGlucoseLog.vue';
 // import { getGlucoseLogs, addGlucoseLog } from '../services/api';
 
 export default {
