@@ -1,6 +1,9 @@
 <template>
 <div id="main">
   <h1 id="title">Famous Guitarists</h1>
+  <add-guitarist
+    :on-add="handleAdd"
+  />
   <ul>
     <guitarist 
       v-for="guitar in guitarists"
@@ -8,9 +11,6 @@
       :guitarist="guitar"
     />
   </ul>
-  <add-guitarist
-    :on-add="handleAdd"
-  />
 </div>
 </template>
 
@@ -46,7 +46,25 @@ export default {
 </script>
 
 <style>
+#main {
+  width: 100%;
+  }
+
+ul {
+  margin: auto;
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between; 
+}
+
 #title {
   font-size: 4rem;
+  color: seashell;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background: rgba(0, 0, 0, .69);
+  margin: auto;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
 <div id="add-main">
+<div id="add-container">
   <label>Name: <input v-model="guitarist.name"></label>
   <label>Are they alive?:
     <select v-model="guitarist.living">
@@ -7,9 +8,10 @@
       <option value="false">No :-(</option>
     </select>
   </label>
-  <label>Age: <input v-model="guitarist.age"></label>
-  <label>Link to an image of them: <input v-model="guitarist.img_url"></label>
-  <button @click.prevent="handleSubmit">Submit</button>
+  <label>Age: <input v-model.number="guitarist.age"></label><br>
+  <label>Link to an image of them: <input id="url" v-model="guitarist.img_url">
+  <button @click.prevent="handleSubmit">Submit</button></label>
+</div>
 </div>
 </template>
 <script>
@@ -46,4 +48,32 @@ export default {
 </script>
 
 <style>
+#add-main {
+  background: rgba(0, 0, 0, .69);
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+}
+#add-container {
+  width: 777px;
+  margin: auto;
+  color: seashell;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 6px;
+}
+
+label {
+  margin: 13px;
+}
+
+button {
+  margin-left: 33px;
+}
+
+#url {
+  width: 400px;
+}
 </style>

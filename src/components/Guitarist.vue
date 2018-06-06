@@ -23,14 +23,18 @@ export default {
 <style scoped>
 .guitarist {
   display: inline-block;
-  width: fit-content;
+  width: 150px;
+  height: fit-content;
   border: 1px solid black;
-  border-radius: 13px;
-  padding: 33px;
+  padding: 13px;
+  background: seashell;
+  background-image: url('../assets/card.png');
+  margin: 6px;
+  box-shadow: 1px 1px 3px black;
 }
 img {
-  height: 200px;
-  width: auto;
+  height: auto;
+  width: 100px;
   border-radius: 13px;
 }
 </style>
