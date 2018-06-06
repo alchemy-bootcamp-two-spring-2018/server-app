@@ -8,12 +8,12 @@ client.connect()
     return client.query(`
       CREATE TABLE IF NOT EXISTS climbingLocations (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(100),
-        image VARCHAR(100),
-        location VARCHAR(100),
+        name VARCHAR(128),
+        image VARCHAR(128),
+        location VARCHAR(128),
         elevation INTEGER,
         yearRoundClimbing BOOLEAN,
-        description VARCHAR(500)
+        description VARCHAR(512)
       );
     `);
   })

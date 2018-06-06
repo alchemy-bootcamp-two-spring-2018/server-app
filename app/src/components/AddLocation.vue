@@ -24,12 +24,12 @@
         </label>
         <label>
           Year round climbing?:
-          <input type="checkbox" name="year-round" checked="true"
+          <input type="checkbox" name="year-round" value="true"
             v-model="location.yearRoundClimbing"> true
         </label>
         <label>
           Description:
-          <input type="text" name="description" placeholder="Description" required
+          <input type="text" name="description" maxlenght="499" placeholder="Description" required
             v-model="location.description">
         </label>
         <label>

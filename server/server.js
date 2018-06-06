@@ -8,23 +8,31 @@ app.use(express.json());
 
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/timetoclimb';
+const databaseUrl = 'postgresql://localhost:5432/timetoclimb';
+const client = new Client(databaseUrl);
+client.connect();
 
-app.get('/api/climbingLocations', (req, res) => {
-  res.send(data);
+app.get('/api/climbingLocations/', (req, res) => {
+  client.query(`
+    SELECT * from climbinglocations;
+  `).then(result => {
+    res.send(result.rows);
+  });
 });
+
 
 app.post('/api/climbingLocations', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2)); res.send(req.body);
-});
-
-app.use((req, res) => {
-  console.log(req.method, req.url, req.body.name);
-  res.send({ error: 'path not found' });
+  const body = req.body;
+  
+  client.query(`
+    INSERT INTO climbinglocations (name, image, location, elevation, yearRoundClimbing, description)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *;
+  `, 
+  [body.name, body.image, body.location, body.elevation, body.yearRoundClimbing, body.description]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
 });
 
 app.listen(3000);
