@@ -1,0 +1,3 @@
+# This is a list of the most classic and loved guitar amps in history based on popularity among famous musicians who have been known to prefer them through their careers. It lists some basic information about them which may be added to and elaborated on in the future.
+
+## The user may add to this if they feel like there are some that should be on the list or if they just want to create their own list.
