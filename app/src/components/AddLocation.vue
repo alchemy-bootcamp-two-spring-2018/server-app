@@ -43,7 +43,11 @@ const initLocation = () => {
     // power: '',
     rating:''
   };
+  
 };
+
+
+
 
 export default {
   props: {
@@ -51,6 +55,11 @@ export default {
       type: Function,
       required: true
     }
+  },
+  data() {
+    return {
+      location: initLocation()
+    };
   },
   methods: {
     handleSubmit() {

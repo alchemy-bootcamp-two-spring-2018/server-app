@@ -15,7 +15,7 @@
 
 <script>
 import Location from './Location';
-import AddLocations from './AddLocation.vue';
+import AddLocation from './AddLocation.vue';
 import { getLocations, addLocations } from '../services/api';
 
 
@@ -33,7 +33,7 @@ export default {
   },
   components: {
     Location,
-    AddLocations
+    AddLocation
   },
   methods: {
     handleAdd(location) {
