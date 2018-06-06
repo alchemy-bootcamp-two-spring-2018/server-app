@@ -15,10 +15,19 @@ const fs = require('fs');
 const dataPath = 'data/rappers.json';
 
 app.get('/api/rappers', (req, res) => {
-  console.log('SOMETHING HAPPENED PLEASE');
   const raw = fs.readFileSync(dataPath);
   const data = JSON.parse(raw);
   res.send(data);
+});
+
+app.post('/api/rappers', (req, res) => {
+  console.log(req.method, req.url, req.body);
+  const raw = fs.readFileSync(dataPath)
+  const data = JSON.parse(raw);
+  data.push(req.body);
+  fs.writeFileSync(dataPath, JSON.stringify(data));
+  res.send(req.body);
+
 });
 
 app.use((req, res) => {

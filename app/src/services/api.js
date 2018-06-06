@@ -1,6 +1,15 @@
 export function getRappers() {
-  return fetch('http:http://localhost:3000/api/neighborhoods', {
+  return fetch('http://localhost:3000/api/rappers', {
     headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json());
+}
+
+export function addRappers(rapper) {
+  return fetch('http://localhost:3000/api/rappers', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(rapper)
   })
     .then(response => response.json());
 }
