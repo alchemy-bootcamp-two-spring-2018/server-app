@@ -3,7 +3,7 @@
         <h1>New Podcast</h1>
         <form @submit.prevent="handleSubmit">
             <label>
-                Name:<template>
+                Name:
                 <input type="text" name="name" placeholder="Name of Podcast" required
                     v-model="podcast.name">
             </label>
@@ -15,19 +15,19 @@
             </label>
 
             <label>
-                Length(average minutes):<template>
+                Length(average minutes):
                 <input type="text" name="averageMinutes" placeholder="Average minutes" required
                     v-model="podcast.averageMinutes">
             </label>
 
             <label>
-                Category:<template>
+                Category:
                 <input type="text" name="category" placeholder="Category" required
                     v-model="podcast.category">
             </label>
 
             <label>
-                NSFW?<template>
+                NSFW?
                 <input type="text" name="NSFW" placeholder="NSFW? true or false" required
                     v-model="podcast.NSFW">
             </label>
