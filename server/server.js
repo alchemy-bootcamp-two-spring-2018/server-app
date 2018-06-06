@@ -26,9 +26,4 @@ app.post('/api/subscriptions', (req, res) => {
   res.send(req.body);
 });
 
-app.use((req, res) => {
-  console.log(res.method, res.url, res.body.service);
-  res.send({ error: 'path not found' });
-});
-
 app.listen(3000, () => console.log('app running...'));
