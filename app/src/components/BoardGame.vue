@@ -15,6 +15,10 @@ export default {
 
 <style>
 .board-game {
-  margin: 50px 0px;
+  background: lightblue;
+  width: 280px;
+  height: 600px;
+  margin: 10px auto;
+  padding: 15px;
 }
 </style>

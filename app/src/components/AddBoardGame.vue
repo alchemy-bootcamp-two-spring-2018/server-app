@@ -8,17 +8,17 @@
       <label>Year Published:
         <input type="text" name="published" required v-model="boardGame.published">
       </label>
-      <label>Number of Players:
+      <label># of Players:
         <input type="number" name="minPlayers" required v-model="boardGame.minPlayers">
         to
         <input type="number" name="minPlayers" required v-model="boardGame.maxPlayers">
         players
       </label>
-      <label>Average Playing time:
+      <label>Avg. Playing time:
         <input type="number" name="avgPlayingTime" required v-model="boardGame.avgPlayingTime"> minutes
       </label>
       <label>Description:
-        <textarea name="description" required v-model="boardGame.description"></textarea> minutes
+        <textarea name="description" required v-model="boardGame.description"></textarea>
       </label>
       <label>Owned:
         <input type="checkbox" name="owned" v-model="boardGame.owned">
@@ -31,18 +31,22 @@
 </template>
 
 <script>
+const initBoardGame = () => {
+  return {
+    name: '',
+    published: '',
+    minPlayers: '',
+    maxPlayers: '',
+    avgPlayingTime: '',
+    description: '',
+    owned: false
+  };
+};
+
 export default {
   data() {
     return {
-      boardGame: {
-        name: 'test',
-        published: 'test',
-        minPlayers: 1,
-        maxPlayers: 5,
-        avgPlayingTime: '60',
-        description: 'What a great game.',
-        owned: false
-      }
+      boardGame: initBoardGame()
     };
   },
   props: {
@@ -53,17 +57,25 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.boardGame);
+      this.onAdd(this.boardGame)
+        .then(() => {
+          this.boardGame = initBoardGame();
+        });
     }
   }
 };
 </script>
 
 <style>
+.add-board-game {
+  width: 300px;
+  height: 600px;
+  background: purple;
+}
+
 form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
 input[type="number"] {

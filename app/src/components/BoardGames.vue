@@ -1,5 +1,5 @@
 <template>
-  <div class="board-games-list">
+  <div class="board-games-list" >
     <BoardGame
       v-for="boardGame in boardGames"
       :key="boardGame.name"
@@ -12,8 +12,7 @@
 <script>
 import BoardGame from './BoardGame';
 import AddBoardGame from './AddBoardGame';
-import { getBoardGames } from '../services/api';
-import { addBoardGame } from '../services/api';
+import { getBoardGames, addBoardGame } from '../services/api';
 
 export default {
   data() {
@@ -33,7 +32,7 @@ export default {
   },
   methods: {
     handleAdd(boardGame) {
-      addBoardGame(boardGame)
+      return addBoardGame(boardGame)
         .then(saved => {
           this.boardGames.push(saved);
         });
@@ -43,5 +42,9 @@ export default {
 </script>
 
 <style>
+.board-games-list {
+  display: flex;
+  flex-wrap: wrap;
 
+}
 </style>

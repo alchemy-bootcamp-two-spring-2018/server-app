@@ -11,6 +11,5 @@ export function addBoardGame(boardGame) {
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(boardGame)
   })
-    .then(response => response.json())
-    .then(console.log('addBoardGame function: done'));
+    .then(response => response.json());
 }
