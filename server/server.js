@@ -37,7 +37,11 @@ app.post('/api/walruses', (req, res) => {
   });
 });
 
-
+app.delete('/api/walruses/:id', (req, res) => {
+  console.log(req.params.id);
+  res.send({ removed: true });
+});
 
 //start "listening" (run) the app (server)
 app.listen(3000, () => console.log('server is running...'));
+app.listen(5432, () => console.log('database is running...'));
