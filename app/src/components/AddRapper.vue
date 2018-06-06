@@ -39,7 +39,7 @@
               >
           </label>
           <label>
-              Are they dead?
+              Are they dead?(check here)
               <input type="radio" :value="true"
               v-model="rapper.dead"
               >
