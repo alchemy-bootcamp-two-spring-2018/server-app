@@ -1,6 +1,6 @@
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/explore';
+const databaseUrl = 'postgres://localhost:5432/motorcycles';
 const client = new Client(databaseUrl);
 
 client.connect()
