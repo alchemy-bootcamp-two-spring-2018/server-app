@@ -1,8 +1,8 @@
 <template id="amp-template">
   <article>
-    <h3>{{ amp.name }}</h3>
-    <p>Country of Origin: {{amp.country}}</p>
-    <p>Introduced: {{ amp.introduced }}</p>
+    <h3>Amp Name</h3>
+    <p>Country of Origin: </p>
+    <p>Introduced: </p>
     <p class="tubes">
       Uses tubes:
       <strong>{{ tubes }}</strong>

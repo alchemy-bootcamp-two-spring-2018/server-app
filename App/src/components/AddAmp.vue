@@ -52,14 +52,14 @@ export default {
       amp:initAmp()
     };
   },
-  methods: {
-    handleSubmit() {
-      this.onAdd(this.amp)
-        .then(() => {
-          this.amp = initAmp();
-        });
-    }
-  }
+  // methods: {
+  //   handleSubmit() {
+  //     this.onAdd(this.amp)
+  //       .then(() => {
+  //         this.amp = initAmp();
+  //       });
+  //   }
+  // }
 };
 </script>
         

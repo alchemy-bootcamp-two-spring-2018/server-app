@@ -1,21 +1,22 @@
 <template>
 <section>
-  <h2>Musicians Favorite Instrument Amplifiers</h2>
-  <p v-if="!amps">Loading neighborhoods...</p>
-  <ul v-else class="list">
+  <h2>Greatest Guitar Amplifiers</h2>
+  <!-- <p v-if="!amps">Loading amps...</p> -->
+  <ul class="list">
     <Amp
       v-for="amp in amps"
       :key="amp.name"
       :amp="amp"
     />
   </ul>
+  <AddAmp :on-add="handleAdd"/>
 </section>
 </template>
 
 <script>
 import Amp from './Amp';
-
-import { getAmps } from '../services/api';
+import AddAmp from './AddAmp';
+import { getAmps, addAmp } from '../services/api';
 
 export default {
   data() {
@@ -23,12 +24,12 @@ export default {
       amps: null
     };
   },
-  created() {
-    getAmps()
-      .then(amps => {
-        this.amps = amps;
-      });
-  },
+  // created() {
+  //   getAmps()
+  //     .then(amps => {
+  //       this.amps = amps;
+  //     });
+  // },
   components: {
     Amp,
     AddAmp

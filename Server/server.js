@@ -13,20 +13,25 @@ const amps = require('./data/amps');
 
 const fs = require('fs');
 
-const dataPath = ('data/amps');
+const dataPath = ('data/amps.json');
 
 app.get('/api/amps', (req, res) => {
-  console.log(req.method, req.url, req.body);
+  
 
   const raw = fs.readFileSync(dataPath)
 
   const data = JSON.parse(raw);
-  data.push(req.body);
-
-  fs.writeFileSync(dataPath, JSON.stringify(data));
-
-  res.send(req.body);
+  res.send(data);
 });
+
+app.post('/api/amps', (req, res) => {
+  console.log(req.method, req.url, req.body);
+  const raw = fs.readFileSync(dataPath)
+  const data = JSON.parse(raw);
+  data.push(req.body);
+  fs.writeFileSynch(dataPath, JSON.stringify(data));
+  res.send(req.body);
+})
 
 app.use((req, res) => {
   console.log(req.method, req.url, req.body.name);
