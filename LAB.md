@@ -1,6 +1,12 @@
 My First Server App
 ===
 
+## Code Wars Kata
+
+* Complete Kata 1 and Kata 2, then follow the submission instructions, note that the instructions must be followed for each of these challenges.
+
+## Lab
+
 Create your first app and server (fullstack minus database)!
 
 You can pick an "entity" (resource) **but** should:
