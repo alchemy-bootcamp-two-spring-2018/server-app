@@ -2,8 +2,12 @@
   <div>
     <form @submit.prevent="handleSubmit">
       <label>
+        ID:
+        <input type="number" name="id" placeholder="ID" required v-model="motorcycle.id">
+      </label>
+      <label>
         Year:
-        <input type="text" name="year" placeholder="Year" required v-model="motorcycle.year">
+        <input type="number" name="year" placeholder="Year" required v-model="motorcycle.year">
       </label>
 
       <label>
@@ -33,8 +37,13 @@
 
       <label>
         Sold:
-        <input type="checkbox" name="sold" required v-model="motorcycle.sold">
+        <input type="checkbox" name="sold" v-model="motorcycle.sold">
       </label>
+
+      <label>
+        <button type="submit">Add motorcycle</button>
+      </label>
+
     </form>
 
   </div>
@@ -59,6 +68,22 @@ export default {
     return {
       motorcycle: initMotorcycle()
     };
+  },
+
+  props: {
+    onAdd: {
+      type: Function,
+      required: true
+    }
+  },
+
+  methods: {
+    handleSubmit() {
+      this.onAdd(this.motorcycle); //added semi-colon while commented out 3 lines below
+        // .then(() => {
+        //   this.motorcycle = initMotorcycle();
+        // });
+    }
   }
 
 

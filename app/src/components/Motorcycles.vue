@@ -8,7 +8,7 @@
       />
     </ul>
     
-    <AddMotorcycle/>
+    <AddMotorcycle :on-add="handleAdd"/>
 
   </div>
 </template>
@@ -16,7 +16,7 @@
 <script>
 import Motorcycle from './Motorcycle';
 import AddMotorcycle from './AddMotorcycle';
-import { getMotorcycles } from '../services/api';
+import { getMotorcycles, addMotorcycle } from '../services/api';
 
 export default {
   data() {
@@ -35,6 +35,15 @@ export default {
   components: {
     Motorcycle,
     AddMotorcycle
+  },
+
+  methods: {
+    handleAdd(motorcycle) {
+      return addMotorcycle(motorcycle)
+        .then(saved => {
+          this.motorcycles.push(saved);
+        });
+    }
   }
 
 };

@@ -5,3 +5,12 @@ export function getMotorcycles() {
   })
     .then(response => response.json());
 }
+
+export function addMotorcycle(motorcycle) {
+  return fetch('http://localhost:3000/api/motorcycles', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(motorcycle)
+  })
+    .then(response => response.json());
+}
