@@ -80,3 +80,15 @@ export default {
   }
 };
 </script>
+
+<style>
+.add-podcast {
+  width: 400px;
+  text-align: left;
+  margin: auto; 
+}
+
+label {
+  display: block;
+}
+</style>
