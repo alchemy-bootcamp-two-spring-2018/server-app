@@ -3,10 +3,10 @@
   <h2>Fruits</h2>
   <p v-if="!fruits">Loading fruits...</p>
   <ul v-else class="list">
-    <Neighborhood
+    <Fruit
       v-for="fruit in fruits"
       :key="fruit.name"
-      :neighborhood="fruit"
+      :fruit="fruit"
     />
   </ul>
   <AddFruit :on-add="handleAdd"/>
@@ -16,7 +16,7 @@
 <script>
 import Fruit from './Fruit';
 import AddFruit from './AddFruit.vue';
-import { getFruits, AddFruit } from '../services/api';
+import { getFruits, addFruit } from '../services/api';
 export default {
   data() {
     return { 
@@ -34,7 +34,7 @@ export default {
     AddFruit 
   },
   methods: {
-    handleAdd(fruits) {
+    handleAdd(fruit) {
       return addFruit(fruit)
         .then(saved => {
           this.fruits.push(saved);

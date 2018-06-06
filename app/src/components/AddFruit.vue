@@ -1,11 +1,11 @@
 <template id="fruit-template">
   <section class="add-fruit">
-    <h1>New Neighborhood</h1>
+    <h1>Add Fruit</h1>
     <form @submit.prevent="handleSubmit">
       <label>
         Name:
         <input type="text" name="name" placeholder="Name" required
-          v-model="neighborhood.name">
+          v-model="fruit.name">
       </label>
 
       <label>

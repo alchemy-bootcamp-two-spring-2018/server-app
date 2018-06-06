@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // require our "mock" data
-const neighborhoods = require('./data/fruits');
+const fruits = require('./data/fruits');
 
 // temp solution to updating data...
 const fs = require('fs');
@@ -51,5 +51,6 @@ app.use((req, res) => {
   res.send({ error: 'path not found' });
 });
 
+const PORT = 3000;
 // start "listening" (run) the app (server)
-app.listen(3000, () => console.log('app running...'));
+app.listen(PORT, () => console.log('app running on ' + PORT));
