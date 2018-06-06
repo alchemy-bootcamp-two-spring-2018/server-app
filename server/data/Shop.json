@@ -1,37 +1,37 @@
 [{
     "name": "Coava",
     "neighborhood": "Buckman",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "True"
 },
 {
     "name": "Push Pull",
     "neighborhood": "Buckman",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "True"
 },
 {
     "name": "Good Coffee",
     "neighborhood": "Richmond",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "True"
 },
 {
     "name": "Barista",
     "neighborhood": "Buckman",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "false"
 },
 {
     "name": "Never",
     "neighborhood": "Sunnyside",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "false"
 },
 {
     "name": "Upper Left",
     "neighborhood": "Hosford-Abernethy",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "True"
 }
 ]
