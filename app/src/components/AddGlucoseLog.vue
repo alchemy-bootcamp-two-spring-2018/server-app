@@ -4,7 +4,7 @@
     <form @submit.prevent="handleSubmit">
       <label>
         Date:
-        <input v-model="glucoseLog.date" type="date" required>
+        <input v-model="glucoseLog.date" type="date" required pattern="[0-9]{0-9}/[0-9]{0-9}/[0-9]{0-9}"> 
       </label>
 
       <label>
