@@ -1,18 +1,19 @@
 <template id="add-location-template">
   <section class="add-location-data">
+    <hr>
     <h3>Share your favorite spot to study and code</h3>
     <form @submit.prevent="handleSubmit">
-      <label>
+      <label> Location Name:
         <input type="text" name="name" placeholder="Name" required
           v-model="location.name">
       </label>
 
-      <label>
+      <label> Description:
         <input type="textarea" name="description" rows="6" cols="200" placeholder="What makes this a good spot to study and code?" required
           v-model="location.description">
       </label>
 
-      <label>
+      <label> Location:
         <input type="text" name="neighborhood" placeholder="Neighborhood" required
           v-model="location.neighborhood">
       </label>
@@ -21,8 +22,8 @@
         <input type="text" name="power" placeholder="Are outlets available?" required
           v-model="location.power">
       </label> -->
-      <label>
-        <input type="number" name="rating" placeholder="" required
+      <label> Rate on a scale of 1 to 5:
+        <input type="number" name="rating" placeholder="" id="rate" required
           v-model="location.rating">
       </label>
 
@@ -46,9 +47,6 @@ const initLocation = () => {
   
 };
 
-
-
-
 export default {
   props: {
     onAdd: {
@@ -56,11 +54,13 @@ export default {
       required: true
     }
   },
+
   data() {
     return {
       location: initLocation()
     };
   },
+
   methods: {
     handleSubmit() {
       this.onAdd(this.location)
@@ -73,5 +73,24 @@ export default {
 </script>
 
 <style>
+
+.add-location-data {
+  width: 800px;
+  text-align: left;
+  margin: auto;
+}
+label {
+  display: block;
+}
+
+input {
+  padding: 20px;
+  min-width: 600px;
+  margin-bottom: 10px;
+}
+
+#rate {
+  min-width: 100px;
+}
 
 </style>

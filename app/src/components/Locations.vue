@@ -36,8 +36,8 @@ export default {
     AddLocation
   },
   methods: {
-    handleAdd(location) {
-      return addLocations(location)
+    handleAdd(locations) {
+      return addLocations(locations)
         .then(saved => {
           this.locations.push(saved);
         });
