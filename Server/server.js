@@ -29,14 +29,8 @@ app.post('/api/amps', (req, res) => {
   const raw = fs.readFileSync(dataPath)
   const data = JSON.parse(raw);
   data.push(req.body);
-  fs.writeFileSynch(dataPath, JSON.stringify(data));
+  fs.writeFileSync(dataPath, JSON.stringify(data));
   res.send(req.body);
 })
 
-// app.use((req, res) => {
-//   console.log(req.method, req.url, req.body.name);
-//   res.send({ error: 'path not found' });
-// });
-
 app.listen(3000, () => console.log('app running...'));
-

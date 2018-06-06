@@ -13,11 +13,6 @@
 <script>
 export default {
   props: ['amp'],
-  // computed: {
-  //   tubes() {
-  //     return this.amp.tubes.toLocalString();
-  //   },
-  // }
 };
 </script>
       

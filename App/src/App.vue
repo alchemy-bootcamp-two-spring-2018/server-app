@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <header>
-    <!-- <img src="./assets/logo.png"> -->
     </header>
 
     <main>
