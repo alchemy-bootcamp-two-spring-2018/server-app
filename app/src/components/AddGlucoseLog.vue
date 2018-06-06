@@ -4,42 +4,47 @@
     <form @submit.prevent="handleSubmit">
       <label>
         Date:
-        <input v-model="glucoseLog.date" placeholder="mm/dd/yy" required>
+        <input v-model="glucoseLog.date" type="date" required>
       </label>
 
       <label>
         Day:
         <input v-model="glucoseLog.day" placeholder="Day" required>
       </label>
+
+      <label>
+        Changed Insulin?:
+        <input v-model="glucoseLog.changeInsulin" type="checkbox" value="yes"> Yes
+      </label>
       
       <label>
         Before Breakfast:
-        <input v-model="glucoseLog.beforeBreakfast" placeholder="Before Breakfast" required>
+        <input v-model="glucoseLog.beforeBreakfast" placeholder="Before Breakfast" type="number" min="0" required>
       </label>
       
       <label>
         After Breakfast:
-        <input v-model="glucoseLog.afterBreakfast" placeholder="After Breakfast" required>
+        <input v-model="glucoseLog.afterBreakfast" placeholder="After Breakfast" type="number" min="0" required>
       </label>
 
       <label>
         Before Lunch:
-        <input v-model="glucoseLog.beforeLunch" placeholder="Before Lunch" required>
+        <input v-model="glucoseLog.beforeLunch" placeholder="Before Lunch" type="number" min="0" required>
       </label>
 
       <label>
         After Lunch:
-        <input v-model="glucoseLog.afterLunch" placeholder="After Lunch" required>
+        <input v-model="glucoseLog.afterLunch" placeholder="After Lunch" type="number" min="0" required>
       </label>
 
       <label>
         Before Dinner:
-        <input v-model="glucoseLog.beforeDinner" placeholder="Before Dinner" required>
+        <input v-model="glucoseLog.beforeDinner" placeholder="Before Dinner" type="number" min="0" required>
       </label>
 
       <label>
         After Dinner:
-        <input v-model="glucoseLog.afterDinner" placeholder="After Dinner" required>
+        <input v-model="glucoseLog.afterDinner" placeholder="After Dinner" type="number" min="0" required>
       </label>
 
       <label>
@@ -55,6 +60,7 @@ const initGlucoseLog = () => {
   return {
     date: '',
     day: '',
+    changeInsulin: '',
     beforeBreakfast: '',
     afterBreakfast: '',
     beforeLunch: '',

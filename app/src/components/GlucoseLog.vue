@@ -3,6 +3,7 @@
     <h2>Allo, das ist Log!</h2>
     <h2>{{ glucoseLog.date }}</h2>
     <p>Day: {{ glucoseLog.day }}</p>
+    <p>Changed insulin?: {{ glucoseLog.changeInsulin }}</p>
     <p>Before Breakfast: {{ glucoseLog.beforeBreakfast }}</p>
     <p>After Breakfast: {{ glucoseLog.afterBreakfast }}</p>
     <p>Before Lunch: {{ glucoseLog.beforeLunch }}</p>
