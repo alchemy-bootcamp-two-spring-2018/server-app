@@ -1,16 +1,9 @@
-//require the express module (installed via 'npm i express')
+
 const express = require('express');
-
-//make an express app. no 'new' keyword needed like in vue
 const app = express();
-
-//import cors "middleware" to enable our server to CORS
 const cors = require('cors');
-//register it
-app.use(cors());
 
-//register express "middleware" for converting incoming 
-//request body to decentralized request.body property
+app.use(cors());
 app.use(express.json());
 
 // connect to database

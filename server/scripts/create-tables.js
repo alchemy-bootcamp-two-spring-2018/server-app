@@ -12,7 +12,7 @@ client.connect()
         description VARCHAR(1024),
         neighborhood VARCHAR(256),
         power BOOLEAN,
-        rating INTEGER,
+        rating INTEGER
       );
     `);
   })
