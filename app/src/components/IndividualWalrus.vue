@@ -3,7 +3,7 @@
     <h3>Name: {{ walrus.name }}</h3>
     <p>Type: {{ walrus.type }}</p>
     <p>Weight: {{ walrus.weight }}</p>
-    <p>Fictional? {{ walrus.fictional }}</p>
+    <p>A Real Walrus? {{ walrus.fictional }}</p>
     <p>Description: {{ walrus.description }}</p>
   </article>
 </template>

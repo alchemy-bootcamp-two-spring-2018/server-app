@@ -1,1 +1,37 @@
-[{"name":"Wally","type":"Pacific","weight":4000,"fictional":true,"description":"From the old Woody Woodpecker cartoon."},{"name":"Zeus","type":"Pacific","weight":3000,"fictional":false,"description":"Currently in captivity at Marineland in Canada."},{"name":"ET","type":"Pacific","weight":4000,"fictional":false,"description":"Deceased: Formerly a resident of Point Defiance Zoo in Tacoma, WA."},{"name":"Nereus","type":"Pacific","weight":4000,"fictional":true,"description":"Deceased: Nereus was a beloved walrus who lived at the Indianapolis, IN zoo. He was famous for being discovered as an abandoned baby walrus and starred in a film called \"Growing Up Walrus\" which documented his rehabilitation."}]
+[
+  {
+    "name": "Wally",
+    "type": "Pacific",
+    "weight": 4000,
+    "fictional": true,
+    "description": "From the old Woody Woodpecker cartoon."
+  },
+  {
+    "name": "Zeus",
+    "type": "Pacific",
+    "weight": 3000,
+    "fictional": false,
+    "description": "Currently in captivity at Marineland in Canada."
+  },
+  {
+    "name": "ET",
+    "type": "Pacific",
+    "weight": 4000,
+    "fictional": true,
+    "description": "Deceased: Formerly a resident of Point Defiance Zoo in Tacoma, WA."
+  },
+  {
+    "name": "Nereus",
+    "type": "Pacific",
+    "weight": 4000,
+    "fictional": true,
+    "description": "Deceased: Nereus was a beloved walrus who lived at the Indianapolis, IN zoo. He was famous for being discovered as an abandoned baby walrus and starred in a film called \"Growing Up Walrus\" which documented his rehabilitation."
+  },
+  {
+    "name": "Sivuqaq (Jocko)",
+    "weight": "3500",
+    "type": "Pacific",
+    "fictional": "true",
+    "description": "Deceased: Sivuqaq is famous for having played \"Jocko\" the walrus in the movie 50 First Dates. He also provided some voiceover for the Lord of the Rings Movies!"
+  }
+]

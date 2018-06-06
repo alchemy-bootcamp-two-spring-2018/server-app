@@ -21,7 +21,7 @@
       </label>
 
       <label>
-        Fictional or real:
+        Fictional or real:<br/>
         <input type="radio" name="fictional"  id = "isFictional" value="false" required
           v-model="walrus.fictional">
           <label for="isFictional">Fictional</label>
