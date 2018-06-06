@@ -3,7 +3,7 @@
     <h3>All Time Games List</h3>
     <ul class="list">
       <Game
-        v-for="game in allGames"
+        v-for="game in games"
         :key="game.name"
         :game="game"
       />
@@ -19,29 +19,29 @@ import AddGame from './AddGame';
 export default {
   data() {
     return {
-      allGames: [
+      games: [
         { 
           'name': 'CastleVania',
           'system': 'Playstation',
-          'year': '1998',
+          'year': 1998,
           'top 10': true
         },
         {
           'name': 'Super Metroid',
           'system': 'Super Nintendo',
-          'year': '1994',
+          'year': 1994,
           'top 10': true
         },
         { 
           'name': 'Mario',
           'system': 'Nintendo',
-          'year': '1984',
+          'year': 1984,
           'top 10': false
         },
         { 
           'name': 'Legend of Zelda',
           'system': 'Super Nintendo',
-          'year': '1996',
+          'year': 1996,
           'top 10': true
         },
       ]
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     handleAdd(game) {
-      return this.allGames.push(game);
+      return this.games.push(game);
 
     }
   }

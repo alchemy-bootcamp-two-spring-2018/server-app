@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <h1>My First Server, Hurrrrr..!</h1>
-    <AllGames/>
+    <Games/>
   </div>
 </template>
 
 <script>
-import AllGames from './components/AllGames';
+import Games from './components/Games';
    
 export default {
 
   components: {
-    AllGames
+    Games
   }
 };
 </script>

@@ -15,6 +15,24 @@ app.use(cors());
 app.use(express.json());
 
 
+// require our "mock" data
+const games = require('./data/games');
+
+//temp solution dont worry if you dont remember
+const fs = require('fs');
+// path to data file
+const dataPath = 'data/games.json';
+
+
+// app.<method>(<path>, handler)
+app.get('/api/games', (req, res) => {
+// fs file paths are relative to pwd (cwd) aka where you started node
+  const raw = fs.readFileSync(dataPath);
+  //make into a js array with objects
+  const data = JSON.parse(raw);
+  res.send(data);
+});
+
 
 
 

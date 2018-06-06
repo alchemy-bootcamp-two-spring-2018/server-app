@@ -1,0 +1,26 @@
+[
+  { 
+    "name": "CastleVania",
+    "system": "Playstation",
+    "year": 1998,
+    "top 10": true
+  },
+  {
+    "name": "Super Metroid",
+    "system": "Super Nintendo",
+    "year": 1994,
+    "top 10": true
+  },
+  { 
+    "name": "Mario",
+    "system": "Nintendo",
+    "year": 1984,
+    "top 10": false
+  },
+  { 
+    "name": "Legend of Zelda",
+    "system": "Super Nintendo",
+    "year": 1996,
+    "top 10": true
+  }
+]
