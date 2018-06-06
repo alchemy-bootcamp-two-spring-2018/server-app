@@ -1,23 +1,31 @@
+//engage express
 const express = require('express');
-
 const app = express();
 
+//make sure to use cors and read your json file
 const cors = require('cors');
-
 app.use(cors());
-
 app.use(express.json());
 
-const rappers = require('./data/rappers');
+//here is how you connect to database
+//for further reading google pg.Client and read documentation
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/explore';
+const client = new Client(databaseUrl);
+client.connect(() => {
+  console.log('SERVER.JS IS CONNECTED')
+});
 
-const fs = require('fs');
-
-const dataPath = 'data/rappers.json';
 
 app.get('/api/rappers', (req, res) => {
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  res.send(data);
+
+  client.query(`
+  
+  SELECT * from rappers;
+  `).then(result => {
+    res.send(result.rows);
+  });
 });
 
 app.post('/api/rappers', (req, res) => {
