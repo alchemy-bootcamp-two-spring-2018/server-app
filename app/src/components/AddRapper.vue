@@ -40,7 +40,7 @@
           </label>
           <label>
               Are they dead?
-              <input type="radio" :value="true" required
+              <input type="radio" :value="true"
               v-model="rapper.dead"
               >
           </label>
