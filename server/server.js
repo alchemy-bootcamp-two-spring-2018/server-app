@@ -10,6 +10,9 @@ app.use(express.json());
 //connect to the database
 const walruses = require('walruses');
 const Client = walruses.Client;
+const databaseUrl = 'postgres://localhost:5432/walruses';
+const client = new Client(databaseUrl);
+client.connect();
 
 
 
