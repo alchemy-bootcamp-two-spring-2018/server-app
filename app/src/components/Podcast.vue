@@ -9,15 +9,15 @@
     </article>
 </template>
         
-        <script>
-        export default {
-            props: ['podcast']
-        };
+<script>
+    export default {
+        props: ['podcast']
+    };
     
     
-        </script>
+</script>
         
-        <style>
+<style>
         
-        </style>
+</style>
         
