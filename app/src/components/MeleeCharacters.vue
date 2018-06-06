@@ -45,3 +45,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+h2 {
+  background: -webkit-linear-gradient(rgb(199, 179, 255), rgb(3, 1, 77));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
+}
+</style>
