@@ -37,7 +37,7 @@ export default {
     handleAdd(location) {
       return addLocation(location)
         .then(saved => {
-          this.location.push(saved);
+          this.locations.push(saved);
         });
     }
   }

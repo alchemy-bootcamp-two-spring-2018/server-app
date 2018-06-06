@@ -3,15 +3,15 @@
    <header>
     <img src="./assets/logoWhite.png">
    </header>
-   <Locations/>
+   <LocationsList/>
  </div>
 </template>
 
 <script>
-import Locations from './components/LocationsList.vue';
+import LocationsList from './components/LocationsList.vue';
 export default {
   components: {
-    Locations
+    LocationsList
   }
 };
 </script>

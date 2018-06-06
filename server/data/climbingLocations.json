@@ -1,1 +1,38 @@
-[{"name":"Smith Rock State Park","location":"Central Oregon","elevation":2648,"yearRoundClimbing":true,"description":"Smith Rock is Oregon's premier rock climbing destination, and one of the best sport climbing areas in the United States. This world-renowned sport climbing mecca has more than once been at the focal point of the climbing world. Extensive development took place in the 1960s, 70s, and 80s by locals and international climbers alike, who put up scores of classic climbs on the tuff and basalt cliffs; development continues to this day with new moderates and cutting-edge routes going up each year. Ranging from classic beginner routes to hardcore testpieces on a wide variety of rock, there is truly something here for everyone. Although best known for its sport climbing traditional climbers can find plenty to be excited about here as well. "},{"name":"Mt. Lemmon","location":"Southern Arizona","elevation":9157,"yearRoundClimbing":true,"description":"Mount Lemmon, rising to an elevation of 9,157 feet above sea level, offers some of the best climbing in Arizona. More than 1,500 climbing routes can be found on the mountain, making it one of the most popular climbing areas in the state. With crags located at elevations ranging from 2,500-9,000', comfortable climbing temps can be found year round. "},{"name":"Yosemite National Park","location":"Central California","elevation":3980,"yearRoundClimbing":false,"description":"Yosemite National Park is it: The iconic birthplace of American rock climbing and the most famous climbing area in the world. The park, located in central California, is home to both Yosemite Valley (THE Valley), Tuolumne Meadows, and several other less-visited climbing venues such as Wawona and Hetch Hetchy. Climbers from all over the world have been visiting the Valley for decades (often staying in the little-changed walk-in campground of Camp 4) to test themselves against the great big wall climbs on El Capitan and Half Dome. In addition to scores of historic aid routes, Yosemite Valley also has everything from long free climbs to world-class bouldering. Don't expect a wilderness experience - the park is often overrun by tourists and climbers alike during the busy seasons. "},{"name":"home","elevation":"20","yearRound":"","description":"It's my home","yearRoundClimbing":"true"}]
+[
+  {
+    "name": "Smith Rock State Park",
+    "location": "Central Oregon",
+    "elevation": 2648,
+    "yearRoundClimbing": true,
+    "description": "Smith Rock is Oregon's premier rock climbing destination, and one of the best sport climbing areas in the United States. This world-renowned sport climbing mecca has more than once been at the focal point of the climbing world. Extensive development took place in the 1960s, 70s, and 80s by locals and international climbers alike, who put up scores of classic climbs on the tuff and basalt cliffs; development continues to this day with new moderates and cutting-edge routes going up each year. Ranging from classic beginner routes to hardcore testpieces on a wide variety of rock, there is truly something here for everyone. Although best known for its sport climbing traditional climbers can find plenty to be excited about here as well. "
+  },
+  {
+    "name": "Mt. Lemmon",
+    "location": "Southern Arizona",
+    "elevation": 9157,
+    "yearRoundClimbing": true,
+    "description": "Mount Lemmon, rising to an elevation of 9,157 feet above sea level, offers some of the best climbing in Arizona. More than 1,500 climbing routes can be found on the mountain, making it one of the most popular climbing areas in the state. With crags located at elevations ranging from 2,500-9,000', comfortable climbing temps can be found year round. "
+  },
+  {
+    "name": "Yosemite National Park",
+    "location": "Central California",
+    "elevation": 3980,
+    "yearRoundClimbing": false,
+    "description": "Yosemite National Park is it: The iconic birthplace of American rock climbing and the most famous climbing area in the world. The park, located in central California, is home to both Yosemite Valley (THE Valley), Tuolumne Meadows, and several other less-visited climbing venues such as Wawona and Hetch Hetchy. Climbers from all over the world have been visiting the Valley for decades (often staying in the little-changed walk-in campground of Camp 4) to test themselves against the great big wall climbs on El Capitan and Half Dome. In addition to scores of historic aid routes, Yosemite Valley also has everything from long free climbs to world-class bouldering. Don't expect a wilderness experience - the park is often overrun by tourists and climbers alike during the busy seasons. "
+  },
+  {
+    "name": "home",
+    "elevation": "20",
+    "yearRound": "",
+    "description": "It's my home",
+    "yearRoundClimbing": "true"
+  },
+  {
+    "name": "RedRocks",
+    "location": "Las Vegas",
+    "elevation": "8154",
+    "yearRound": "",
+    "description": "Red Rock: a few thousand routes, generally warm weather, every kind climbing from short sport routes to big 20-pitch outings, nearby Las Vegas for off-rock activities. Who could ask for more?",
+    "yearRoundClimbing": "false"
+  }
+]

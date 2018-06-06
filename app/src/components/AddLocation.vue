@@ -4,7 +4,7 @@
       <form @submit.prevent="handleSubmit">
          <label>
           Name:
-          <input type="text" name="name" placeholder="Name" required
+          <input type="text" name="name" min="3" placeholder="Name" required
             v-model="location.name">
         </label>
          <label>
