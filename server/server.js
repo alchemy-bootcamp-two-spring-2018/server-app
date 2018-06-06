@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 //require our "mock" data
+//eslint-disable-next-line
 const locations = require('./data/locations');
 
 //temp solution to updating data...
@@ -27,7 +28,7 @@ app.get('/api/locations', (req, res) => {
   const raw = fs.readFileSync(dataPath);
   // //make into js array with objects
   const data = JSON.parse(raw);
-  res.send(locations);
+  res.send(data);
 });
 
 app.post('/api/locations', (req, res) => {

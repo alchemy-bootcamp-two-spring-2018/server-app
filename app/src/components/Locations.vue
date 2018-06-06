@@ -16,7 +16,7 @@
 <script>
 import Location from './Location';
 import AddLocation from './AddLocation.vue';
-import { getLocations, addLocations } from '../services/api';
+import { getLocations, addLocation } from '../services/api';
 
 
 export default {
@@ -36,8 +36,8 @@ export default {
     AddLocation
   },
   methods: {
-    handleAdd(locations) {
-      return addLocations(locations)
+    handleAdd(location) {
+      return addLocation(location)
         .then(saved => {
           this.locations.push(saved);
         });
