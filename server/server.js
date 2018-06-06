@@ -5,7 +5,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-const podcasts = require('./date/podcasts.json');
+const podcasts = require('./data/podcasts');
 const fs = require('fs');
 const dataPath = 'data/podcasts.json';
 
@@ -16,7 +16,7 @@ app.get('/api/podcasts', (req, res) => {
     res.send(data);
 });
 
-app.post('/api/podcasts', (req, res) = {
+app.post('/api/podcasts', (req, res) => {
     console.log(req.method, req.url, req.body);
     const raw = fs.readFileSync(dataPath);
     const data = JSON.parse(raw);
@@ -28,7 +28,7 @@ app.post('/api/podcasts', (req, res) = {
 
 app.use((req, res) => {
     console.log(req.method, req.url, req.body.name);
-    res.send({error: 'path not found' });
+    res.send({ error: 'path not found' });
 });
 
 app.listen(3000, () => console.log('app running, please be running'));
