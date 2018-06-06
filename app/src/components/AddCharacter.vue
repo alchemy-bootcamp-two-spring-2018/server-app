@@ -14,13 +14,13 @@
 
       <label>Difficulty from 1 to 10: 
         <input oninput="this.value=this.value.replace(/[^0-9]/g,'');" max="10" min="1"  type="number" name="difficulty" required
-        v-model="character.difficulty">
+        v-model.number="character.difficulty">
       </label>
 
       <label>Can walljump: 
-        <input class="radio" type="radio" name="walljump" value="true" required
+        <input class="radio" type="radio" name="walljump" :value="true" required
         v-model="character.walljump">Yes
-        <input class="radio" type="radio" name="walljump" value="false" required
+        <input class="radio" type="radio" name="walljump" :value="false" required
         v-model="character.walljump">No
       </label>
 

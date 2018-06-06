@@ -1,37 +1,52 @@
+//express app 
 const express = require('express');
-
 const app = express();
 
+//middleware(cors and json body read)
 const cors = require('cors');
-
 app.use(cors());
-
 app.use(express.json());
 
-const meleeCharacters = require('./data/meleeCharacters');
+//connect to database
+const pg = require('pg');
+const Client = pg.Client;
+const dbUrl = 'postgres://localhost:5432/explore';
+const client = new Client(dbUrl);
+client.connect();
 
-const fs = require('fs');
 
-const dataPath = 'data/meleeCharacters.json';
-
+// routing
 app.get('/api/meleeCharacters', (req, res) => {
-  const raw = fs.readFileSync(dataPath)
-  const data = JSON.parse(raw);
-  res.send(data);
+
+  client.query(`
+    SELECT * FROM meleeCharacters;
+  `).then(result => {
+    res.send(results.rows)
+  });
 });
 
 app.post('/api/meleeCharacters', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  const raw = fs.readFileSync(dataPath)
-  const data = JSON.parse(raw);
-  data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data));
-  res.send(req.body);
+  const body = req.body;
+
+  client.query(`
+    INSERT INTO meleeCharacters (name, universe, difficulty, walljump)
+    VALUES (1$, 2$, 3$, 4$)
+    RETURNING *;
+  `,
+  [body.name, body.universe, body.difficulty, body.walljump]
+  ).then(result => {
+    //send object back
+    res.send(result.rows[0]);
+  })
 });
 
-app.use((req, res) => {
-  console.log(req.method, req.url, req.body.name);
-  res.send({ error: 'path not found' });
+app.delete('/api/meleeCharacters/:id', (req, res) => {
+  console.log(req.params.id);
+
+  //run client query
+
+  res.send({ remove: true });
 });
 
+//run server
 app.listen(3030, () => console.log('app running...'));

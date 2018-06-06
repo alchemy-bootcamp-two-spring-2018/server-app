@@ -12,7 +12,7 @@ export default {
 
   methods: {
     canWalljump: function() {
-      if(this.character.walljump === 'true') {
+      if(this.character.walljump === true) {
         return ' can walljump.';
       }
       else { return ' cannot walljump.';}
