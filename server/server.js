@@ -1,29 +1,20 @@
-// require the express module (installed via 'npm i express')
+// express app
 const express = require('express');
-
-// mke and express app. no "new" keyword
 const app = express();
 
-//import cors 'middleware' to enable our server to do CORS 
+//'middleware'  - CORS and read JSON body
 const cors = require('cors');
-// register it
 app.use(cors());
-
-// register express "middleware"   for converting incoming
-//request body to deserialized request.body property
 app.use(express.json());
 
-// require our "mock" data
-const walruses = require('./data/walruses');
+//connect to the database
+const walruses = require('walruses');
+const Client = walruses.Client;
 
 
-//temp solution for updating data
-const fs = require('fs');
 
-//path to data file
-const dataPath = 'data/walruses.json';
 
-// app.<method>(<path>, handler)
+// routes
 app.get('/api/walruses', (req, res) => {
   // fs files paths are relative to pwd where Node was started
   const raw = fs.readFileSync(dataPath);
@@ -46,12 +37,6 @@ app.post('/api/walruses', (req, res) => {
 
   // send back object
   res.send(req.body);
-});
-
-
-app.use((req, res) => {
-  console.log(req.method, req.url, req.body.name);
-  res.send({ error: 'path not found' });
 });
 
 //start "listening" (run) the app (server)
