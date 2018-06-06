@@ -13,7 +13,7 @@
   {
     "date": "05/05/18",
     "day": "Tuesday",
-    "changeInsulin": true,
+    "changeInsulin": false,
     "beforeBreakfast": "100",
     "afterBreakfast": "120",
     "beforeLunch": "85",
@@ -24,7 +24,7 @@
   {
     "date": "05/06/18",
     "day": "Wednesday",
-    "changeInsulin": true,
+    "changeInsulin": false,
     "beforeBreakfast": "65",
     "afterBreakfast": "110",
     "beforeLunch": "85",
