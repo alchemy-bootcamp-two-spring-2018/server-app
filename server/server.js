@@ -1,17 +1,14 @@
 
 const express = require('express');
-
 const app = express();
 
 const cors = require('cors');
-
 app.use(cors());
 app.use(express.json());
 
-const data = require('./data/climbingLocations.json');
-
-const fs = require('fs');
-const dataPath = './data/climbingLocations.json';
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/timetoclimb';
 
 app.get('/api/climbingLocations', (req, res) => {
   res.send(data);

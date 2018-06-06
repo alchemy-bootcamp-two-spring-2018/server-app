@@ -19,13 +19,13 @@
         </label>
         <label>
           Elevation:
-          <input type="numbers" name="elevation" placeholder="Elevation" required
-            v-model="location.elevation">
+          <input type="number" name="elevation" placeholder="Elevation" required
+            v-model="location.elevation">ft
         </label>
         <label>
           Year round climbing?:
-          <input type="boolean" name="year-round" placeholder="(true or false)" required
-            v-model="location.yearRoundClimbing">
+          <input type="checkbox" name="year-round" checked="true"
+            v-model="location.yearRoundClimbing"> true
         </label>
         <label>
           Description:
