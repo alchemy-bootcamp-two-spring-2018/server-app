@@ -5,7 +5,7 @@ const express = require('express');
 
 const app = express();
 
-const cors = require('cors');
+// const cors = require('cors');
 
 // app.use(cors());
 
@@ -17,9 +17,9 @@ const cors = require('cors');
 
 // const dataPath = 'data/siplist.json';
 
-app.use((req, res) => {
-console.log(req.method, req.url, req.body.name);
-res.send({ error: 'path not found' });
-});
+// app.use((req, res) => {
+// console.log(req.method, req.url, req.body.name);
+// res.send({ error: 'path not found' });
+// });
 
 app.listen(3000, () => console.log('app is running...'));
