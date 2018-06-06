@@ -1,4 +1,4 @@
-export function getAllGames() {
+export function getGames() {
   return fetch('http://localhost:3000/api/games', {
     headers: { 'Content-Type': 'application/json' }
   })

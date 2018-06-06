@@ -16,6 +16,7 @@ app.use(express.json());
 
 
 // require our "mock" data
+//eslint-disable-next-line
 const games = require('./data/games');
 
 //temp solution dont worry if you dont remember
@@ -33,9 +34,23 @@ app.get('/api/games', (req, res) => {
   res.send(data);
 });
 
+app.post('/api/games', (req, res) => {
+  console.log(req.method, req.url, req.body);
+  const raw = fs.readFileSync(dataPath);
+  //make into js array w/ objects
+  const data = JSON.parse(raw);
+  // push the new object into the array
+  data.push(req.body);
+  //save the file
+  fs.writeFileSync(dataPath, JSON.stringify(data));
+  //send back the object
+  res.send(req.body);
+});
 
-
-
+app.use((req, res) => {
+  console.log(req.method, req.url, req.body.name);
+  res.send({ error: 'path not found' });
+});
 
 
 //this starts "listening" and (run) the app (server)

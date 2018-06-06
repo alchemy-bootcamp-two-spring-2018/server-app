@@ -3,6 +3,7 @@
     <h4>{{ game.name }}</h4>
     <p>System: {{ game.system }}</p>
     <p>Release Year: {{ game.year }}</p>
+    <p>Completed: {{ game.completed }}</p>
   </article>
 </template>
 

@@ -21,6 +21,12 @@
       </label>
 
       <label>
+        Completed:
+        <input type="checkbox" name="completed" placeholder="completed"
+        v-model="game.completed">
+      </label>
+
+      <label>
         <button type="submit">Add Game</button>
       </label>
     </form>
@@ -32,7 +38,8 @@ const initGame = () => {
   return {
     name: '',
     system: '',
-    year: ''
+    year: '',
+    completed: false
   };
 };
 

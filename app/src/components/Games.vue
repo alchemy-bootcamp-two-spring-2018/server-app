@@ -15,46 +15,30 @@
 <script>
 import Game from './Game';
 import AddGame from './AddGame';
+import { getGames, addGame } from '../services/api';
 
 export default {
   data() {
     return {
-      games: [
-        { 
-          'name': 'CastleVania',
-          'system': 'Playstation',
-          'year': 1998,
-          'top 10': true
-        },
-        {
-          'name': 'Super Metroid',
-          'system': 'Super Nintendo',
-          'year': 1994,
-          'top 10': true
-        },
-        { 
-          'name': 'Mario',
-          'system': 'Nintendo',
-          'year': 1984,
-          'top 10': false
-        },
-        { 
-          'name': 'Legend of Zelda',
-          'system': 'Super Nintendo',
-          'year': 1996,
-          'top 10': true
-        },
-      ]
+      games: null
     };
   },
   components: {
     Game,
     AddGame,
   },
+  created() {
+    getGames()
+      .then(games => {
+        this.games = games;
+      });
+  },
   methods: {
     handleAdd(game) {
-      return this.games.push(game);
-
+      return addGame(game)
+        .then(saved => {
+          this.games.push(saved);
+        });
     }
   }
 };
