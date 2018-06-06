@@ -36,13 +36,13 @@ app.get('/api/walruses', (req, res) => {
 app.post('/api/walruses', (req, res) => {
   console.log(req.method, req.url, req.body);
   // fs file paths are relative to pwd (cwd) aka where you started node
-  const raw = fs.readFileSync(dataPath)
+  const raw = fs.readFileSync(dataPath);
   // make into js array with objects
   const data = JSON.parse(raw);
   // push our new object into array
   data.push(req.body);
   // save file
-  fs.writeFileSync(dataPath, JSON.stringify(data));
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 
   // send back object
   res.send(req.body);

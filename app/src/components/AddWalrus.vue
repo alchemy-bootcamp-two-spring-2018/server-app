@@ -21,9 +21,13 @@
       </label>
 
       <label>
-        Founded:
-        <input type="text" name="fictional" placeholder="true" required
+        Fictional or real:
+        <input type="radio" name="fictional"  id = "isFictional" value="false" required
           v-model="walrus.fictional">
+          <label for="isFictional">Fictional</label>
+          <input type="radio" name="fictional"  id = "isReal" value="true" required
+          v-model="walrus.fictional">
+          <label for="isReal">Real</label>
       </label>
 
       <label>
@@ -64,7 +68,7 @@ export default {
   methods: {
     handleSubmit() {
       this.onAdd(this.walrus)
-        // this fires when save is complete and data added to nieghborhoods array
+        // this fires when save is complete and data added to the Walruses array
         .then(() => {
           this.walrus = initWalrus();
         });
