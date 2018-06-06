@@ -100,6 +100,9 @@ export default {
   text-align: left;
   margin: auto;
   margin-top: 100px;
+  border-radius: 8px;
+  border: 2px solid #2c3e50;
+  padding: 0px 0px 10px 30px;
 }
 
 label {

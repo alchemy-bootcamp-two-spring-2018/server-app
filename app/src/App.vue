@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <header>
-      <h1>Glucose "Buddy" WIP</h1>
+      <!-- Title = WIP; Still need to find proper translation for buddy in German -->
+      <h1>Glucose "Buddy"</h1>
     </header>
     <main>
       <GlucoseLogs />
@@ -29,6 +30,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1 {
+  margin-bottom: 60px;
 }
 
 body {
