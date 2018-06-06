@@ -15,8 +15,7 @@ app.use(express.json());
 //connect to the database
 const pg = require('pg');
 const Client = pg.Client;
-//COME BACK AND ADD PATH
-const databaseUrl = 'postgres://localhost:5432/';
+const databaseUrl = 'postgres://localhost:5432/glucoseLogs';
 const client = new Client(databaseUrl);
 client.connect();
 

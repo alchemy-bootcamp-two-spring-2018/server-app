@@ -1,7 +1,6 @@
 const pg = require('pg');
 const Client = pg.Client;
-//come back and add path to a database here!!!!
-const databaseUrl = 'postgres://localhost:5432/';
+const databaseUrl = 'postgres://localhost:5432/glucoseLogs';
 const client = new Client(databaseUrl);
 
 client.connect()
