@@ -6,18 +6,11 @@ const client = new Client(databaseUrl);
 client.connect()
   .then(() => {
     return client.query(`
-      CREATE TABLE IF NOT EXISTS walruses (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(50),
-        weight INTEGER,
-        type VARCHAR(30),
-        fictional BOOLEAN,
-        description VARCHAR(256)
-      );
+      DROP TABLE IF EXISTS walruses;
     `);
   })
   .then(
-    () => console.log('create tables complete'),
+    () => console.log('drop tables complete'),
     err => console.log(err)
   )
   .then(() => {
