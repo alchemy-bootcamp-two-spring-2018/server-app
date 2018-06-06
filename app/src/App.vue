@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <header></header>
-    <HelloWorld msg="Wut up?"/>
-
     <main>
       <Podcasts/>
     </main>

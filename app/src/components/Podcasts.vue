@@ -16,7 +16,7 @@
 <script>
     import Podcast from './Podcast';
     import AddPodcast from './AddPodcast.vue';
-    import { getPodcasts, addPodcasts } from '../services/api';
+    import { getPodcasts, addPodcast } from '../services/api';
     
     export default {
         data() {
@@ -31,7 +31,7 @@
                 });
         },
         components: {
-            Podcasts,
+            Podcast,
             AddPodcast
         },
         methods: {
