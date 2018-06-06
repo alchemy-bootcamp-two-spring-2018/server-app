@@ -5,27 +5,43 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// My app runs without this..?
-// const guitarists = require('./data/guitarists');
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/guitaristapp';
+const client = new Client(databaseUrl);
+client.connect();
 
-const fs = require('fs');
 
-const dataPath = 'data/guitarists.json';
-
-app.get('/data/guitarists', (req, res) => {
-  // console.log('req', req, 'res', res);
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  res.send(data);
+app.get('/api/guitarists', (req, res) => {
+  client.query(`
+    SELECT * from guitarists;
+  `).then(data => {
+    res.send(data.rows);
+  });
 });
 
-app.post('/data/guitarists', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data));
-  res.send(req.body);
+app.post('/api/guitarists', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    INSERT INTO guitarists (name, living, img_url)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+  `,
+  [body.name, body.living, body.img_url])
+    .then(data => {
+      res.send(data.rows[0]);
+    });
+});
+
+app.delete('/appi/guitarists/:id', (req, res) => {
+  console.log(req.params.id);
+
+  client.query(`
+    DROP TABLE guitarists;
+  `);
+
+  res.send({ removed: true });
 });
 
 app.listen(1337, () => console.log('app is jogging...'));

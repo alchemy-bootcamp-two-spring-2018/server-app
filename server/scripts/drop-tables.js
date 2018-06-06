@@ -1,6 +1,6 @@
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhose:5432/guitarapp';
+const databaseUrl = 'postgres://localhost:5432/guitaristapp';
 const client = new Client(databaseUrl);
 
 client.connect()
