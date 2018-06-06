@@ -1,6 +1,6 @@
 <template>
   <article>
-    <h4>{{ game.name }}</h4>
+    <h2>{{ game.name }}</h2>
     <p>System: {{ game.system }}</p>
     <p>Release Year: {{ game.year }}</p>
     <p>Completed: {{ game.completed }}</p>
