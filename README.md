@@ -4,4 +4,4 @@
 
 * There is also a form so that the user can add additional streaming services that they have signed up for. 
 
-* The idea is that the user can use this app to keep track of what they're signed up for and the total amount they're spending per month on all their services.
+* The idea is that the user can use this app to see, at a glance, what streaming services they're signed up for and the total amount they're spending per month on them (totals are not implemented yet!).
