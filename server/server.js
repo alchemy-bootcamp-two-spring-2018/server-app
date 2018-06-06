@@ -31,4 +31,4 @@ app.use((req, res) => {
   res.send({ error: 'path not found' });
 });
 
-app.listen(3000, () => console.log('...app running'));
+app.listen(3000, () => console.log('app running...'));
