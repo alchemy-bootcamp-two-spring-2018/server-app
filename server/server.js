@@ -29,14 +29,23 @@ app.get('/api/rappers', (req, res) => {
 });
 
 app.post('/api/rappers', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  const raw = fs.readFileSync(dataPath)
-  const data = JSON.parse(raw);
-  data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data));
-  res.send(req.body);
+  const body = req.body;
+
+  client.query(`
+    INSERT INTO rappers(name, born, numAlbums, albums, affiliates, dead)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *;
+  `,
+  [body.name, body.born, body.numAlbums, body.albums, body.affiliates, body.dead]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
 
 });
+
+// {"name":"Kanye West","born":"Chicago, IL","numAlbums":8,
+// "albums":"The College Dropout, Graduation My Beautiful Dark Twisted Fantasy","aka":"Yeezus, Ye",
+// "affiliates":"Jay-Z, No I.D.","dead":false}
 
 app.use((req, res) => {
   console.log(req.method, req.url, req.body.name);

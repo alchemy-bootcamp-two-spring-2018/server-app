@@ -1,7 +1,7 @@
 <template>
   <li>
       <h2>{{ rapper.name }}</h2>
-      <p>From: {{ rapper.from }}</p>
+      <p>From: {{ rapper.born }}</p>
       <p>Studio Albums: {{ rapper.numAlbums }}</p>
       <p>Notable albums: {{ rapper.albums }}</p>
       <p>Also known as: {{ rapper.aka }}</p>

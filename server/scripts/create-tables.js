@@ -9,10 +9,10 @@ client.connect()
         CREATE TABLE IF NOT EXISTS rappers (
             id SERIAL PRIMARY KEY,
             name VARCHAR(256),
-            from VARCHAR(256),
+            born VARCHAR(256),
             numAlbums INTEGER,
             albums VARCHAR(256),
-            aka VARCHAR(256)
+            aka VARCHAR(256),
             dead BOOLEAN
         );
       `);
