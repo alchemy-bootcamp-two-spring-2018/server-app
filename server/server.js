@@ -8,8 +8,8 @@ app.use(cors());
 app.use(express.json());
 
 //connect to the database
-const walruses = require('walruses');
-const Client = walruses.Client;
+const pg = require('pg');
+const Client = pg.Client;
 const databaseUrl = 'postgres://localhost:5432/walruses';
 const client = new Client(databaseUrl);
 client.connect();
@@ -43,5 +43,5 @@ app.delete('/api/walruses/:id', (req, res) => {
 });
 
 //start "listening" (run) the app (server)
-app.listen(3000, () => console.log('server is running...'));
+app.listen(3000, () => console.log('server is running on 3000...'));
 app.listen(5432, () => console.log('database is running...'));
