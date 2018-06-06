@@ -10,7 +10,6 @@
 <script>
 import Locations from './components/LocationsList.vue';
 export default {
-
   components: {
     Locations
   }
@@ -33,7 +32,7 @@ export default {
     border: solid black .3px;
     background-image: url('https://www.nps.gov/thingstodo/images/ISKY_MesaArch_1.jpg?width=950&quality=90&mode=crop');
     background-size: cover;
-    background-position-y:75%;
+    background-position-y:80%;
   }
   header img {
     height: 100px;

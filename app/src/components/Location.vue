@@ -1,6 +1,7 @@
 <template>
   <div class="location">
     <h2>{{location.name}}.</h2>
+    <p><strong>Location: {{location.location}}</strong></p>
     <p><strong>Elevation: {{location.elevation}}ft.</strong></p>
     <p><strong>Year Round Climbing: {{location.yearRoundClimbing}}.</strong></p>
     <p id="description">{{location.description}}</p>
@@ -21,8 +22,7 @@ export default {
   margin-top: 10px;
   width: 95%;
   background-color: rgba(176, 196, 222, 0.671);
-  max-height: 300px;
-  overflow: auto;
+  max-height: auto;
   border-radius: 5px;
 }
 #description {
