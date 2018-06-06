@@ -25,6 +25,7 @@
         <input type="text" name="tubes" placeholder="tubes" required
           v-model="amp.tubes">
       </label>
+      <button type="submit">Add Amp</button>
     </form>
   </section>
 </template>
@@ -52,14 +53,14 @@ export default {
       amp:initAmp()
     };
   },
-  // methods: {
-  //   handleSubmit() {
-  //     this.onAdd(this.amp)
-  //       .then(() => {
-  //         this.amp = initAmp();
-  //       });
-  //   }
-  // }
+  methods: {
+    handleSubmit() {
+      this.onAdd(this.amp)
+        .then(() => {
+          this.amp = initAmp();
+        });
+    }
+  }
 };
 </script>
         

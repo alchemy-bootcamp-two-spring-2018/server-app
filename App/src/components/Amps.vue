@@ -1,8 +1,8 @@
 <template>
 <section>
   <h2>Greatest Guitar Amplifiers</h2>
-  <!-- <p v-if="!amps">Loading amps...</p> -->
-  <ul class="list">
+  <p v-if="!amps">Loading amps...</p>
+  <ul v-else class="list">
     <Amp
       v-for="amp in amps"
       :key="amp.name"

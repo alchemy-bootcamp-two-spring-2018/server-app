@@ -33,10 +33,10 @@ app.post('/api/amps', (req, res) => {
   res.send(req.body);
 })
 
-app.use((req, res) => {
-  console.log(req.method, req.url, req.body.name);
-  res.send({ error: 'path not found' });
-});
+// app.use((req, res) => {
+//   console.log(req.method, req.url, req.body.name);
+//   res.send({ error: 'path not found' });
+// });
 
 app.listen(3000, () => console.log('app running...'));
 
