@@ -2,7 +2,7 @@
   {
     "date": "05/04/18",
     "day": "Monday",
-    "changeInsulin": "Boolean",
+    "changeInsulin": true,
     "beforeBreakfast": "70",
     "afterBreakfast": "75",
     "beforeLunch": "140",
@@ -13,7 +13,7 @@
   {
     "date": "05/05/18",
     "day": "Tuesday",
-    "changeInsulin": "Boolean",
+    "changeInsulin": true,
     "beforeBreakfast": "100",
     "afterBreakfast": "120",
     "beforeLunch": "85",
@@ -24,7 +24,7 @@
   {
     "date": "05/06/18",
     "day": "Wednesday",
-    "changeInsulin": "Boolean",
+    "changeInsulin": true,
     "beforeBreakfast": "65",
     "afterBreakfast": "110",
     "beforeLunch": "85",
@@ -35,7 +35,7 @@
   {
     "date": "05/07/18",
     "day": "Thursday",
-    "changeInsulin": "Boolean",
+    "changeInsulin": true,
     "beforeBreakfast": "70",
     "afterBreakfast": "90",
     "beforeLunch": "120",

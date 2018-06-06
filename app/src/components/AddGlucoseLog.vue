@@ -12,9 +12,9 @@
         <input v-model="glucoseLog.day" placeholder="Day" required>
       </label>
 
-      <label>
+      <label for="checkbox">
         Changed Insulin?:
-        <input v-model="glucoseLog.changeInsulin" type="checkbox" value="yes"> Yes
+        <input v-model="glucoseLog.changeInsulin" type="checkbox" id="checkbox"> {{ glucoseLog.changeInsulin }}
       </label>
       
       <label>
@@ -60,7 +60,7 @@ const initGlucoseLog = () => {
   return {
     date: '',
     day: '',
-    changeInsulin: '',
+    changeInsulin: false,
     beforeBreakfast: '',
     afterBreakfast: '',
     beforeLunch: '',
