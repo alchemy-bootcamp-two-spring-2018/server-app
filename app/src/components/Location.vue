@@ -4,7 +4,7 @@
     <p>Description: {{ location.description }}</p>
     <section class="details">
       <p>Neighborhood: {{ location.neighborhood }}</p>
-      <p>Power Outlets Available: {{ location.power-outlets }}</p>
+      <p>Power Outlets Available: {{ location.power }}</p>
       <p>Alchemist Rated: {{ location.rating }}</p>
     </section>
   </div>  

@@ -1,7 +1,6 @@
 <template>
   <div class="all-locations">
     <h2>Alchemists About Town</h2>
-    <h3>Share your favorite spot to study and code</h3>
     <p v-if="!locations">Loading Reccommended Study Spots...</p>
     <ul v-else class="list">
       <Location
