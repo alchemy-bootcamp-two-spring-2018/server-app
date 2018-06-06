@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <h1>Melee</h1>
-      <img src="./assets/SmashBall.png" width="350px">
+      <img src="./assets/SmashBall.png" width="250px">
     </header>
 
     <section>
