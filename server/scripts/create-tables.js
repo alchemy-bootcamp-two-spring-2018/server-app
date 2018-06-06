@@ -1,6 +1,6 @@
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/explore';
+const databaseUrl = 'postgres://postgres:1234@localhost:5432/explore';
 const client = new Client(databaseUrl);
 
 client.connect()
@@ -19,7 +19,7 @@ client.connect()
   })
   .then(
       () => console.log('tables have been created'),
-      err => console.log('ERROR TABLES NOT CREATED')
+      err => console.log(err)
   )
   .then(() => {
       client.end();
