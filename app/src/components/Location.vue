@@ -1,5 +1,6 @@
 <template>
   <div class="location">
+    <img :src="location.image">
     <h2>{{location.name}}.</h2>
     <p><strong>Location: {{location.location}}</strong></p>
     <p><strong>Elevation: {{location.elevation}}ft.</strong></p>
@@ -34,6 +35,12 @@ p {
   margin: 2px;
 }
 h2 {
+  margin-top: 0px;
   margin-bottom: 2px;
+  color: darkslategray;
+}
+img {
+  max-width: 300px;
+  margin-top: 15px;
 }
 </style>
