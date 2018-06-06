@@ -16,7 +16,7 @@ import Locations from './components/Locations.vue';
 export default {
   name: 'app',
   components: {
-    Locations 
+    Locations, 
   }
 };
 </script>

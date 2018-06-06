@@ -2,11 +2,9 @@
   <div>
     <h3>{{ location.name }}</h3>
     <p>Description: {{ location.description }}</p>
-    <section class="details">
       <p>Neighborhood: {{ location.neighborhood }}</p>
       <p>Power Outlets Available: {{ location.power }}</p>
       <p>Alchemist Rated: {{ location.rating }}</p>
-    </section>
   </div>  
 </template>
 

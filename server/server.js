@@ -24,7 +24,7 @@ const dataPath = 'data/locations.json';
 //app.<method>(<path>, handler)
 app.get('/api/locations', (req, res) => {
   //fs file paths are relative to PWD, aka where you started Node
-  const raw = fs.readFileSync(dataPath)
+  const raw = fs.readFileSync(dataPath);
   // //make into js array with objects
   const data = JSON.parse(raw);
   res.send(locations);

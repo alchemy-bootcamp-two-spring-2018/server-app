@@ -40,7 +40,7 @@ const initLocation = () => {
     name: '',
     description: '',
     neighborhood: '',
-    power: '',
+    // power: '',
     rating:''
   };
 };

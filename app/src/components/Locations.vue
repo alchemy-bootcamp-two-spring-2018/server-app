@@ -8,13 +8,16 @@
         :key="location.name"
         :location="location"
       />
-    </ul> 
+    </ul>
+    <AddLocation :on-add="handleAdd"/> 
   </div>
 </template>
 
 <script>
 import Location from './Location';
-import { getLocations } from '../services/api';
+import AddLocations from './AddLocation.vue';
+import { getLocations, addLocations } from '../services/api';
+
 
 export default {
   data() {
@@ -29,14 +32,22 @@ export default {
       });
   },
   components: {
-    Location
+    Location,
+    AddLocations
   },
-
+  methods: {
+    handleAdd(location) {
+      return addLocations(location)
+        .then(saved => {
+          this.locations.push(saved);
+        });
+    }
+  }
 };
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 
 </style>
