@@ -3,7 +3,7 @@
     <ul>
       <Motorcycle
       v-for="motorcycle in motorcycles"
-      :key="motorcycle.id"
+      :key="motorcycle.index"
       :motorcycle="motorcycle"
       />
     </ul>

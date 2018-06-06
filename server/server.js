@@ -17,7 +17,6 @@ app.get('/api/motorcycles', (req, res) => {
 });
 
 app.post('/api/motorcycles', (req, res) => {
-  console.log(req.method, req.url, req.body);
   const raw = fs.readFileSync(dataPath);
   const data = JSON.parse(raw);
   data.push(req.body);
