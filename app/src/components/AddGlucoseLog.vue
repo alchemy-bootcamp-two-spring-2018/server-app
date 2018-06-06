@@ -1,5 +1,5 @@
 <template id="log-template">
-  <section>
+  <section class="add-log">
     <h1>Add Log Component</h1>
     <form @submit.prevent="handleSubmit">
       <label>
@@ -19,32 +19,32 @@
       
       <label>
         Before Breakfast:
-        <input v-model="glucoseLog.beforeBreakfast" placeholder="Before Breakfast" type="number" min="0" required>
+        <input v-model="glucoseLog.beforeBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
       
       <label>
         After Breakfast:
-        <input v-model="glucoseLog.afterBreakfast" placeholder="After Breakfast" type="number" min="0" required>
+        <input v-model="glucoseLog.afterBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Lunch:
-        <input v-model="glucoseLog.beforeLunch" placeholder="Before Lunch" type="number" min="0" required>
+        <input v-model="glucoseLog.beforeLunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Lunch:
-        <input v-model="glucoseLog.afterLunch" placeholder="After Lunch" type="number" min="0" required>
+        <input v-model="glucoseLog.afterLunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Dinner:
-        <input v-model="glucoseLog.beforeDinner" placeholder="Before Dinner" type="number" min="0" required>
+        <input v-model="glucoseLog.beforeDinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Dinner:
-        <input v-model="glucoseLog.afterDinner" placeholder="After Dinner" type="number" min="0" required>
+        <input v-model="glucoseLog.afterDinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
@@ -95,6 +95,13 @@ export default {
 </script>
 
 <style>
+.add-log {
+  width: 300px;
+  text-align: left;
+  margin: auto;
+  margin-top: 100px;
+}
+
 label {
   display: block;
 }

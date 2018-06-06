@@ -1,7 +1,7 @@
 <template>
   <section>
-    <h2>Glucose Logs Component</h2>
-    <ul>
+    <h2>Daily Blood Glucose Log</h2>
+    <ul class="list">
       <GlucoseLog
         v-for="glucoseLog in glucoseLogs"
         :key="glucoseLog.date"
@@ -45,6 +45,11 @@ export default {
 </script>
 
 <style>
+ul.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 
 </style>
 
