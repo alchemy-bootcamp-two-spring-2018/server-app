@@ -5,7 +5,7 @@
     "audienceSize": 123456,
     "yearStarted": "1971",
     "daily": true,
-    "description": "News..."
+    "description": "Each show consists of the biggest stories of the day, thoughtful commentaries, insightful features on the quirky and the mainstream in arts and life, music and entertainment, all brought alive through sound."
   },
   {
     "title": "Wait, Wait, Don't Tell Me",
@@ -13,7 +13,7 @@
     "audienceSize": 20000,
     "yearStarted": "1998",
     "daily": false,
-    "description": "Humor/Current Events...."
+    "description": "Wait Wait... Don't Tell Me! is NPR's weekly hour-long quiz program. Each week on the radio you can test your knowledge against some of the best and brightest in the news and entertainment world while figuring out what's real news and what's made up. "
   },
   {
     "title": "Fresh Air",
@@ -21,7 +21,7 @@
     "audienceSize": 500000,
     "yearStarted": "1975",
     "daily": true,
-    "description": "Interviews...."
+    "description": "Though Fresh Air has been categorized as a \"talk show,\" it hardly fits the mold. Its 1994 Peabody Award citation credits Fresh Air with \"probing questions, revelatory interviews and unusual insights.\" And a variety of top publications count Gross among the country's leading interviewers. The show gives interviews as much time as needed, and complements them with comments from well-known critics and commentators."
   },
   {
     "title": "Morning Edition",
@@ -29,6 +29,30 @@
     "audienceSize": 30000,
     "yearStarted": "1979",
     "daily": true,
-    "description": "News..."
+    "description": "Every weekday for over three decades, Morning Edition has taken listeners around the country and the world with two hours of multi-faceted stories and commentaries that inform, challenge and occasionally amuse. Morning Edition is the most listened-to news radio program in the country."
+  },
+  {
+    "title": "Car Talk",
+    "host": "Click and Clack",
+    "audienceSize": "30000",
+    "daily": false,
+    "yearStarted": "1980",
+    "description": "America's funniest auto mechanics take calls from weary car owners all over the country, and crack wise while they diagnose Dodges and dismiss Diahatsus. You don't have to know anything about cars to love this one hour weekly laugh fest."
+  },
+  {
+    "title": "Hidden Brain",
+    "host": "Shankar Vedantam",
+    "audienceSize": "50000",
+    "daily": false,
+    "yearStarted": "2014",
+    "description": "Hidden Brain helps curious people understand the world – and themselves. Using science and storytelling, Hidden Brain reveals the unconscious patterns that drive human behavior, the biases that shape our choices, and the triggers that direct the course of our relationships."
+  },
+  {
+    "title": "Planet Money",
+    "host": "Robert Smith",
+    "audienceSize": "40000",
+    "daily": false,
+    "yearStarted": "2008",
+    "description": "Imagine you could call up a friend and say, \"Meet me at the bar and tell me what's going on with the economy.\" Now imagine that's actually a fun evening. That's what we're going for at Planet Money."
   }
 ]

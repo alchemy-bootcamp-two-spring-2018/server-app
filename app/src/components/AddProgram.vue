@@ -1,39 +1,39 @@
 <template>
-  <section>
+  <section class="add-program">
     <h1>New Program</h1>
     <form @submit.prevent="handleSubmit">
       <label>
-        Title:
+        <strong>Title: </strong>
         <input type="text" name="title" placeholder="title" required
           v-model="program.title">
       </label>
 
       <label>
-        Host:
+        <strong>Host: </strong>
         <input type="text" name="host" placeholder="host" required
           v-model="program.host">
       </label>
 
       <label>
-        Audience Size:
-        <input type="number" name="audienceSize" required
+        <strong>Audience Size: </strong>
+        <input type="number" name="audienceSize" step="10000" required
           v-model="program.audienceSize">
       </label>
 
       <label>
-        First Aired:
+        <strong>First Aired: </strong>
         <input type="text" name="yearStarted" placeholder="year" required
           v-model="program.yearStarted">
       </label>
 
       <label>
-        Airs Daily?:
-        <input type="checkbox" name="daily" required
-          v-model="program.daily">
+        <strong>Airs Daily? </strong>
+        <input type="checkbox" name="daily"
+          v-model="program.daily"> {{ program.daily }}
       </label>
 
       <label>
-        Description:
+        <strong>Description: </strong>
         <textarea name="body" rows="8" cols="40" required 
           v-model="program.description"></textarea>
       </label>
@@ -50,7 +50,7 @@ const emptyProgram = () => {
   return {
     title: '',
     host: '',
-    audienceSize: 0,
+    audienceSize: 10000,
     daily: true,
     yearStarted: '',
     description: ''
@@ -81,12 +81,13 @@ export default {
 </script>
 
 <style>
-.add-neighborhood {
+.add-program {
   width: 300px;
   text-align: left;
   margin: auto;
 }
 label {
+  font-weight: strong;
   display: block;
 }
 </style>

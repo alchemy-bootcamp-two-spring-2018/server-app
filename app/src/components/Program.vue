@@ -1,11 +1,11 @@
 <template>
   <article>
     <h3>{{ program.title }}</h3>
-    <p>Host: {{ program.host }}</p>
-    <p>First aired: {{ program.yearStarted }}</p>
-    <p>Airs daily? {{ program.daily }}
-    <p>Audience Size: {{ program.audienceSize }}</p>
-    <p>Description:  {{program.description}}</p>
+    <p><strong>Host:</strong> {{ program.host }}</p>
+    <p><strong>First aired:</strong> {{ program.yearStarted }}</p>
+    <p><strong>Airs daily?</strong> {{ airsDaily }}
+    <p><strong>Audience Size:</strong> {{ program.audienceSize }}</p>
+    <p><strong>Description:</strong> {{program.description}}</p>
   </article>
 </template>
 
@@ -16,15 +16,20 @@ export default {
     // population() {
     //   return this.neighborhood.population.toLocaleString();
     // },
-    // size() {
-    //   return this.neighborhood.population > 20000 ? 'big' : 'small';
-    // }
+    airsDaily() {
+      return this.program.daily === true ? 'yes' : 'no';
+    }
   }
 };
 </script>
 
 <style scoped>
 h3 {
-  margin: 40px 0 0;
+  margin: 20px 0 0;
+}
+article {
+    text-align: center;
+    max-width: 25%;
+    border: solid;
 }
 </style>

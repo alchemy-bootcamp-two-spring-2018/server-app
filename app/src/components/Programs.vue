@@ -2,14 +2,17 @@
 <section>
   <h2>NPR Programs</h2>
   <p v-if="!programs">Loading list of npr programs...</p>
-  <ul v-else class="list">
+  <div class="form">
+    <AddProgram :onAdd="handleAdd"/>
+  </div>
+  <div>
     <Program
       v-for="program in programs"
       :key="program.title"
       :program="program"
     />
-  </ul>
-  <AddProgram :onAdd="handleAdd"/>
+  </div>
+
 </section>
 </template>
 
@@ -47,9 +50,9 @@ export default {
 </script>
 
 <style>
-ul.list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+
+.form {
+    float: right;
 }
+
 </style>
