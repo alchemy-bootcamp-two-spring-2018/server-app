@@ -15,32 +15,29 @@ const client = new Client(databaseUrl);
 client.connect();
 
 
-
-
 // routes
 app.get('/api/walruses', (req, res) => {
-  // fs files paths are relative to pwd where Node was started
-  const raw = fs.readFileSync(dataPath);
-  // make into js array with objects
-  const data = JSON.parse(raw);
-  res.send(data);
-}
-);
+  client.query(`
+    SELECT * from walruses;
+    `).then(result => {
+    res.send(result.rows);
+  });
+});
 
 app.post('/api/walruses', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  // fs file paths are relative to pwd (cwd) aka where you started node
-  const raw = fs.readFileSync(dataPath);
-  // make into js array with objects
-  const data = JSON.parse(raw);
-  // push our new object into array
-  data.push(req.body);
-  // save file
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-
-  // send back object
-  res.send(req.body);
+  const body = req.body;
+  client.query (`
+    INSERT INTO walruses (name, weight, type, fictional, description)
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING *;
+  `,
+  [body.name, body.weight, body.type, body.fictional, body.description]
+  ).then (result => {
+    res.send(result.rows[0]);
+  });
 });
+
+
 
 //start "listening" (run) the app (server)
 app.listen(3000, () => console.log('server is running...'));
