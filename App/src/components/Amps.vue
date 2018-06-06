@@ -24,12 +24,12 @@ export default {
       amps: null
     };
   },
-  // created() {
-  //   getAmps()
-  //     .then(amps => {
-  //       this.amps = amps;
-  //     });
-  // },
+  created() {
+    getAmps()
+      .then(amps => {
+        this.amps = amps;
+      });
+  },
   components: {
     Amp,
     AddAmp
