@@ -54,5 +54,13 @@
     "daily": false,
     "yearStarted": "2008",
     "description": "Imagine you could call up a friend and say, \"Meet me at the bar and tell me what's going on with the economy.\" Now imagine that's actually a fun evening. That's what we're going for at Planet Money."
+  },
+  {
+    "title": "New title",
+    "host": "new host",
+    "audienceSize": 10000,
+    "daily": true,
+    "yearStarted": "1920",
+    "description": "dummy data"
   }
 ]
