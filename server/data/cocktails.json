@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Margarita",
+    "alcohol": "Tequila",
+    "ingredients": "Tequila, Lime juice, Cointreau",
+    "served": "On the rocks",
+    "garnish": "Lime slice, Salt on the rim",
+    "tried": true,
+    "image": "https://images.crateandbarrel.com/is/image/Crate/GloryMargarita13ozSHS16/?$web_product_hero$&160122145020&wid=625&hei=625"
+  },
+  {
+    "name": "Old Fashioned",
+    "alcohol": "Whiskey",
+    "ingredients": "Bourbon or Rye whiskey, Angostura bitters, Sugar cube, plain water",
+    "served": "On the rocks",
+    "garnish": "Orange slice, Cocktail cherry",
+    "tried": true,
+    "image": "https://www.thecocktailproject.com/sites/default/files/knobcreek_oldfashioned_beauty_7832-4868-Edit_thumbnail.jpg"
+  },
+  {
+    "name": "Mojito",
+    "alcohol": "Rum",
+    "ingredients": "White rum, Leaves of Mint, Soda Water, Fresh lime juice, Sugar",
+    "served": "On the rocks",
+    "garnish": "Sprig of mint, Yerba buena",
+    "tried": true,
+    "image": "https://cdn.liquor.com/wp-content/uploads/2017/03/07152909/mojito-720x720-recipe.jpg"
+  }
+]
