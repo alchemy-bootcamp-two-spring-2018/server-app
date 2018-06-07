@@ -50,7 +50,8 @@ const initMotorcycle = () => {
     make: '',
     model: '',
     color: 'Red',
-    forSale: false
+    forSale: false,
+    shouldDelete: false
   };
 };
 

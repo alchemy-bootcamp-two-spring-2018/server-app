@@ -6,6 +6,9 @@
     <p>Color: {{ motorcycle.color }}</p>
     <p v-if="motorcycle.forSale">Status: FOR SALE!</p>
     <p v-else>Status: Contact us for availability</p>
+    <p>Delete:
+      <input type="checkbox" name="shouldDelete" v-model="motorcycle.shouldDelete">
+    </p>
   </div>
 </template>
 

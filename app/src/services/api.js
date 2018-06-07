@@ -14,3 +14,12 @@ export function addMotorcycle(motorcycle) {
   })
     .then(response => response.json());
 }
+
+export function removeMotorcycle(motorcycle) {
+  return fetch('http://localhost:3000/api/motorcycles', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(motorcycle)
+  })
+    .then(response => response.json());
+}
