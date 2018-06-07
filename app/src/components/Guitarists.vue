@@ -40,9 +40,8 @@ export default {
     handleAdd(guitarist) {
       return addGuitarist(guitarist)
         .then((res) => {
-          if(res.added) {
+            guitarist.id = res.id;
             this.guitarists.push(guitarist);
-          }
         });
     },
     handleClose(guitarist) {

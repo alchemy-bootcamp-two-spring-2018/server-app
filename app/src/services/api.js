@@ -18,7 +18,6 @@ export function removeGuitarist(guitarist) {
   return fetch('http://localhost:1337/api/guitarists/' + guitarist.id, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' }
-    // params: JSON.stringify(guitarist)
   })
     .then(response => response.json());
 }

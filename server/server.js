@@ -30,8 +30,8 @@ app.post('/api/guitarists', (req, res) => {
     RETURNING *;
   `,
   [body.name, body.age, body.living, body.img_url])
-    .then(() => {
-      res.send({ added: true });
+    .then(data => {
+      res.send(data.rows[0]);
     });
 });
 

@@ -22,7 +22,7 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background-image: url('../src/assets/tile.png');
+  background-image: url('/tile.png');
   background-size: 27%;
   background-repeat: repeat;
   z-index: 1;
