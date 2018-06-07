@@ -1,19 +1,18 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/subs';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS subscriptions (
-        id SERIAL PRIMARY KEY,
-        service VARCHAR(256),
-        price INTEGER,
-        ads BOOLEAN
-      );
-    `);
-  })
+client.query(`
+  CREATE TABLE IF NOT EXISTS purposes (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS subscriptions (
+    id SERIAL PRIMARY KEY,
+    service VARCHAR(256),
+    price INTEGER,
+    ads BOOLEAN
+  );
+`)
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)

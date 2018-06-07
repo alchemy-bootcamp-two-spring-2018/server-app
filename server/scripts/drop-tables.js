@@ -1,14 +1,9 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/subs';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      DROP TABLE IF EXISTS subscriptions;
-    `);
-  })
+client.query(`
+  DROP TABLE IF EXISTS subscriptions;
+  DROP TABLE IF EXISTS purposes;
+`)
   .then(
     () => console.log('drop tables complete'),
     err => console.log(err)
