@@ -18,8 +18,7 @@
 <script>
 import IndividualWalrus from './IndividualWalrus';
 import AddWalrus from './AddWalrus.vue';
-import DeleteWalrus from '.IndividualWalrus';
-import { getWalruses, addWalrus } from '../services/api';
+import { getWalruses, addWalrus, deleteWalrus } from '../services/api';
 
 export default {
   data() {

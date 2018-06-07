@@ -16,6 +16,7 @@ export default {
   props: ['walrus'],
   methods: {
     deleteWalrus() {
+      console.log('into delete walrus');
       this.onRemove(this.walruses.id);
     }
 }
