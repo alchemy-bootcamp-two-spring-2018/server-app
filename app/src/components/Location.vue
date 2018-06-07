@@ -6,7 +6,7 @@
     <h2>{{location.name}}.</h2>
     <p><strong>Location: {{location.location}}</strong></p>
     <p><strong>Elevation: {{location.elevation}}ft.</strong></p>
-    <p><strong>Year Round Climbing: {{location.yearRoundClimbing}}.</strong></p>
+    <p><strong>Year Round Climbing: {{location.yearRoundClimbing}}</strong></p>
     <p id="description">{{location.description}}</p>
   </div>
   </div>

@@ -9,7 +9,7 @@
         </label>
         <label>
           Image URL:
-          <input type="text" name="image" placeholder="Image URL" required
+          <input type="text" name="image" placeholder="Image URL"
           v-model="location.image">
         </label>
         <label>
