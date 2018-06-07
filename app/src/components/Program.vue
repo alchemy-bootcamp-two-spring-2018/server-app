@@ -13,9 +13,6 @@
 export default {
   props: ['program'],
   computed: {
-    // population() {
-    //   return this.neighborhood.population.toLocaleString();
-    // },
     airsDaily() {
       return this.program.daily === true ? 'yes' : 'no';
     }

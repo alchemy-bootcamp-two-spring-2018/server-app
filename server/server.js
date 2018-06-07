@@ -48,6 +48,15 @@ app.post('/api/programs', (req, res) => {
 
 });
 
+app.delete('/api/programs/:id', (req, res) => {
+  client.query(`
+  DELETE FROM programs WHERE id=$1
+  `,
+  [req.params.id]
+  );
+  res.send({ removed: true });
+});
+
 /*  from Marty
 
 // routes
