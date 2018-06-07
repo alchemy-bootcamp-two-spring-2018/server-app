@@ -16,14 +16,20 @@ app.get('/api/climbingLocations/', (req, res) => {
   client.query(`
     SELECT cl.id,
     name,
-    type
-    FROM climbinglocations cl
-    JOIN climbingstyles cs
-    ON cl.location_id = cs.id;
+    cs.id as "climbingstylesID",
+    location,
+    type,
+    yearroundclimbing, 
+    description
+   FROM climbinglocations cl
+   JOIN climbingstyles cs
+   ON cl.climbingstyle_id = cs.id
+   ;
   `).then(result => {
     res.send(result.rows);
   });
 });
+
 
 app.post('/api/climbingLocations', (req, res) => {
   const body = req.body;
@@ -52,4 +58,4 @@ app.delete('/api/climbingLocations/:id', (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log('app running...'));
+app.listen(3000, () => console.log('server is running...'));
