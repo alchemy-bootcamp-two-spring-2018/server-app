@@ -11,9 +11,9 @@ client.connect()
         id SERIAL PRIMARY KEY,
         name VARCHAR(256),
         published VARCHAR(8),
-        minPlayers INTEGER,
-        maxPlayers INTEGER,
-        avgPlayingTime INTEGER,
+        min_players INTEGER,
+        maxplayers INTEGER,
+        avgplayingtime INTEGER,
         description VARCHAR(512),
         owned BOOLEAN
       );

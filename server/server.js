@@ -14,7 +14,7 @@ client.connect();
 
 app.get('/api/boardGames', (req, res) => {
   client.query(`
-    SELECT * from boardgames;
+    SELECT *, min_players as "minPlayers" FROM boardgames;
   `).then(result => {
     res.send(result.rows);
   });
@@ -24,7 +24,7 @@ app.post('/api/boardGames', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO boardgames (name, published, minPlayers, maxPlayers, avgPlayingTime, description, owned)
+    INSERT INTO boardgames (name, published, min_players, maxPlayers, avgPlayingTime, description, owned)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
   `,
@@ -39,7 +39,7 @@ app.delete('/api/boardGames/:id', (req, res) => {
 
   client.query(`
     DELETE FROM boardgames
-      WHERE id = $1
+      WHERE id = $1;
   `,
   [params.id]
   ).then(() => {
