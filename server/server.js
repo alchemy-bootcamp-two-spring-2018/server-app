@@ -21,7 +21,7 @@ app.get('/api/meleeCharacters', (req, res) => {
   client.query(`
     SELECT * FROM meleeCharacters;
   `).then(result => {
-    res.send(results.rows)
+    res.send(result.rows)
   });
 });
 
@@ -30,7 +30,7 @@ app.post('/api/meleeCharacters', (req, res) => {
 
   client.query(`
     INSERT INTO meleeCharacters (name, universe, difficulty, walljump)
-    VALUES (1$, 2$, 3$, 4$)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;
   `,
   [body.name, body.universe, body.difficulty, body.walljump]
