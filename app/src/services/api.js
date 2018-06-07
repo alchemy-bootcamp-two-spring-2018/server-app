@@ -15,7 +15,7 @@ export function addGuitarist(guitarist) {
 }
 
 export function removeGuitarist(guitarist) {
-  return fetch('http://localhost:1337/api/guitarists', {
+  return fetch('http://localhost:1337/api/guitarists/', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(guitarist)

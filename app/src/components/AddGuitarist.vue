@@ -1,14 +1,16 @@
 <template>
 <div id="add-main">
 <div id="add-container">
+  <form @submit.prevent="handleSubmit">
   <label>Name:
     <input
+      required
       v-model="guitarist.name"
       placeholder="Shreddy Kruger"    
     >
   </label>
   <label>Are they alive?:
-    <select v-model="guitarist.living">
+    <select required v-model="guitarist.living">
       <option value="true" selected="selected">Yes!</option>
       <option value="false">No :-(</option>
     </select>
@@ -16,22 +18,21 @@
   <label>
     Age: 
     <input
+      required
       placeholder="69"
       v-model.number="guitarist.age"
     >
   </label><br>
   <label>Link to an image of them:
     <input
+      required
       id="url"
       placeholder="www.toneclone.biz/frest_of_fury.gif"
       v-model="guitarist.img_url"
     >
-    <button
-      @click.prevent="handleSubmit"
-    >
-      Submit
-    </button>
+    <input type="submit">
   </label>
+  </form>
 </div>
 </div>
 </template>

@@ -34,12 +34,13 @@ app.post('/api/guitarists', (req, res) => {
     });
 });
 
-app.delete('/api/guitarists/:id', (req, res) => {
-  // console.log(req.params.id);
+app.delete('/api/guitarists/', (req, res) => {
+  // console.log(req);
 
   client.query(`
-    DELET FROM guitarists WHERE id = req.params.id;
-  `);
+    DELETE FROM guitarists WHERE id=($1);
+  `,
+  [req.body.id]);
 
   res.send({ removed: true });
 });

@@ -52,11 +52,31 @@ img {
   width: 150px;
   height: auto;
 }
-.img {
-  display: inline-block;
-  /* box-shadow: inset 0 0 6px 3px red; */
-  width: fit-content;
-  height: auto;
-  /* border: 1px solid red; */
+
+.close {
+  background-color: rgba(0, 0, 0, .69);
+  display: absolute;
+  float: right;
+  border-top: 2px solid gray;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid gray;
+  padding: 0 3px;
+  font-weight: bold;
 }
+.close:active {
+  display: absolute;
+  float: right;
+  border-top: 2px solid black;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
+  border-left: 2px solid black;
+  padding: 0 3px;
+  font-weight: bold;
+}
+.close:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
 </style>

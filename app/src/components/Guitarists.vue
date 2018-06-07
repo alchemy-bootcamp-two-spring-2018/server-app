@@ -7,7 +7,7 @@
   <ul>
     <guitarist 
       v-for="guitar in guitarists"
-      :key="guitar.name"
+      :key="guitar.id"
       :guitarist="guitar"
       :on-close="handleClose"
     />
@@ -45,8 +45,11 @@ export default {
     },
     handleClose(guitarist) {
       return removeGuitarist(guitarist)
-        .then(data => {
-          this.guitarists.slice(this.guitarists.indexOf(guitarist), '');
+        .then((data) => {
+          getGuitarists()
+            .then(guitarists => {
+              this.guitarists = guitarists;
+            });
         });
     }
   }
