@@ -1,15 +1,9 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/bg';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-
-client.connect()
-  .then(() => {
-    return client.query(`
-      DROP TABLE IF EXISTS boardgames;
-    `);
-  })
+client.query(`
+    DROP TABLE IF EXISTS boardgames;
+    DROP TABLE IF EXISTS categories;
+`)
   .then(
     () => console.log('dropping tables complete'),
     err => console.log(err)
