@@ -80,18 +80,18 @@ export default {
   data() {
     return {
       glucoselog: initGlucoseLog()
-    }
+    };
   },
   methods: {
     handleSubmit() {
       this.onAdd(this.glucoselog)
       //this fires when save is complete and data added to glucoseLogs
-      .then(() => {
-        this.glucoselog = initGlucoseLog();
-      });
+        .then(() => {
+          this.glucoselog = initGlucoseLog();
+        });
     }
   }
-}
+};
 </script>
 
 <style>
