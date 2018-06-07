@@ -86,6 +86,7 @@ form {
   flex-flow: column nowrap;
   margin-top: 30px;
   margin-left: 50px;
+  border: 2px solid black;
 }
 label {
   margin: 10px;

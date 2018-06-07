@@ -1,6 +1,6 @@
 <template>
   <div class="motorcycles">
-    <ul>
+    <ul class="tiles">
       <Motorcycle
       v-for="motorcycle in motorcycles"
       :key="motorcycle.id"
@@ -64,8 +64,12 @@ export default {
 .motorcycles {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-around;
   margin: 10px;
-  width: 800px;
+}
+.tiles {
+  width: 300px;
+  min-width: 300px;
 }
 
 </style>

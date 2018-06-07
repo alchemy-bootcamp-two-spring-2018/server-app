@@ -34,5 +34,13 @@ export default {
 </script>
 
 <style scoped>
+.content {
+  display: flex;
+  flex-flow: column nowrap;
+  border: 2px solid rgb(7, 255, 7);
+}
 
+h2, p {
+  margin-left: 20px;
+}
 </style>
