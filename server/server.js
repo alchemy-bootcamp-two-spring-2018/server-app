@@ -1,20 +1,18 @@
 
 const express = require('express');
 const app = express();
-const cors = require('cors');
 
+const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-// connect to database
 const pg = require('pg');
 const Client = pg.Client;
 const databaseUrl = 'postgres://localhost:5432/locations';
 const client = new Client(databaseUrl);
-
 client.connect();
 
-//routes
+
 app.get('/api/locations', (req, res) => {
 
   client.query(`
@@ -43,19 +41,16 @@ app.post('/api/locations', (req, res) => {
 
 app.delete('/api/locations/:id', (req, res) => {
   console.log(req.params.id);
+  const params = req.params;
 
   client.query(`
-    DELETE FROM locations WHERE id = 3;
-    VALUES ($1)
-    RETURNING *;
-    
+    DELETE FROM locations WHERE id =$1  
   `,
-  [req.params.id]
+  [params.id]
   ).then(result => {
-    
     res.send({ removed: true });
   });
-
+  
 });
 
 //start "listening" (run) the app (server) 
