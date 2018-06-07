@@ -43,13 +43,24 @@ app.post('/api/subscriptions', (req, res) => {
   });
 });
 
-// app.put('/api/subscriptions/:id', (req, res) => {
-//   const body = req.body;
+app.put('/api/subscriptions/:id', (req, res) => {
+  const body = req.body;
 
-//   client.query(`
-//     update subscriptions
-//   `)
-// })
+  client.query(`
+    update subscriptions
+    set
+      name = $1,
+      purpose_id = #2,
+      price = $3,
+      ads = $4
+    where id = $5
+    returning *;
+  `,
+  [body.name, body.purpose_id, body.price, body.ads, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+});
 
 app.delete('/api/subscriptions/:id', (req, res) => {
   const params = req.params;
