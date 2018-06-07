@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     handleDeleteSub() {
-      console.log('this is in rapper', this.rapper)
       this.onDelete(this.rapper);
       }
   }

@@ -56,7 +56,7 @@ const initRappers = () => {
   return {
     name: '',
     from: '',
-    numalbums: 0,
+    numalbums: '',
     albums: '',
     aka: '',
     affiliates: '',

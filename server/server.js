@@ -19,7 +19,7 @@ client.connect(() => {
 
 
 app.get('/api/rappers', (req, res) => {
-  console.log('something happened')
+
   client.query(`
   
   SELECT * from rappers;
