@@ -3,14 +3,14 @@
     <ul>
       <Motorcycle
       v-for="motorcycle in motorcycles"
-      :key="motorcycle.index"
+      :key="motorcycle.id"
       :motorcycle="motorcycle"
+      :on-remove="handleRemove"
       />
     </ul>
     
     <AddMotorcycle
     :on-add="handleAdd"
-    :on-remove="handleRemove"
     />
 
   </div>
@@ -43,15 +43,20 @@ export default {
   methods: {
     handleAdd(motorcycle) {
       return addMotorcycle(motorcycle)
-        .then(saved => {
-          this.motorcycles.push(saved);
+        .then(data => {
+          this.motorcycles.push(data);
         });
     },
     handleRemove(motorcycle) {
-      return removeMotorcycle(motorcycle);
+      return removeMotorcycle(motorcycle)
+        .then(() => {
+          getMotorcycles()
+            .then(motorcycles => {
+              this.motorcycles = motorcycles;
+            });
+        });
     }
   }
-
 };
 </script>
 

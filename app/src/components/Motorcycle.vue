@@ -7,7 +7,7 @@
     <p v-if="motorcycle.available">Status: FOR SALE!</p>
     <p v-else>Status: Contact us for availability</p>
     <p>Delete:
-      <input type="checkbox" name="delete" v-model="motorcycle.delete">
+      <input @click="handleDelete()" type="checkbox" name="delete" v-model="motorcycle.delete">
     </p>
   </div>
 </template>
@@ -15,7 +15,21 @@
 <script>
 
 export default {
-  props: ['motorcycle'] 
+
+  props: {
+    motorcycle: Object,
+    onRemove: {
+      type: Function,
+      required: true
+    }
+  },
+
+  methods: {
+    handleDelete() {
+      this.onRemove(this.motorcycle);
+    }
+  }
+
 };
 </script>
 

@@ -41,11 +41,7 @@
       </label>
 
     </form>
-    <form @submit.prevent="handleRemove">
-      <label>
-        <button type="submit">Remove Motorcycle</button>
-      </label>
-    </form>
+
   </div>
 </template>
 
@@ -71,10 +67,6 @@ export default {
     onAdd: {
       type: Function,
       required: true
-    },
-    onRemove: {
-      type: Function,
-      required: true
     }
   },
   methods: {
@@ -83,9 +75,6 @@ export default {
         .then(() => {
           this.motorcycle = initMotorcycle();
         });
-    },
-    handleRemove() {
-      this.onRemove(this.motorcycle);
     }
   }
 };
