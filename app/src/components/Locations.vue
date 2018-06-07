@@ -2,6 +2,7 @@
   <div class="all-locations">
     <h2>Alchemists About Town</h2>
     <h4>Good spots in and near Portland to hang out and code</h4>
+    <hr>
     <p v-if="!locations">Loading Reccommended Study Spots...</p>
     <ul v-else class="list">
       <Location

@@ -5,7 +5,7 @@
       <p>Neighborhood: {{ location.neighborhood }}</p>
       <p>Power Outlets Available: {{ location.power }}</p>
       <p>Alchemist Rated: {{ location.rating }}</p>
-      <!-- TO DO:button -->
+      <!-- TO DO: button -->
       
   </div>  
 </template>

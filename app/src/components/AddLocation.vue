@@ -85,7 +85,7 @@ label {
 
 input {
   padding: 20px;
-  min-width: 600px;
+  min-width: 400px;
   margin-bottom: 10px;
 }
 
