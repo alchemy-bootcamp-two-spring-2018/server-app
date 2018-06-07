@@ -4,6 +4,7 @@
       v-for="boardGame in boardGames"
       :key="boardGame.name"
       :boardGame="boardGame"
+      :onDelete="handleDelete"
     />
     <AddBoardGame :onAdd="handleAdd"/>
   </div>
@@ -12,7 +13,7 @@
 <script>
 import BoardGame from './BoardGame';
 import AddBoardGame from './AddBoardGame';
-import { getBoardGames, addBoardGame } from '../services/api';
+import { getBoardGames, addBoardGame, deleteBoardGame } from '../services/api';
 
 export default {
   data() {
@@ -36,6 +37,12 @@ export default {
         .then(saved => {
           this.boardGames.push(saved);
         });
+    },
+    handleDelete(boardGame) {
+      return deleteBoardGame(boardGame)
+        .then(
+          this.boardGames = this.boardGames.splice(boardGame.id, 1)
+        );
     }
   }
 };

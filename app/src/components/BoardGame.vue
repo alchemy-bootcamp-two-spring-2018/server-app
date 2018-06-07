@@ -4,12 +4,24 @@
     <h4>{{ boardGame.minPlayers }} to {{ boardGame.maxPlayers }} players / {{ boardGame.avgPlayingTime }} minutes average playing time</h4>
     <p>{{ boardGame.description }}</p>
     <p>Owned: <span v-if="boardGame.owned">Yes</span><span v-else>No</span></p>
+    <button @click="handleClick">Remove</button>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['boardGame']
+  props: {
+    boardGame: Object,
+    onDelete: {
+      type: Function,
+      required: true
+    }
+  },
+  methods: {
+    handleClick() {
+      this.onDelete(this.boardGame);
+    }
+  }
 };
 </script>
 

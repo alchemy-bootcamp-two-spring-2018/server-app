@@ -35,7 +35,6 @@ app.post('/api/boardGames', (req, res) => {
 });
 
 app.delete('/api/boardGames/:id', (req, res) => {
-  console.log(req.params.id);
   const params = req.params;
 
   client.query(`
@@ -44,7 +43,7 @@ app.delete('/api/boardGames/:id', (req, res) => {
   `,
   [params.id]
   ).then(() => {
-    res.send({ removed: params.id });
+    res.send({ removed: true });
   });
 });
 
