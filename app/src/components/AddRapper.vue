@@ -11,7 +11,7 @@
           <label>
               From:
               <input type="text"
-              v-model="rapper.from"
+              v-model="rapper.born"
               >
           </label>
           <label>

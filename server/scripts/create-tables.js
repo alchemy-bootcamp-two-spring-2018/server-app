@@ -13,6 +13,7 @@ client.connect()
             numAlbums INTEGER,
             albums VARCHAR(256),
             aka VARCHAR(256),
+            affiliates VARCHAR(256),
             dead BOOLEAN
         );
       `);
