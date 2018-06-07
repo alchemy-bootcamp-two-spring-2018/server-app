@@ -3,9 +3,11 @@
     <h3>{{ walrus.name }}</h3>
     <p><strong>Type:</strong> {{ walrus.type }}</p>
     <p><strong>Weight:</strong> {{ walrus.weight }}</p>
+    <p>More Info: {{walrus.url}}</p>
+    <p>Photo URL: {{walrus.photo_url}}</p>
     <p>A Real Walrus? {{ walrus.fictional }}</p>
     <p><strong>Description:</strong><br/> {{ walrus.description }}</p>
-    <button onclick="walrus.deleteWalrus()">Delete this Walrus</button>
+    <button @click="deleteWalrus">Delete this Walrus</button>
   </article>
 </template>
 
@@ -14,7 +16,7 @@ export default {
   props: ['walrus'],
   methods: {
     deleteWalrus() {
-      DELETE FROM walruses WHERE id === this.id;
+      this.onRemove(this.walruses.id);
     }
 }
 };

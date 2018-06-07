@@ -38,8 +38,13 @@ app.post('/api/walruses', (req, res) => {
 });
 
 app.delete('/api/walruses/:id', (req, res) => {
-  console.log(req.params.id);
-  res.send({ removed: true });
+  client.query(`
+    delete from walruses where id=$1;
+  `,
+  [req.params.id]
+  ).then(() => {
+    res.send({ removed: true });
+  });
 });
 
 //start "listening" (run) the app (server)

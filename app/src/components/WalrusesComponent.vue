@@ -18,6 +18,7 @@
 <script>
 import IndividualWalrus from './IndividualWalrus';
 import AddWalrus from './AddWalrus.vue';
+import DeleteWalrus from '.IndividualWalrus';
 import { getWalruses, addWalrus } from '../services/api';
 
 export default {
@@ -42,10 +43,19 @@ export default {
       .then(saved => {
         this.walruses.push(saved);
       });
-    }
+    },
+    handleRemove(id) {
+      return removeWalrus(id)
+        .then(() => {
+          const index = this.walrus.findIndex(walrus => walrus.id === id);
+          if(index === -1) return;
+          this.walrus.splice(index, 1);
+        });
+    },
   }
 
 };
+
 </script>
 
 <style>
