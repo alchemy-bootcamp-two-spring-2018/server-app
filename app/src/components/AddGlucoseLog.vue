@@ -4,47 +4,47 @@
     <form @submit.prevent="handleSubmit">
       <label>
         Date:
-        <input v-model="glucoseLog.date" type="date" required pattern="[0-9]{0-9}/[0-9]{0-9}/[0-9]{0-9}"> 
+        <input v-model="glucoselog.date" type="date" required pattern="[0-9]{0-9}/[0-9]{0-9}/[0-9]{0-9}"> 
       </label>
 
       <label>
         Day:
-        <input v-model="glucoseLog.day" placeholder="Day" required>
+        <input v-model="glucoselog.day" placeholder="Day" required>
       </label>
 
       <label for="checkbox">
         Changed Insulin?:
-        <input v-model="glucoseLog.changeInsulin" type="checkbox" id="checkbox"> {{ glucoseLog.changeInsulin }}
+        <input v-model="glucoselog.changeInsulin" type="checkbox" id="checkbox" :value="true"> {{ glucoselog.changeInsulin }}
       </label>
       
       <label>
         Before Breakfast:
-        <input v-model="glucoseLog.beforeBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="glucoselog.beforeBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
       
       <label>
         After Breakfast:
-        <input v-model="glucoseLog.afterBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="glucoselog.afterBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Lunch:
-        <input v-model="glucoseLog.beforeLunch" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="glucoselog.beforeLunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Lunch:
-        <input v-model="glucoseLog.afterLunch" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="glucoselog.afterLunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Dinner:
-        <input v-model="glucoseLog.beforeDinner" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="glucoselog.beforeDinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Dinner:
-        <input v-model="glucoseLog.afterDinner" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="glucoselog.afterDinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
@@ -79,15 +79,15 @@ export default {
   },
   data() {
     return {
-      glucoseLog: initGlucoseLog()
+      glucoselog: initGlucoseLog()
     }
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.glucoseLog)
+      this.onAdd(this.glucoselog)
       //this fires when save is complete and data added to glucoseLogs
       .then(() => {
-        this.glucoseLog = initGlucoseLog();
+        this.glucoselog = initGlucoseLog();
       });
     }
   }

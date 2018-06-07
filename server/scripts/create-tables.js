@@ -10,13 +10,13 @@ client.connect()
         id SERIAL PRIMARY KEY,
         date DATE,
         day VARCHAR(256),
-        changeInsulin BOOLEAN,
-        beforeBreakfast INTEGER,
-        afterBreakfast INTEGER,
-        beforeLunch INTEGER,
-        afterLunch INTEGER,
-        beforeDinner INTEGER,
-        afterDinner INTEGER
+        changeinsulin BOOLEAN,
+        beforebreakfast INTEGER,
+        afterbreakfast INTEGER,
+        beforelunch INTEGER,
+        afterlunch INTEGER,
+        beforedinner INTEGER,
+        afterdinner INTEGER
       );
     `);
   })

@@ -40,7 +40,7 @@ app.post('/api/glucoselogs', (req, res) => {
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING *;
   `,
-  [body.date, body.day, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner]
+  [body.date, body.day, body.changeinsulin, body.beforebreakfast, body.afterbreakfast, body.beforelunch, body.afterlunch, body.beforedinner, body.afterdinner]
   ).then(result => {
     //send back object
     res.send(result.rows[0]);
