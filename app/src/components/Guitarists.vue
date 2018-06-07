@@ -45,7 +45,7 @@ export default {
     },
     handleClose(guitarist) {
       return removeGuitarist(guitarist)
-        .then((data) => {
+        .then(() => {
           getGuitarists()
             .then(guitarists => {
               this.guitarists = guitarists;
@@ -67,7 +67,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: space-between; 
+  justify-content: space-around; 
 }
 
 #title {

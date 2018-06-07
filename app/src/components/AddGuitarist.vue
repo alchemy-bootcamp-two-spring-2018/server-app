@@ -83,7 +83,7 @@ export default {
   color: seashell;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 6px;
 }
 
@@ -91,8 +91,8 @@ label {
   margin: 13px;
 }
 
-button {
-  margin-left: 33px;
+input {
+  margin: 13px 33px 0 0;
 }
 
 #url {
