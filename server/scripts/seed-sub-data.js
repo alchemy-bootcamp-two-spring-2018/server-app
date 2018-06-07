@@ -12,7 +12,7 @@ Promise.all(
   })
 )
   .then(
-    () => console.log('seed data load successful'),
+    () => console.log('seed sub data load successful'),
     err => console.error(err)
   )
   .then(() => client.end());

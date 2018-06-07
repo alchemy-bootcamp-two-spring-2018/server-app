@@ -1,6 +1,7 @@
 <template id="subscription-template">
   <article>
     <h3>{{ subscription.name }}</h3>
+    <p>Purpose: {{ subscription.purposeName }}</p>
     <p>Monthly Price: {{ subscription.price }}</p>
     <p>Includes ads: <strong>{{ ads }}</strong></p>
     <button @click="handleDelete">Remove</button>

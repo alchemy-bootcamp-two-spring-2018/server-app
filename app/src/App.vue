@@ -61,7 +61,7 @@ article {
   text-align: center;
   background: #eee;
   width: 225px;
-  height: 250px;
+  height: 300px;
   border-radius: 5px;
 }
 

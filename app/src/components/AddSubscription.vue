@@ -39,6 +39,7 @@
 const initSubscription = () => {
   return {
     name: '',
+    purpose_id: '',
     price: '',
     ads: ''
   };

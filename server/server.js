@@ -17,7 +17,7 @@ app.get('/api/subscriptions', (req, res) => {
     select s.id,
       s.name,
       p.id as "purposeId",
-      p.name,
+      p.name as "purposeName",
       price,
       ads
     from subscriptions s
