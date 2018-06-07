@@ -1,15 +1,17 @@
 <template>
   <section>
-    <h2>List of Notable Walruses</h2>
+    <div id = "add-walrus">
+    <AddWalrus :on-add="handleAdd" />
+    </div>
     <p v-if="!walruses">Hauling Out Walruses....</p>
-    <ul v-else class="list">
+    <div v-else class="list">
       <IndividualWalrus
         v-for="walrus in walruses"
         :key="walrus.name"
         :walrus="walrus"
         />
-    </ul>
-    <AddWalrus :on-add="handleAdd" />
+    </div>
+    
   </section>
 </template>
 
@@ -47,10 +49,15 @@ export default {
 </script>
 
 <style>
-ul.list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+.list {
+  float: right;
+  margin-left: 20px;
+  width: 40%;
+}
+#add-walrus {
+  float: left;
+  width: 30%;
+  margin-left: 50px;
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template id="walrus-template">
   <section class="add-walrus">
-    <h1>Add A New Walrus</h1>
+    <h2>Add A New Walrus</h2>
     <form @submit.prevent="handleSubmit">
       <label>
         Name:
@@ -20,19 +20,18 @@
           v-model="walrus.type">
       </label>
 
-      <label>
-        Fictional or real:<br/>
-        <input type="radio" name="fictional"  id = "isFictional" value="false" required
+      <label class="buttons">
+        <input type="radio" name="fictional"  id = "isFictional" value="true" required
           v-model="walrus.fictional">
-          <label for="isFictional">Fictional</label>
-          <input type="radio" name="fictional"  id = "isReal" value="true" required
+          <label class="buttons" for="isFictional">Fictional</label>
+          <input type="radio" name="fictional"  id = "isReal" value="false" label="Real" required
           v-model="walrus.fictional">
-          <label for="isReal">Real</label>
+          <label class="buttons" for="isReal">Real</label>
       </label>
 
       <label>
         Description:
-        <textarea name="body" rows="8" cols="40" required 
+        <textarea name="body" rows="8" cols="45" required 
           v-model="walrus.description"></textarea>
       </label>
       
@@ -78,12 +77,32 @@ export default {
 </script>
 
 <style>
+h2 {
+  font-family: 'Chewy', cursive; 
+  text-align: center;
+  font-size: 1.9em;
+}
 .add-walrus {
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 12px;
+  padding: 20px;
   width: 300px;
   text-align: left;
   margin: auto;
 }
 label {
   display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+input {
+  font-size: 20px;
+}
+label.buttons {
+  display: inline;
+  padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 </style>
