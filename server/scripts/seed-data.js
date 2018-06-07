@@ -4,7 +4,7 @@ const mototypes = require('./mototypes.json');
 Promise.all(
   mototypes.map(mototypes => {
     return client.query(`
-    INSERT INTO quadrants (type)
+    INSERT INTO mototypes (type)
     VALUES ($1);
     `,
     [mototypes.type]

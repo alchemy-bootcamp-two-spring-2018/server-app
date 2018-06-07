@@ -5,7 +5,6 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-//connect
 const pg = require('pg');
 const Client = pg.Client;
 const databaseUrl = 'postgres://localhost:5432/motorcycles';
@@ -16,7 +15,18 @@ client.connect();
 app.get('/api/motorcycles', (req, res) => {
 
   client.query(`
-  SELECT * from motorcycles;
+    select m.id,
+    m.make,
+    t.id as "mototypeId",
+    t.type,
+    model,
+    year,
+    color,
+    available
+    from motorcycles m
+    join mototypes t
+    on m.mototype_id = t.id
+    order by m.make;
   `).then(result => {
     res.send(result.rows);
   });
@@ -27,11 +37,11 @@ app.post('/api/motorcycles', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO motorcycles (year, make, model, color, available)
-    VALUES ($1, $2, $3, $4, $5)
+    INSERT INTO motorcycles (make, mototype_id, model, year, color, available)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
   `,
-  [body.year, body.make, body.model, body.color, body.available]
+  [body.make, body.mototype_id, body.model, body.year, body.color, body.available]
   ).then(result => {
     res.send(result.rows[0]);
   });

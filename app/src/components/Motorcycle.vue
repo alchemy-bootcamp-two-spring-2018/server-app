@@ -1,6 +1,7 @@
 <template>
   <div class="content">
     <h2>{{ motorcycle.make }}</h2>
+    <p>{{ motorcycle.type }}</p>
     <p>Model: {{ motorcycle.model }}</p>
     <p>Year: {{ motorcycle.year }}</p>
     <p>Color: {{ motorcycle.color }}</p>

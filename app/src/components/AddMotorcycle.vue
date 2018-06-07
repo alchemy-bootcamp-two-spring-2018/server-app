@@ -2,8 +2,15 @@
   <div>
     <form @submit.prevent="handleSubmit">
       <label>
-        Year:
-        <input type="number" name="year" placeholder="Year" required v-model="motorcycle.year">
+        Type:
+        <select name="type" required v-model="motorcycle.mototype_id">
+          <option value="1">Sport</option>
+          <option value="2">Touring</option>
+          <option value="3">Dual-Sport</option>
+          <option value="4">Dirt-Bike</option>
+          <option value="5">ATV</option>
+          <option value="6">Custom</option>
+        </select>
       </label>
 
       <label>
@@ -14,6 +21,11 @@
       <label>
         Model:
         <input type="text" name="model" placeholder="Model" required v-model="motorcycle.model">
+      </label>
+
+      <label>
+        Year:
+        <input type="number" name="year" placeholder="Year" required v-model="motorcycle.year">
       </label>
 
       <label>
@@ -48,6 +60,7 @@
 <script>
 const initMotorcycle = () => {
   return {
+    mototype_id: '',
     year: '',
     make: '',
     model: '',
