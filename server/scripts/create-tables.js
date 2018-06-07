@@ -1,20 +1,19 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/gameslist';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS games (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(256),
-        system VARCHAR(256),
-        year INTEGER,
-        completed BOOLEAN
-      );
-    `);
-  })
+client.query(`
+  CREATE TABLE IF NOT EXISTS systems (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS games (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256),
+    system_id INTEGER NOT NULL REFERENCES systems(id),
+    year INTEGER,
+    completed BOOLEAN
+  );
+`)
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)
