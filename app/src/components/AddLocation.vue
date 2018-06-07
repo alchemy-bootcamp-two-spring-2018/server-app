@@ -29,7 +29,7 @@
         </label>
         <label>
           Description:
-          <input type="text" name="description" maxlenght="499" placeholder="Description" required
+          <input type="text" name="description" maxlenght="200" placeholder="Description" required
             v-model="location.description">
         </label>
         <label>
