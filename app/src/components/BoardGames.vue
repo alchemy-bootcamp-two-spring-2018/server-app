@@ -40,10 +40,7 @@ export default {
     },
     handleDelete(boardGame) {
       return deleteBoardGame(boardGame)
-        .then(getBoardGames()
-          .then(boardGames => {
-            this.boardGames = boardGames;
-          }));
+        .then(this.boardGames = this.boardGames.filter(item => item.id !== boardGame.id));
     }
   }
 };
