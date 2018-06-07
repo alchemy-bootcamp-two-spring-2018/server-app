@@ -44,7 +44,18 @@ app.post('/api/locations', (req, res) => {
 app.delete('/api/locations/:id', (req, res) => {
   console.log(req.params.id);
 
-  res.send({ removed: true });
+  client.query(`
+    DELETE FROM locations WHERE id = 3;
+    VALUES ($1)
+    RETURNING *;
+    
+  `,
+  [req.params.id]
+  ).then(result => {
+    
+    res.send({ removed: true });
+  });
+
 });
 
 //start "listening" (run) the app (server) 

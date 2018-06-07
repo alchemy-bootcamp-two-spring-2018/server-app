@@ -13,3 +13,4 @@ export function addLocation(location) {
   })
     .then(response => response.json());
 }
+
