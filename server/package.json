@@ -6,8 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "create-tables": "npm run /scripts/create-tables.js",
-    "drop-tables": "npm run /scripts/drop-tables.js"
+    "create-tables": "node scripts/create-tables.js",
+    "drop-tables": "node scripts/drop-tables.js"
   },
   "dependencies": {
     "pg": "^7.4.3",

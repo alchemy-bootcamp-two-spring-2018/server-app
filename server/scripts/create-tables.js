@@ -1,6 +1,6 @@
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/guitaristapp';
+const databaseUrl = 'postgres://postgres:Bl0winBetty!@localhost:5432/guitarapp';
 const client = new Client(databaseUrl);
 
 client.connect()
@@ -10,6 +10,7 @@ client.connect()
         id SERIAL PRIMARY KEY,
         name VARCHAR(256),
         age INTEGER,
+        living BOOLEAN,
         img_url VARCHAR(256)
       );
     `);

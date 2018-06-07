@@ -9,6 +9,7 @@
       v-for="guitar in guitarists"
       :key="guitar.name"
       :guitarist="guitar"
+      :on-close="handleClose"
     />
   </ul>
 </div>
@@ -17,11 +18,12 @@
 <script>
 import Guitarist from './Guitarist'
 import AddGuitarist from './AddGuitarist'
-import { getGuitarists, addGuitarist } from '../services/api';
+import { getGuitarists, addGuitarist, removeGuitarist } from '../services/api';
 export default {
   components: {
     Guitarist,
-    AddGuitarist
+    AddGuitarist,
+    removeGuitarist
   },
   data() {
     return {
@@ -39,6 +41,12 @@ export default {
       return addGuitarist(guitarist)
         .then(data => {
           this.guitarists.push(data);
+        });
+    },
+    handleClose(guitarist) {
+      return removeGuitarist(guitarist)
+        .then(data => {
+          this.guitarists.slice(this.guitarists.indexOf(guitarist), '');
         });
     }
   }

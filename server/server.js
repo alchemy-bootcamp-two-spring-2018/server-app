@@ -7,7 +7,7 @@ app.use(express.json());
 
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/guitaristapp';
+const databaseUrl = 'postgres://postgres:Bl0winBetty!@localhost:5432/guitarapp';
 const client = new Client(databaseUrl);
 client.connect();
 
@@ -24,21 +24,21 @@ app.post('/api/guitarists', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO guitarists (name, living, img_url)
-    VALUES ($1, $2, $3)
+    INSERT INTO guitarists (name, age, living, img_url)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;
   `,
-  [body.name, body.living, body.img_url])
+  [body.name, body.age, body.living, body.img_url])
     .then(data => {
       res.send(data.rows[0]);
     });
 });
 
-app.delete('/appi/guitarists/:id', (req, res) => {
-  console.log(req.params.id);
+app.delete('/api/guitarists/:id', (req, res) => {
+  // console.log(req.params.id);
 
   client.query(`
-    DROP TABLE guitarists;
+    DELET FROM guitarists WHERE id = req.params.id;
   `);
 
   res.send({ removed: true });

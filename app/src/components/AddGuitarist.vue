@@ -40,8 +40,8 @@
 const initGuitarist = () => {
   return {
     name: '',
-    living: '',
     age: '',
+    living: '',
     img_url: ''
   };
 };

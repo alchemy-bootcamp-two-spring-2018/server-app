@@ -1,5 +1,10 @@
 <template>
   <div class="guitarist">
+    <span class="close"
+      @click.prevent="handleX"
+    >
+      X
+    </span>
     <h1>{{ guitarist.name }}</h1>
     <p>Are they alive?
       <span v-if="guitarist.living">YES!</span>
@@ -16,7 +21,17 @@
 
 <script>
 export default {
-  props: ['guitarist']
+  props: {
+    guitarist: Object,
+    onClose: {
+      type: Function
+    }
+  },
+  methods: {
+    handleX() {
+      this.onClose(this.guitarist)
+    }
+  }
 }
 </script>
 
