@@ -7,11 +7,6 @@
           <input type="text" name="name" min="3" placeholder="Name" required
             v-model="location.name">
         </label>
-        <!-- <label>
-          Image URL:
-          <input type="text" name="image" placeholder="Image URL"
-          v-model="location.image">
-        </label> -->
         <label>
           Location:
           <input type="text" name="name" placeholder="Location" required

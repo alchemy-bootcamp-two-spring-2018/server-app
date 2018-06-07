@@ -4,7 +4,7 @@ const climbStyles = require('./climb-styles.json');
 Promise.all(
   climbStyles.map(location => {
     return client.query(`
-      INSTERT INTO climbinglocations (type)
+      INSERT INTO climbingstyles (type)
       VALUES ($1);
       `,
     [location.type]

@@ -1,22 +1,19 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseURL = 'postgresql://localhost:5432/timetoclimb';
-const client = new Client(databaseURL);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS climbingLocations (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(128),
-        image VARCHAR(128),
-        location VARCHAR(128),
-        elevation INTEGER,
-        yearRoundClimbing BOOLEAN,
-        description VARCHAR(128)
-      );
-    `);
-  })
+client.query(`
+  CREATE TABLE IF NOT EXISTS climbingstyles (
+    id SERIAL PRIMARY KEY,
+    type VARCHAR(64)
+  );
+  CREATE TABLE IF NOT EXISTS climbingLocations (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(64),
+    location VARCHAR(64),
+    elevation INTEGER,
+    yearRoundClimbing BOOLEAN,
+    description VARCHAR(128)
+  );
+`)
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)

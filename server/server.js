@@ -25,8 +25,8 @@ app.post('/api/climbingLocations', (req, res) => {
   const body = req.body;
   
   client.query(`
-    INSERT INTO climbinglocations (name, image, location, elevation, yearRoundClimbing, description)
-    VALUES ($1, $2, $3, $4, $5, $6)
+    INSERT INTO climbinglocations (name, location, elevation, yearRoundClimbing, description)
+    VALUES ($1, $2, $3, $4, $5,)
     RETURNING *;
   `, 
   [body.name, body.image, body.location, body.elevation, body.yearRoundClimbing, body.description]

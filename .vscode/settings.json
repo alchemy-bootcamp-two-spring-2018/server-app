@@ -1,9 +1,11 @@
 {
   "cSpell.words": [
     "climbinglocations",
+    "climbingstyles",
     "lemmon",
     "postgres",
     "postgresql",
-    "timetoclimb"
+    "timetoclimb",
+    "varchar"
   ]
 }
