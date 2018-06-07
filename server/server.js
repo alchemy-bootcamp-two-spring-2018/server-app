@@ -15,16 +15,16 @@ app.use(express.json());
 //connect to the database
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/glucoseLogs';
+const databaseUrl = 'postgres://localhost:5432/glucoselogs';
 const client = new Client(databaseUrl);
 client.connect();
 
 /* routes: */
 //recipe: app.<method>(<path>, handler)
-app.get('/api/glucoseLogs', (req, res) => {
+app.get('/api/glucoselogs', (req, res) => {
 
   client.query(`
-    SELECT * FROM glucoseLogs;
+    SELECT * FROM glucoselogs;
   `).then(result => {
     res.send(result.rows);
   });
@@ -32,11 +32,11 @@ app.get('/api/glucoseLogs', (req, res) => {
 });
 
 //app.post
-app.post('/api/glucoseLogs', (req, res) => {
+app.post('/api/glucoselogs', (req, res) => {
   const body = req.body;
   
   client.query(`
-    INSERT INTO glucoseLogs (date, day, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
+    INSERT INTO glucoselogs (date, day, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING *;
   `,
