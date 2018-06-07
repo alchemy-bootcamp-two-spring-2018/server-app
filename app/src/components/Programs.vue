@@ -6,7 +6,7 @@
     <AddProgram :onAdd="handleAdd"/>
   </div>
   <div>
-    <Program
+    <Program :onDelete="handleDelete"
       v-for="program in programs"
       :key="program.title"
       :program="program"
@@ -19,7 +19,7 @@
 <script>
 import Program from './Program';
 import AddProgram from './AddProgram.vue';
-import { getPrograms, addProgram } from '../services/api';
+import { getPrograms, addProgram, deleteProgram } from '../services/api';
 
 export default {
   data() {
@@ -44,6 +44,13 @@ export default {
         .then(saved => {
           this.programs.push(saved);
         });
+    },
+    handleDelete(program) {
+      deleteProgram(program);
+      getPrograms()
+       .then(programs => {
+         this.programs = programs;
+       });
     }
   }
 };

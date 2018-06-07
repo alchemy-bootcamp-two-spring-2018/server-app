@@ -13,3 +13,11 @@ export function addProgram(program) {
   })
     .then(response => response.json());
 }
+
+export function deleteProgram(program) {
+  return fetch('http://localhost:3000/api/programs/' + program.id, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(response => response.json());
+}

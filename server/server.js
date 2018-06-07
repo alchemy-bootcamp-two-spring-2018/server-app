@@ -16,22 +16,16 @@ const databaseUrl = 'postgres://postgres:1234@localhost:5432/npr';
 const client = new Client(databaseUrl);
 client.connect();
 
-// temp solution to updating data...
-// const fs = require('fs');
-// path to data file:
-// const dataPath = 'data/npr-programs.json';
-
-// ROUTE:  get all programs
+// ROUTE:  get programs
 app.get('/api/programs', (req, res) => {
-
   client.query(`
     SELECT * from programs;
   `).then(result => {
     res.send(result.rows);
   });
-
 });
 
+// ROUTE:  Post to programs
 app.post('/api/programs', (req, res) => {
   const body = req.body;
 
@@ -48,70 +42,17 @@ app.post('/api/programs', (req, res) => {
 
 });
 
+// ROUTE:  Delete a program
 app.delete('/api/programs/:id', (req, res) => {
   client.query(`
   DELETE FROM programs WHERE id=$1
   `,
   [req.params.id]
-  );
-  res.send({ removed: true });
-});
-
-/*  from Marty
-
-// routes
-app.get('/api/neighborhoods', (req, res) => {
-
-  client.query(`
-    SELECT * from neighborhoods;
-  `).then(result => {
-    res.send(result.rows);
+  ).then(result => {
+    res.send({ removed: true });
   });
-
 });
 
-
-
-app.delete('/api/neighborhoods/:id', (req, res) => {
-  console.log(req.params.id);
-
-  // implement client query
-  
-  res.send({ removed: true });
-});
-
-*/
-
-
-
-
-
-/*
-// app.<method>(<path>, handler)
-app.get('/api/programs', (req, res) => {
-  // fs file paths are relative to pwd (cwd) aka where you started node
-  const raw = fs.readFileSync(dataPath);
-  // make into js array with objects
-  const data = JSON.parse(raw);
-  res.send(data);
-});
-*/
-
-/*
-app.post('/api/programs', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  // fs file paths are relative to pwd (cwd) aka where you started node
-  const raw = fs.readFileSync(dataPath);
-  // make into js array with objects
-  const data = JSON.parse(raw);
-  // push our new object into array
-  data.push(req.body);
-  // save file
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-  // send back object
-  res.send(req.body);
-});
-*/
 
 // start "listening" (run) the app (server)
 app.listen(3000, () => console.log('app running...'));
