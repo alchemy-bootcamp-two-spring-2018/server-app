@@ -41,16 +41,16 @@ app.post('/api/games', (req, res) => {
 
 app.delete('/api/games/:id', (req, res) => {
   console.log(req.params.id);
+  const params = req.params;
 
   client.query(`
     DELETE FROM games
     WHERE id = $1
-  `).then(result => {
-    res.send({ removed: true });
+  `,
+  [params.id]
+  ).then(() => {
+    res.send({ removed: params.id });
   });
-
-  // implement client query
-  
 });
 
 //this starts "listening" and (run) the app (server)
