@@ -11,6 +11,7 @@
       v-for="rapper in rappers"
       :key="rapper.name"
       :rapper="rapper"
+      :on-delete="handleDelete"
       />
     </ul>
   </div>
@@ -19,7 +20,7 @@
 <script>
 import Rapper from './Rapper';
 import AddRapper from './AddRapper';
-import { getRappers, addRappers } from '../services/api';
+import { getRappers, addRappers, deleteRappers } from '../services/api';
 
 export default {
   data() {
@@ -43,9 +44,17 @@ export default {
       .then(saved => {
         this.rappers.push(saved);
       });
+    },
+    handleDelete(rapper) {
+      console.log('this is in rappers', rapper)
+      return deleteRappers(rapper)
+      .then(() => {
+          this.rappers = rappers;
+        });
+      }
     }
   }
-}
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

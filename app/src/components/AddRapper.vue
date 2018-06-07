@@ -17,7 +17,7 @@
           <label>
               Total Studio Albums:
               <input type="number"
-              v-model="rapper.numAlbums"
+              v-model="rapper.numalbums"
               >
           </label>
           <label>
@@ -56,7 +56,7 @@ const initRappers = () => {
   return {
     name: '',
     from: '',
-    numAlbums: '',
+    numalbums: 0,
     albums: '',
     aka: '',
     affiliates: '',

@@ -10,7 +10,7 @@ client.connect()
             id SERIAL PRIMARY KEY,
             name VARCHAR(256),
             born VARCHAR(256),
-            numAlbums INTEGER,
+            numalbums INTEGER,
             albums VARCHAR(256),
             aka VARCHAR(256),
             affiliates VARCHAR(256),

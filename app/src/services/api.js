@@ -13,3 +13,11 @@ export function addRappers(rapper) {
   })
     .then(response => response.json());
 }
+
+export function deleteRappers(rapper) {
+  return fetch('http://localhost:3000/api/rappers/' + rapper.id, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application.json' },
+  })
+    .then(response => response.json());
+}

@@ -32,40 +32,28 @@ app.post('/api/rappers', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO rappers (name, born, numAlbums, albums, aka, affiliates, dead)
+    INSERT INTO rappers (name, born, numalbums, albums, aka, affiliates, dead)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
   `,
-  [body.name, body.born, body.numAlbums, body.albums, body.aka, body.affiliates, body.dead]
+  [body.name, body.born, body.numalbums, body.albums, body.aka, body.affiliates, body.dead]
   ).then(result => {
     res.send(result.rows[0]);
   })
 
 });
 
-// {"name":"Kanye West","born":"Chicago, IL","numAlbums":8,
-// "albums":"The College Dropout, Graduation My Beautiful Dark Twisted Fantasy",
-//"aka":"Yeezus, Ye",
-// "affiliates":"Jay-Z, No I.D.","dead":false}
-
-app.use((req, res) => {
-  console.log(req.method, req.url, req.body.name);
-  res.send({ error: 'path not found ' });
-});
-
-app.delete('/api.rappers/:id', (req, res) => {
-  const params = req.params.id;
-  console.log(params);
-
+app.delete('/api/rappers/:id', (req, res) => {
   client.query(`
-    DELETE FROM rappers
-    WHERE id = $1
-  `)
-  
-  [params.id].then(result => {
-    res.send({ removed: true });
-  });
-
+  DELETE FROM rappers WHERE id=$1
+  `,
+  [req.params.id]
+  );
+  res.send({ removed: true });
 });
+// app.use((req, res) => {
+//   console.log(req.method, req.url, req.body.name);
+//   res.send({ error: 'path not found ' });
+// });
 
 app.listen(3000, () => console.log('app is doing stuff'));
