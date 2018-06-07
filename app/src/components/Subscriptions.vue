@@ -5,7 +5,7 @@
     <ul v-else class="list">
       <Subscription
         v-for="subscription in subscriptions"
-        :key="subscription.service"
+        :key="subscription.name"
         :subscription="subscription"
         :onRemove="handleRemove"
       />

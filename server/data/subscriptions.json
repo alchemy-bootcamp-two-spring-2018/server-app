@@ -1,21 +1,21 @@
 [
   {
-    "service": "Netflix",
+    "name": "Netflix",
     "price": 10,
     "ads": false
   },
   {
-    "service": "HBO Now",
+    "name": "HBO Now",
     "price": 15,
     "ads": false
   },
   {
-    "service": "Hulu",
+    "name": "Hulu",
     "price": 8,
     "ads": true
   },
   {
-    "service": "Amazon Prime Video",
+    "name": "Amazon Prime Video",
     "price": 9,
     "ads": false
   }

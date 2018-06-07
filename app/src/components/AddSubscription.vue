@@ -4,8 +4,8 @@
     <form @submit.prevent="handleSubmit">
       <label class="input-row">
         Name:
-        <input type="text" name="service" required
-        v-model="subscription.service">
+        <input type="text" name="name" required
+        v-model="subscription.name">
       </label>
 
       <label class="input-row">
@@ -38,7 +38,7 @@
 <script>
 const initSubscription = () => {
   return {
-    service: '',
+    name: '',
     price: '',
     ads: ''
   };

@@ -24,11 +24,11 @@ app.post('/api/subscriptions', (req, res) => {
   const body = req.body;
   
   client.query(`
-    INSERT INTO subscriptions (service, price, ads)
+    insert into subscriptions (name, price, ads)
     VALUES ($1, $2, $3)
     RETURNING *;
   `,
-  [body.service, body.price, body.ads]
+  [body.name, body.price, body.ads]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -44,6 +44,15 @@ app.delete('/api/subscriptions/:id', (req, res) => {
   [params.id]
   ).then(() => {
     res.send({ message: 'subscription deleted successfully!' });
+  });
+});
+
+app.get('/api/purposes', (req, res) => {
+
+  client.query(`
+    select * from purposes;
+  `).then(result => {
+    res.send(result.rows);
   });
 });
 
