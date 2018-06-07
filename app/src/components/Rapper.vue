@@ -2,6 +2,7 @@
   <li>
       <h2>{{ rapper.name }}</h2>
       <p>From: {{ rapper.born }}</p>
+      <p>Role: {{ rapper.position }}</p>
       <p>Studio Albums: {{ rapper.numalbums }}</p>
       <p>Notable albums: {{ rapper.albums }}</p>
       <p>Also known as: {{ rapper.aka }}</p>

@@ -21,8 +21,19 @@ client.connect(() => {
 app.get('/api/rappers', (req, res) => {
 
   client.query(`
-  
-  SELECT * from rappers;
+    SELECT rappers.id,
+      name,
+      born,
+      positions.id,
+      positions.position,
+      numalbums,
+      albums,aka,
+      affiliates,
+      dead
+    from rappers
+    join positions
+    on rappers.role_id = positions.id
+    order by rappers.name;
   `).then(result => {
     res.send(result.rows);
   });
@@ -32,16 +43,39 @@ app.post('/api/rappers', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO rappers (name, born, numalbums, albums, aka, affiliates, dead)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    INSERT INTO rappers (name, born, role_id, numalbums, albums, aka, affiliates, dead)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *;
   `,
-  [body.name, body.born, body.numalbums, body.albums, body.aka, body.affiliates, body.dead]
+  [body.name, body.born, body.role_id, body.numalbums, body.albums, body.aka, body.affiliates, body.dead]
   ).then(result => {
     res.send(result.rows[0]);
   })
 
 });
+
+app.put('/api/neighborhoods/:id', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    update rappers
+    set
+      name = $1,
+      born = $2,
+      role_id = $3,
+      numalbums = $4,
+      albums = $5,
+      aka = $6,
+      affiliates = $7, 
+      dead = $8
+    where id = $9
+    returning *;  
+  `,
+  [body.name, body.born, body.role_id, body.numalbums, body.albums, body.aka, body.affiliates, body.dead, req.params.id]
+  ).then(results => {
+    res.send(result.rows[0]);
+  });
+})
 
 app.delete('/api/rappers/:id', (req, res) => {
   client.query(`

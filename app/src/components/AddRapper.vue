@@ -14,6 +14,12 @@
               v-model="rapper.born"
               >
           </label>
+          <span>Role:</span>
+          <select v-model="rapper.role_id">
+              <option value='1'>Rapper</option>
+              <option value='2'>Producer</option>
+              <option value='3'>Rapper/Producer</option>
+          </select>
           <label>
               Total Studio Albums:
               <input type="number"
@@ -55,7 +61,8 @@
 const initRappers = () => {
   return {
     name: '',
-    from: '',
+    born: '',
+    role_id: '',
     numalbums: '',
     albums: '',
     aka: '',
