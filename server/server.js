@@ -22,6 +22,7 @@ app.get('/api/guitarists', (req, res) => {
 
 app.post('/api/guitarists', (req, res) => {
   const body = req.body;
+  console.log('guitarist:', req.body);
 
   client.query(`
     INSERT INTO guitarists (name, age, living, img_url)
@@ -34,13 +35,13 @@ app.post('/api/guitarists', (req, res) => {
     });
 });
 
-app.delete('/api/guitarists/', (req, res) => {
-  console.log(req);
+app.delete('/api/guitarists/:id', (req, res) => {
+  console.log(req.params);
 
   client.query(`
     DELETE FROM guitarists WHERE id=($1);
   `,
-  [req.body.id])
+  [req.params.id])
     .then(res.send({ removed: true }));
 });
 
