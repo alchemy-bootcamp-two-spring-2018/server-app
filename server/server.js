@@ -47,7 +47,7 @@ app.delete('/api/locations/:id', (req, res) => {
     DELETE FROM locations WHERE id =$1  
   `,
   [params.id]
-  ).then(result => {
+  ).then(() => {
     res.send({ removed: true });
   });
   

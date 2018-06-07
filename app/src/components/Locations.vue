@@ -1,6 +1,7 @@
 <template>
   <div class="all-locations">
     <h2>Alchemists About Town</h2>
+    <h4>Good spots in and near Portland to hang out and code</h4>
     <p v-if="!locations">Loading Reccommended Study Spots...</p>
     <ul v-else class="list">
       <Location
@@ -49,5 +50,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+
+.all-locations {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  color: #fff;
+  background-color: #39499B;
+  padding: 10px;
+  text-align: center;
+}
+
+h3{
+  padding-top: 60px;
+}
+
+h4 {
+  color: #00AA8F;
+  text-align: center;
+}
+
+li {
+  color: rgb(51, 51, 51);
+}
+
 
 </style>

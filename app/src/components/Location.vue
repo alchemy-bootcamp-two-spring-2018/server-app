@@ -5,11 +5,8 @@
       <p>Neighborhood: {{ location.neighborhood }}</p>
       <p>Power Outlets Available: {{ location.power }}</p>
       <p>Alchemist Rated: {{ location.rating }}</p>
-      <button
-        v-for="location in locations"
-        :key="location.id"
-        :location="location" 
-        @click="deleteLocation(location)">X</button>
+      <!-- TO DO:button -->
+      
   </div>  
 </template>
 
