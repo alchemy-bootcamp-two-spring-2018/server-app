@@ -16,6 +16,9 @@ export function addLocation(location){
     .then(response => response.json());
 }
 
-// export function deleteLocation(location){
-//   return fetch('')
-// }
+export function deleteLocation(location){
+  return fetch('http://localhost:3000/api/climbingLocations/' + location.id, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response => response.json());
+}

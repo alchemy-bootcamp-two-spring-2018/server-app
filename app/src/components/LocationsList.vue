@@ -17,7 +17,7 @@
 <script>
 import Location from './Location.vue';
 import AddLocation from './AddLocation.vue';
-import { getClimbingLocations, addLocation } from '../services/api.js';
+import { getClimbingLocations, addLocation, deleteLocation } from '../services/api.js';
 export default {
   data() {
     return {
@@ -35,13 +35,17 @@ export default {
     AddLocation
   },
   methods: {
-    handleDelete(location) {
-      console.log('i will delete' + location.id);
-    },
     handleAdd(location) {
       return addLocation(location)
         .then(saved => {
           this.locations.push(saved);
+        });
+    },
+    handleDelete(location) {
+      deleteLocation(location);
+      getClimbingLocations()
+        .then(locations => {
+          this.locations = locations;
         });
     }
   }
