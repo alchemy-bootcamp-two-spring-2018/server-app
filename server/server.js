@@ -49,13 +49,19 @@ app.post('/api/glucoselogs', (req, res) => {
 });
 
 //ADD app.delete
-// app.delete('/api/glucoseLogs', (req, res) => {
-//   console.log(req.params.id);
+app.delete('/api/glucoselogs/:id', (req, res) => {
+  console.log(req.params.id);
 
-//   //implement client query
+  client.query(`
+    DELETE FROM glucoselogs
+    WHERE id = $1;
+  `,
+  [req.params.id]
+  ).then(() => {
+    res.send({ removed: true });
+  });
 
-//   res.send({ removed: true });
-// });
+});
 
 //keeping this code just in case:
 /* app.use((req, res) => {

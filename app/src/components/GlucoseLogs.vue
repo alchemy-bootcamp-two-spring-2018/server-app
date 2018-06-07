@@ -3,30 +3,34 @@
     <h2>Daily Blood Glucose Log</h2>
     <ul class="list">
       <GlucoseLog
-        v-for="glucoseLog in glucoseLogs"
-        :key="glucoseLog.date"
-        :glucoseLog = "glucoseLog"
+        v-for="glucoselog in glucoselogs"
+        :key="glucoselog.id"
+        :glucoselog = "glucoselog"
+        :on-remove="handleRemove"
       />
     </ul>
-    <AddGlucoseLog :on-add="handleAdd"/>
+    <AddGlucoseLog 
+      :on-add="handleAdd"
+      
+    />
   </section>
 </template>
 
 <script>
 import GlucoseLog from './GlucoseLog';
 import AddGlucoseLog from './AddGlucoseLog.vue';
-import { getGlucoseLogs, addGlucoseLog } from '../services/api';
+import { getglucoselogs, addglucoselog, removeglucoselog } from '../services/api';
 
 export default {
   data() {
     return {
-      glucoseLogs: null
+      glucoselogs: null
     };
   },
   created() {
-    getGlucoseLogs()
-      .then(glucoseLogs => {
-        this.glucoseLogs = glucoseLogs;
+    getglucoselogs()
+      .then(glucoselogs => {
+        this.glucoselogs = glucoselogs;
       });
   },
   components: {
@@ -34,14 +38,22 @@ export default {
     AddGlucoseLog
   },
   methods: {
-    handleAdd(glucoseLog) {
-      return addGlucoseLog(glucoseLog)
+    handleAdd(glucoselog) {
+      return addglucoselog(glucoselog)
         .then(saved => {
-          this.glucoseLogs.push(saved);
+          this.glucoselogs.push(saved);
+        });
+    },
+    handleRemove(id) {
+      return removeglucoselog(id)
+        .then(() => {
+          const index = this.glucoselogs.findIndex(glucoselog => glucoselog.id === id);
+          if(index === -1) return;
+          this.glucoselogs.splice(index, 1);
         });
     }
   }
-}
+};
 </script>
 
 <style>

@@ -19,7 +19,7 @@ export default {
   components: {
     GlucoseLogs
   }
-}
+};
 </script>
 
 <style>

@@ -56,7 +56,7 @@
 
 <script>
 
-const initGlucoseLog = () => {
+const initglucoselog = () => {
   return {
     date: '',
     day: '',
@@ -79,15 +79,15 @@ export default {
   },
   data() {
     return {
-      glucoselog: initGlucoseLog()
+      glucoselog: initglucoselog()
     };
   },
   methods: {
     handleSubmit() {
       this.onAdd(this.glucoselog)
-      //this fires when save is complete and data added to glucoseLogs
+      //this fires when save is complete and data added to glucoselogs
         .then(() => {
-          this.glucoselog = initGlucoseLog();
+          this.glucoselog = initglucoselog();
         });
     }
   }

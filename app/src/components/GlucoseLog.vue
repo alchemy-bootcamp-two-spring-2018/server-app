@@ -1,24 +1,36 @@
 <template id="log-template">
   <article>
-    <h2>{{ glucoseLog.date }} {{ glucoseLog.day }}</h2>
+    <h2>{{ glucoselog.date }} {{ glucoselog.day }}</h2>
     <div>
-    <p>Changed insulin: {{ glucoseLog.changeinsulin }}</p>
-    <p>Before Breakfast: {{ glucoseLog.beforebreakfast }}</p>
-    <p>After Breakfast: {{ glucoseLog.afterbreakfast }}</p>
-    <p>Before Lunch: {{ glucoseLog.beforelunch }}</p>
-    <p>After Lunch: {{ glucoseLog.afterlunch }}</p>
-    <p>Before Dinner: {{ glucoseLog.beforedinner }}</p>
-    <p>After Dinner: {{ glucoseLog.afterdinner }}</p>
+    <p>Changed insulin: {{ glucoselog.changeinsulin }}</p>
+    <p>Before Breakfast: {{ glucoselog.beforebreakfast }}</p>
+    <p>After Breakfast: {{ glucoselog.afterbreakfast }}</p>
+    <p>Before Lunch: {{ glucoselog.beforelunch }}</p>
+    <p>After Lunch: {{ glucoselog.afterlunch }}</p>
+    <p>Before Dinner: {{ glucoselog.beforedinner }}</p>
+    <p>After Dinner: {{ glucoselog.afterdinner }}</p>
     </div>
+    <p>
+      <button @click="handleClick">remove this log</button>
+    </p>
   </article>
 </template>
 
 <script>
 
 export default {
-  props: ['glucoseLog'],
-  //add computed data here?
-}
+  props: [
+    'glucoselog',
+    'onRemove'
+  ],
+  methods: {
+    handleClick() {
+      if(confirm(`Are you sure you want to remove ${this.glucoselog.date}?`)) {
+        this.onRemove(this.glucoselog.id);
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>
