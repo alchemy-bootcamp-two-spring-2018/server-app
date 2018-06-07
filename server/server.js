@@ -11,8 +11,10 @@ const databaseUrl = 'postgres://localhost:5432/bg';
 const client = new Client(databaseUrl);
 client.connect();
 
+const API_URL = '/api/boardGames'
+const API_URL_ID = '/api/boardGames/:id'
 
-app.get('/api/boardGames', (req, res) => {
+app.get(API_URL, (req, res) => {
   client.query(`
     SELECT bg.id, name, published, c.id as "categoryID", c.category, min_players as "minPlayers", max_players as "maxPlayers", avg_playing_time as "avgPlayingTime", description, owned
       FROM boardgames bg
@@ -25,7 +27,7 @@ app.get('/api/boardGames', (req, res) => {
 });
 
 
-app.post('/api/boardGames', (req, res) => {
+app.post(API_URL, (req, res) => {
   const body = req.body;
 
   client.query(`
@@ -39,7 +41,33 @@ app.post('/api/boardGames', (req, res) => {
   });
 });
 
-app.delete('/api/boardGames/:id', (req, res) => {
+
+app.put(API_URL_ID, (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    UPDATE boardgames
+    SET
+      name = $1,
+      published = $2,
+      category_id = $3,
+      min_players = $4,
+      max_players = $5,
+      avg_playing_time = $6,
+      description = $7,
+      owned = $8
+    WHERE id = $9
+    returning *;
+  `,
+  [body.name, body.published, body.categoryID, body.minPlayers, body.maxPlayers, body.avgPlayingTime, body.description, body.owned, req.params.id]
+  )
+    .then(result => {
+      res.send(result.rows[0]);
+    });
+});
+
+
+app.delete(API_URL_ID, (req, res) => {
   const params = req.params;
 
   client.query(`
