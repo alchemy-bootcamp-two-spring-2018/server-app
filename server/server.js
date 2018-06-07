@@ -39,6 +39,11 @@ app.post('/api/motorcycles', (req, res) => {
 });
 
 app.delete('/api/motorcycles/:id', (req, res) => {
+  
+  client.query(`
+    DELETE FROM motorcycles
+    WHERE "shouldDelete" = true;
+  `);
   console.log(req.params.id);
   res.send({ removed: true });
 });
