@@ -1,3 +1,7 @@
+
+const URL = 'http://localhost:3000/api';
+const LOCATIONS_URL = `${URL}/neighborhoods`;
+
 export function getLocations() {
   return fetch('http://localhost:3000/api/locations', {
     headers: { 'Content-Type': 'application/json' }
@@ -14,3 +18,9 @@ export function addLocation(location) {
     .then(response => response.json());
 }
 
+export function removeLocation(id) {
+  return fetch(`${LOCATIONS_URL}/${id}`, {
+    method: 'DELETE'
+  })
+    .then(response => response.json());
+}

@@ -2,7 +2,9 @@
   <section class="add-location-data">
     <hr>
     <h3>Share your favorite spot to study and code</h3>
+
     <form @submit.prevent="handleSubmit">
+
       <label> Location Name:
         <input type="text" name="name" placeholder="Name" required
           v-model="location.name">
@@ -17,12 +19,12 @@
         <input type="text" name="neighborhood" placeholder="Neighborhood" required
           v-model="location.neighborhood">
       </label>
-      <!-- add radio buttons -->
-      <!-- <label>
-        <input type="text" name="power" placeholder="Are outlets available?" required
-          v-model="location.power">
-      </label> -->
-      <label> Rate on a scale of 1 to 5:
+
+      <label>Power Outlets Available?</label>
+        <input type="checkbox" name="power" placeholder="power" v-model="location.power">
+        <label for="checkbox">Yes</label>
+
+      <label> Rate on a scale of 1(meh) to 5(great):
         <input type="number" name="rating" placeholder="" id="rate" required
           v-model="location.rating">
       </label>
@@ -30,6 +32,7 @@
       <label>
         <button type="submit">Add</button>
       </label>
+
     </form>    
   </section>
 </template>
@@ -41,8 +44,8 @@ const initLocation = () => {
     name: '',
     description: '',
     neighborhood: '',
-    // power: '',
-    rating:''
+    rating:'',
+    power: false
   };
   
 };
