@@ -26,12 +26,12 @@ app.post('/api/podcasts', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO podcasts (name, publisher, averageMinutes, category, NSFW, description)
+    INSERT INTO podcasts (name, publisher, averageminutes, category, nsfw, description)
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
   `,
 
-  [body.name, body.publisher, body.averageMinutes, body.category, body.NSFW, body.description]
+  [body.name, body.publisher, body.averageminutes, body.category, body.nsfw, body.description]
   ).then(result => {
     res.send(result.rows[0]);
   });

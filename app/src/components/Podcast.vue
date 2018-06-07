@@ -2,9 +2,9 @@
     <article>
         <h3>{{ podcast.name }}</h3>
         <p>Published by: {{ podcast.publisher }}</p>
-        <p>Length (average minutes): {{ podcast.averageMinutes }}</p>
+        <p>Length (average minutes): {{ podcast.averageminutes }}</p>
         <p>Category: {{ podcast.category }}</p> 
-        <p>NSFW?: {{ podcast.NSFW }}</p>
+        <p>NSFW? (not safe for work): {{ podcast.nsfw }}</p>
         <p>Description: {{ podcast.description }}</p>
     </article>
 </template>

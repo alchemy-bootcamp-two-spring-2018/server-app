@@ -11,9 +11,9 @@ client.connect()
         id SERIAL PRIMARY KEY,
         name VARCHAR(256),
         publisher VARCHAR(256),
-        averageMinutes INTEGER,
+        averageminutes INTEGER,
         category VARCHAR(256),
-        NSFW BOOLEAN,
+        nsfw BOOLEAN,
         description VARCHAR(1024)
       );
     `);

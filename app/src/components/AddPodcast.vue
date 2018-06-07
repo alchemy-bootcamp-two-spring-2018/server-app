@@ -16,8 +16,8 @@
 
             <label>
                 Length(average minutes):
-                <input type="text" name="averageMinutes" placeholder="Average minutes" required
-                    v-model="podcast.averageMinutes">
+                <input type="text" name="averageminutes" placeholder="Average minutes" required
+                    v-model="podcast.averageminutes">
             </label>
 
             <label>
@@ -27,9 +27,9 @@
             </label>
 
             <label>
-                NSFW?
-                <input type="text" name="NSFW" placeholder="NSFW? true or false" required
-                    v-model="podcast.NSFW">
+                NSFW? (not safe for work)
+                <input type="text" name="nsfw" placeholder="True or False" required
+                    v-model="podcast.nsfw">
             </label>
 
             <label>
@@ -51,9 +51,9 @@ const initPodcast = () => {
   return {
     name: '',
     publisher: '',
-    averageMinutes: '',
+    averageminutes: '',
     category: '',
-    NSFW: '',
+    nsfw: '',
     description: ''
   };
 };
