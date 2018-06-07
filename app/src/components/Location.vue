@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     handleDelete() {
-      this.onDelete(this.location)
+      this.onDelete(this.location);
       return (this.location.id);
     }
   }
