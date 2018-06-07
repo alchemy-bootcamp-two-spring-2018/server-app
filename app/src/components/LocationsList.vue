@@ -42,11 +42,9 @@ export default {
         });
     },
     handleDelete(location) {
-      deleteLocation(location);
-      getClimbingLocations()
-        .then(locations => {
-          this.locations = locations;
-        });
+      return deleteLocation(location)
+        .then(this.locations = this.locations.filter(item => item.id !== location.id));
+
     }
   }
 };

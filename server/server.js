@@ -44,7 +44,7 @@ app.delete('/api/climbingLocations/:id', (req, res) => {
   `,
   [params.id]
   ).then(() => {
-    res.send({ removed: req.params.id });
+    res.send({ removed: true });
   });
 });
 
