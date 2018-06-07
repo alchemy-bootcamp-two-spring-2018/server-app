@@ -7,3 +7,10 @@
     </article>
 </template>
 
+<script>
+
+    export default {
+        props: ['shop'],
+    };
+
+</script>

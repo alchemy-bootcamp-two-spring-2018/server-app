@@ -8,6 +8,7 @@
             :key="shop.name"
             :shop="shop"
         />
+    </ul>   
 </section>
 </template>
 
@@ -18,7 +19,7 @@ import { getShops } from '../services/api';
 export default {
     data() {
         return {
-            neighborhoods: null
+            shops: null
         };
     },
     created() {
