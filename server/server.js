@@ -42,10 +42,15 @@ app.post('/api/meleeCharacters', (req, res) => {
 
 app.delete('/api/meleeCharacters/:id', (req, res) => {
   console.log(req.params.id);
-
   //run client query
-
-  res.send({ remove: true });
+  client.query(`
+    DELETE FROM meleeCharacters
+    WHERE id=$1
+  `,
+  [req.params.id]
+  ).then(() => {
+    res.send({ remove: true });
+  });
 });
 
 //run server

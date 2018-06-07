@@ -6,17 +6,21 @@
         v-for="character in meleeCharacters"
         :key="character.name"
         :character="character"
+        :on-remove="handleRemove"
       />
     </ul>
-    <add-character :on-add="handleAdd"/>
-  </section>
 
+
+    <character-form
+      label="Add"
+      :on-edit="handleAdd"/>
+  </section>
 
 </template>
 
 <script>
-import AddCharacter from './AddCharacter.vue';
-import { getMeleeCharacters, addMeleeCharacter } from '../services/api.js';
+import CharacterForm from './CharacterForm.vue';
+import { getMeleeCharacters, addMeleeCharacter, removeMeleeCharacter } from '../services/api.js';
 import Character from './Character.vue';
 
 export default {
@@ -33,13 +37,21 @@ export default {
   },
   components: {
     Character,
-    AddCharacter
+    CharacterForm
   },
   methods: {
-    handleAdd(character) {
-      return addMeleeCharacter(character)
+    handleAdd(meleeCharacter) {
+      return addMeleeCharacter(meleeCharacter)
         .then(saved => {
           this.meleeCharacters.push(saved);
+        });
+    },
+    handleRemove(id) {
+      return removeMeleeCharacter(id)
+        .then(() => {
+          const index = this.meleeCharacters.findIndex(character => character.id === id);
+          if(index === -1) return;
+          this.meleeCharacters.splice(index, 1);
         });
     }
   }

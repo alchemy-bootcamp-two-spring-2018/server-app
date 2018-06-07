@@ -1,14 +1,19 @@
 <template>
-  <ul>
-    <h3>{{character.name}}</h3>
-    <li>From {{character.universe}}</li>
-    <li>{{difficultyLevel() + 'and' + canWalljump()}}</li>
-  </ul>
+  <div>
+    <ul>
+      <h3>{{character.name}}</h3>
+      <li>From {{character.universe}}</li>
+      <li>{{difficultyLevel() + 'and' + canWalljump()}}</li>
+    <p>
+      <button @click="handleClick">Delete</button>
+    </p>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['character'],
+  props: ['character', 'onRemove'],
 
   methods: {
     canWalljump: function() {
@@ -35,6 +40,11 @@ export default {
         case 9:
         case 10:
           return this.character.name + ' is very hard to control ';
+      }
+    },
+    handleClick() {
+      if(confirm(`Delete ${this.character.name}?`)) {
+        this.onRemove(this.character.id);
       }
     }
   }

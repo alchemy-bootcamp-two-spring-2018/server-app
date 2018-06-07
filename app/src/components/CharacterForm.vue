@@ -43,7 +43,7 @@ const initCharacter = () => {
 
 export default {
   props: {
-    onAdd: {
+    onEdit: {
       type: Function,
       required: true
     }
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.character)
+      this.onEdit(this.character)
         .then(() => {
           this.character = initCharacter();
         });
