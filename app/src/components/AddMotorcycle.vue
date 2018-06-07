@@ -33,7 +33,7 @@
 
       <label>
         For Sale:
-        <input type="checkbox" name="sold" v-model="motorcycle.forSale">
+        <input type="checkbox" name="available" v-model="motorcycle.available">
       </label>
 
       <label>
@@ -56,8 +56,8 @@ const initMotorcycle = () => {
     make: '',
     model: '',
     color: 'Red',
-    forSale: false,
-    shouldDelete: false
+    available: false,
+    delete: false
   };
 };
 

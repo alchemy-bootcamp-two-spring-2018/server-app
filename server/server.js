@@ -27,11 +27,11 @@ app.post('/api/motorcycles', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO motorcycles (year, make, model, color, forSale)
+    INSERT INTO motorcycles (year, make, model, color, available, delete)
     VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
   `,
-  [body.year, body.make, body.model, body.color, body.forSale]
+  [body.year, body.make, body.model, body.color, body.available, body.delete]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -42,10 +42,12 @@ app.delete('/api/motorcycles/:id', (req, res) => {
   
   client.query(`
     DELETE FROM motorcycles
-    WHERE "shouldDelete" = true;
-  `);
-  console.log(req.params.id);
-  res.send({ removed: true });
+    WHERE delete = true;
+  `).then(() => {
+    console.log(req.params.id);
+    res.send({ removed: true });
+  });
+  
 });
 
 app.listen(3000, () => console.log('Application is running...'));

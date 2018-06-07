@@ -12,8 +12,8 @@ client.connect()
         make VARCHAR(256),
         model VARCHAR(256),
         color VARCHAR(256),
-        forSale BOOLEAN,
-        shouldDelete BOOLEAN
+        available BOOLEAN,
+        delete BOOLEAN
       );
     `);
   })
