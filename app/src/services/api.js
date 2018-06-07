@@ -12,8 +12,7 @@ export function addLocation(location){
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(location)
-  })
-    .then(response => response.json());
+  }).then(response => response.json());
 }
 
 export function deleteLocation(location){
