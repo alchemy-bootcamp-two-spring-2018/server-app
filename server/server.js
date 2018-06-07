@@ -51,9 +51,6 @@ app.delete('/api/rappers/:id', (req, res) => {
   );
   res.send({ removed: true });
 });
-// app.use((req, res) => {
-//   console.log(req.method, req.url, req.body.name);
-//   res.send({ error: 'path not found ' });
-// });
+
 
 app.listen(3000, () => console.log('app is doing stuff'));
