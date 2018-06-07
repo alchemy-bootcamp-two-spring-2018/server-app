@@ -14,9 +14,8 @@ client.connect()
         minPlayers INTEGER,
         maxPlayers INTEGER,
         avgPlayingTime INTEGER,
-        description VARCHAR(1024),
+        description VARCHAR(512),
         owned BOOLEAN
-
       );
     `);
   })
