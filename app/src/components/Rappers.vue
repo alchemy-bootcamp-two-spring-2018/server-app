@@ -46,10 +46,10 @@ export default {
       });
     },
     handleDelete(rapper) {
-      console.log('this is in rappers', rapper)
+      console.log('this is in rappers', rapper.id)
       return deleteRappers(rapper)
       .then(() => {
-          this.rappers = rappers;
+          this.rappers.splice(this.rappers[rapper.id], 1, );
         });
       }
     }

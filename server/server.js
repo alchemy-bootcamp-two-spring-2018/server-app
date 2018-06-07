@@ -48,8 +48,9 @@ app.delete('/api/rappers/:id', (req, res) => {
   DELETE FROM rappers WHERE id=$1
   `,
   [req.params.id]
-  );
-  res.send({ removed: true });
+  ).then(() => {
+    res.send({ removed: true });
+  });
 });
 
 
