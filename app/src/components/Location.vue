@@ -2,7 +2,7 @@
   <div class="location">
     <button @click="handleDelete">Delete</button>
     <div>
-    <img :src="location.image">
+    <!-- <img :src="location.image"> -->
     <h2>{{location.name}}.</h2>
     <p><strong>Location: {{location.location}}</strong></p>
     <p><strong>Elevation: {{location.elevation}}ft.</strong></p>
