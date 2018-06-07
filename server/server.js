@@ -35,4 +35,17 @@ app.post('/api/climbingLocations', (req, res) => {
   });
 });
 
+app.delete('/api/climbingLocations/:id', (req, res) => {
+  console.log(req.params.id);
+  const params = req.params;
+  client.query(`
+  DELETE FROM climbinglocations
+  WHERE id = $1
+  `,
+  [params.id]
+  ).then(() => {
+    res.send({ removed: req.params.id });
+  });
+});
+
 app.listen(3000);
