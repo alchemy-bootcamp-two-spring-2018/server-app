@@ -1,6 +1,6 @@
 <template>
   <div class="location">
-    <button>Delete</button>
+    <button @click="handleDelete">Delete</button>
     <div>
     <img :src="location.image">
     <h2>{{location.name}}.</h2>
@@ -14,8 +14,21 @@
 
 <script>
 export default {
-
-  props: ['location']
+  props: {
+    location: {
+      type: Object
+    },
+    onDelete: {
+      type: Function,
+      required: true
+    }
+  },
+  methods: {
+    handleDelete() {
+      this.onDelete(this.location)
+      return (this.location.id);
+    }
+  }
 };
 </script>
 

@@ -5,6 +5,7 @@
         v-for="location in locations"
         :key="location.name"
         :location="location"
+        :on-delete="handleDelete"
       />
     </div>
     <div class="add-location">
@@ -35,10 +36,8 @@ export default {
   },
   methods: {
     handleDelete(location) {
-      return deleteLocation(location.id).then(saved => {
-          
-      });
-    }
+      console.log('i will delete' + location.id);
+    },
     handleAdd(location) {
       return addLocation(location)
         .then(saved => {

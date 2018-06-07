@@ -15,3 +15,7 @@ export function addLocation(location){
   })
     .then(response => response.json());
 }
+
+// export function deleteLocation(location){
+//   return fetch('')
+// }
