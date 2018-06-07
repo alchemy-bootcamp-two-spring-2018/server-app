@@ -18,7 +18,7 @@ export function removeSubscription(subscription) {
   return fetch('http://localhost:3000/api/subscriptions', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(subscription)
+    params: JSON.stringify(subscription.id)
   })
     .then(response => response.json());
 }

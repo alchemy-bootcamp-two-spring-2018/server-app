@@ -34,15 +34,16 @@ app.post('/api/subscriptions', (req, res) => {
   });
 });
 
-app.delete('/api/subscriptions/:id', (req, res) => {
+app.delete('/api/subscriptions/id', (req, res) => {
   const id = req.params.id;
-  
+
   client.query(`
-    DELETE FROM subscriptions WHERE id = $1;
+    DELETE FROM subscriptions 
+    WHERE id = $1;
   `,
   [id]
   ).then(() => {
-    res.send({ removed: req.params.id });
+    res.send({ message: 'subscription deleted successfully!' });
   });
 });
 
