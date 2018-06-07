@@ -16,7 +16,7 @@
 
       <label>
         Year Released:
-        <input type="text" name="year" placeholder="Year" required
+        <input type="number" name="year" placeholder="Year" required
         v-model="game.year">
       </label>
 
