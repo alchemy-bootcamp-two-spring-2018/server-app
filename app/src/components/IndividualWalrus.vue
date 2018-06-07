@@ -14,6 +14,7 @@
 <script>
 export default {
   props: ['walrus'],
+  onRemove,
   methods: {
     deleteWalrus() {
       console.log('into delete walrus');

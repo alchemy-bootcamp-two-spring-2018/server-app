@@ -9,6 +9,7 @@
         v-for="walrus in walruses"
         :key="walrus.name"
         :walrus="walrus"
+        :on-remove="handleRemove"
         />
     </div>
     
