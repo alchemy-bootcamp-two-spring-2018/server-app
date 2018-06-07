@@ -26,6 +26,7 @@
           v-model="amp.tubes">
       </label>
       <button type="submit">Add Amp</button>
+      <button type="delete">Delete</button>
     </form>
   </section>
 </template>

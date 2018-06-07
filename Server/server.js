@@ -39,7 +39,7 @@ app.post('/api/amps', (req, res) => {
     VALUES ($1, $2, $3, $4)
     RETURNING *;
     `,
-  [body.name, body.country, body.introduced, body.description]
+  [body.name, body.country, body.introduced, body.tubes]
   ).then(result => {
     res.send(result.rows[0]);
   })

@@ -14,6 +14,6 @@ client.connect()
     () => console.log('drop tables complete'),
     err => console.log(err)
   )
-  .then(() => {
+  .then(() => {code .client
     client.end();
   });
