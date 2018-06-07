@@ -27,11 +27,11 @@ app.get('/api/walruses', (req, res) => {
 app.post('/api/walruses', (req, res) => {
   const body = req.body;
   client.query (`
-    INSERT INTO walruses (name, weight, type, fictional, description)
-    VALUES ($1, $2, $3, $4, $5)
+    INSERT INTO walruses (name, weight, type, url, photo_url, fictional, description)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
   `,
-  [body.name, body.weight, body.type, body.fictional, body.description]
+  [body.name, body.weight, body.type, body.url, body.photo_url, body.fictional, body.description]
   ).then (result => {
     res.send(result.rows[0]);
   });
