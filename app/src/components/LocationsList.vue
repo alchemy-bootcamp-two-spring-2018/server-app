@@ -34,6 +34,11 @@ export default {
     AddLocation
   },
   methods: {
+    handleDelete(location) {
+      return deleteLocation(location.id).then(saved => {
+          
+      });
+    }
     handleAdd(location) {
       return addLocation(location)
         .then(saved => {
