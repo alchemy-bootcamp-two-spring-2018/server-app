@@ -15,7 +15,7 @@ client.query(`
     min_players INTEGER,
     max_players INTEGER,
     avg_playing_time INTEGER,
-    description VARCHAR(512),
+    description VARCHAR(1024),
     owned BOOLEAN
   );
 `)

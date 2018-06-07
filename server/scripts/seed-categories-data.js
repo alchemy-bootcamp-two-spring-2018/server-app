@@ -12,8 +12,7 @@ Promise.all(
   })
 )
   .then(
-    () => console.log('seed data load successful'),
+    () => console.log('seed categories data load successful'),
     err => console.log(err)
-
   )
   .then(() => client.end());
