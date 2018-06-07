@@ -4,7 +4,7 @@ client.connect()
   .then(() => {
     return client.query(`
       DROP TABLE IF EXISTS motorcycles;
-      DROP TABLE IF EXISTS quadrants;
+      DROP TABLE IF EXISTS mototypes;
     `);
   })
   .then(
