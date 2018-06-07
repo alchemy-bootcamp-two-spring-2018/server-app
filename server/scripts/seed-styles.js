@@ -2,12 +2,12 @@ const client = require('../db-client');
 const climbStyles = require('./climb-styles.json');
 
 Promise.all(
-  climbStyles.map(location => {
+  climbStyles.map(style => {
     return client.query(`
       INSERT INTO climbingstyles (type)
       VALUES ($1);
       `,
-    [location.type]
+    [style.type]
     ).then(result => result.rows[0]);
   })
 )

@@ -1,4 +1,4 @@
-const DATABASE_URL = 'postgres://localhost:5432/climbingLocations';
+const DATABASE_URL = 'postgres://localhost:5432/timetoclimb';
 const pg = require('pg');
 const Client = pg.Client;
 

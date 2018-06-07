@@ -14,19 +14,23 @@ client.connect();
 
 app.get('/api/climbingLocations/', (req, res) => {
   client.query(`
-    SELECT * from climbinglocations;
+    SELECT cl.id,
+    name,
+    type
+    FROM climbinglocations cl
+    JOIN climbingstyles cs
+    ON cl.location_id = cs.id;
   `).then(result => {
     res.send(result.rows);
   });
 });
-
 
 app.post('/api/climbingLocations', (req, res) => {
   const body = req.body;
   
   client.query(`
     INSERT INTO climbinglocations (name, location, elevation, yearRoundClimbing, description)
-    VALUES ($1, $2, $3, $4, $5,)
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
   `, 
   [body.name, body.image, body.location, body.elevation, body.yearRoundClimbing, body.description]
@@ -48,4 +52,4 @@ app.delete('/api/climbingLocations/:id', (req, res) => {
   });
 });
 
-app.listen(3000);
+app.listen(3000, () => console.log('app running...'));
