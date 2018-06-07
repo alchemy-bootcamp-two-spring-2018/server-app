@@ -40,9 +40,10 @@ export default {
     },
     handleDelete(boardGame) {
       return deleteBoardGame(boardGame)
-        .then(
-          this.boardGames = this.boardGames.splice(boardGame.id, 1)
-        );
+        .then(getBoardGames()
+          .then(boardGames => {
+            this.boardGames = boardGames;
+          }));
     }
   }
 };
