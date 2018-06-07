@@ -9,6 +9,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS subscriptions (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256),
+    purpose_id INTEGER NOT NULL REFERENCES purposes(id),
     price INTEGER,
     ads BOOLEAN
   );

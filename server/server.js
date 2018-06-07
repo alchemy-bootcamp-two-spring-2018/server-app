@@ -14,7 +14,16 @@ client.connect();
 app.get('/api/subscriptions', (req, res) => {
   
   client.query(`
-    SELECT * FROM subscriptions;
+    select s.id,
+      s.name,
+      p.id as "purposeId",
+      p.name,
+      price,
+      ads
+    from subscriptions s
+    join purposes p
+    on s.purpose_id = p.id
+    order by s.name;
   `).then(result => {
     res.send(result.rows);
   });
@@ -25,8 +34,8 @@ app.post('/api/subscriptions', (req, res) => {
   
   client.query(`
     insert into subscriptions (name, price, ads)
-    VALUES ($1, $2, $3)
-    RETURNING *;
+    values ($1, $2, $3)
+    returning *;
   `,
   [body.name, body.price, body.ads]
   ).then(result => {
@@ -34,12 +43,20 @@ app.post('/api/subscriptions', (req, res) => {
   });
 });
 
+// app.put('/api/subscriptions/:id', (req, res) => {
+//   const body = req.body;
+
+//   client.query(`
+//     update subscriptions
+//   `)
+// })
+
 app.delete('/api/subscriptions/:id', (req, res) => {
   const params = req.params;
 
   client.query(`
-    DELETE FROM subscriptions 
-    WHERE id = $1;
+    delete from subscriptions 
+    where id = $1;
   `,
   [params.id]
   ).then(() => {
