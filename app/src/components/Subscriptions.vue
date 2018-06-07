@@ -44,10 +44,7 @@ export default {
     },
     handleRemove(subscription) {
       return removeSubscription(subscription)
-        .then(getSubscriptions()
-          .then (subscriptions => {
-            this.subscriptions = subscriptions;
-          }));
+        .then(this.subscriptions = this.subscriptions.filter(item => item.id !== subscription.id));
     }
   }
 };
