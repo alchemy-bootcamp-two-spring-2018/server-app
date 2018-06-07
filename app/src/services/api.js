@@ -15,10 +15,9 @@ export function addSubscription(subscription) {
 }
 
 export function removeSubscription(subscription) {
-  return fetch('http://localhost:3000/api/subscriptions', {
+  return fetch('http://localhost:3000/api/subscriptions/' + subscription.id, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
-    params: JSON.stringify(subscription.id)
   })
     .then(response => response.json());
 }

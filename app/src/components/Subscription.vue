@@ -11,9 +11,7 @@
 
 export default {
   props: {
-    subscription: {
-      type: Object
-    },
+    subscription: Object,
     onRemove: {
       type: Function,
       required: true
@@ -26,8 +24,7 @@ export default {
   },
   methods: {
     handleDelete() {
-      this.onRemove(this.subscription.id);
-      // console.log('woo');
+      this.onRemove(this.subscription);
     }
   }
 };

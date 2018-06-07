@@ -44,9 +44,10 @@ export default {
     },
     handleRemove(subscription) {
       return removeSubscription(subscription)
-        .then(removed => {
-          this.subscriptions.splice(removed, 1);
-        });
+        .then(getSubscriptions()
+          .then (subscriptions => {
+            this.subscriptions = subscriptions;
+          }));
     }
   }
 };
