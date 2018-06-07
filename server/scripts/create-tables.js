@@ -1,22 +1,23 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://postgres:1234@localhost:5432/npr';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS programs (
-        id SERIAL PRIMARY KEY,
-        title VARCHAR(256),
-        host VARCHAR(256),
-        audienceSize INTEGER,
-        yearStarted INTEGER,
-        daily BOOLEAN,
-        description VARCHAR(4096)
-      );
-    `);
-  })
+client.query(`
+
+  CREATE TABLE IF NOT EXISTS genres (
+    id SERIAL PRIMARY KEY,
+    genre VARCHAR(256)
+  );
+
+  CREATE TABLE IF NOT EXISTS programs (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(256),
+    host VARCHAR(256),
+    audienceSize INTEGER,
+    yearStarted INTEGER,
+    daily BOOLEAN,
+    genre_id INTEGER NOT NULL REFERENCES genres(id),
+    description VARCHAR(4096)
+  );
+`)
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)

@@ -1,3 +1,10 @@
+export function getGenres() {
+  return fetch('http://localhost:3000/api/genres', {
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json());
+}
+
 export function getPrograms() {
   return fetch('http://localhost:3000/api/programs', {
     headers: { 'Content-Type': 'application/json' }

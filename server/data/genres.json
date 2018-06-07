@@ -1,0 +1,20 @@
+[
+  {
+    "genre": "news"
+  },
+  {
+    "genre": "humor"
+  },
+  {
+    "genre": "interviews"
+  },
+  {
+    "genre": "music"
+  },
+  {
+    "genre": "science"
+  },
+  {
+    "genre": "economics"
+  }
+]
