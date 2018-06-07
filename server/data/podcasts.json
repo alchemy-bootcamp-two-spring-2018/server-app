@@ -32,14 +32,6 @@
     "description": "Phoebe Robinson and Jessica Williams are funny. They're black. They're BFFs. And they host a live comedy show in Brooklyn. Join the 2 Dope Queens, along with their favorite comedians, for stories about sex, romance, race, hair journeys, living in New York, and Billy Joel. Plus a whole bunch of other s**t."
   },
   {
-    "name": "Music Thing",
-    "publisher": "My Brain",
-    "averageMinutes": "32",
-    "category": "music",
-    "NSFW": "false",
-    "description": "random music thing"
-  },
-  {
     "name": "Test",
     "publisher": "testington",
     "averageMinutes": "45",
