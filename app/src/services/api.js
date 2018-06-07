@@ -15,3 +15,12 @@ export function addFruit(fruit) {
 })
     .then(response => response.json());
 }
+
+export function deleteFruit(fruit) {
+    return fetch('http://localhost:3000/api/fruits', {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(fruit)
+  })
+      .then(response => response.json());
+  }

@@ -5,7 +5,7 @@
   <ul v-else class="list">
     <Fruit
       v-for="fruit in fruits"
-      :key="fruit.name"
+      :key="fruit.id"
       :fruit="fruit"
     />
   </ul>
