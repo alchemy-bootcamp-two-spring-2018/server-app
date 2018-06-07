@@ -38,7 +38,7 @@ app.post('/api/motorcycles', (req, res) => {
 
 });
 
-app.delete('/api/motorcycles/:id', (req, res) => {
+app.delete('/api/motorcycles/', (req, res) => {
 
   client.query(`
     DELETE FROM motorcycles WHERE id = ($1);

@@ -65,6 +65,7 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   margin: 10px;
+  width: 800px;
 }
 
 </style>
