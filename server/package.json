@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:watch": "nodemon server.js",
     "start": "node server.js"
-    
   },
   "author": "Zack",
   "license": "ISC",

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img id="logo" src="./assets/Sip-Logo.jpg">
     <main>
       <shops/>
     </main>
@@ -26,5 +26,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#logo {
+  height: 50%;
+  width: 50%;
 }
 </style>
