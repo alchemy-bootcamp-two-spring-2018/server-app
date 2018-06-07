@@ -43,9 +43,10 @@ app.delete('/api/motorcycles/', (req, res) => {
   client.query(`
     DELETE FROM motorcycles WHERE id = ($1);
   `,
-  [req.body.id]);
-
-  res.send({ removed: true });
+  [req.body.id]
+  ).then(() => {
+    res.send({ removed: true });
+  });
 });
 
 app.listen(3000, () => console.log('Application is running...'));
