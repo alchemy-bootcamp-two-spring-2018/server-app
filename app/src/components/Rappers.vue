@@ -46,11 +46,8 @@ export default {
       });
     },
     handleDelete(rapper) {
-      console.log('this is in rappers', rapper.id)
       return deleteRappers(rapper)
-      .then(() => {
-          this.rappers.splice(this.rappers[rapper.id], 1, );
-        });
+				.then(this.rappers = this.rappers.filter(item => item.id !== rapper.id));;
       }
     }
   }

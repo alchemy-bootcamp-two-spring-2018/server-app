@@ -7,6 +7,7 @@ client.connect()
   .then(() => {
     return client.query(`
       DROP TABLE IF EXISTS rappers;
+      DROP TABLE IF EXISTS positions;
     `);
   })
   .then(

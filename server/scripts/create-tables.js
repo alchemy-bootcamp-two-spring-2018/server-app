@@ -6,6 +6,11 @@ const client = new Client(databaseUrl);
 client.connect()
   .then(() => {
       return client.query(`
+        CREATE TABLE IF NOT EXISTS positions (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(256) NOT NULL
+        );
+
         CREATE TABLE IF NOT EXISTS rappers (
             id SERIAL PRIMARY KEY,
             name VARCHAR(256),
