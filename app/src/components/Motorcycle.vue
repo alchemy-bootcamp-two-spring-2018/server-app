@@ -7,7 +7,7 @@
     <p v-if="motorcycle.available">Status: FOR SALE!</p>
     <p v-else>Status: Contact us for availability</p>
     <p>Delete:
-      <input @click="handleDelete()" type="checkbox" name="delete" v-model="motorcycle.delete">
+      <input @click="handleDelete()" type="checkbox" name="delete">
     </p>
   </div>
 </template>

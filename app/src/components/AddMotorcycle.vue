@@ -53,7 +53,6 @@ const initMotorcycle = () => {
     model: '',
     color: 'Red',
     available: false,
-    delete: false
   };
 };
 
