@@ -39,6 +39,19 @@ app.post('/api/games', (req, res) => {
   });
 });
 
+app.delete('/api/games/:id', (req, res) => {
+  console.log(req.params.id);
+
+  client.query(`
+    DELETE FROM games
+    WHERE id = $1
+  `).then(result => {
+    res.send({ removed: true });
+  });
+
+  // implement client query
+  
+});
 
 //this starts "listening" and (run) the app (server)
 app.listen(3000, () => console.log('app running...'));
