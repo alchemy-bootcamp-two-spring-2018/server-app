@@ -29,20 +29,19 @@ app.post('/api/guitarists', (req, res) => {
     RETURNING *;
   `,
   [body.name, body.age, body.living, body.img_url])
-    .then(data => {
-      res.send(data.rows[0]);
+    .then(() => {
+      res.send({ added: true });
     });
 });
 
 app.delete('/api/guitarists/', (req, res) => {
-  // console.log(req);
+  console.log(req);
 
   client.query(`
     DELETE FROM guitarists WHERE id=($1);
   `,
-  [req.body.id]);
-
-  res.send({ removed: true });
+  [req.body.id])
+    .then(res.send({ removed: true }));
 });
 
 app.listen(1337, () => console.log('app is jogging...'));

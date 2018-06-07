@@ -11,7 +11,7 @@ export function addGuitarist(guitarist) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(guitarist)
   })
-  .then(response => response.json());
+    .then(response => response.json());
 }
 
 export function removeGuitarist(guitarist) {
@@ -20,4 +20,5 @@ export function removeGuitarist(guitarist) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(guitarist)
   })
+    .then(response => response.json());
 }

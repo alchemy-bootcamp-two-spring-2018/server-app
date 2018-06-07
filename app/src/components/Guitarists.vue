@@ -39,17 +39,18 @@ export default {
   methods: {
     handleAdd(guitarist) {
       return addGuitarist(guitarist)
-        .then(data => {
-          this.guitarists.push(data);
+        .then((res) => {
+          if(res.added) {
+            this.guitarists.push(guitarist);
+          }
         });
     },
     handleClose(guitarist) {
       return removeGuitarist(guitarist)
-        .then(() => {
-          getGuitarists()
-            .then(guitarists => {
-              this.guitarists = guitarists;
-            });
+        .then((res) => {
+          if(res.removed) {
+            this.guitarists.splice(this.guitarists.indexOf(guitarist), 1);
+          }
         });
     }
   }

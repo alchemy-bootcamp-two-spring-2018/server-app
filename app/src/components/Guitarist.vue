@@ -24,7 +24,8 @@ export default {
   props: {
     guitarist: Object,
     onClose: {
-      type: Function
+      type: Function,
+      required: true
     }
   },
   methods: {
