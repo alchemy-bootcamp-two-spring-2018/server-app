@@ -1,34 +1,48 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 
+const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-const podcasts = require('./data/podcasts');
-const fs = require('fs');
-const dataPath = 'data/podcasts.json';
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/explore';
+const client = new Client(databaseUrl);
+client.connect();
 
-//method(<path><handler>)
+
 app.get('/api/podcasts', (req, res) => {
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  res.send(data);
+
+  client.query(`
+  SELECT * from podcasts;
+  `).then(result => {
+    res.send(result.rows);
+  });
+
 });
 
 app.post('/api/podcasts', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
+  const body = req.body;
 
-  res.send(req.body);
+  client.query(`
+    INSERT INTO podcasts (name, publisher, averageMinutes, category, NSFW, description)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *;
+  `,
+
+  [body.name, body.publisher, body.averageMinutes, body.category, body.NSFW, body.description]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+
 });
 
-app.use((req, res) => {
-  console.log(req.method, req.url, req.body.name);
-  res.send({ error: 'path not found' });
+app.delete('/api/podcasts/:id', (req, res) => {
+  console.log(req.params.id);
+ 
+  res.send({ removed: true });
 });
+
 
 app.listen(3000, () => console.log('app running, please be running'));

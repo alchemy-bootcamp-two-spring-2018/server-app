@@ -38,5 +38,21 @@
     "category": "music",
     "NSFW": "false",
     "description": "random music thing"
+  },
+  {
+    "name": "Test",
+    "publisher": "testington",
+    "averageMinutes": "45",
+    "category": "testery",
+    "NSFW": "true",
+    "description": "a thing of a show"
+  },
+  {
+    "name": "How to Survive the End of the World",
+    "publisher": "The Brown Sisters",
+    "averageMinutes": "65",
+    "category": "Literary and Discussion",
+    "NSFW": "False",
+    "description": "Sisters talking about the apocalypse."
   }
 ]
