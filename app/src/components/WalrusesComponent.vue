@@ -19,7 +19,7 @@
 
 <script>
 import IndividualWalrus from './IndividualWalrus';
-import WalrusForm from './WalrusForm.vue';
+import WalrusForm from './WalrusForm';
 import { getWalruses, addWalrus, deleteWalrus, updateWalrus } from '../services/api';
 
 export default {

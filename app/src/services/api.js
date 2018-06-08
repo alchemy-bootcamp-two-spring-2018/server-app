@@ -9,21 +9,21 @@ export function getWalruses() {
   .then(response => response.json());
 }
 
-export function addWalrus(walrus) {
-  return fetch(WALRUSES_URL, {
-  method: 'POST',  
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(walrus)
-  })
-  .then(response => response.json());
-}
+// export function addWalrus(walrus) {
+//   return fetch(WALRUSES_URL, {
+//   method: 'POST',  
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify(walrus)
+//   })
+//   .then(response => response.json());
+// }
 
-export function deleteWalrus(id) {
-  return fetch(`${WALRUSES_URL}/${walrus.id}`, {
-    method: 'DELETE'
-  })
-    .then(response => response.json());
-}
+// export function deleteWalrus(id) {
+//   return fetch(`${WALRUSES_URL}/${walrus.id}`, {
+//     method: 'DELETE'
+//   })
+//     .then(response => response.json());
+// }
 export function getTypes () {
   return fetch(`${URL}/types`, {
     headers: { 'Content-Type': 'application/json'}

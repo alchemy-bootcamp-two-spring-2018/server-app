@@ -1,37 +1,27 @@
 [
   {
     "name": "Wally",
-    "weight": 4000,
-    "url": "http://www.worldwidewalrusweb.com",
-    "photo_url": "https://www.publicdomainpictures.net/en/view-image.php?image=234579&picture=cartoon-walrus",
-    "description": "From the old Woody Woodpecker cartoon."
+    "fictional": true,
+    "photo_url": ""
   },
   {
     "name": "Zeus",
-    "weight": 3000,
-    "url": "http://www.worldwidewalrusweb.com",
-    "photo_url": "https://www.publicdomainpictures.net/en/view-image.php?image=234579&picture=cartoon-walrus",
-    "description": "Currently in captivity at Marineland in Canada."
+    "fictional": false,
+    "photo_url": ""
   },
   {
     "name": "ET",
-    "weight": 4000,
-    "url": "http://www.worldwidewalrusweb.com",
-    "photo_url": "https://www.publicdomainpictures.net/en/view-image.php?image=234579&picture=cartoon-walrus",
-    "description": "Deceased: Formerly a resident of Point Defiance Zoo in Tacoma, WA."
+    "fictional": false,
+    "photo_url": ""
   },
   {
     "name": "Nereus",
-    "weight": 4000,
-    "url": "http://www.worldwidewalrusweb.com",
-    "photo_url": "https://www.publicdomainpictures.net/en/view-image.php?image=234579&picture=cartoon-walrus",
-    "description": "Deceased: Nereus was a beloved walrus who lived at the Indianapolis, IN zoo. He was famous for being discovered as an abandoned baby walrus and starred in a film called \"Growing Up Walrus\" which documented his rehabilitation."
+    "fictional": false,
+    "photo_url": ""
   },
   {
     "name": "Sivuqaq (Jocko)",
-    "weight": "3500",
-    "url": "http://www.worldwidewalrusweb.com",
-    "photo_url": "https://www.publicdomainpictures.net/en/view-image.php?image=234579&picture=cartoon-walrus",
-    "description": "Deceased: Sivuqaq is famous for having played \"Jocko\" the walrus in the movie 50 First Dates. He also provided some voiceover for the Lord of the Rings Movies!"
+    "fictional": false,
+    "photo_url": ""
   }
 ]
