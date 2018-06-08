@@ -10,6 +10,7 @@
         :key="walrus.name"
         :walrus="walrus"
         :on-remove="handleRemove"
+        :onUpdate="handleUpdate"
         />
     </div>
     
@@ -18,8 +19,8 @@
 
 <script>
 import IndividualWalrus from './IndividualWalrus';
-import AddWalrus from './AddWalrus.vue';
-import { getWalruses, addWalrus, deleteWalrus } from '../services/api';
+import WalrusForm from './WalrusForm.vue';
+import { getWalruses, addWalrus, deleteWalrus, updateWalrus } from '../services/api';
 
 export default {
   data() {
@@ -35,7 +36,8 @@ export default {
   },
   components: {
     IndividualWalrus,
-    AddWalrus
+    AddWalrus,
+    WalrusForm
   },
   methods: {
     handleAdd(walrus) {
@@ -52,9 +54,18 @@ export default {
           this.walrus.splice(index, 1);
         });
     },
-  }
+    handleUpdate(toUpdate) {
+      return updateWalrus(toUpdate) 
+        .then(updated => {
+          this.walruses = this.walruses.map(walrus => {
+            return walrus.id === updated.id ? updated : walrus;
+          });
+        });
 
-};
+      }
+    }
+  };
+
 
 </script>
 

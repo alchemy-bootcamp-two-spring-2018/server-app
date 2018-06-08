@@ -5,55 +5,62 @@
       <label>
         Name:
         <input type="text" name="name" placeholder="Name" required
-          v-model="walrus.name">
+          v-model="edit.name">
       </label>
 
       <label>
         Weight:
         <input type="number" name="weight" placeholder="" required
-          v-model="walrus.weight">
+          v-model="edit.weight">
       </label>
 
       <label>
         Type:
         <input type="text" name="type" placeholder="" required
-          v-model="walrus.type">
+          v-model="edit.type">
       </label>
 
       <label class="buttons">
         <input type="radio" name="fictional"  id = "isFictional" value="true" required
-          v-model="walrus.fictional">
+          v-model="edit.fictional">
           <label class="buttons" for="isFictional">Fictional</label>
           <input type="radio" name="fictional"  id = "isReal" value="false" label="Real" required
-          v-model="walrus.fictional">
+          v-model="edit.fictional">
           <label class="buttons" for="isReal">Real</label>
       </label>
 
       <label>
         Description:
         <textarea name="body" rows="8" cols="45" required 
-          v-model="walrus.description"></textarea>
+          v-model="edit.description"></textarea>
       </label>
       
       <label>
-        <button type="submit">Add</button>
+        <button type="submit">{{ label }}</button>
       </label>
     </form>
+    {{ edit }}
   </section>
 </template>
 
 <script>
+import { getTypes } from '..services/api';
+
 const initWalrus = () => {
   return {
     name: '',
     weight: '',
     type: '',
+    url: '',
+    photo_url: '',
     fictional: 'false',
     description: ''
   };
 };
 export default {
   props: {
+    walrus: Object,
+    label: String,
     onAdd: {
       type: Function,
       required: true
@@ -61,15 +68,21 @@ export default {
   },
   data() {
     return {
-      walrus: initWalrus()
+      edit: this.walrus ? Obnject.assign({}, this.walrus) : initWalrus(),
+      types: []
     };
+  },
+  created() {
+    getTypes().then(types => {
+      this.types = types;
+    });
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.walrus)
+      this.onEdit(this.edit)
         // this fires when save is complete and data added to the Walruses array
         .then(() => {
-          this.walrus = initWalrus();
+          this.edit = initWalrus();
         });
     }
   }
