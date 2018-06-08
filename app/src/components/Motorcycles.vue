@@ -9,7 +9,7 @@
       />
     </ul>
     
-    <AddMotorcycle
+    <MotorcycleForm
     :on-add="handleAdd"
     />
 
@@ -18,7 +18,7 @@
 
 <script>
 import Motorcycle from './Motorcycle';
-import AddMotorcycle from './AddMotorcycle';
+import MotorcycleForm from './MotorcycleForm';
 import { getMotorcycles, addMotorcycle, removeMotorcycle } from '../services/api';
 
 export default {
@@ -37,7 +37,7 @@ export default {
 
   components: {
     Motorcycle,
-    AddMotorcycle
+    MotorcycleForm
   },
 
   methods: {

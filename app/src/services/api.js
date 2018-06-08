@@ -33,3 +33,10 @@ export function removeMotorcycle(motorcycle) {
     body: JSON.stringify(motorcycle)
   });
 }
+
+export function getTypes() {
+  return fetch(`${URL}/types`, {
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json());
+}
