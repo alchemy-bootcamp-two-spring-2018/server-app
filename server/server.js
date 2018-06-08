@@ -14,16 +14,13 @@ client.connect();
 
 app.get('/api/climbingLocations/', (req, res) => {
   client.query(`
-    SELECT cl.id,
+    SELECT id,
     name,
-    cs.id as "climbingstyleID",
+    climbingstyle_id as "climbingstyleID",
     location,
-    type,
     yearroundclimbing, 
     description
-   FROM climbinglocations cl
-   JOIN climbingstyles cs
-   ON cl.climbingstyle_id = cs.id;
+   FROM climbinglocations ;
   `).then(result => {
     res.send(result.rows);
   });
@@ -35,7 +32,7 @@ app.post('/api/climbingLocations', (req, res) => {
   client.query(`
     INSERT INTO climbinglocations (name, climbingstyle_id, location, elevation, yearRoundClimbing, description)
     VALUES ($1, $2, $3, $4, $5, $6)
-    RETURNING *;
+    RETURNING *, climbingstyle_id as "climbingstyleID" ;
   `, 
   [body.name, body.climbingstyleID, body.location, body.elevation, body.yearRoundClimbing, body.description]
   ).then(result => {

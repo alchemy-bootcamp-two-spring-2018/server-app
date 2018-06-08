@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import { getClimbingStyles } from '../services/api';
 const initLocation = () => {
   return {
     name: '',
@@ -62,6 +61,10 @@ const initLocation = () => {
 };
 export default {
   props: {
+    climbingStyles: {
+      type: Array, 
+      required: true
+    },
     onAdd: {
       type: Function,
       required: true
@@ -69,14 +72,8 @@ export default {
   },
   data() {
     return {
-      climbingStyles: [],
       location: initLocation()
     };
-  },
-  created() {
-    getClimbingStyles().then(climbingStyles => {
-      this.climbingStyles = climbingStyles;
-    });
   },
   methods: {
     handleSubmit() {

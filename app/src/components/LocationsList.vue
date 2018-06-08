@@ -6,10 +6,13 @@
         :key="location.name"
         :location="location"
         :on-delete="handleDelete"
+        :climbingStyles="climbingStyles"
       />
     </div>
     <div class="add-location">
-      <AddLocation :on-add="handleAdd"/>
+      <AddLocation
+        :climbingStyles="climbingStyles"
+        :on-add="handleAdd"/>
     </div>
   </div>
 </template>
@@ -17,14 +20,19 @@
 <script>
 import Location from './Location.vue';
 import AddLocation from './AddLocation.vue';
+import { getClimbingStyles } from '../services/api';
 import { getClimbingLocations, addLocation, deleteLocation } from '../services/api.js';
 export default {
   data() {
     return {
+      climbingStyles: [],
       locations: null
     };
   },
   created() {
+    getClimbingStyles().then(climbingStyles => {
+      this.climbingStyles = climbingStyles;
+    }),
     getClimbingLocations()
       .then(locations => {
         this.locations = locations;

@@ -2,11 +2,11 @@
   <div class="location">
     <button @click="handleDelete">Delete</button>
     <div>
-    <h2>{{location.name}}.</h2>
+    <h2>{{ location.name }}.</h2>
     
-    <p><strong>Location: {{location.location}}</strong></p>
-    <p><strong>Climbing Type: {{location.type}}</strong></p>
-    <p><strong>Elevation: {{location.elevation}}ft.</strong></p>
+    <p><strong>Location: {{ location.location }}</strong></p>
+    <p><strong>Climbing Type: {{ climbingStyle }}</strong></p>
+    <p><strong>Elevation: {{ location.elevation }}ft.</strong></p>
     <p v-if="location.yearroundclimbing == true"><strong>Year Round Climbing</strong></p>
     <p v-if="location.yearroundclimbing !== true"><strong>Seasonal Climbing</strong></p>
 
@@ -18,12 +18,26 @@
 <script>
 export default {
   props: {
+    climbingStyles: {
+      type: Array,
+      required: true
+    },
     location: {
       type: Object
     },
     onDelete: {
       type: Function,
       required: true
+    }
+  },
+  computed: {
+    climbingStyle() {
+      if(!this.climbingStyles) return null;
+      const climbingStyle = this.climbingStyles.find(q => q.id === this.location.climbingstyleID);
+      console.log(climbingStyle);
+      console.log(this.location);
+
+      return climbingStyle ? `${climbingStyle.type}` : 'Unknown';
     }
   },
   methods: {
