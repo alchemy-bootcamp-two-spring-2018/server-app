@@ -18,7 +18,6 @@
     <RapperForm
       v-else
       label="Update"
-      @submit="!editing"
       :editing="editing"
       :rapper="rapper"
       :on-edit="onUpdate"
