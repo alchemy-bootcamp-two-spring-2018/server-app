@@ -1,21 +1,20 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/explore';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS fruits (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(256),
-        classification VARCHAR(256),
-        color VARCHAR(256),
-        skinEdible BOOLEAN,
-        calories INTEGER
-      );
-    `);
-  })
+client.query(`
+    CREATE TABLE IF NOT EXISTS classifications (
+      id SERIAL PRIMARY KEY,
+      classification VARCHAR(256) NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS fruits (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(256),
+      classification_id INTEGER NOT NULL REFERENCES classifications(id),
+      color VARCHAR(256),
+      skinEdible BOOLEAN,
+      calories INTEGER
+    );
+`)
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)
