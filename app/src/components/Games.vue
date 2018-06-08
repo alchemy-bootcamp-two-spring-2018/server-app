@@ -1,22 +1,27 @@
 <template>
   <section>
-    <ul class="list">
-    <AddGame :on-add="handleAdd"/>
     <h2>Games List:</h2>
+    <p v-if="!games">Loading Games...</p>
+    <ul v-else class="list">
       <Game
-        :onDelete="handleDelete"
         v-for="game in games"
+        :on-delete="handleDelete"
+        :on-update="handleUpdate"
         :key="game.name"
         :game="game"
       />
     </ul>
+    <GameForm
+      :on-add="handleAdd"
+      label = "Add Game"
+    />
   </section>
 </template>
 
 <script>
 import Game from './Game';
-import AddGame from './AddGame';
-import { getGames, addGame, deleteGame } from '../services/api';
+import GameForm from './GameForm';
+import { getGames, addGame, deleteGame, updateGame } from '../services/api';
 
 export default {
   data() {
@@ -26,7 +31,7 @@ export default {
   },
   components: {
     Game,
-    AddGame,
+    GameForm,
   },
   created() {
     getGames()
@@ -41,12 +46,21 @@ export default {
           this.games.push(saved);
         });
     },
-    handleDelete(game) {
-      deleteGame(game);
-      getGames()
-        .then(games => {
-          this.games = games;
-        });'';
+    handleDelete(id) {
+      return deleteGame(id)
+        .then(() => {
+          const index = this.games.findIndex(game => game.id === id);
+          if(index === -1) return;
+          this.games.splice(index, 1);
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateGame(toUpdate)
+        .then(updated => {
+          this.games = this.games.map(game => {
+            return game.id === updated.id ? updated : game;
+          });
+        });
     }
   }
 };
