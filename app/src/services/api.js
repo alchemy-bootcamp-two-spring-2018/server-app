@@ -17,6 +17,7 @@ export function addLocation(location) {
   })
     .then(response => response.json());
 }
+// TO DO: marty 21 updateLocation(location)
 
 export function removeLocation(id) {
   return fetch(`${LOCATIONS_URL}/${id}`, {
@@ -24,3 +25,4 @@ export function removeLocation(id) {
   })
     .then(response => response.json());
 }
+

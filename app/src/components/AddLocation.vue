@@ -33,7 +33,8 @@
         <button type="submit">Add</button>
       </label>
 
-    </form>    
+    </form> 
+    <!-- TO DO: marty 45 edit    -->
   </section>
 </template>
 
@@ -46,8 +47,7 @@ const initLocation = () => {
     neighborhood: '',
     rating:'',
     power: false
-  };
-  
+  };  
 };
 
 export default {

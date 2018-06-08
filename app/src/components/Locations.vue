@@ -7,18 +7,28 @@
     <ul v-else class="list">
       <Location
         v-for="location in locations"
-        :key="location.name"
+        :key="location.id"
         :location="location"
+        :on-remove="handleRemove"
       />
+        <!-- on:update goes line above here -->
     </ul>
-    <AddLocation :on-add="handleAdd"/> 
+
+    <AddLocation
+      label="Add"
+      :on-add="handleAdd"
+     /> 
   </div>
 </template>
 
 <script>
 import Location from './Location';
 import AddLocation from './AddLocation.vue';
-import { getLocations, addLocation } from '../services/api';
+import { 
+  getLocations, 
+  addLocation,
+  //updateLocation,
+  removeLocation } from '../services/api';
 
 
 export default {
@@ -33,23 +43,36 @@ export default {
         this.locations = locations;
       });
   },
+
   components: {
     Location,
     AddLocation
   },
+
   methods: {
     handleAdd(location) {
       return addLocation(location)
         .then(saved => {
           this.locations.push(saved);
         });
-    }
+    },
+    handleRemove(id) {
+      return removeLocation(id)
+        .then(() => {
+          const index = this.locations.findIndex(location => location.id === id);
+          if(index === -1) return;
+          this.locations.splice(index, 1);
+        });
+    },
+    //TO DO: line 62 Marty handleUpdate(toUpdate) {
+    //return updateLocation(toUpdate) .......
+    
   }
 };
 
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
 .all-locations {
