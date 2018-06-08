@@ -16,12 +16,12 @@ Promise.all(
     () => console.log('Walruses seed data loaded successfully'),
     err => console.error(err)
   );
-types.map(type => {
+types.map(types => {
   return client.query(`
   INSERT INTO types (type, fictional)
   VALUES ($1, $2);
   `,
-  [type.type, type.fictional]
+  [types.type, types.fictional]
   ).then(result => result.rows[0]);
 })
   .then(() => client.end());
