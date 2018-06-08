@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Coava",
+    "neighborhood": "Buckman",
+    "number": "123",
+    "inHouseRoaster": "True"
+  },
+  {
+    "name": "Push Pull",
+    "neighborhood": "Buckman",
+    "number": "123",
+    "inHouseRoaster": "True"
+  },
+  {
+    "name": "Good Coffee",
+    "neighborhood": "Richmond",
+    "number": "123",
+    "inHouseRoaster": "False"
+  },
+  {
+    "name": "Barista",
+    "neighborhood": "Buckman",
+    "number": "123",
+    "inHouseRoaster": "False"
+  },
+  {
+    "name": "Never",
+    "neighborhood": "Sunnyside",
+    "number": "123",
+    "inHouseRoaster": "False"
+  },
+  {
+    "name": "Upper Left",
+    "neighborhood": "Hosford-Abernethy",
+    "number": "123",
+    "inHouseRoaster": "True"
+  }
+]
