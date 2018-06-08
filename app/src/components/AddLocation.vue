@@ -9,9 +9,10 @@
         </label>
          <label>
           Type of Climbing:
-          <select>
+          <select v-model="location.climbingstyleID">
             <option value="">Select a type</option>
             <option 
+              name="type"
               v-for="Style in climbingStyles"
               :key="Style.id"
               :value="Style.id"> 
@@ -43,6 +44,7 @@
           <button type="submit">Add to List</button>
         </label>
       </form>
+      {{location}}
   </div>
 </template>
 
@@ -51,6 +53,7 @@ import { getClimbingStyles } from '../services/api';
 const initLocation = () => {
   return {
     name: '',
+    climbingstyleID: '',
     location: '',
     elevation: '',
     yearRound: '',
