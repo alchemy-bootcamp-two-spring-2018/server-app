@@ -6,39 +6,50 @@
             <input type="text" name="name" placeholder="Name of Podcast" required
                 v-model="edit.name">
             </label>
-
+            <label>
+            Format:
+            <select v-model.number="edit.formatId" required>
+              <option disables value="">Please select a format.</option>
+              <option
+                v-for="format in formats"
+                :key="format.id"
+                :value="format.id">
+                {{format.name}} 
+                </option>
+              </select>
+            </label>
             
             <label>
-                Published By:
-                <input type="text" name="publisher" placeholder="Publisher" required
+              Published By:
+              <input type="text" name="publisher" placeholder="Publisher" required
                 v-model="edit.publisher">
             </label>
 
             <label>
-            Length(average minutes):
-            <input type="text" name="averageminutes" placeholder="Average minutes" required
+              Length(average minutes):
+              <input type="text" name="averageminutes" placeholder="Average minutes" required
                 v-model="edit.averageminutes">
             </label>
 
             <label>
-            Category:
-            <input type="text" name="category" placeholder="Category" required
+              Category:
+              <input type="text" name="category" placeholder="Category" required
                 v-model="edit.category">
             </label>
 
             <label>
-                NSFW? (not safe for work):
-                <input type="text" name="nsfw" placeholder="True or False" required
-                    v-model="edit.nsfw">
+              NSFW? (not safe for work):
+              <input type="text" name="nsfw" placeholder="True or False" required
+                v-model="edit.nsfw">
             </label>
             <label>
-                Description:
-                <textarea name="body" rows="8" cols="40" required 
-                    v-model="edit.description"></textarea>
+              Description:
+              <textarea name="body" rows="8" cols="40" required 
+                v-model="edit.description"></textarea>
             </label>
         
             <label>
-                <button type="submit">{{ label }}</button>
+              <button type="submit">{{ label }}</button>
             </label>
         </form>
         {{ edit }}
@@ -46,6 +57,7 @@
 </template>
 
 <script>
+import { getFormats } from '../services/api';
 
 const initPodcast = () => {
   return {
@@ -68,15 +80,15 @@ export default {
   },
   data() {
     return {
-      edit: this.podcast ? Object.assign({}, this.podcast) : initPodcast()//,
-      //quadrants: []
+      edit: this.podcast ? Object.assign({}, this.podcast) : initPodcast(),
+      formats: []
     };
   },
-//   created() {
-//     getQuadrants().then(quadrants => {
-//       this.quadrants = quadrants;
-//     });
-//   },
+   created() {
+     getFormats().then(formats => {
+       this.formats = formats;
+     });
+   },
   methods: {
     handleSubmit() {
       this.onEdit(this.edit)

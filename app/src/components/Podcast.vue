@@ -2,6 +2,7 @@
     <div>
         <article v-if="!editing">
             <h3>{{ podcast.name }}</h3>
+            <p>Format: {{ podcast.formatName }}</p>
             <p>Published by: {{ podcast.publisher }}</p>
             <p>Length (average minutes): {{ podcast.averageminutes }}</p>
             <p>Category: {{ podcast.category }}</p> 
