@@ -9,7 +9,7 @@
     "drop-tables": "node scripts/drop-tables.js",
     "recreate-tables": "npm run drop-tables && npm run create-tables",
     "start": "node server.js",
-    "start:watch": ""
+    "start:watch": "nodemon.server.js"
   },
   "author": "",
   "license": "ISC",
