@@ -1,20 +1,21 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/explore';
-const client = new Client(databaseUrl);
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS amps (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(40),
-        country VARCHAR(40),
-        introduced INTEGER,
-        tubes BOOLEAN
-      );
-    `);
-  })
+const client = require('../db-client');
+
+client.query(`
+    CREATE TABLE IF NOT EXISTS country (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(40) NOT NULL,
+    );
+ 
+    CREATE TABLE IF NOT EXISTS amps (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(40),
+      country_id VARCHAR(40) country(id),
+      introduced INTEGER,
+      tubes BOOLEAN
+    );
+`)
+
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)
