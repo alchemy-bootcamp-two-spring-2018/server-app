@@ -7,11 +7,6 @@
         <input v-model="glucoselog.date" type="date" required pattern="[0-9]{0-9}/[0-9]{0-9}/[0-9]{0-9}"> 
       </label>
 
-      <!-- <label>
-        Day:
-        <input v-model="glucoselog.day_id" placeholder="Day" required>
-      </label> -->
-
       <label>
         Day:
         <select v-model="glucoselog.day_id" required>

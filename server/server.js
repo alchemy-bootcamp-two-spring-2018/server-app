@@ -25,7 +25,7 @@ app.get('/api/glucoselogs', (req, res) => {
 
   client.query(`
     SELECT glucoselogs.id,
-      glucoselogs.date,
+      date,
       days.id,
       days.name,
       changeInsulin, 
@@ -52,9 +52,8 @@ app.post('/api/glucoselogs', (req, res) => {
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING *;
   `,
-  [body.date, body.day_id, body.changeinsulin, body.beforebreakfast, body.afterbreakfast, body.beforelunch, body.afterlunch, body.beforedinner, body.afterdinner]
+  [body.date, body.day_id, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner]
   ).then(result => {
-    //send back object
     res.send(result.rows[0]);
   });
   
@@ -72,6 +71,17 @@ app.delete('/api/glucoselogs/:id', (req, res) => {
     res.send({ removed: true });
   });
 
+});
+
+app.get('/api/days', (req, res) => {
+
+  client.query(`
+    SELECT *
+    FROM days; 
+  `).then(result => {
+    res.send(result.rows);
+  });
+  
 });
 
 

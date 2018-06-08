@@ -4,7 +4,7 @@
     <ul class="list">
       <GlucoseLog
         v-for="glucoselog in glucoselogs"
-        :key="glucoselog.id"
+        :key="glucoselog.date"
         :glucoselog = "glucoselog"
         :on-remove="handleRemove"
       />
