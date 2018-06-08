@@ -7,6 +7,7 @@
             v-for="podcast in podcasts"
             :key="podcast.name"
             :podcast="podcast"
+            :on-remove="handleRemove"
         />
     </ul>
     <AddPodcast :on-add="handleAdd"/>
@@ -16,7 +17,7 @@
 <script>
     import Podcast from './Podcast';
     import AddPodcast from './AddPodcast.vue';
-    import { getPodcasts, addPodcast } from '../services/api';
+    import { getPodcasts, addPodcast, removePodcast } from '../services/api';
     
     export default {
         data() {
@@ -33,16 +34,22 @@
         components: {
             Podcast,
             AddPodcast
-        },
-        methods: {
-            handleAdd(podcast) {
-                return addPodcast(podcast)
-                    .then(saved => {
-                        this.podcasts.push(saved);
-                });
-            }       
-        }
+            //,  ** this blew up app, try to rework later
+            // RemovePodcast
+        // },
+        // methods: {
+        //     handleAdd(podcast) {
+        //         return addPodcast(podcast)
+        //             .then(saved => {
+        //                 this.podcasts.push(saved);
+        //         });
+        //     },
+        //     handleRemove(podcast) {
+        //         return removePodcast(podcast)
+        //     },
+        },     
     };
+   
 </script>
             
 <style>

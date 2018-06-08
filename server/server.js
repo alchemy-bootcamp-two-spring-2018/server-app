@@ -38,11 +38,16 @@ app.post('/api/podcasts', (req, res) => {
 
 });
 
-// app.delete('/api/podcasts/:id', (req, res) => {
-//   console.log(req.params.id);
- 
-//   res.send({ removed: true });
-// });
+app.delete('/api/podcasts/:id', (req, res) => {
+  console.log(req.params.id);
+  client.query(`
+    delete from podcasts where id=$1;
+  `,
+  [req.params.id]
+  ).then(() => {
+    res.send({ removed: true });
+  });
+});
 
 
 app.listen(3000, () => console.log('app running, please be running'));
