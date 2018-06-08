@@ -47,7 +47,7 @@ import { getSystems } from '.../services/api';
 const initGame = () => {
   return {
     name: '',
-    system: '',
+    system: 'Choose a System',
     year: '',
     completed: false
   };
