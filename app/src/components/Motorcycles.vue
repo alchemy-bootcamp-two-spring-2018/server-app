@@ -1,20 +1,19 @@
 <template>
   <div class="motorcycles">
-    <ul class="tiles">
-      <Motorcycle
-      v-for="motorcycle in motorcycles"
-      :key="motorcycle.id"
-      :motorcycle="motorcycle"
-      :on-remove="handleRemove"
-      :on-update="handleUpdate"
+        <h1>Motorcyle Inventory</h1>
+      <ul class="tiles">
+        <Motorcycle
+        v-for="motorcycle in motorcycles"
+        :key="motorcycle.id"
+        :motorcycle="motorcycle"
+        :on-remove="handleRemove"
+        :on-update="handleUpdate"
+        />
+      </ul>
+      <MotorcycleForm
+      label="Add Motorcycle"
+      :on-edit="handleAdd"
       />
-    </ul>
-    
-    <MotorcycleForm
-    label="Add Motorcycle"
-    :on-edit="handleAdd"
-    />
-
   </div>
 </template>
 
@@ -29,19 +28,16 @@ export default {
       motorcycles: null
     };
   },
-
   created() {
     getMotorcycles()
       .then(motorcycles => {
         this.motorcycles = motorcycles;
       });
   },
-
   components: {
     Motorcycle,
     MotorcycleForm
   },
-
   methods: {
     handleAdd(motorcycle) {
       return addMotorcycle(motorcycle)
@@ -74,12 +70,11 @@ export default {
 .motorcycles {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: flex-end;
   margin: 10px;
 }
 .tiles {
-  width: 300px;
-  min-width: 300px;
+  width: 350px;
+  min-width: 350px;
 }
-
 </style>

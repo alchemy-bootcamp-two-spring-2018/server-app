@@ -44,11 +44,9 @@ export default {
       }
     }
   },
-
   components: {
     MotorcycleForm
   }
-
 };
 </script>
 
@@ -59,16 +57,14 @@ export default {
   border: 2px solid rgb(179, 75, 75);
   align-items: center;
   margin: 10px;
+  margin-bottom: 20px;
   font-family: 'Russo One', sans-serif;
 }
-
 h2, p {
   margin: 15px;
 }
-
 button {
   width: 100px;
   margin: 10px;
-
 }
 </style>

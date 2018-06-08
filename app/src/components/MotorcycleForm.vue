@@ -83,13 +83,11 @@ export default {
       required: true
     }
   },
-
   created() {
     getTypes().then(types => {
       this.types = types;
     });
   },
-
   methods: {
     handleSubmit() {
       this.onEdit(this.edit)
@@ -110,11 +108,9 @@ form {
   align-items: center;
   font-family: 'Russo One', sans-serif;
 }
-
 #forSaleCheckbox {
   display: inline;
 }
-
 label {
   display: flex;
   flex-flow: column nowrap;

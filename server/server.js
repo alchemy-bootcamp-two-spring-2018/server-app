@@ -9,8 +9,8 @@ const pg = require('pg');
 const Client = pg.Client;
 const databaseUrl = 'postgres://localhost:5432/motorcycles';
 const client = new Client(databaseUrl);
-client.connect();
 
+client.connect();
 
 app.get('/api/motorcycles', (req, res) => {
 
