@@ -15,7 +15,14 @@ client.connect();
 app.get('/api/podcasts', (req, res) => {
 
   client.query(`
-  SELECT * from podcasts;
+  SELECT * n.id,
+    n.name,
+    published,
+    averageminutes,
+    category,
+    nsfw,
+    description
+
   `).then(result => {
     res.send(result.rows);
   });
