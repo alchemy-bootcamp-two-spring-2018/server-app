@@ -81,6 +81,7 @@ app.put('/api/glucoselogs/:id', (req, res) => {
   ).then(result => {
     res.send(result.rows[0]);
   });
+  
 });
 
 app.delete('/api/glucoselogs/:id', (req, res) => {

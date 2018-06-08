@@ -27,7 +27,8 @@ export function updateglucoselog(glucoselog) {
 }
 
 export function removeglucoselog(id) {
-  return fetch(`${GLUCOSELOGS_URL}/${id}`, {
+  console.log('id', id);
+  return fetch(`http://localhost:3000/api/glucoselogs/` + id, {
     method: 'DELETE'
   })
     .then(response => response.json());
