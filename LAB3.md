@@ -5,6 +5,8 @@ Go Full Stack joins and full CRUD!
 
 Complete [today's Kata](https://www.codewars.com/kata/disemvowel-trolls) 
 
+Complete [Friday's Kata](https://www.codewars.com/kata/find-the-middle-element) 
+
 ## Lab
 
 Normalize your existing data. If you don't have another "table", add a lookup field.
