@@ -59,6 +59,30 @@ app.post('/api/glucoselogs', (req, res) => {
   
 });
 
+app.put('/api/glucoselogs/:id', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    UPDATE glucoselogs
+    SET
+      date = $1, 
+      day_id = $2, 
+      changeInsulin = $3, 
+      beforeBreakfast = $4, 
+      afterBreakfast = $5, 
+      beforeLunch = $6, 
+      afterLunch = $7, 
+      beforeDinner = $8, 
+      afterDinner = $9
+    WHERE id = $10
+    RETURNING *;
+  `,
+  [body.date, body.day_id, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+});
+
 app.delete('/api/glucoselogs/:id', (req, res) => {
   console.log(req.params.id);
 

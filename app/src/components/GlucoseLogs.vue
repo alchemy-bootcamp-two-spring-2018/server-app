@@ -7,19 +7,24 @@
         :key="glucoselog.date"
         :glucoselog = "glucoselog"
         :on-remove="handleRemove"
+        :on-update="handleUpdate"
       />
     </ul>
-    <AddGlucoseLog 
-      :on-add="handleAdd"
-      
+    <GlucoseLogForm 
+      label="Add"
+      :on-edit="handleAdd"
     />
   </section>
 </template>
 
 <script>
 import GlucoseLog from './GlucoseLog';
-import AddGlucoseLog from './AddGlucoseLog.vue';
-import { getglucoselogs, addglucoselog, removeglucoselog } from '../services/api';
+import GlucoseLogForm from './GlucoseLogForm.vue';
+import { 
+  getglucoselogs, 
+  addglucoselog,
+  updateglucoselog, 
+  removeglucoselog, } from '../services/api';
 
 export default {
   data() {
@@ -35,13 +40,21 @@ export default {
   },
   components: {
     GlucoseLog,
-    AddGlucoseLog
+    GlucoseLogForm
   },
   methods: {
     handleAdd(glucoselog) {
       return addglucoselog(glucoselog)
         .then(saved => {
           this.glucoselogs.push(saved);
+        });
+    },
+    handleUpdate(updateLog) {
+      return updateglucoselog(updateLog)
+        .then(updatedLog => {
+          this.glucoselogs = this.glucoselogs.map(glucoselog => {
+            return glucoselog.id === updatedLog.id ? updatedLog : glucoselog;
+          });
         });
     },
     handleRemove(id) {

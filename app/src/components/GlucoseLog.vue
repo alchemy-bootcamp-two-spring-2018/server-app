@@ -1,26 +1,45 @@
 <template id="log-template">
-  <article>
-    <h2>{{ glucoselog.date }} {{ glucoselog.day_id }}</h2>
-    <div>
-    <p>Changed insulin: {{ glucoselog.changeinsulin }}</p>
-    <p>Before Breakfast: {{ glucoselog.beforebreakfast }}</p>
-    <p>After Breakfast: {{ glucoselog.afterbreakfast }}</p>
-    <p>Before Lunch: {{ glucoselog.beforelunch }}</p>
-    <p>After Lunch: {{ glucoselog.afterlunch }}</p>
-    <p>Before Dinner: {{ glucoselog.beforedinner }}</p>
-    <p>After Dinner: {{ glucoselog.afterdinner }}</p>
-    </div>
-    <p>
-      <button @click="handleClick">remove this log</button>
-    </p>
-  </article>
+  <div>
+    <article v-if="!editing">
+      <h2>{{ glucoselog.date }} {{ glucoselog.day_id }}</h2>
+      <div>
+      <p>Changed insulin: {{ glucoselog.changeinsulin }}</p>
+      <p>Before Breakfast: {{ glucoselog.beforebreakfast }}</p>
+      <p>After Breakfast: {{ glucoselog.afterbreakfast }}</p>
+      <p>Before Lunch: {{ glucoselog.beforelunch }}</p>
+      <p>After Lunch: {{ glucoselog.afterlunch }}</p>
+      <p>Before Dinner: {{ glucoselog.beforedinner }}</p>
+      <p>After Dinner: {{ glucoselog.afterdinner }}</p>
+      </div>
+      <p>
+        <button @click="handleClick">remove this log</button>
+      </p>
+    </article>
+    <GlucoseLogForm
+      v-else
+      label="Update"
+      :glucoselog="glucoselog"
+      :on-edit="onUpdate"
+    />
+    <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit'}}</button>
+  </div>
 </template>
 
 <script>
+import GlucoseLogForm from './GlucoseLogForm';
 
 export default {
+  data() {
+    return {
+      editing: false
+    };
+  },
+  components: {
+    GlucoseLogForm
+  },
   props: [
     'glucoselog',
+    'onUpdate',
     'onRemove'
   ],
   methods: {

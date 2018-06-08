@@ -17,8 +17,16 @@ export function addglucoselog(glucoselog) {
     .then(response => response.json());
 }
 
+export function updateglucoselog(glucoselog) {
+  return fetch(`${GLUCOSELOGS_URL}/${glucoselog.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(glucoselog)
+  })
+    .then(response => response.json());
+}
+
 export function removeglucoselog(id) {
-  //to fetch or not? 
   return fetch(`${GLUCOSELOGS_URL}/${id}`, {
     method: 'DELETE'
   })

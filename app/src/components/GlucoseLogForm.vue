@@ -4,12 +4,12 @@
     <form @submit.prevent="handleSubmit">
       <label>
         Date:
-        <input v-model="glucoselog.date" type="date" required pattern="[0-9]{0-9}/[0-9]{0-9}/[0-9]{0-9}"> 
+        <input v-model="edit.date" type="date" required pattern="[0-9]{0-9}/[0-9]{0-9}/[0-9]{0-9}"> 
       </label>
 
       <label>
         Day:
-        <select v-model="glucoselog.day_id" required>
+        <select v-model="edit.day_id" required>
           <option disabled value="">Please select a day</option>
           <option 
             v-for="day in days"
@@ -22,43 +22,44 @@
 
       <label for="checkbox">
         Changed Insulin?:
-        <input v-model="glucoselog.changeInsulin" type="checkbox" id="checkbox" :value="true"> {{ glucoselog.changeInsulin }}
+        <input v-model="edit.changeInsulin" type="checkbox" id="checkbox" :value="true"> {{ edit.changeInsulin }}
       </label>
       
       <label>
         Before Breakfast:
-        <input v-model="glucoselog.beforeBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.beforeBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
       
       <label>
         After Breakfast:
-        <input v-model="glucoselog.afterBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.afterBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Lunch:
-        <input v-model="glucoselog.beforeLunch" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.beforeLunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Lunch:
-        <input v-model="glucoselog.afterLunch" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.afterLunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Dinner:
-        <input v-model="glucoselog.beforeDinner" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.beforeDinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Dinner:
-        <input v-model="glucoselog.afterDinner" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.afterDinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
-        <button type="submit">Add</button>
+        <button type="submit">{{ label }}</button>
       </label>
     </form>
+    {{ edit }}
   </section>
 </template>
 
@@ -81,14 +82,16 @@ const initglucoselog = () => {
 
 export default {
   props: {
-    onAdd: {
+    glucoselog: Object,
+    label: String,
+    onEdit: {
       type: Function,
       required: true
     }
   },
   data() {
     return {
-      glucoselog: initglucoselog(),
+      edit: this.glucoselog ? Object.assign({}, this.glucoselog) : initglucoselog(),
       days: []
     };
   },
@@ -99,10 +102,12 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.glucoselog)
+      this.onEdit(this.edit)
       //this fires when save is complete and data added to glucoselogs
         .then(() => {
-          this.glucoselog = initglucoselog();
+          //save this next line for ref: 
+          //this.glucoselog = initglucoselog();
+          this.edit = initglucoselog();
         });
     }
   }
