@@ -2,8 +2,9 @@
   <div>
     <h1>Rappers</h1>
   <div id="submit-wrapper">
-    <AddRapper
-    :on-add="handleAdd"
+    <RapperForm
+		label = 'Add'
+    :on-edit="handleAdd"
     />
   </div>
     <ul>
@@ -12,6 +13,7 @@
       :key="rapper.name"
       :rapper="rapper"
       :on-delete="handleDelete"
+			:on-update="handleUpdate"
       />
     </ul>
   </div>
@@ -19,8 +21,12 @@
 
 <script>
 import Rapper from './Rapper';
-import AddRapper from './AddRapper';
-import { getRappers, addRappers, deleteRappers } from '../services/api';
+import RapperForm from './RapperForm';
+import { 
+	getRappers, 
+	addRappers,
+	updateRappers, 
+	deleteRappers } from '../services/api';
 
 export default {
   data() {
@@ -36,21 +42,34 @@ export default {
   },
   components: {
     Rapper,
-    AddRapper,
+    RapperForm,
   },
   methods: {
     handleAdd(rapper) {
+			(console.log('HERE IS LOG IN RAPPERS', rapper))
       return addRappers(rapper)
       .then(saved => {
         this.rappers.push(saved);
       });
     },
-    handleDelete(rapper) {
-      return deleteRappers(rapper)
-				.then(this.rappers = this.rappers.filter(item => item.id !== rapper.id));;
-      }
+    handleDelete(id) {
+      return deleteRappers(id)
+				.then(() => {
+					const index = this.rappers.findIndex(rapper => rapper.id === id);
+					if(index === -1) return;
+					this.rappers.splice(index, 1);
+				});
+			},
+		handleUpdate(toUpdate) {
+			return updateRappers(toUpdate)
+				.then(updated => {
+					this.rappers = this.rappers.map(rapper => {
+						return rapper.id === updated.id ? updated : rapper;
+					});
+				});
+			}
     }
-  }
+  };
 
 </script>
 

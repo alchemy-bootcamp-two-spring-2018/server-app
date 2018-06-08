@@ -27,12 +27,13 @@ app.get('/api/rappers', (req, res) => {
       positions.id,
       positions.position,
       numalbums,
-      albums,aka,
+      albums,
+      aka,
       affiliates,
       dead
-    from rappers
-    join positions
-    on rappers.role_id = positions.id
+    FROM rappers
+    JOIN positions
+    on rappers.role = positions.id
     order by rappers.name;
   `).then(result => {
     res.send(result.rows);
@@ -43,18 +44,18 @@ app.post('/api/rappers', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO rappers (name, born, role_id, numalbums, albums, aka, affiliates, dead)
+    INSERT INTO rappers (name, born, role, numalbums, albums, aka, affiliates, dead)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *;
   `,
-  [body.name, body.born, body.role_id, body.numalbums, body.albums, body.aka, body.affiliates, body.dead]
+  [body.name, body.born, body.role, body.numalbums, body.albums, body.aka, body.affiliates, body.dead]
   ).then(result => {
     res.send(result.rows[0]);
   })
 
 });
 
-app.put('/api/neighborhoods/:id', (req, res) => {
+app.put('/api/rappers/:id', (req, res) => {
   const body = req.body;
 
   client.query(`
@@ -62,7 +63,7 @@ app.put('/api/neighborhoods/:id', (req, res) => {
     set
       name = $1,
       born = $2,
-      role_id = $3,
+      positions.id = $3,
       numalbums = $4,
       albums = $5,
       aka = $6,
@@ -71,7 +72,7 @@ app.put('/api/neighborhoods/:id', (req, res) => {
     where id = $9
     returning *;  
   `,
-  [body.name, body.born, body.role_id, body.numalbums, body.albums, body.aka, body.affiliates, body.dead, req.params.id]
+  [body.name, body.born, body.positions.id, body.numalbums, body.albums, body.aka, body.affiliates, body.dead, req.params.id]
   ).then(results => {
     res.send(result.rows[0]);
   });
@@ -79,12 +80,22 @@ app.put('/api/neighborhoods/:id', (req, res) => {
 
 app.delete('/api/rappers/:id', (req, res) => {
   client.query(`
-  DELETE FROM rappers WHERE id=$1
+  DELETE FROM rappers WHERE id=$1;
   `,
   [req.params.id]
   ).then(() => {
     res.send({ removed: true });
   });
+});
+
+app.get('/api/positions', (req, res) => {
+
+  client.query(`
+    SELECT * FROM positions;
+  `)
+    .then(result => {
+      res.send(result.rows);
+    });
 });
 
 

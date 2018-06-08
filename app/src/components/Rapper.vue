@@ -1,5 +1,6 @@
 <template>
-  <li>
+  <div>
+    <article v-if="!editing">
       <h2>{{ rapper.name }}</h2>
       <p>From: {{ rapper.born }}</p>
       <p>Role: {{ rapper.position }}</p>
@@ -10,24 +11,42 @@
       <p v-if="rapper.dead === false">{{ rapper.name }} is not dead</p>
       <p v-else>{{ rapper.name }} is dead.</p>
       <button
-      @click.prevent="handleDeleteSub"
+      @click.prevent="handleClick"
       >Remove</button>
-  </li>
+    </article>
+    <RapperForm
+      v-else
+      label="Update"
+      :rapper="rapper"
+      :on-edit="onUpdate"
+    />
+    <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit' }}</button>
+  </div>
 </template>
 
 <script>
+import RapperForm from './RapperForm';
+
 export default {
-  props: {
-    rapper: Object,
-    onDelete: {
-      type: Function,
-      required: true
-    }
+  data() {
+    return {
+      editing: false
+    };
   },
+  components: {
+    RapperForm
+  },
+  props: [
+    'rapper',
+    'onDelete',
+    'onUpdate',
+  ],
   methods: {
-    handleDeleteSub() {
-      this.onDelete(this.rapper);
+    handleClick() {
+      if(confirm(`Are you sure you want to remove $this.rapper.name}?`)) {
+        this.onDelete(this.rapper.id);
       }
+    }
   }
 };
 </script>

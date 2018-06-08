@@ -10,7 +10,7 @@ client.query(`
         id SERIAL PRIMARY KEY,
         name VARCHAR(256),
         born VARCHAR(256),
-        role_id INTEGER NOT NULL,
+        role INTEGER NOT NULL,
         numalbums INTEGER,
         albums VARCHAR(256),
         aka VARCHAR(256),
