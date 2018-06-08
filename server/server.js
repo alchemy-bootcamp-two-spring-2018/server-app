@@ -17,8 +17,13 @@ client.connect();
 
 // routes
 app.get('/api/walruses', (req, res) => {
+  
   client.query(`
-    SELECT * from walruses;
+    SELECT walruses.id,
+    walruses.name,
+    description, 
+
+order by walruses.name;
     `).then(result => {
     res.send(result.rows);
   });
