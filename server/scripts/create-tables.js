@@ -11,7 +11,7 @@ client.query(`
     location VARCHAR(64),
     elevation INTEGER,
     climbingstyle_id INTEGER NOT NULL REFERENCES climbingstyles(id),
-    yearRoundClimbing BOOLEAN,
+    yearroundclimbing BOOLEAN,
     description VARCHAR(1024)
   );
 `)

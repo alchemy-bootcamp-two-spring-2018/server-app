@@ -16,30 +16,48 @@ app.get('/api/climbingLocations/', (req, res) => {
   client.query(`
     SELECT cl.id,
     name,
-    cs.id as "climbingstylesID",
+    cs.id as "climbingstyleID",
     location,
     type,
     yearroundclimbing, 
     description
    FROM climbinglocations cl
    JOIN climbingstyles cs
-   ON cl.climbingstyle_id = cs.id
-   ;
+   ON cl.climbingstyle_id = cs.id;
   `).then(result => {
     res.send(result.rows);
   });
 });
 
-
 app.post('/api/climbingLocations', (req, res) => {
   const body = req.body;
   
   client.query(`
-    INSERT INTO climbinglocations (name, location, elevation, yearRoundClimbing, description)
-    VALUES ($1, $2, $3, $4, $5)
+    INSERT INTO climbinglocations (name, climbingstyle_id, location, elevation, yearRoundClimbing, description)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
   `, 
-  [body.name, body.image, body.location, body.elevation, body.yearRoundClimbing, body.description]
+  [body.name, body.image, body.climbingstyleID, body.location, body.elevation, body.yearRoundClimbing, body.description]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+});
+
+app.put('/api/climbingLocations/:id', (req, res) => {
+  const body = req.body;
+  
+  client.query(`
+    UPDATE climbinglocations
+    SET
+      name = $1,
+      climbingstyle_id = $2,
+      location = $3,
+      yearroundclimbing = $4,
+      description = $5
+      WHERE id = $6
+      returning *;
+      `,
+  [body.name, body.climbingstyleID, body.location, body.yearroundclimbing, body.description, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
   });
