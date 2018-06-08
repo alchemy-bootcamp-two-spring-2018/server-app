@@ -16,7 +16,7 @@
 
     <AddLocation
       label="Add"
-      :on-add="handleAdd"
+      :on-edit="handleAdd"
      /> 
   </div>
 </template>

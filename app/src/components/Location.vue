@@ -30,7 +30,8 @@ export default {
   props: [
     'location',
     'onRemove',
-    'onUpdate'
+    'onUpdate',
+    'onEdit'
   ],
 
   methods: {
