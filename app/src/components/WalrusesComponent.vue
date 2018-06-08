@@ -9,8 +9,6 @@
         v-for="walrus in walruses"
         :key="walrus.name"
         :walrus="walrus"
-        :on-remove="handleRemove"
-        :onUpdate="handleUpdate"
         />
     </div>
     
@@ -20,7 +18,7 @@
 <script>
 import IndividualWalrus from './IndividualWalrus';
 import WalrusForm from './WalrusForm';
-import { getWalruses, addWalrus, deleteWalrus, updateWalrus } from '../services/api';
+import { getWalruses, addWalrus, getTypes } from '../services/api';
 
 export default {
   data() {
