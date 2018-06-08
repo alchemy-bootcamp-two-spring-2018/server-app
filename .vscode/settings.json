@@ -4,5 +4,6 @@
     "mototype",
     "mototypes",
     "varchar"
-  ]
+  ],
+  "liveshare.guestApprovalRequired": true
 }

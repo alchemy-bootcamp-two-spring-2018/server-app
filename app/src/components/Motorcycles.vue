@@ -11,6 +11,7 @@
     </ul>
     
     <MotorcycleForm
+    label="Add Motorcycle"
     :on-edit="handleAdd"
     />
 
@@ -73,7 +74,7 @@ export default {
 .motorcycles {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-around;
+  justify-content: center;
   margin: 10px;
 }
 .tiles {

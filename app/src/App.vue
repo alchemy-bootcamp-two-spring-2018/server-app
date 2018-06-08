@@ -21,11 +21,17 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Anton|Montserrat+Subrayada|Russo+One');
+/* font-family: 'Russo One', sans-serif;
+font-family: 'Anton', sans-serif;
+font-family: 'Montserrat Subrayada', sans-serif; */
+
 html {
-  background: rgb(220, 141, 141);
+  background: rgb(182, 199, 178);
+  font-family: 'Anton', sans-serif;
 }
-h1, h2, h3, p, label {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+h1 {
   text-align: center;
 }
+
 </style>

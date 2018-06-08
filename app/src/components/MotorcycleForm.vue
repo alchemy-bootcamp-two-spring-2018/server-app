@@ -43,17 +43,15 @@
         </select>
       </label>
 
-      <label>
+      <label id="forSaleCheckbox">
         For Sale:
         <input type="checkbox" name="available" v-model="edit.available">
       </label>
 
       <label>
-        <button type="submit">{{ label }}</button>
+        <button id="formButton" type="submit">{{ label }}</button>
       </label>
-
     </form>
-
   </div>
 </template>
 
@@ -62,12 +60,11 @@ import { getTypes } from '../services/api';
 
 const initMotorcycle = () => {
   return {
-    mototype_id: '',
     year: '',
     make: '',
     model: '',
     color: 'Red',
-    available: false,
+    available: false
   };
 };
 
@@ -109,10 +106,26 @@ form {
   display: flex;
   flex-flow: column nowrap;
   margin-top: 30px;
-  margin-left: 50px;
-  border: 2px solid black;
+  width: 230px;
+  align-items: center;
+  font-family: 'Russo One', sans-serif;
 }
+
+#forSaleCheckbox {
+  display: inline;
+}
+
 label {
+  display: flex;
+  flex-flow: column nowrap;
   margin: 10px;
+  width: 200px;
+}
+input, select {
+  margin-top: 10px;
+}
+#formButton {
+  width: 100px;;
+  align-self: center;
 }
 </style>

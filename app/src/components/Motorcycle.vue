@@ -1,6 +1,7 @@
 <template>
   <div class="content">
     <article v-if="!editing">
+      <div class="content-list">
       <h2>{{ motorcycle.make }}</h2>
       <p>{{ motorcycle.type }}</p>
       <p>Model: {{ motorcycle.model }}</p>
@@ -11,6 +12,7 @@
       <p>Delete:
         <input @click="handleDelete()" type="checkbox" name="delete">
       </p>
+      </div>
     </article>
     <MotorcycleForm
     v-else
@@ -54,10 +56,19 @@ export default {
 .content {
   display: flex;
   flex-flow: column nowrap;
-  border: 2px solid rgb(7, 255, 7);
+  border: 2px solid rgb(179, 75, 75);
+  align-items: center;
+  margin: 10px;
+  font-family: 'Russo One', sans-serif;
 }
 
 h2, p {
-  margin-left: 20px;
+  margin: 15px;
+}
+
+button {
+  width: 100px;
+  margin: 10px;
+
 }
 </style>
