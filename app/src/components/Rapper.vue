@@ -12,11 +12,14 @@
       <p v-else>{{ rapper.name }} is dead.</p>
       <button
       @click.prevent="handleClick"
+      @click="editing = true"
       >Remove</button>
     </article>
     <RapperForm
       v-else
       label="Update"
+      @submit="!editing"
+      :editing="editing"
       :rapper="rapper"
       :on-edit="onUpdate"
     />
@@ -41,9 +44,12 @@ export default {
     'onDelete',
     'onUpdate',
   ],
+  computed: {
+
+  },
   methods: {
     handleClick() {
-      if(confirm(`Are you sure you want to remove $this.rapper.name}?`)) {
+      if(confirm('Are you sure you want to remove $this.rapper.name}?')) {
         this.onDelete(this.rapper.id);
       }
     }

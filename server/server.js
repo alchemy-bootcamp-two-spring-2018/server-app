@@ -56,13 +56,14 @@ app.post('/api/rappers', (req, res) => {
 
 app.put('/api/rappers/:id', (req, res) => {
   const body = req.body;
+  console.log(req.params.id)
 
   client.query(`
     update rappers
     set
       name = $1,
       born = $2,
-      positions.id = $3,
+      role = $3,
       numalbums = $4,
       albums = $5,
       aka = $6,
@@ -71,8 +72,8 @@ app.put('/api/rappers/:id', (req, res) => {
     where id = $9
     returning *;  
   `,
-  [body.name, body.born, body.positions.id, body.numalbums, body.albums, body.aka, body.affiliates, body.dead, req.params.id]
-  ).then(results => {
+  [body.name, body.born, body.role, body.numalbums, body.albums, body.aka, body.affiliates, body.dead, req.params.id]
+  ).then(result => {
     res.send(result.rows[0]);
   });
 })

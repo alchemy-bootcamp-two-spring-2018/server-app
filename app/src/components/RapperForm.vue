@@ -56,7 +56,6 @@
               <button type="submit">{{label}}</button>
           </label>
       </form>
-			{{ edit }}
   </section>
 </template>
 
@@ -66,8 +65,8 @@ import { getPositions } from '../services/api';
 const initRappers = () => {
   return {
     name: '',
-		born: '',
-		role: '',
+    born: '',
+    role: '',
     numalbums: '',
     albums: '',
     aka: '',
@@ -78,28 +77,27 @@ const initRappers = () => {
 
 export default {
 
-    props: {
-			rapper: Object,
-			label: String,
-      onEdit: {
-        type: Function,
-      	required: true
+  props: {
+    rapper: Object,
+    label: String,
+    onEdit: {
+      type: Function,
+      required: true
     }
   },
-	data() {
-		return {
-			edit: this.rapper ? Object.assign({}, this.rapper) : initRappers(),
-			positions: []
-		};
-	},
-	created() {
-		getPositions().then(positions => {
-			this.positions = positions;
-		});
-	},
+  data() {
+    return {
+      edit: this.rapper ? Object.assign({}, this.rapper) : initRappers(),
+      positions: []
+    };
+  },
+  created() {
+    getPositions().then(positions => {
+      this.positions = positions;
+    });
+  },
   methods: {
     handleSubmit() {
-			console.log('HERE IS LOG IN RAPPERFORM', this.edit)
       this.onEdit(this.edit)
         .then(() => {
           this.edit = initRappers();
