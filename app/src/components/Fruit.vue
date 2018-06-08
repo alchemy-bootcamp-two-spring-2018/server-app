@@ -1,17 +1,49 @@
 <template id="fruit-template">
-  <article>
-    <h3>{{ fruit.name }}</h3>
-    <p>Classification: {{ fruit.classification }}</p>
-    <p>Color: {{ fruit.color }}</p>
-    <p>Skin Edible: {{fruit.skinEdible}}</p>
-    <p>Calories: {{fruit.calories}}</p>
-  </article>
+  <div>
+    <article v-if="!editing">
+      <h3>{{ fruit.name }}</h3>
+      <p>Classification: {{ fruit.classificationClassification }}</p>
+      <p>Color: {{ fruit.color }}</p>
+      <p>Skin Edible: {{fruit.skinEdible}}</p>
+      <p>Calories: {{fruit.calories}}</p>
+      <p>
+        <button @click="handleClick">remove this fruit</button>
+      </p>  
+    </article>
+    <FruitForm
+      v-else
+      label="Update"
+      :fruit="fruit"
+      :on-edit="onUpdate"
+    />
+     <button @click="editing = !editing">{{ editing ? 'Cancel' : '✏️'}}</button>  
+  </div>  
 </template>
 
 <script>
-export default {
-  props: ['fruit'],
+import FruitForm from './FruitForm';
 
+export default {
+  data() {
+    return {
+      editing: false
+    };
+  },
+  components: {
+    FruitForm
+  },
+  props: [
+    'fruit',
+    'onRemove',
+    'onUpdate'
+  ],
+  methods: {
+    handleClick() {
+      if(confirm(`Are you sure want to remove ${this.fruit.name}?`)) {
+        this.onRemove(this.fruit.id);
+      }
+    }
+  }
 };
 </script>
 

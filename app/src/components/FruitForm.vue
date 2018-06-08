@@ -5,41 +5,51 @@
       <label>
         Name:
         <input type="text" name="name" placeholder="Name" required
-          v-model="fruit.name">
+          v-model="edit.name">
       </label>
 
       <label>
         Classification:
-        <input type="text" name="classificatiopn" placeholder="Classification" required
-          v-model="fruit.classification">
+        <select v-model.number="edit.classificationId" required>
+          <option disabled value="">Please select a classificationt</option>
+          <option
+            v-for="classification in classifications"
+              :key="classification.id"
+              :value="classification.id">
+              {{classification.classification}}
+          </option>
+        </select>  
       </label>
 
       <label>
         Color:
         <input type="text" name="color" placeholder="Color" required
-          v-model="fruit.color">
+          v-model="edit.color">
       </label>
 
       <label>
         Skin Edible:
         <input type="text" name="skinEdible" placeholder="Skin Edible" required
-          v-model="fruit.skinEdible">
+          v-model="edit.skinEdible">
       </label>
 
       <label>
         Calories:
-        <input type="text" name="calories" placeholder="Calories" required
-          v-model="fruit.calories">
+        <input type="number" name="calories" placeholder="Calories" required
+          v-model="edit.calories">
       </label>
       
       <label>
-        <button type="submit">Add</button>
+        <button type="submit">{{ label }}</button>
       </label>
     </form>
+    {{ edit }}
   </section>
 </template>
 
 <script>
+import { getClassifications } from '../services/api';
+
 const initFruit = () => {
   return {
     name: '',
@@ -51,19 +61,27 @@ const initFruit = () => {
 };
 export default {
   props: {
-    onAdd: {
+    fruit:Object,
+    label: String,
+    onEdit: {
       type: Function,
       required: true
     }
   },
   data() {
     return {
-      fruit: initFruit()
+      edit: this.fruit ? Object.assign({}, this.fruit) : initFruit(),
+      classification: []
     };
+  },
+  created() {
+    getClassifications().then(classifications => {
+      this.classifications = classifications;
+    });
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.fruit)
+      this.onEdit(this.fruit)
         // this fires when save is complete and data added to fruits array
         .then(() => {
           this.fruit = initFruit();
