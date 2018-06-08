@@ -65,12 +65,12 @@ app.put('/api/games/:id', (req, res) => {
   client.query(`
     UPDATE games
     SET
-      name = 1$,
+      name = $1,
       system_id = $2,
       year = $3,
       completed = $4
-    WHERE id = $6
-    RETURNING *;
+    WHERE id = $5
+    RETURNING *, system_id as "systemId";
   `,
   [body.name, body.systemId, body.year, body.completed, req.params.id]
   ).then(result => {
