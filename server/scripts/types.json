@@ -1,0 +1,22 @@
+[
+  {
+    "type": "Animated",
+    "fictional": true
+  },
+  {
+    "type": "Pacific",
+    "fictional": false
+  },
+  {
+    "type": "Pacific",
+    "fictional": false
+  },
+  {
+    "type": "Pacific",
+    "fictional": false
+  },
+  {
+    "type": "Pacific",
+    "fictional": false
+  }
+]
