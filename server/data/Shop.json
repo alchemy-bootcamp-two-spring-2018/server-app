@@ -1,37 +1,38 @@
-[{
+[
+  {
     "name": "Coava",
     "neighborhood": "Buckman",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "True"
-},
-{
+  },
+  {
     "name": "Push Pull",
     "neighborhood": "Buckman",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "True"
-},
-{
+  },
+  {
     "name": "Good Coffee",
     "neighborhood": "Richmond",
-    "boolean": "123",
-    "inHouseRoaster": "True"
-},
-{
+    "number": "123",
+    "inHouseRoaster": "False"
+  },
+  {
     "name": "Barista",
     "neighborhood": "Buckman",
-    "boolean": "123",
-    "inHouseRoaster": "false"
-},
-{
+    "number": "123",
+    "inHouseRoaster": "False"
+  },
+  {
     "name": "Never",
     "neighborhood": "Sunnyside",
-    "boolean": "123",
-    "inHouseRoaster": "false"
-},
-{
+    "number": "123",
+    "inHouseRoaster": "False"
+  },
+  {
     "name": "Upper Left",
     "neighborhood": "Hosford-Abernethy",
-    "boolean": "123",
+    "number": "123",
     "inHouseRoaster": "True"
-}
+  }
 ]

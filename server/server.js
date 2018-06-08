@@ -5,21 +5,45 @@ const express = require('express');
 
 const app = express();
 
-// const cors = require('cors');
+const cors = require('cors');
 
-// app.use(cors());
+app.use(cors());
 
-// app.use(express.json());
+app.use(express.json());
 
-// const sipList = require('./data/siplist');
+// const sipList = require('./data/shop.json');
 
-// const fs = require('fs');
+// eslint-disable-next-line
+const shops = require('./data/shop');
 
-// const dataPath = 'data/siplist.json';
+const fs = require('fs');
 
-// app.use((req, res) => {
-// console.log(req.method, req.url, req.body.name);
-// res.send({ error: 'path not found' });
-// });
+const dataPath = 'data/shop.json';
+
+app.get('/api/shops', (req, res) => {
+
+  const raw = fs.readFileSync(dataPath);
+  const data = JSON.parse(raw);
+  res.send(data);
+});
+
+app.post('/api/shops', (req, res) => {
+  console.log(req.method, req.url, req.body);
+
+  const raw = fs.readFileSync(dataPath);
+
+  const data = JSON.parse(raw);
+
+  data.push(req.body);
+
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
+
+  res.send(req.body);
+});
+
+app.use((req, res) => {
+  console.log(req.method, req.url, req.body.name);
+  res.send({ error: 'path not found' });
+});
 
 app.listen(3000, () => console.log('app is running...'));
