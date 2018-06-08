@@ -10,14 +10,21 @@ client.query(`
   CREATE TABLE IF NOT EXISTS boardgames (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256),
-    published VARCHAR(8),
     category_id INTEGER NOT NULL REFERENCES categories(id),
-    min_players INTEGER,
-    max_players INTEGER,
+    players INTEGER,
     avg_playing_time INTEGER,
-    description VARCHAR(1024),
-    owned BOOLEAN
+    description VARCHAR(1024)
   );
+
+  CREATE TABLE IF NOT EXISTS events (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256),
+    date VARCHAR(32),
+    time VARCHAR(8),
+    game_id INTEGER NOT NULL REFERENCES boardgames(id),
+    guests_allowed BOOLEAN,
+    message VARCHAR(1024)
+  )
 `)
   .then(
     () => console.log('creating tables complete'),

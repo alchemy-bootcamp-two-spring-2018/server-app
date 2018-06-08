@@ -1,13 +1,13 @@
 const client = require('../db-client');
-const boardGames = require('../data/board-games.json');
+const boardGames = require('./board-games.json');
 
 Promise.all(
   boardGames.map(game => {
     return client.query(`
-      INSERT INTO boardgames (name, published, category_id, min_players, max_players, avg_playing_time, description, owned)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+      INSERT INTO boardgames (name, category_id, players, avg_playing_time, description)
+        VALUES ($1, $2, $3, $4, $5);
     `,
-    [game.name, game.published, game.categoryID, game.minPlayers, game.maxPlayers, game.avgPlayingTime, game.description, game.owned]
+    [game.name, game.categoryID, game.players, game.avgPlayingTime, game.description]
     ).then(result => result.rows[0]);
   })
 )
