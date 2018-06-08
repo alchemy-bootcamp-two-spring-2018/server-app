@@ -24,7 +24,6 @@ app.get('/api/rappers', (req, res) => {
     SELECT rappers.id,
       name,
       born,
-      positions.id,
       positions.position,
       numalbums,
       albums,
