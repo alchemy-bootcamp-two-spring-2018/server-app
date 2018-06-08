@@ -37,7 +37,7 @@ app.post('/api/climbingLocations', (req, res) => {
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
   `, 
-  [body.name, body.image, body.climbingstyleID, body.location, body.elevation, body.yearRoundClimbing, body.description]
+  [body.name, body.climbingstyleID, body.location, body.elevation, body.yearRoundClimbing, body.description]
   ).then(result => {
     res.send(result.rows[0]);
   });

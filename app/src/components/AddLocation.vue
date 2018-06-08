@@ -7,6 +7,11 @@
           <input type="text" name="name" min="3" placeholder="Name" required
             v-model="location.name">
         </label>
+         <label>
+          Type of Climbing:
+          <input type="number" name="type" placeholder="Name" required
+            v-model="location.climbingstyleID">
+        </label>
         <label>
           Location:
           <input type="text" name="name" placeholder="Location" required
