@@ -2,7 +2,7 @@
   <div>
     <article v-if="!editing">
       <h3>{{ subscription.name }}</h3>
-      <p>Purpose: <em>{{ subscription.purposeName }}</em></p>
+      <p>Purpose: <em>{{ purpose }}</em></p>
       <p>Monthly Price: {{ subscription.price }}</p>
       <p>Includes ads: <strong>{{ ads }}</strong></p>
       <button @click="handleClick">Remove</button>
@@ -11,6 +11,7 @@
       v-else
       label="Update"
       :subscription="subscription"
+      :purposes="purposes"
       :onEdit="onUpdate"
     />
       <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit' }}</button>
@@ -31,12 +32,18 @@ export default {
   },
   props: [
     'subscription',
+    'purposes',
     'onRemove',
     'onUpdate'
   ],
   computed: {
     ads() {
       return this.subscription.ads === false ? 'No' : 'Yes';
+    },
+    purpose() {
+      if(!this.purposes) return null;
+      const purpose = this.purposes.find(q => q.id === this.subscription.purposeId);
+      return purpose ? `${purpose.name}` : 'Unknown';
     }
   },
   methods: {

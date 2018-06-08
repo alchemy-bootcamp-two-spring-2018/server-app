@@ -53,6 +53,7 @@ import { getPurposes } from '../services/api';
 const initSubscription = () => {
   return {
     name: '',
+    purposeId: '',
     price: '',
     ads: ''
   };

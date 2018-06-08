@@ -7,6 +7,7 @@
         v-for="subscription in subscriptions"
         :key="subscription.name"
         :subscription="subscription"
+        :purposes="purposes"
         :onRemove="handleRemove"
         :onUpdate="handleUpdate"
       />
@@ -14,6 +15,7 @@
     <h3>Add a new subscription</h3>
     <SubscriptionForm
       label="Add"
+      :purposes="purposes"
       :onEdit="handleAdd"/>
   </section>
 </template>
@@ -21,22 +23,30 @@
 <script>
 import Subscription from './Subscription';
 import SubscriptionForm from './SubscriptionForm';
+
 import {
   getSubscriptions,
   addSubscription,
   updateSubscription,
-  removeSubscription } from '../services/api';
+  removeSubscription,
+  getPurposes } from '../services/api';
 
 export default {
   data() {
     return {
-      subscriptions: null
+      subscriptions: null,
+      purposes: null
     };
   },
   created() {
     getSubscriptions()
       .then(subscriptions => {
         this.subscriptions = subscriptions;
+      });
+
+    getPurposes()
+      .then(purposes => {
+        this.purposes = purposes;
       });
   },
   components: {
