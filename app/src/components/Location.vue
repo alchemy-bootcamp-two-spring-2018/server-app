@@ -35,7 +35,7 @@ export default {
 
   methods: {
     handleClick() {
-      if(confirm('Not such a good place to code eh? Or maybe you just want to keep it quiet...')) {
+      if(confirm('Not such a good place to code afterall?')) {
         this.onRemove(this.location.id);
       }
     }

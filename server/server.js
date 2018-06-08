@@ -23,7 +23,7 @@ app.get('/api/locations', (req, res) => {
       description,
       power,
       rating
-    FROM location n
+    FROM locations n
     JOIN quadrants q
     ON n.quadrant_id = q.id
     order by n.name;
@@ -36,11 +36,11 @@ app.post('/api/locations', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO locations (name, description, neighborhood, power, rating)
+    INSERT INTO locations (name, description, quadrantID, power, rating)
     VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
   `,
-  [body.name, body.description, body.neighborhood, body.power, body.rating]
+  [body.name, body.description, body.quadrantID, body.power, body.rating]
   ).then(result => {
   //send back object
     res.send(result.rows[0]);
@@ -69,9 +69,9 @@ app.put('/api/locations/:id', (req, res) => {
 
 app.delete('/api/locations/:id', (req, res) => {
   client.query(`
-    DELETE FROM locations WHERE id =$1  
+    DELETE FROM locations WHERE id =$1;  
   `,
-  [params.id]
+  [req.params.id]
   ).then(() => {
     res.send({ removed: true });
   }); 
@@ -83,7 +83,7 @@ app.get('/api/quadrants', (req, res) => {
     select * from quadrants;
   `)
     .then(result => {
-    res.send(result.rows);
+      res.send(result.rows);
     });
 });
 
