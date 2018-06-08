@@ -2,7 +2,7 @@
   <div>
     <article v-if="!editing">
       <h2>{{ game.name }}</h2>
-      <p>System: {{ game.systemName }}</p>
+      <p>System: {{ system }}</p>
       <p>Release Year: {{ game.year }}</p>
       <p>Completed: {{ game.completed }}</p>
       <p>
@@ -34,8 +34,16 @@ export default {
   props: [
     'game',
     'onDelete',
-    'onUpdate'
+    'onUpdate',
+    'systems'
   ],
+  computed: {
+    system() {
+      if(!this.systems) return null;
+      const system = this.systems.find(s => s.id === this.game.systemId);
+      return system ? system.name : 'Unknown';
+    }
+  },
   methods: {
     handleClick() {
       if(confirm(`Are you sure you want to remove ${this.game.name}?`)) {
@@ -44,6 +52,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style>

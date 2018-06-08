@@ -50,7 +50,7 @@ app.post('/api/games', (req, res) => {
   client.query(`
     INSERT INTO games (name, system_id, year, completed)
     VALUES ($1, $2, $3, $4)
-    RETURNING *;
+    RETURNING *, system_id as "systemId";
   `,
   [body.name, body.systemId, body.year, body.completed]
   ).then(result => {

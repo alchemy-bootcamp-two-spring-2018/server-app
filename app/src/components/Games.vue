@@ -5,6 +5,7 @@
     <ul v-else class="list">
       <Game
         v-for="game in games"
+        :systems="systems"
         :on-delete="handleDelete"
         :on-update="handleUpdate"
         :key="game.name"
@@ -22,12 +23,13 @@
 <script>
 import Game from './Game';
 import GameForm from './GameForm';
-import { getGames, addGame, deleteGame, updateGame } from '../services/api';
+import { getGames, addGame, deleteGame, updateGame, getSystems } from '../services/api';
 
 export default {
   data() {
     return {
-      games: null
+      games: null,
+      systems: null
     };
   },
   components: {
@@ -38,6 +40,10 @@ export default {
     getGames()
       .then(games => {
         this.games = games;
+      });
+    getSystems()
+      .then(systems => {
+        this.systems = systems;
       });
   },
   methods: {
