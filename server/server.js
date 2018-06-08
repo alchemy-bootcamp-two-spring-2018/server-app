@@ -45,7 +45,27 @@ app.post('/api/motorcycles', (req, res) => {
   ).then(result => {
     res.send(result.rows[0]);
   });
+});
 
+app.put('/api/motorcycles/:id', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+  update motorcycles
+  set
+    make = $1,
+    mototype_id = $2,
+    model = $3,
+    year = $4,
+    color = $5,
+    available = $6
+  where id = $7
+  returning *;
+  `,
+  [body.make, body.mototype_id, body.model, body.year, body.color, body.available, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
 });
 
 app.delete('/api/motorcycles/', (req, res) => {
@@ -57,6 +77,15 @@ app.delete('/api/motorcycles/', (req, res) => {
   ).then(() => {
     res.send({ removed: true });
   });
+});
+
+app.get('/api/mototypes', (req, res) => {
+
+  client.query(`
+  `)
+    .then(result => {
+      res.send(result.rows);
+    });
 });
 
 app.listen(3000, () => console.log('Application is running...'));

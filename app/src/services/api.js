@@ -1,13 +1,15 @@
 
+const URL = 'http://localhost:3000/api';
+const MOTORCYCLES_URL = `${URL}/motorcycles`;
 export function getMotorcycles() {
-  return fetch('http://localhost:3000/api/motorcycles/', {
+  return fetch(MOTORCYCLES_URL, {
     headers: { 'Content-Type': 'application/json' },
   })
     .then(response => response.json());
 }
 
 export function addMotorcycle(motorcycle) {
-  return fetch('http://localhost:3000/api/motorcycles/', {
+  return fetch(MOTORCYCLES_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(motorcycle)
@@ -15,8 +17,17 @@ export function addMotorcycle(motorcycle) {
     .then(response => response.json());
 }
 
+export function updateMotorcycle(motorcycle) {
+  return fetch(`${MOTORCYCLES_URL}/${motorcycle.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(motorcycle)
+  })
+    .then(response => response.json());
+}
+
 export function removeMotorcycle(motorcycle) {
-  return fetch('http://localhost:3000/api/motorcycles/', {
+  return fetch(MOTORCYCLES_URL, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(motorcycle)
