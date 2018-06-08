@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { getSystems } from '.../services/api';
+import { getSystems } from '../services/api';
 
 const initGame = () => {
   return {
