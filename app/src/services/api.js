@@ -27,3 +27,12 @@ export function getClimbingStyles(){
   })
     .then(response => response.json());
 }
+
+export function updateLocation(location) {
+  return fetch(`http://localhost:3000/api/climbingstyles/${location.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(location)
+  })
+    .then(response => response.json());
+}

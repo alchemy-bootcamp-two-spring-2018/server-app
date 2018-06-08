@@ -11,12 +11,18 @@
     <p v-if="location.yearroundclimbing !== true"><strong>Seasonal Climbing</strong></p>
 
     <p id="description">{{location.description}}</p>
+    <button @click="handleUpdate">(-_-)</button>
   </div>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      editing: false
+    };
+  },
   props: {
     climbingStyles: {
       type: Array,
@@ -26,6 +32,10 @@ export default {
       type: Object
     },
     onDelete: {
+      type: Function,
+      required: true
+    },
+    onUpdate: {
       type: Function,
       required: true
     }
@@ -44,6 +54,12 @@ export default {
     handleDelete() {
       this.onDelete(this.location);
       return (this.location.id);
+    },
+    handleUpdate() {
+      this.onUpdate();
+      // .then(() => {
+      this.editing = false;
+      // });
     }
   }
 };

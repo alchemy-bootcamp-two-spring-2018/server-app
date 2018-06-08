@@ -6,6 +6,7 @@
         :key="location.name"
         :location="location"
         :on-delete="handleDelete"
+        :on-update="handleUpdate"
         :climbingStyles="climbingStyles"
       />
     </div>
@@ -21,7 +22,11 @@
 import Location from './Location.vue';
 import AddLocation from './AddLocation.vue';
 import { getClimbingStyles } from '../services/api';
-import { getClimbingLocations, addLocation, deleteLocation } from '../services/api.js';
+import { 
+  getClimbingLocations,
+  addLocation, 
+  deleteLocation,
+  updateLocation } from '../services/api.js';
 export default {
   data() {
     return {
@@ -53,6 +58,15 @@ export default {
       return deleteLocation(location)
         .then(this.locations = this.locations.filter(item => item.id !== location.id));
 
+    },
+    handleUpdate() {
+      console.log('oh hey');
+      // return updateLocation(toUpdate)
+      //   .then(updated => {
+      //     this.location = this.locations.map(location => {
+      //       return location.id === updated.id ? updated : location;
+      //     });
+      //   });
     }
   }
 };
