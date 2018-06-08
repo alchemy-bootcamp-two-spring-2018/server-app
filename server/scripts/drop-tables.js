@@ -1,14 +1,9 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://postgres:Bl0winBetty!@localhost:5432/guitarapp';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
+client.query(`
       DROP TABLE IF EXISTS guitarists;
-    `);
-  })
+      DROP TABLE IF EXISTS guitar;
+  `)
   .then(() => 
     console.log('droppin tables like I drop the ... beat'), err => console.log(err)
   )

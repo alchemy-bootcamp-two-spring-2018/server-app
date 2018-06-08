@@ -5,16 +5,27 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// const client = require('db-client');
+
+// connect to the database
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://postgres:Bl0winBetty!@localhost:5432/guitarapp';
-const client = new Client(databaseUrl);
+const DATABASE_URL = 'postgres://postgres:Bl0winBetty!@localhost:5432/guitarapp';
+const client = new Client(DATABASE_URL);
 client.connect();
-
 
 app.get('/api/guitarists', (req, res) => {
   client.query(`
     SELECT * from guitarists;
+  `).then(data => {
+    console.log('data that we should be returning \n\n', data.rows[0]);
+    res.send(data.rows);
+  });
+});
+
+app.get('/api/guitars', (req, res) => {
+  client.query(`
+    SELECT * from guitars;
   `).then(data => {
     res.send(data.rows);
   });
@@ -22,14 +33,13 @@ app.get('/api/guitarists', (req, res) => {
 
 app.post('/api/guitarists', (req, res) => {
   const body = req.body;
-  console.log('guitarist:', req.body);
 
   client.query(`
-    INSERT INTO guitarists (name, age, living, img_url)
-    VALUES ($1, $2, $3, $4)
+    INSERT INTO guitarists (name, age, living, img_url, guitar_id)
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
   `,
-  [body.name, body.age, body.living, body.img_url])
+  [body.name, body.age, body.living, body.img_url, body.guitar_id])
     .then(data => {
       res.send(data.rows[0]);
     });

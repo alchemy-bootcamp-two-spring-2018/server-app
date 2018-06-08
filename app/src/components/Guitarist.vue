@@ -1,9 +1,23 @@
 <template>
-  <div class="guitarist">
-    <span class="close"
-      @click.prevent="handleX"
-    >
-      X
+<div id="main-guitarist">
+  <div class="editing"
+    v-if="editing"
+  >
+  </div>
+  <div class="guitarist"
+    v-if="!editing"
+  >
+    <span class="button-holder">
+      <span class="button"
+        @click.prevent="handleEdit"
+      >
+        ⌨
+      </span>
+      <span class="button"
+        @click.prevent="handleX"
+      >
+        ✖
+      </span>
     </span>
     <h1>{{ guitarist.name }}</h1>
     <p>Are they alive?
@@ -17,12 +31,22 @@
       <img :src="guitarist.img_url">
     </div>
   </div>
+</div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      editing: false
+    }
+  },
   props: {
     guitarist: Object,
+    onUpdate: {
+      type: Function,
+      required: true
+    },
     onClose: {
       type: Function,
       required: true
@@ -53,19 +77,22 @@ img {
   width: 150px;
   height: auto;
 }
-
-.close {
+.button-holder {
+  display: flex;
+  justify-content: space-between;
+}
+.button {
   background-color: rgba(0, 0, 0, .69);
   display: absolute;
+  color: white;
   float: right;
   border-top: 2px solid gray;
   border-right: 2px solid black;
   border-bottom: 2px solid black;
   border-left: 2px solid gray;
   padding: 0 3px;
-  font-weight: bold;
 }
-.close:active {
+.button:active {
   display: absolute;
   float: right;
   border-top: 2px solid black;
@@ -75,7 +102,7 @@ img {
   padding: 0 3px;
   font-weight: bold;
 }
-.close:hover {
+.button:hover {
   background-color: red;
   cursor: pointer;
 }

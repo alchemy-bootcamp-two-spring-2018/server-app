@@ -1,7 +1,7 @@
 <template>
 <div id="main">
   <h1 id="title">Famous Guitarists</h1>
-  <add-guitarist
+  <form-guitarist
     :on-add="handleAdd"
   />
   <ul>
@@ -10,6 +10,7 @@
       :key="guitar.id"
       :guitarist="guitar"
       :on-close="handleClose"
+      :on-update="handleUpdate"
     />
   </ul>
 </div>
@@ -17,22 +18,28 @@
 
 <script>
 import Guitarist from './Guitarist'
-import AddGuitarist from './AddGuitarist'
-import { getGuitarists, addGuitarist, removeGuitarist } from '../services/api';
+import FormGuitarist from './FormGuitarist'
+import { getGuitarists,
+  addGuitarist,
+  removeGuitarist,
+  updateGuitarist } from '../services/api';
+
+
 export default {
   components: {
     Guitarist,
-    AddGuitarist,
+    FormGuitarist,
     removeGuitarist
   },
   data() {
     return {
-      guitarists: null
+      guitarists: []
     }
   },
   created() {
     getGuitarists()
       .then(guitarists => {
+        console.log('in the created yo', guitarists);
         this.guitarists = guitarists;
       });
   },
@@ -40,8 +47,9 @@ export default {
     handleAdd(guitarist) {
       return addGuitarist(guitarist)
         .then((res) => {
-            guitarist.id = res.id;
-            this.guitarists.push(guitarist);
+          guitarist.id = res.id;
+          console.log('\n\n\nguitarists\n\n\n', guitarist);
+          this.guitarists.push(guitarist);
         });
     },
     handleClose(guitarist) {
@@ -50,6 +58,14 @@ export default {
           if(res.removed) {
             this.guitarists.splice(this.guitarists.indexOf(guitarist), 1);
           }
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateGuitarist(toUpdate)
+        .then(updated => {
+          this.guitarists = this.guitarists.map(guitarist => {
+            return guitarist.id === updated.id ? updated : guitarist;
+          });
         });
     }
   }

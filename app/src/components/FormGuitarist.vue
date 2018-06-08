@@ -1,6 +1,6 @@
 <template>
-<div id="add-main">
-<div id="add-container">
+<div id="form-main">
+<div id="form-container">
   <form @submit.prevent="handleSubmit">
   <label>Name:
     <input
@@ -22,7 +22,18 @@
       placeholder="69"
       v-model.number="guitarist.age"
     >
-  </label><br>
+  </label>
+  <label>Guitar of choice:
+    <select v-model="guitarist.guitar_id">
+      <option value="1">Fender</option>
+      <option value="2">Gibson</option>
+      <option value="3">Taylor</option>
+      <option value="4">Martin</option>
+      <option value="5">PRS</option>
+      <option value="6">Yamaha</option>
+      <option value="7">Takamine</option>
+    </select>
+  </label>
   <label>Link to an image of them:
     <input
       required
@@ -37,15 +48,18 @@
 </div>
 </template>
 <script>
+
 // Function to initilize the addGuitarist form
 const initGuitarist = () => {
   return {
     name: '',
-    age: '',
+    id: '',
+    guitar_id: '',
     living: '',
+    age: '',
     img_url: ''
-  };
-};
+  }
+}
 export default {
   props: {
     onAdd: {
@@ -70,14 +84,14 @@ export default {
 </script>
 
 <style>
-#add-main {
+#form-main {
   background: rgba(0, 0, 0, .69);
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
 
 }
-#add-container {
+#form-container {
   width: 777px;
   margin: auto;
   color: seashell;
@@ -95,7 +109,4 @@ input {
   margin: 13px 33px 0 0;
 }
 
-#url {
-  width: 400px;
-}
 </style>
