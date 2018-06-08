@@ -9,7 +9,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS glucoselogs (
     id SERIAL PRIMARY KEY,
     date DATE,
-    day_id INTEGER NOT NULL REFERENCES days(id),
+    day INTEGER NOT NULL REFERENCES days(id),
     changeinsulin BOOLEAN,
     beforebreakfast INTEGER,
     afterbreakfast INTEGER,

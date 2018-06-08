@@ -9,7 +9,7 @@
 
       <label>
         Day:
-        <select v-model="edit.day_id" required>
+        <select v-model="edit.dayId" required>
           <option disabled value="">Please select a day</option>
           <option 
             v-for="day in days"
@@ -68,7 +68,7 @@ import { getDays } from '../services/api';
 const initglucoselog = () => {
   return {
     date: '',
-    day_id: '',
+    dayId: '',
     changeInsulin: false,
     beforeBreakfast: '',
     afterBreakfast: '',

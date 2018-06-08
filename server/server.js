@@ -26,7 +26,7 @@ app.get('/api/glucoselogs', (req, res) => {
   client.query(`
     SELECT glucoselogs.id,
       date,
-      days.id,
+      days.id as "dayId",
       days.name,
       changeInsulin, 
       beforeBreakfast, 
@@ -37,7 +37,7 @@ app.get('/api/glucoselogs', (req, res) => {
       afterDinner 
     FROM glucoselogs 
     JOIN days 
-    ON glucoselogs.day_id = days.id
+    ON glucoselogs.day = days.id
     ORDER BY glucoselogs.date;
   `).then(result => {
     res.send(result.rows);
@@ -48,11 +48,11 @@ app.get('/api/glucoselogs', (req, res) => {
 app.post('/api/glucoselogs', (req, res) => {
   const body = req.body;
   client.query(`
-    INSERT INTO glucoselogs (date, day_id, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
+    INSERT INTO glucoselogs (date, day, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING *;
   `,
-  [body.date, body.day_id, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner]
+  [body.date, body.dayId, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -66,7 +66,7 @@ app.put('/api/glucoselogs/:id', (req, res) => {
     UPDATE glucoselogs
     SET
       date = $1, 
-      day_id = $2, 
+      day = $2, 
       changeInsulin = $3, 
       beforeBreakfast = $4, 
       afterBreakfast = $5, 
@@ -77,7 +77,7 @@ app.put('/api/glucoselogs/:id', (req, res) => {
     WHERE id = $10
     RETURNING *;
   `,
-  [body.date, body.day_id, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner, req.params.id]
+  [body.date, body.dayId, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
   });
