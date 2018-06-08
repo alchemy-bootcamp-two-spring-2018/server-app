@@ -72,6 +72,29 @@ app.post('/api/programs', (req, res) => {
   });
 });
 
+// ROUTE:  Update a program
+app.put('/api/programs/:id', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    UPDATE programs
+    SET
+      title = $1,
+      host = $2,
+      audienceSize = $3,
+      yearStarted = $4,
+      daily = $5,
+      genre_id = $6,
+      description = $7
+    WHERE id = $8
+    RETURNING *;
+  `,
+  [body.title, body.host, body.audienceSize, body.yearStarted, body.daily, body.genreId, body.description, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+});
+
 // ROUTE:  Delete a program
 app.delete('/api/programs/:id', (req, res) => {
   client.query(`
