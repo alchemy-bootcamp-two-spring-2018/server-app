@@ -1,6 +1,6 @@
 
 const URL = 'http://localhost:3000/api';
-const LOCATIONS_URL = `${URL}/neighborhoods`;
+const LOCATIONS_URL = `${URL}/locations`;
 
 export function getLocations() {
   return fetch(LOCATIONS_URL, {
