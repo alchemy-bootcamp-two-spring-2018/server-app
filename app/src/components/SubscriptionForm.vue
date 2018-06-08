@@ -48,8 +48,6 @@
 </template>
 
 <script>
-import { getPurposes } from '../services/api';
-
 const initSubscription = () => {
   return {
     name: '',
@@ -61,6 +59,7 @@ const initSubscription = () => {
 export default {
   props: {
     subscription: Object,
+    purposes: Array,
     label: String,
     onEdit: {
       type: Function,
@@ -70,13 +69,7 @@ export default {
   data() {
     return {
       edit: this.subscription ? Object.assign({}, this.subscription) : initSubscription(),
-      purposes: []
     };
-  },
-  created() {
-    getPurposes().then(purposes => {
-      this.purposes = purposes;
-    });
   },
   methods: {
     handleSubmit() {
