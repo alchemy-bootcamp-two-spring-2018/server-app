@@ -6,19 +6,31 @@
       <p>Are power outlets available?</p>
       <p v-if="location.power">Yes</p>
       <p v-else>no</p>
-      <p>Alchemist Rated: {{ location.rating }}</p>
-     
+      <p>Alchemist Rated: {{ location.rating }}</p>   
       <button @click="handleCLick">Remove This Location</button>
-  </div>  
+      <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit Listing' }}</button>
+  </div> 
+     
 </template>
 
 <script>
-// TO DO: Marty line 32-39
+import AddLocation from './AddLocation';
+
 export default {
+  data() {
+    return {
+      editing: false
+    };
+  },
+
+  components: {
+    AddLocation
+  },
+
   props: [
     'location',
-    'onRemove'
-    //'onUpdate'
+    'onRemove',
+    'onUpdate'
   ],
 
   methods: {

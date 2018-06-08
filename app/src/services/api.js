@@ -17,7 +17,15 @@ export function addLocation(location) {
   })
     .then(response => response.json());
 }
-// TO DO: marty 21 updateLocation(location)
+
+export function updateLocation(location) {
+  return fetch(`${LOCATIONS_URL}/${location.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(location)
+  })
+    .then(response => response.json());
+}
 
 export function removeLocation(id) {
   return fetch(`${LOCATIONS_URL}/${id}`, {

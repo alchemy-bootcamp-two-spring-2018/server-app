@@ -10,8 +10,8 @@
         :key="location.id"
         :location="location"
         :on-remove="handleRemove"
+        :on-update="handleUpdate"
       />
-        <!-- on:update goes line above here -->
     </ul>
 
     <AddLocation
@@ -27,7 +27,7 @@ import AddLocation from './AddLocation.vue';
 import { 
   getLocations, 
   addLocation,
-  //updateLocation,
+  updateLocation,
   removeLocation } from '../services/api';
 
 
@@ -64,12 +64,17 @@ export default {
           this.locations.splice(index, 1);
         });
     },
-    //TO DO: line 62 Marty handleUpdate(toUpdate) {
-    //return updateLocation(toUpdate) .......
-    
+    handleUpdate(toUpdate) {
+      return updateLocation(toUpdate)
+        .then(updated => {
+          this.location = this.location.map(location => {
+            return location.id === updated.id ? updated : location;
+          });
+        });
+    }
   }
 };
-
+    
 
 </script>
 

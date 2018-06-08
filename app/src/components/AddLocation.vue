@@ -34,11 +34,12 @@
       </label>
 
     </form> 
-    <!-- TO DO: marty 45 edit    -->
+    {{ edit }}
   </section>
 </template>
 
 <script>
+import { getQuadrants } from '../services/api';
 
 const initLocation = () => {
   return {
@@ -52,7 +53,9 @@ const initLocation = () => {
 
 export default {
   props: {
-    onAdd: {
+    location: Object,
+    label: String,
+    onEdit: {
       type: Function,
       required: true
     }
@@ -60,19 +63,27 @@ export default {
 
   data() {
     return {
-      location: initLocation()
+      edit: this.location ? Object.assign({}, this.location) : initLocation(),
+      quadrants: []
     };
+  },
+
+  created() {
+    getQuadrants().then(quadrants => {
+      this.quadrants = quadrants;
+    });
   },
 
   methods: {
     handleSubmit() {
-      this.onAdd(this.location)
+      this.onEdit(this.edit)
         .then(() => {
           this.location = initLocation();
         });
     }
   }
 };
+
 </script>
 
 <style>
