@@ -11,11 +11,11 @@
     </article>
     <GameForm
       v-else
-      label="Update Entry"
+      label="Update"
       :game="game"
       :on-edit="onUpdate"
       />
-    <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit Entry '}}</button>
+    <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit Entry' }}</button>
   </div>
 </template>
 
@@ -31,17 +31,11 @@ export default {
   components: {
     GameForm
   },
-  props: {
-    game: Object,
-    onDelete: {
-      type: Function,
-      required: true
-    },
-    onUpdate: {
-      type: Function,
-      required: true
-    }
-  },
+  props: [
+    'game',
+    'onDelete',
+    'onUpdate'
+  ],
   methods: {
     handleClick() {
       if(confirm(`Are you sure you want to remove ${this.game.name}?`)) {

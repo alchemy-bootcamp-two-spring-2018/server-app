@@ -11,8 +11,9 @@
         :game="game"
       />
     </ul>
+    <h3>Add a new Game</h3>
     <GameForm
-      :on-add="handleAdd"
+      :on-edit="handleAdd"
       label = "Add Game"
     />
   </section>
