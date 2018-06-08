@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div v-if="!editing" class="board-game">
+  <div class="board-game">
+    <div v-if="!editing">
       <h1>{{ boardGame.name }} ({{ boardGame.published }})</h1>
-      <h2>Category: {{ boardGame.category }}</h2>
+      <h2>Category: {{ category }}</h2>
       <h4>{{ boardGame.minPlayers }} to {{ boardGame.maxPlayers }} players / {{ boardGame.avgPlayingTime }} minutes average playing time</h4>
       <p>{{ boardGame.description }}</p>
       <p>Owned: <span v-if="boardGame.owned">Yes</span><span v-else>No</span></p>
@@ -13,8 +13,9 @@
       :boardGame="boardGame"
       :onUpdate="onUpdate"
       :categories="categories"
+      @onUpdate="editing = false"
     />
-    <button @click="editing = !editing">Edit</button>
+    <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit' }}</button>
   </div>
 </template>
 
@@ -27,21 +28,22 @@ export default {
       editing: false
     };
   },
-  props: {
-    boardGame: Object,
-    onUpdate: {
-      type: Function,
-      required: true
-    },
-    onDelete: {
-      type: Function,
-      required: true
-    },
-    categories: Array
+  computed: {
+    category() {
+      if(!this.categories) return null;
+      const category = this.categories.find(c => c.id === this.boardGame.categoryID);
+      return category ? category.category : 'Unknown';
+    }
   },
+  props: [
+    'boardGame',
+    'categories',
+    'onUpdate',
+    'onDelete'
+  ],
   methods: {
     handleClick() {
-      if(confirm('Are you sure you want to delete ${ this.boardGame.name }?')) {
+      if(confirm(`Are you sure you want to delete ${ this.boardGame.name }?`)) {
         this.onDelete(this.boardGame.id);
       }
     }

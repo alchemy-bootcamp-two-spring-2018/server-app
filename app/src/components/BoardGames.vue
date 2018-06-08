@@ -47,6 +47,7 @@ export default {
     handleAdd(boardGame) {
       return addBoardGame(boardGame)
         .then(saved => {
+          console.log(saved);
           this.boardGames.push(saved);
         });
     },

@@ -19,19 +19,19 @@
         </select>
       </label>
       <label># of Players:
-        <input type="number" name="minPlayers" required v-model="edit.minPlayers">
+        <input type="number" required v-model="edit.minPlayers">
         to
-        <input type="number" name="maxPlayers" required v-model="edit.maxPlayers">
+        <input type="number" required v-model="edit.maxPlayers">
         players
       </label>
-      <label>Avg. Playing time:
-        <input type="number" name="avgPlayingTime" required v-model="edit.avgPlayingTime"> minutes
+      <label>Avg. Playing Time:
+        <input type="number" required v-model="edit.avgPlayingTime"> minutes
       </label>
       <label>Description:
-        <textarea name="description" required v-model="edit.description"></textarea>
+        <textarea required v-model="edit.description"></textarea>
       </label>
       <label>Owned:
-        <input type="checkbox" name="owned" v-model="edit.owned">
+        <input type="checkbox" v-model="edit.owned">
       </label>
       <label>
         <button type="submit">Update</button>
@@ -75,4 +75,8 @@ input[type="number"] {
   width: 60px;
 }
 
+textarea {
+  height: 300px;
+  width: 60%;
+}
 </style>
