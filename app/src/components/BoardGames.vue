@@ -5,8 +5,10 @@
       :key="boardGame.name"
       :boardGame="boardGame"
       :onDelete="handleDelete"
+      :onUpdate="handleUpdate"
+      :categories="categories"
     />
-    <AddBoardGame :onAdd="handleAdd"/>
+    <AddBoardGame :onAdd="handleAdd" :categories="categories"/>
   </div>
 </template>
 
@@ -17,13 +19,15 @@ import {
   getBoardGames,
   addBoardGame,
   deleteBoardGame,
-  updateBoardGame
+  updateBoardGame,
+  getCategories
 } from '../services/api';
 
 export default {
   data() {
     return {
-      boardGames: null
+      boardGames: null,
+      categories: []
     };
   },
   created() {
@@ -31,6 +35,9 @@ export default {
       .then(boardGames => {
         this.boardGames = boardGames;
       });
+    getCategories().then(categories => {
+      this.categories = categories;
+    });
   },
   components: {
     BoardGame,
@@ -43,9 +50,9 @@ export default {
           this.boardGames.push(saved);
         });
     },
-    handleDelete(boardGame) {
-      return deleteBoardGame(boardGame)
-        .then(this.boardGames = this.boardGames.filter(item => item.id !== boardGame.id));
+    handleDelete(id) {
+      return deleteBoardGame(id)
+        .then(this.boardGames = this.boardGames.filter(item => item.id !== id));
     },
     handleUpdate(boardGame) {
       updateBoardGame(boardGame);

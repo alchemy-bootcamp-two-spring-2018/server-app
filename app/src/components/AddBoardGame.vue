@@ -21,7 +21,7 @@
       <label># of Players:
         <input type="number" name="minPlayers" required v-model="boardGame.minPlayers">
         to
-        <input type="number" name="minPlayers" required v-model="boardGame.maxPlayers">
+        <input type="number" name="maxPlayers" required v-model="boardGame.maxPlayers">
         players
       </label>
       <label>Avg. Playing time:
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import { getCategories } from '../services/api';
 const initBoardGame = () => {
   return {
     name: '',
@@ -58,20 +57,15 @@ const initBoardGame = () => {
 export default {
   data() {
     return {
-      boardGame: initBoardGame(),
-      categories: []
+      boardGame: initBoardGame()
     };
   },
   props: {
     onAdd: {
       type: Function,
       required: true
-    }
-  },
-  created() {
-    getCategories().then(categories => {
-      this.categories = categories;
-    })
+    },
+    categories: Array
   },
   methods: {
     handleSubmit() {

@@ -19,14 +19,18 @@ export function addBoardGame(boardGame) {
 
 
 export function updateBoardGame(boardGame) {
-  console.log('updating', boardGame);
+  return fetch(`${BOARDGAMES_URL}/${boardGame.id}`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(boardGame)
+  })
+    .then(response => response.json());
 }
 
 
-export function deleteBoardGame(boardGame) {
-  return fetch(BOARDGAMES_URL + boardGame.id, {
-    method: 'DELETE',
-    headers: { 'Content-type': 'application/json' },
+export function deleteBoardGame(id) {
+  return fetch(`${BOARDGAMES_URL}/${id}`, {
+    method: 'DELETE'
   })
     .then(response => response.json());
 }
