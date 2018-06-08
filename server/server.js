@@ -11,23 +11,21 @@ const databaseUrl = 'postgres://localhost:5432/bg';
 const client = new Client(databaseUrl);
 client.connect();
 
-const API_URL = '/api/boardGames';
-const API_URL_ID = '/api/boardGames/:id';
+const API_URL = '/api/events';
+const API_URL_ID = '/api/events/:id';
 
 app.get(API_URL, (req, res) => {
   client.query(`
     SELECT
       id,
       name,
-      published,
-      category_id as "categoryID", 
-      in_players as "minPlayers",
-      max_players as "maxPlayers",
-      avg_playing_time as "avgPlayingTime",
-      description,
-      owned
-    FROM boardgames
-    ORDER BY name;
+      date,
+      time,
+      game_id as "gameID",
+      guests_allowed as "guestsAllowed",
+      message
+    FROM events
+    ORDER BY date;
   `).then(result => {
     res.send(result.rows);
   });
@@ -38,27 +36,23 @@ app.post(API_URL, (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO boardgames (
+    INSERT INTO events (
       name,
-      published,
-      category_id,
-      min_players,
-      max_players,
-      avg_playing_time,
-      description,
-      owned)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    RETURNING *, category_id as "categoryID";
+      date,
+      time,
+      game_id,
+      guests_allowed,
+      message)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *, game_id as "gameID", guests_allowed as "guestsAllowed";
   `,
   [
     body.name,
-    body.published,
-    body.categoryID,
-    body.minPlayers,
-    body.maxPlayers,
-    body.avgPlayingTime,
-    body.description,
-    body.owned
+    body.date,
+    body.time,
+    body.gameID,
+    body.guestsAllowed,
+    body.message
   ])
     .then(result => {
       res.send(result.rows[0]);
@@ -70,28 +64,24 @@ app.put(API_URL_ID, (req, res) => {
   const body = req.body;
 
   client.query(`
-    UPDATE boardgames
+    UPDATE events
     SET
       name = $1,
-      published = $2,
-      category_id = $3,
-      min_players = $4,
-      max_players = $5,
-      avg_playing_time = $6,
-      description = $7,
-      owned = $8
-    WHERE id = $9
-    returning *;
+      date = $2,
+      time = $3,
+      game_id = $4,
+      guests_allowed = $5,
+      message = $6
+    WHERE id = $7
+    RETURNING *, game_id as "gameID", guests_allowed as "guestsAllowed";
   `,
   [
     body.name,
-    body.published,
-    body.categoryID,
-    body.minPlayers,
-    body.maxPlayers,
-    body.avgPlayingTime,
-    body.description,
-    body.owned,
+    body.date,
+    body.time,
+    body.gameID,
+    body.guestsAllowed,
+    body.message,
     req.params.id
   ])
     .then(result => {
@@ -112,6 +102,15 @@ app.delete(API_URL_ID, (req, res) => {
 });
 
 
+app.get('/api/boardgames', (req, res) => {
+  client.query(`
+    SELECT * FROM boardgames;
+  `)
+    .then(result => {
+      res.send(result.rows);
+    });
+});
+
 app.get('/api/categories', (req, res) => {
   client.query(`
     SELECT * FROM categories;
@@ -120,6 +119,5 @@ app.get('/api/categories', (req, res) => {
       res.send(result.rows);
     });
 });
-
 
 app.listen(3000);
