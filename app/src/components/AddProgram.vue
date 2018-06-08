@@ -33,6 +33,19 @@
       </label>
 
       <label>
+        <strong>Genre: </strong>
+        <select v-model.number="program.genreId" required>
+          <option disabled value="">Please select a genre</option>
+          <option
+            v-for="oneGenre in genres"
+            :key="oneGenre.id"
+            :value="oneGenre.id">
+            {{oneGenre.genre}}
+          </option>
+        </select>
+      </label>
+
+      <label>
         <strong>Description: </strong>
         <textarea name="body" rows="8" cols="40" required 
           v-model="program.description"></textarea>
@@ -46,6 +59,8 @@
 </template>
 
 <script>
+import { getGenres } from '../services/api';
+
 const emptyProgram = () => {
   return {
     title: '',
@@ -53,6 +68,8 @@ const emptyProgram = () => {
     audienceSize: 10000,
     daily: true,
     yearStarted: '',
+    genre: '',
+    genreId: 0,
     description: ''
   };
 };
@@ -65,8 +82,14 @@ export default {
   },
   data() {
     return {
-      program: emptyProgram()
+      program: emptyProgram(),
+      genres: []
     };
+  },
+  created() {
+    getGenres().then(genres => {
+      this.genres = genres;
+    });
   },
   methods: {
     handleSubmit() {

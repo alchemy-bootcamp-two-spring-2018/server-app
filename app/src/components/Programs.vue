@@ -46,11 +46,13 @@ export default {
         });
     },
     handleDelete(program) {
-      deleteProgram(program);
-      getPrograms()
-       .then(programs => {
-         this.programs = programs;
-       });
+      const id = program.programId;
+      return deleteProgram(id)
+        .then (() => {
+          const index = this.programs.findIndex(p => p.programId === id);
+          if(index === -1) return;
+          this.programs.splice(index, 1);
+        });    
     }
   }
 };

@@ -31,8 +31,8 @@ app.get('/api/programs', (req, res) => {
     SELECT programs.id AS "programId",
     programs.title,
     programs.host,
-    programs.audienceSize AS "audienceSize",
-    programs.yearStarted AS "yearStarted",
+    programs.audiencesize AS "audienceSize",
+    programs.yearstarted AS "yearStarted",
     programs.daily,
     programs.genre_id AS "genreId",
     genres.genre,
@@ -50,11 +50,11 @@ app.post('/api/programs', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO programs (title, host, audienceSize, yearStarted, daily, genre_id, description)
+    INSERT INTO programs (title, host, audiencesize, yearstarted, daily, genre_id, description)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
   `,
-  [body.title, body.host, body.audienceSize, body.yearStarted, body.daily, body.genre_id, body.description]
+  [body.title, body.host, body.audienceSize, body.yearStarted, body.daily, body.genreId, body.description]
   ).then(result => {
     // send back object
     res.send(result.rows[0]);

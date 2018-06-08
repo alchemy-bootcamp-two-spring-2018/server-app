@@ -2,9 +2,10 @@
   <article>
     <h3>{{ program.title }}</h3>
     <p><strong>Host:</strong> {{ program.host }}</p>
-    <p><strong>First aired:</strong> {{ program.yearstarted }}</p>
+    <p><strong>First aired:</strong> {{ program.yearStarted }}</p>
     <p><strong>Airs daily?</strong> {{ airsDaily }}
-    <p><strong>Audience Size:</strong> {{ program.audiencesize }}</p>
+    <p><strong>Audience Size:</strong> {{ program.audienceSize }}</p>
+    <p><strong>Genre:</strong> {{ program.genre }}</p>
     <p><strong>Description:</strong> {{program.description}}</p>
     <button v-on:click="handleDelete">delete</button>
   </article>
