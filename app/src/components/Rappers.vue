@@ -5,6 +5,7 @@
     <RapperForm
 		label = 'Add'
     :on-edit="handleAdd"
+    :positions="positions"
     />
   </div>
     <ul>
@@ -12,6 +13,7 @@
       v-for="rapper in rappers"
       :key="rapper.name"
       :rapper="rapper"
+      :positions="positions"
       :on-delete="handleDelete"
 			:on-update="handleUpdate"
       />
@@ -26,18 +28,25 @@ import {
   getRappers, 
   addRappers,
   updateRappers, 
-  deleteRappers } from '../services/api';
+  deleteRappers,
+  getPositions } from '../services/api';
 
 export default {
   data() {
     return {
-      rappers: null
+      rappers: null,
+      positions: null,
     };
   },
   created() {
     getRappers()
       .then(rappers => {
         this.rappers = rappers;
+      });
+    
+    getPositions()
+      .then(positions => {
+        this.positions = positions;
       });
   },
   components: {

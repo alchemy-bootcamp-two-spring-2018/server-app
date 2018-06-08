@@ -15,11 +15,10 @@
               >
           </label>
           <span>Role:</span>
-          <select v-model="edit.role">
+          <select v-model="edit.position">
 						<option
 						v-for="position in positions"
 						:key="position.id"
-						:value="position.id"
 						>{{ position.position }}</option>
           </select>
           <label>
@@ -60,13 +59,12 @@
 </template>
 
 <script>
-import { getPositions } from '../services/api';
 
 const initRappers = () => {
   return {
     name: '',
     born: '',
-    role: '',
+    position: '',
     numalbums: '',
     albums: '',
     aka: '',
@@ -80,6 +78,7 @@ export default {
   props: {
     rapper: Object,
     label: String,
+    positions: Array,
     onEdit: {
       type: Function,
       required: true
@@ -88,13 +87,7 @@ export default {
   data() {
     return {
       edit: this.rapper ? Object.assign({}, this.rapper) : initRappers(),
-      positions: []
     };
-  },
-  created() {
-    getPositions().then(positions => {
-      this.positions = positions;
-    });
   },
   methods: {
     handleSubmit() {

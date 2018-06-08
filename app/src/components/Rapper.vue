@@ -3,7 +3,7 @@
     <article v-if="!editing">
       <h2>{{ rapper.name }}</h2>
       <p>From: {{ rapper.born }}</p>
-      <p>Role: {{ rapper.position }}</p>
+      <p>Role: {{ rapper.role }}</p>
       <p>Studio Albums: {{ rapper.numalbums }}</p>
       <p>Notable albums: {{ rapper.albums }}</p>
       <p>Also known as: {{ rapper.aka }}</p>
@@ -18,6 +18,7 @@
     <RapperForm
       v-else
       label="Update"
+      :positions="positions"
       :editing="editing"
       :rapper="rapper"
       :on-edit="onUpdate"
@@ -42,10 +43,9 @@ export default {
     'rapper',
     'onDelete',
     'onUpdate',
+    'positions',
   ],
-  computed: {
 
-  },
   methods: {
     handleClick() {
       if(confirm('Are you sure you want to remove $this.rapper.name}?')) {

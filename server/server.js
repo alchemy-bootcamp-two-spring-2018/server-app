@@ -24,16 +24,13 @@ app.get('/api/rappers', (req, res) => {
     SELECT rappers.id,
       name,
       born,
-      positions.position,
+      role,
       numalbums,
       albums,
       aka,
       affiliates,
       dead
     FROM rappers
-    JOIN positions
-    on rappers.role = positions.id
-    order by rappers.name;
   `).then(result => {
     res.send(result.rows);
   });
@@ -47,7 +44,7 @@ app.post('/api/rappers', (req, res) => {
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *;
   `,
-  [body.name, body.born, body.role, body.numalbums, body.albums, body.aka, body.affiliates, body.dead]
+  [body.name, body.born, body.position, body.numalbums, body.albums, body.aka, body.affiliates, body.dead]
   ).then(result => {
     res.send(result.rows[0]);
   })
@@ -72,7 +69,7 @@ app.put('/api/rappers/:id', (req, res) => {
     where id = $9
     returning *;  
   `,
-  [body.name, body.born, body.role, body.numalbums, body.albums, body.aka, body.affiliates, body.dead, req.params.id]
+  [body.name, body.born, body.position, body.numalbums, body.albums, body.aka, body.affiliates, body.dead, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
   });
