@@ -33,11 +33,11 @@ app.post('/api/subscriptions', (req, res) => {
   const body = req.body;
   
   client.query(`
-    insert into subscriptions (name, price, ads)
-    values ($1, $2, $3)
+    insert into subscriptions (name, purpose_id, price, ads)
+    values ($1, $2, $3, $4)
     returning *;
   `,
-  [body.name, body.price, body.ads]
+  [body.name, body.purposeId, body.price, body.ads]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -50,28 +50,25 @@ app.put('/api/subscriptions/:id', (req, res) => {
     update subscriptions
     set
       name = $1,
-      purpose_id = #2,
+      purpose_id = $2,
       price = $3,
       ads = $4
     where id = $5
     returning *;
   `,
-  [body.name, body.purpose_id, body.price, body.ads, req.params.id]
+  [body.name, body.purposeId, body.price, body.ads, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
   });
 });
 
 app.delete('/api/subscriptions/:id', (req, res) => {
-  const params = req.params;
-
   client.query(`
-    delete from subscriptions 
-    where id = $1;
+    delete from subscriptions where id = $1;
   `,
-  [params.id]
+  [req.params.id]
   ).then(() => {
-    res.send({ message: 'subscription deleted successfully!' });
+    res.send({ removed: true });
   });
 });
 
@@ -79,9 +76,10 @@ app.get('/api/purposes', (req, res) => {
 
   client.query(`
     select * from purposes;
-  `).then(result => {
-    res.send(result.rows);
-  });
+  `)
+    .then(result => {
+      res.send(result.rows);
+    });
 });
 
 app.listen(3000, () => console.log('app running...'));

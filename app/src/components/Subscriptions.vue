@@ -8,16 +8,24 @@
         :key="subscription.name"
         :subscription="subscription"
         :onRemove="handleRemove"
+        :onUpdate="handleUpdate"
       />
     </ul>
-    <AddSubscription :onAdd="handleAdd"/>
+    <h3>Add a new subscription</h3>
+    <SubscriptionForm
+      label="Add"
+      :onEdit="handleAdd"/>
   </section>
 </template>
 
 <script>
 import Subscription from './Subscription';
-import AddSubscription from './AddSubscription';
-import { getSubscriptions, addSubscription, removeSubscription } from '../services/api';
+import SubscriptionForm from './SubscriptionForm';
+import {
+  getSubscriptions,
+  addSubscription,
+  updateSubscription,
+  removeSubscription } from '../services/api';
 
 export default {
   data() {
@@ -33,7 +41,7 @@ export default {
   },
   components: {
     Subscription,
-    AddSubscription
+    SubscriptionForm
   },
   methods: {
     handleAdd(subscription) {
@@ -42,9 +50,21 @@ export default {
           this.subscriptions.push(saved);
         });
     },
-    handleRemove(subscription) {
-      return removeSubscription(subscription)
-        .then(this.subscriptions = this.subscriptions.filter(item => item.id !== subscription.id));
+    handleRemove(id) {
+      return removeSubscription(id)
+        .then(() => {
+          const index = this.subscriptions.findIndex(subscription => subscription.id === id);
+          if(index === -1) return;
+          this.subscriptions.splice(index, 1);
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateSubscription(toUpdate)
+        .then(updated => {
+          this.subscriptions = this.subscriptions.map(subscription => {
+            return subscription.id === updated.id ? updated : subscription;
+          });
+        });
     }
   }
 };
