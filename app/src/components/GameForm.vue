@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h1>Add a New Game</h1>
     <form @submit.prevent="handleSubmit">
       <label>
         Name:
@@ -47,7 +46,7 @@ import { getSystems } from '../services/api';
 const initGame = () => {
   return {
     name: '',
-    system: 'Choose a System',
+    system: '',
     year: '',
     completed: false
   };

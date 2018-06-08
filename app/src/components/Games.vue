@@ -11,6 +11,7 @@
         :game="game"
       />
     </ul>
+    <h2>Add A Game to the Database</h2>
     <GameForm
       :on-edit="handleAdd"
       label = "Add Game"
