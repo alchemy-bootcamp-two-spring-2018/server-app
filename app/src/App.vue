@@ -24,6 +24,7 @@ html {
   background-position: top;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: 100%;
   font-family: 'Anton', sans-serif;
 }
 </style>
