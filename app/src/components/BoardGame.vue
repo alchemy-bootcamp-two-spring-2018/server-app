@@ -1,6 +1,7 @@
 <template>
   <div class="board-game">
     <h1>{{ boardGame.name }} ({{ boardGame.published }})</h1>
+    <h2>Category: {{ boardGame.category }}</h2>
     <h4>{{ boardGame.minPlayers }} to {{ boardGame.maxPlayers }} players / {{ boardGame.avgPlayingTime }} minutes average playing time</h4>
     <p>{{ boardGame.description }}</p>
     <p>Owned: <span v-if="boardGame.owned">Yes</span><span v-else>No</span></p>

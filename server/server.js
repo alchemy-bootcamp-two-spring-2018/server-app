@@ -79,12 +79,12 @@ app.delete(API_URL_ID, (req, res) => {
 });
 
 
-app.get('api/categories', (req, res) => {
+app.get('/api/categories', (req, res) => {
   client.query(`
     SELECT * FROM categories;
   `)
     .then(result => {
-      res.send(result.rows[0]);
+      res.send(result.rows);
     });
 });
 

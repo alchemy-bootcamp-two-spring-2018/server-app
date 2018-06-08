@@ -9,7 +9,14 @@
         <input type="text" name="published" required v-model="boardGame.published">
       </label>
       <label>Category:
-        <input type="number" name="published" required v-model.number="boardGame.categoryID">
+        <select v-model.number="boardGame.categoryID" required>
+          <option disabled value="">Please select a category.</option>
+          <option v-for="category in categories"
+          :key="category.id"
+          :value="category.id">
+          {{ category.category }}
+          </option>
+        </select>
       </label>
       <label># of Players:
         <input type="number" name="minPlayers" required v-model="boardGame.minPlayers">
@@ -34,6 +41,7 @@
 </template>
 
 <script>
+import { getCategories } from '../services/api';
 const initBoardGame = () => {
   return {
     name: '',
@@ -50,7 +58,8 @@ const initBoardGame = () => {
 export default {
   data() {
     return {
-      boardGame: initBoardGame()
+      boardGame: initBoardGame(),
+      categories: []
     };
   },
   props: {
@@ -58,6 +67,11 @@ export default {
       type: Function,
       required: true
     }
+  },
+  created() {
+    getCategories().then(categories => {
+      this.categories = categories;
+    })
   },
   methods: {
     handleSubmit() {
