@@ -49,7 +49,7 @@
       </label>
 
       <label>
-        <button type="submit">Add Motorcycle</button>
+        <button type="submit">{{ label }}</button>
       </label>
 
     </form>
