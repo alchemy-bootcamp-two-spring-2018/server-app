@@ -1,92 +1,44 @@
 [
   {
     "name": "Azul",
-    "published": 2017,
     "categoryID": 1,
-    "minPlayers": 2,
-    "maxPlayers": 4,
+    "players": 4,
     "avgPlayingTime": 40,
     "description": "In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how they've placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the player's score. The player with the most points at the end of the game wins.",
-    "owned": true
   },
   {
     "name": "Scythe",
-    "published": 2016,
     "categoryID": 2,
-    "minPlayers": 1,
-    "maxPlayers": 7,
+    "players": 7,
     "avgPlayingTime": 100,
     "description": "Scythe is an engine-building game set in an alternate-history 1920s period. Each player represents a character from one of five factions of Eastern Europe who are attempting to earn their fortune and claim their faction's stake in the land around the mysterious Factory.",
-    "owned": true
   },
   {
     "name": "Terraforming Mars",
-    "published": 2016,
-    "minPlayers": 2,
     "categoryID": 2,
-    "maxPlayers": 5,
+    "players": 5,
     "avgPlayingTime": 120,
     "description": "In Terraforming Mars, you play one of those corporations and work together in the terraforming process, but compete for getting victory points that are awarded not only for your contribution to the terraforming, but also for advancing human infrastructure throughout the solar system, and doing other commendable things.",
-    "owned": false
   },
   {
     "name": "Codenames",
-    "published": 2015,
     "categoryID": 5,
-    "minPlayers": 2,
     "maxPlayers": 8,
     "avgPlayingTime": 15,
     "description": "In Codenames, two teams compete to see who can make contact with all of their agents first. Spymasters give one-word clues that can point to multiple words on the board. Their teammates try to guess words of the right color while avoiding those that belong to the opposing team. And everyone wants to avoid the assassin.",
-    "owned": true
   },
   {
     "name": "Kingdomino",
-    "published": "2016",
     "categoryID": 7,
-    "minPlayers": 2,
     "maxPlayers": 4,
     "avgPlayingTime": 15,
     "description": "In Kingdomino, you are a Lord seeking new lands in which to expand your kingdom. You must explore all the lands, wheat fields, lakes, and mountains in order to spot the best plots. But be careful as some other Lords also covet these lands...",
-    "owned": true
-  },
-  {
-    "name": "Gloomhaven",
-    "published": "2017",
-    "categoryID": 2,
-    "minPlayers": 1,
-    "maxPlayers": 4,
-    "avgPlayingTime": 120,
-    "description": "Gloomhaven is a game of Euro-inspired tactical combat in a persistent world of shifting motives. Players will take on the role of a wandering adventurer with their own special set of skills and their own reasons for traveling to this dark corner of the world. Players must work together out of necessity to clear out menacing dungeons and forgotten ruins. In the process, they will enhance their abilities with experience and loot, discover new locations to explore and plunder, and expand an ever-branching story fueled by the decisions they make.",
-    "owned": false
   },
   {
     "name": "Splendor",
-    "published": "2014",
     "categoryID": 1,
-    "minPlayers": 2,
     "maxPlayers": 4,
     "avgPlayingTime": 30,
     "description": "Splendor is a game of chip-collecting and card development. Players are merchants of the Renaissance trying to buy gem mines, means of transportation, shops—all in order to acquire the most prestige points. If you're wealthy enough, you might even receive a visit from a noble at some point, which of course will further increase your prestige.",
-    "owned": true
-  },
-  {
-    "name": "Spirit Island",
-    "published": "2017",
-    "categoryID": 3,
-    "minPlayers": 1,
-    "maxPlayers": 4,
-    "avgPlayingTime": 120,
-    "description": "Spirit Island is a complex and thematic cooperative game about defending your island home from colonizing Invaders. Players are different spirits of the land, each with its own unique elemental powers. Every turn, players simultaneously choose which of their power cards to play, paying energy to do so. Using combinations of power cards that match a spirit's elemental affinities can grant free bonus effects. Faster powers take effect immediately, before the Invaders spread and ravage, but other magics are slower, requiring forethought and planning to use effectively. In the Spirit phase, spirits gain energy, and choose how / whether to Grow: to reclaim used power cards, to seek for new power, or to spread presence into new areas of the island.",
-    "owned": false
-  },
-  {
-    "name": "Pandemic Legacy: Season 1",
-    "published": "2014",
-    "categoryID": 4,
-    "minPlayers": 2,
-    "maxPlayers": 4,
-    "avgPlayingTime": 60,
-    "description": "Pandemic Legacy is a co-operative campaign game, with an overarching story-arc played through 12-24 sessions, depending on how well your group does at the game. At the beginning, the game starts very similar to basic Pandemic, in which your team of disease-fighting specialists races against the clock to travel around the world, treating disease hotspots while researching cures for each of four plagues before they get out of hand.",
-    "owned": false
   }
 ]
