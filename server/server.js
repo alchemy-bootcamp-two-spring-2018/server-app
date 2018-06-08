@@ -20,6 +20,7 @@ app.get('/api/walruses', (req, res) => {
   
   client.query(`
     SELECT walruses.id,
+    walruses.photo_url,
     walruses.name,
     description, 
 
@@ -29,28 +30,28 @@ order by walruses.name;
   });
 });
 
-app.post('/api/walruses', (req, res) => {
-  const body = req.body;
-  client.query (`
-    INSERT INTO walruses (name, weight, type, url, photo_url, fictional, description)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
-    RETURNING *;
-  `,
-  [body.name, body.weight, body.type, body.url, body.photo_url, body.fictional, body.description]
-  ).then (result => {
-    res.send(result.rows[0]);
-  });
-});
+// app.post('/api/walruses', (req, res) => {
+//   const body = req.body;
+//   client.query (`
+//     INSERT INTO walruses (name, weight, type, url, photo_url, fictional, description)
+//     VALUES ($1, $2, $3, $4, $5, $6, $7)
+//     RETURNING *;
+//   `,
+//   [body.name, body.weight, body.type, body.url, body.photo_url, body.fictional, body.description]
+//   ).then (result => {
+//     res.send(result.rows[0]);
+//   });
+// });
 
-app.delete('/api/walruses/:id', (req, res) => {
-  client.query(`
-    delete from walruses where id=$1;
-  `,
-  [req.params.id]
-  ).then(() => {
-    res.send({ removed: true });
-  });
-});
+// app.delete('/api/walruses/:id', (req, res) => {
+//   client.query(`
+//     delete from walruses where id=$1;
+//   `,
+//   [req.params.id]
+//   ).then(() => {
+//     res.send({ removed: true });
+//   });
+// });
 
 //start "listening" (run) the app (server)
 app.listen(3000, () => console.log('server is running on 3000...'));

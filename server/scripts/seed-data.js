@@ -5,10 +5,10 @@ const walruses = require('./walruses.json');
 Promise.all(
   walruses.map(walruses => {
     return client.query(`
-    INSERT INTO walruses (name, fictional, description, photo_url, url)
-    VALUES ($1, $2, $3, $4, $5);
+    INSERT INTO walruses (name, description, photo_url, url)
+    VALUES ($1, $2, $3, $4);
     `,
-    [walruses.name, walruses.fictional, walruses.description, walruses.photo_url, walruses.url]
+    [walruses.name, walruses.description, walruses.photo_url, walruses.url]
     ).then(result => result.rows[0]);
   })
 )

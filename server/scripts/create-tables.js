@@ -10,10 +10,9 @@ client.query(`
   
   CREATE TABLE IF NOT EXISTS walruses (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(50),
-        weight INTEGER,
-        url VARCHAR(50),
-        photo_url VARCHAR(50),
+        name VARCHAR(256),
+        url VARCHAR(256),
+        photo_url VARCHAR(256),
         description VARCHAR(512)
       );
 `)
