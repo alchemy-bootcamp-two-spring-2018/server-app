@@ -32,7 +32,7 @@
         </label>
         <label>
           Year round climbing?:
-          <input type="checkbox" name="year-round" 
+          <input type="checkbox" name="year-round" placeholder="false"
             v-model="location.yearroundclimbing"> {{location.yearroundclimbing}} 
         </label>
         <label>
@@ -56,7 +56,7 @@ const initLocation = () => {
     climbingstyleID: '',
     location: '',
     elevation: '',
-    yearRound: '',
+    yearroundclimbing: true,
     description: ''
   };
 };
