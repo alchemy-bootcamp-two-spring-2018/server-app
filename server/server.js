@@ -5,7 +5,6 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-const podcasts = require('./data/podcasts');
 const fs = require('fs');
 const dataPath = 'data/podcasts.json';
 

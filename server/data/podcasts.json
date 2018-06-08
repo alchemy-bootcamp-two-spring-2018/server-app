@@ -38,5 +38,21 @@
     "category": "music",
     "NSFW": "false",
     "description": "random music thing"
+  },
+  {
+    "name": "Still Working?",
+    "publisher": "place",
+    "averageMinutes": "45",
+    "category": "testery",
+    "NSFW": "true",
+    "description": "this one ok?"
+  },
+  {
+    "name": "Test",
+    "publisher": "place",
+    "averageMinutes": "22",
+    "category": "stuff",
+    "NSFW": "false",
+    "description": "ok"
   }
 ]
