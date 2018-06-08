@@ -92,7 +92,7 @@ app.put(API_URL_ID, (req, res) => {
 
 app.delete(API_URL_ID, (req, res) => {
   client.query(`
-    DELETE FROM boardgames
+    DELETE FROM events
       WHERE id = $1;
   `,
   [req.params.id]
