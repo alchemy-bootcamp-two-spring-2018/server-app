@@ -1,6 +1,6 @@
 <template>
 <section>
-  <h2>NPR Programs</h2>
+  <img src="../assets/npr.png">
   <p v-if="!programs">Loading list of npr programs...</p>
   <div class="form">
     <AddProgram :onAdd="handleAdd"/>
