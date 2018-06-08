@@ -13,7 +13,12 @@
 <script>
 import BoardGame from './BoardGame';
 import AddBoardGame from './AddBoardGame';
-import { getBoardGames, addBoardGame, deleteBoardGame } from '../services/api';
+import { 
+  getBoardGames,
+  addBoardGame,
+  deleteBoardGame,
+  updateBoardGame
+} from '../services/api';
 
 export default {
   data() {
@@ -41,6 +46,9 @@ export default {
     handleDelete(boardGame) {
       return deleteBoardGame(boardGame)
         .then(this.boardGames = this.boardGames.filter(item => item.id !== boardGame.id));
+    },
+    handleUpdate(boardGame) {
+      updateBoardGame(boardGame);
     }
   }
 };

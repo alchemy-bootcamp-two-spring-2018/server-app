@@ -8,6 +8,9 @@
       <label>Year Published:
         <input type="text" name="published" required v-model="boardGame.published">
       </label>
+      <label>Category:
+        <input type="number" name="published" required v-model.number="boardGame.categoryID">
+      </label>
       <label># of Players:
         <input type="number" name="minPlayers" required v-model="boardGame.minPlayers">
         to
@@ -35,6 +38,7 @@ const initBoardGame = () => {
   return {
     name: '',
     published: '',
+    categoryID: '',
     minPlayers: '',
     maxPlayers: '',
     avgPlayingTime: '',

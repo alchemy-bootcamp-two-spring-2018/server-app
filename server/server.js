@@ -11,8 +11,8 @@ const databaseUrl = 'postgres://localhost:5432/bg';
 const client = new Client(databaseUrl);
 client.connect();
 
-const API_URL = '/api/boardGames'
-const API_URL_ID = '/api/boardGames/:id'
+const API_URL = '/api/boardGames';
+const API_URL_ID = '/api/boardGames/:id';
 
 app.get(API_URL, (req, res) => {
   client.query(`
@@ -68,18 +68,25 @@ app.put(API_URL_ID, (req, res) => {
 
 
 app.delete(API_URL_ID, (req, res) => {
-  const params = req.params;
-
   client.query(`
     DELETE FROM boardgames
       WHERE id = $1;
   `,
-  [params.id]
+  [req.params.id]
   ).then(() => {
     res.send({ removed: true });
   });
 });
 
+
+app.get('api/categories', (req, res) => {
+  client.query(`
+    SELECT * FROM categories;
+  `)
+    .then(result => {
+      res.send(result.rows[0]);
+    });
+});
 
 
 app.listen(3000);
