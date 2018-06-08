@@ -7,9 +7,22 @@
         <input v-model="glucoselog.date" type="date" required pattern="[0-9]{0-9}/[0-9]{0-9}/[0-9]{0-9}"> 
       </label>
 
+      <!-- <label>
+        Day:
+        <input v-model="glucoselog.day_id" placeholder="Day" required>
+      </label> -->
+
       <label>
         Day:
-        <input v-model="glucoselog.day" placeholder="Day" required>
+        <select v-model="glucoselog.day_id" required>
+          <option disabled value="">Please select a day</option>
+          <option 
+            v-for="day in days"
+            :key="day.id"
+            :value="day.id">
+            {{day.name}}
+            </option>
+        </select>
       </label>
 
       <label for="checkbox">
@@ -55,11 +68,12 @@
 </template>
 
 <script>
+import { getDays } from '../services/api';
 
 const initglucoselog = () => {
   return {
     date: '',
-    day: '',
+    day_id: '',
     changeInsulin: false,
     beforeBreakfast: '',
     afterBreakfast: '',
@@ -79,8 +93,14 @@ export default {
   },
   data() {
     return {
-      glucoselog: initglucoselog()
+      glucoselog: initglucoselog(),
+      days: []
     };
+  },
+  created() {
+    getDays().then(days => {
+      this.days = days;
+    });
   },
   methods: {
     handleSubmit() {

@@ -24,23 +24,35 @@ client.connect();
 app.get('/api/glucoselogs', (req, res) => {
 
   client.query(`
-    SELECT * FROM glucoselogs;
+    SELECT glucoselogs.id,
+      glucoselogs.date,
+      days.id,
+      days.name,
+      changeInsulin, 
+      beforeBreakfast, 
+      afterBreakfast, 
+      beforeLunch, 
+      afterLunch, 
+      beforeDinner, 
+      afterDinner 
+    FROM glucoselogs 
+    JOIN days 
+    ON glucoselogs.day_id = days.id
+    ORDER BY glucoselogs.date;
   `).then(result => {
     res.send(result.rows);
   });
   
 });
 
-//app.post
 app.post('/api/glucoselogs', (req, res) => {
   const body = req.body;
-  
   client.query(`
-    INSERT INTO glucoselogs (date, day, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
+    INSERT INTO glucoselogs (date, day_id, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING *;
   `,
-  [body.date, body.day, body.changeinsulin, body.beforebreakfast, body.afterbreakfast, body.beforelunch, body.afterlunch, body.beforedinner, body.afterdinner]
+  [body.date, body.day_id, body.changeinsulin, body.beforebreakfast, body.afterbreakfast, body.beforelunch, body.afterlunch, body.beforedinner, body.afterdinner]
   ).then(result => {
     //send back object
     res.send(result.rows[0]);
@@ -48,7 +60,6 @@ app.post('/api/glucoselogs', (req, res) => {
   
 });
 
-//ADD app.delete
 app.delete('/api/glucoselogs/:id', (req, res) => {
   console.log(req.params.id);
 
@@ -63,11 +74,6 @@ app.delete('/api/glucoselogs/:id', (req, res) => {
 
 });
 
-//keeping this code just in case:
-/* app.use((req, res) => {
-  console.log(req.method, req.url, req.body.day);
-  res.send({ error: 'path not found' });
-}); */
 
 //start "listening" (run) the app (server)
 app.listen(3000, () => console.log('app is running...'));

@@ -1,6 +1,6 @@
 <template id="log-template">
   <article>
-    <h2>{{ glucoselog.date }} {{ glucoselog.day }}</h2>
+    <h2>{{ glucoselog.date }} {{ glucoselog.day_id }}</h2>
     <div>
     <p>Changed insulin: {{ glucoselog.changeinsulin }}</p>
     <p>Before Breakfast: {{ glucoselog.beforebreakfast }}</p>

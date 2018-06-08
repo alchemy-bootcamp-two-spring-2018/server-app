@@ -24,3 +24,10 @@ export function removeglucoselog(id) {
   })
     .then(response => response.json());
 }
+
+export function getDays() {
+  return fetch(`${URL}/days`, {
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json());
+}
