@@ -1,0 +1,17 @@
+[
+  { "name": "Arcade Cabinet" },
+  { "name": "Atari / Commodore" },
+  { "name": "Nintendo Entertainment System" },
+  { "name": "Super Nintendo" },
+  { "name": "Nintendo 64" },
+  { "name": "Nintendo Wii / Wii U" },
+  { "name": "Nintendo Switch" },
+  { "name": "Nintendo Handhelds" },
+  { "name": "Sega Genesis" },
+  { "name": "Sega Dreamcast" },
+  { "name": "Sony PlayStation" },
+  { "name": "Sony PlayStation 2 / 3" },
+  { "name": "Sony PlayStation 4" },
+  { "name": "Microsoft Xbox/360" },
+  { "name": "Microsoft Xbox One" }
+]
