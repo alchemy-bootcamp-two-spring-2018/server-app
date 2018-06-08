@@ -35,7 +35,7 @@ export function removeMotorcycle(motorcycle) {
 }
 
 export function getTypes() {
-  return fetch(`${URL}/types`, {
+  return fetch(`${URL}/mototypes`, {
     headers: { 'Content-Type': 'application/json' }
   })
     .then(response => response.json());

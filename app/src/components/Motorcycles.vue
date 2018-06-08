@@ -6,11 +6,12 @@
       :key="motorcycle.id"
       :motorcycle="motorcycle"
       :on-remove="handleRemove"
+      :on-update="handleUpdate"
       />
     </ul>
     
     <MotorcycleForm
-    :on-add="handleAdd"
+    :on-edit="handleAdd"
     />
 
   </div>
@@ -19,7 +20,7 @@
 <script>
 import Motorcycle from './Motorcycle';
 import MotorcycleForm from './MotorcycleForm';
-import { getMotorcycles, addMotorcycle, removeMotorcycle } from '../services/api';
+import { getMotorcycles, addMotorcycle, removeMotorcycle, updateMotorcycle } from '../services/api';
 
 export default {
   data() {
@@ -54,6 +55,14 @@ export default {
             .then(motorcycles => {
               this.motorcycles = motorcycles;
             });
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateMotorcycle(toUpdate)
+        .then(updated => {
+          this.motorcycles = this.motorcycles.map(motorcycle => {
+            return motorcycle.id === updated.id ? updated : motorcycle;
+          });
         });
     }
   }

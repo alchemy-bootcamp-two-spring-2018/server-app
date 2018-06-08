@@ -15,7 +15,7 @@
     <MotorcycleForm
     v-else
     label="Update"
-    :neighborhood="neighborhood"
+    :motorcycle="motorcycle"
     :on-edit="onUpdate"
     />
     <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit Item' }}</button>
@@ -23,8 +23,15 @@
 </template>
 
 <script>
+import MotorcycleForm from './MotorcycleForm';
 
 export default {
+
+  data() {
+    return {
+      editing: false
+    };
+  },
 
   props: ['motorcycle', 'onRemove', 'onUpdate'],
 
@@ -34,6 +41,10 @@ export default {
         this.onRemove(this.motorcycle);
       }
     }
+  },
+
+  components: {
+    MotorcycleForm
   }
 
 };

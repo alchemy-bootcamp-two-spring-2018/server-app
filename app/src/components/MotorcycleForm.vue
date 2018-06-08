@@ -3,7 +3,7 @@
     <form @submit.prevent="handleSubmit">
       <label>
         Type:
-        <select name="type" required v-model="motorcycle.mototype_id">
+        <select name="type" required v-model="edit.mototype_id">
           <option value="1">Sport</option>
           <option value="2">Touring</option>
           <option value="3">Dual-Sport</option>
@@ -15,22 +15,22 @@
 
       <label>
         Make:
-        <input type="text" name="make" placeholder="Make" required v-model="motorcycle.make">
+        <input type="text" name="make" placeholder="Make" required v-model="edit.make">
       </label>
 
       <label>
         Model:
-        <input type="text" name="model" placeholder="Model" required v-model="motorcycle.model">
+        <input type="text" name="model" placeholder="Model" required v-model="edit.model">
       </label>
 
       <label>
         Year:
-        <input type="number" name="year" placeholder="Year" required v-model="motorcycle.year">
+        <input type="number" name="year" placeholder="Year" required v-model="edit.year">
       </label>
 
       <label>
         Color:
-        <select name="color" required v-model="motorcycle.color">
+        <select name="color" required v-model="edit.color">
           <option>Red</option>
           <option>Blue</option>
           <option>White</option>
@@ -45,7 +45,7 @@
 
       <label>
         For Sale:
-        <input type="checkbox" name="available" v-model="motorcycle.available">
+        <input type="checkbox" name="available" v-model="edit.available">
       </label>
 
       <label>
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import { getTypes } from '../services/api';
+
 const initMotorcycle = () => {
   return {
     mototype_id: '',
@@ -72,20 +74,30 @@ const initMotorcycle = () => {
 export default {
   data() {
     return {
-      motorcycle: initMotorcycle()
+      edit: this.motorcycle ? Object.assign({}, this.motorcycle) : initMotorcycle(),
+      types: []
     };
   },
   props: {
-    onAdd: {
+    motorcycle: Object,
+    label: String,
+    onEdit: {
       type: Function,
       required: true
     }
   },
+
+  created() {
+    getTypes().then(types => {
+      this.types = types;
+    });
+  },
+
   methods: {
     handleSubmit() {
-      this.onAdd(this.motorcycle)
+      this.onEdit(this.edit)
         .then(() => {
-          this.motorcycle = initMotorcycle();
+          this.edit = initMotorcycle();
         });
     }
   }
