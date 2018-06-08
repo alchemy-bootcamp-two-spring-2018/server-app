@@ -1,0 +1,8 @@
+[
+  { "type": "Sport" },
+  { "type": "Touring" },
+  { "type": "Dual-Sport" },
+  { "type": "Dirt-Bike" },
+  { "type": "ATV" },
+  { "type": "Custom" }
+]

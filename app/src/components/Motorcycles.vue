@@ -1,22 +1,26 @@
 <template>
   <div class="motorcycles">
-    <ul>
-      <Motorcycle
-      v-for="motorcycle in motorcycles"
-      :key="motorcycle.index"
-      :motorcycle="motorcycle"
+        <h1>Motorcyle Inventory</h1>
+      <ul class="tiles">
+        <Motorcycle
+        v-for="motorcycle in motorcycles"
+        :key="motorcycle.id"
+        :motorcycle="motorcycle"
+        :on-remove="handleRemove"
+        :on-update="handleUpdate"
+        />
+      </ul>
+      <MotorcycleForm
+      label="Add Motorcycle"
+      :on-edit="handleAdd"
       />
-    </ul>
-    
-    <AddMotorcycle :on-add="handleAdd"/>
-
   </div>
 </template>
 
 <script>
 import Motorcycle from './Motorcycle';
-import AddMotorcycle from './AddMotorcycle';
-import { getMotorcycles, addMotorcycle } from '../services/api';
+import MotorcycleForm from './MotorcycleForm';
+import { getMotorcycles, addMotorcycle, removeMotorcycle, updateMotorcycle } from '../services/api';
 
 export default {
   data() {
@@ -24,28 +28,41 @@ export default {
       motorcycles: null
     };
   },
-
   created() {
     getMotorcycles()
       .then(motorcycles => {
         this.motorcycles = motorcycles;
       });
   },
-
   components: {
     Motorcycle,
-    AddMotorcycle
+    MotorcycleForm
   },
-
   methods: {
     handleAdd(motorcycle) {
       return addMotorcycle(motorcycle)
-        .then(saved => {
-          this.motorcycles.push(saved);
+        .then(data => {
+          this.motorcycles.push(data);
+        });
+    },
+    handleRemove(motorcycle) {
+      return removeMotorcycle(motorcycle)
+        .then(() => {
+          getMotorcycles()
+            .then(motorcycles => {
+              this.motorcycles = motorcycles;
+            });
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateMotorcycle(toUpdate)
+        .then(updated => {
+          this.motorcycles = this.motorcycles.map(motorcycle => {
+            return motorcycle.id === updated.id ? updated : motorcycle;
+          });
         });
     }
   }
-
 };
 </script>
 
@@ -53,7 +70,11 @@ export default {
 .motorcycles {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: flex-end;
   margin: 10px;
 }
-
+.tiles {
+  width: 350px;
+  min-width: 350px;
+}
 </style>
