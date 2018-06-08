@@ -15,7 +15,7 @@ export default {
   components: {
     Podcasts
   }
-}
+};
 </script>
 
 <style>

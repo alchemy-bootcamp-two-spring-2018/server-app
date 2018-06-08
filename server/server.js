@@ -15,13 +15,13 @@ client.connect();
 app.get('/api/podcasts', (req, res) => {
 
   client.query(`
-  SELECT * n.id,
-    n.name,
-    published,
-    averageminutes,
-    category,
-    nsfw,
-    description
+    SELECT n.id,
+      n.name,
+      published,
+      averageminutes,
+      category,
+      nsfw,
+      description
 
   `).then(result => {
     res.send(result.rows);
@@ -44,6 +44,28 @@ app.post('/api/podcasts', (req, res) => {
   });
 
 });
+
+app.put('/api/podcasts/:id', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    update podcastss
+    set
+      name = $1,
+      publisher = $2,
+      averageminutes = $3,
+      category = $4,
+      nsfw = $5
+      description = $6
+    where id = $7
+    returning *;
+  `,
+  [body.name, body.publisher, body.averageminutes, body.category, body.nsfw, body.description, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+});
+
 
 app.delete('/api/podcasts/:id', (req, res) => {
   console.log(req.params.id);

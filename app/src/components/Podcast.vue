@@ -1,6 +1,6 @@
 <template id="podcast-template">
     <div>
-        <article>
+        <article v-if="!editing">
             <h3>{{ podcast.name }}</h3>
             <p>Published by: {{ podcast.publisher }}</p>
             <p>Length (average minutes): {{ podcast.averageminutes }}</p>
@@ -52,7 +52,6 @@
     
 </script>
         
-<style>
-        
+<style>       
 </style>
         

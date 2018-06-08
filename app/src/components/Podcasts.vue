@@ -8,16 +8,24 @@
             :key="podcast.name"
             :podcast="podcast"
             :on-remove="handleRemove"
+            :onUpdate="handleUpdate"
         />
     </ul>
-    <AddPodcast :on-add="handleAdd"/>
+    <h3>Add a Podcast</h3>
+    <PodcastForm 
+        label="Add"
+        :on-edit="handleAdd"/>
 </section>
 </template>
             
 <script>
     import Podcast from './Podcast';
-    import AddPodcast from './AddPodcast.vue';
-    import { getPodcasts, addPodcast, removePodcast } from '../services/api';
+    import PodcastForm from './PodcastForm.vue';
+    import { 
+        getPodcasts, 
+        addPodcast, 
+        updatePodcast,
+        removePodcast } from '../services/api';
     
     export default {
         data() {
@@ -33,27 +41,43 @@
         },
         components: {
             Podcast,
-            AddPodcast
-            //,  ** this blew up app, try to rework later
-            // RemovePodcast
-        // },
-        // methods: {
-        //     handleAdd(podcast) {
-        //         return addPodcast(podcast)
-        //             .then(saved => {
-        //                 this.podcasts.push(saved);
-        //         });
-        //     },
-        //     handleRemove(podcast) {
-        //         return removePodcast(podcast)
-        //     },
-        },     
+            PodcastForm
+        },
+       
+        methods: {
+            handleAdd(podcast) {
+                return addPodcast(podcast)
+                    .then(saved => {
+                        this.podcasts.push(saved);
+                });
+            },
+        handleRemove(id) {
+            return removePodcast(id)
+                .then(() => {
+                    const index = this.podcasts.findIndex(podcast => podcast.id === id);
+                    if(index === -1) return;
+                    this.podcasts.splice(index, 1);
+                });    
+            },
+        handleUpdate(toUpdate) {
+            return updatePodcast(toUpdate)
+                .then(updated => {
+                    this.podcasts = this.podcasts.map(podcast => {
+                        return podcast.id === updated.id ? updated : podcast;
+                    });
+                });
+            }
+        }
     };
    
 </script>
             
 <style>
-
+ul.list {
+  margin: 10;
+  padding: 5;
+  list-style-type: none;
+}
             
 </style>
             

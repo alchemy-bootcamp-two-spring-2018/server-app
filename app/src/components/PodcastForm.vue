@@ -1,52 +1,52 @@
 <template id="podcast-template">
     <section class="add-podcast">
-        <h1>New Podcast</h1>
         <form @submit.prevent="handleSubmit">
             <label>
-                Name:
-                <input type="text" name="name" placeholder="Name of Podcast" required
-                    v-model="podcast.name">
+            Name:
+            <input type="text" name="name" placeholder="Name of Podcast" required
+                v-model="edit.name">
             </label>
 
+            
             <label>
                 Published By:
                 <input type="text" name="publisher" placeholder="Publisher" required
-                    v-model="podcast.publisher">
+                v-model="edit.publisher">
             </label>
 
             <label>
-                Length(average minutes):
-                <input type="text" name="averageminutes" placeholder="Average minutes" required
-                    v-model="podcast.averageminutes">
+            Length(average minutes):
+            <input type="text" name="averageminutes" placeholder="Average minutes" required
+                v-model="edit.averageminutes">
             </label>
 
             <label>
-                Category:
-                <input type="text" name="category" placeholder="Category" required
-                    v-model="podcast.category">
+            Category:
+            <input type="text" name="category" placeholder="Category" required
+                v-model="edit.category">
             </label>
 
             <label>
-                NSFW? (not safe for work)
+                NSFW? (not safe for work):
                 <input type="text" name="nsfw" placeholder="True or False" required
-                    v-model="podcast.nsfw">
+                    v-model="edit.nsfw">
             </label>
-
             <label>
                 Description:
                 <textarea name="body" rows="8" cols="40" required 
-                    v-model="podcast.description"></textarea>
+                    v-model="edit.description"></textarea>
             </label>
-
+        
             <label>
-                <button type="submit">Add</button>
+                <button type="submit">{{ label }}</button>
             </label>
         </form>
+        {{ edit }}
     </section>
 </template>
 
-
 <script>
+
 const initPodcast = () => {
   return {
     name: '',
@@ -59,22 +59,29 @@ const initPodcast = () => {
 };
 export default {
   props: {
-    onAdd: {
+    podcast: Object,
+    label: String,
+    onEdit: {
       type: Function,
       required: true
     }
   },
   data() {
     return {
-      podcast: initPodcast()
+      edit: this.podcast ? Object.assign({}, this.podcast) : initPodcast()//,
+      //quadrants: []
     };
   },
+//   created() {
+//     getQuadrants().then(quadrants => {
+//       this.quadrants = quadrants;
+//     });
+//   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.podcast)
-        
+      this.onEdit(this.edit)
         .then(() => {
-          this.podcast = initPodcast();
+          this.edit = initPodcast();
         });
     }
   }
@@ -83,11 +90,10 @@ export default {
 
 <style>
 .add-podcast {
-  width: 400px;
+  width: 500px;
   text-align: left;
-  margin: auto; 
+  margin: auto;
 }
-
 label {
   display: block;
 }
