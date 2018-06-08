@@ -1,5 +1,5 @@
 
-const Client = pg.Client;
+const Client = require('../db.Client');
 
 client.query(`
     DROP TABLE IF EXISTS country;

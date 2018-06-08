@@ -1,5 +1,4 @@
 
-
 export function getAmps() {
   return fetch('http://localhost:3000/api/amps', {
     headers: { 'Content-Type': 'application/json' }
@@ -13,5 +12,9 @@ export function addAmp(amp) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(amp)
   })
+
+
+
+  
     .then(response => response.json()); 
 }
