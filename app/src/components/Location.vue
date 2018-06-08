@@ -4,8 +4,8 @@
     <div>
     <h2>{{location.name}}.</h2>
     
-    <p><strong>Climbing Type: {{location.climbingstyleID}}</strong></p>
     <p><strong>Location: {{location.location}}</strong></p>
+    <p><strong>Climbing Type: {{location.type}}</strong></p>
     <p><strong>Elevation: {{location.elevation}}ft.</strong></p>
     <p v-if="location.yearroundclimbing == true"><strong>Year Round Climbing</strong></p>
     <p v-if="location.yearroundclimbing !== true"><strong>Seasonal Climbing</strong></p>

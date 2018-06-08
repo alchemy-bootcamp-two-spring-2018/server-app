@@ -76,4 +76,13 @@ app.delete('/api/climbingLocations/:id', (req, res) => {
   });
 });
 
+app.get('/api/climbingstyles', (req, res) => {
+  client.query(`
+  select * from climbingstyles;
+  `)
+    .then(result => {
+      res.send(result.rows);
+    });
+});
+
 app.listen(3000, () => console.log('server is running...'));
