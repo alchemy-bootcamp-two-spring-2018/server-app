@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <img id="logo" src="./assets/Sip-Logo.jpg">
+    <header>
+      <img id="logo" src="./assets/Sip-Logo.jpg">
+    </header>
+    
     <main>
       <shops/>
     </main>

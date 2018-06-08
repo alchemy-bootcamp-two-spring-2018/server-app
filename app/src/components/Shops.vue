@@ -9,12 +9,14 @@
             :shop="shop"
         />
     </ul>   
+    <AddShop :on-add="handleAdd"/>
 </section>
 </template>
 
 <script>
 import Shop from './Shop';
-import { getShops } from '../services/api';
+import AddShop from './AddShop.vue';
+import { getShops, addShop } from '../services/api';
 
 export default {
     data() {
@@ -30,10 +32,16 @@ export default {
     },
     components: {
         Shop,
+        AddShop
     },
-    // methods: {
-
-    // }
+    methods: {
+        handleAdd(shop) {
+            return addShop(shop)
+                .then(saved => {
+                    this.shops.push(saved);
+                });
+        }
+    }
 };
 
 </script>
