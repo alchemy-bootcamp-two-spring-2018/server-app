@@ -1,11 +1,11 @@
 <template>
   <div class="location">
-      <section class="buttons">
+      <div class="buttons">
         <button @click="handleDelete" id="delete">x</button>
         <button v-if="!editing" @click="editing = true">edit</button>
-      </section>
+      </div>
       <article v-if="!editing">
-      <h2>{{ location.name }}.</h2>
+      <h2 class="name">{{ location.name }}</h2>
       <p><strong>Location: {{ location.location }}</strong></p>
       <p><strong>Climbing Type: {{ climbingStyle }}</strong></p>
       <p><strong>Elevation: {{ location.elevation }}ft.</strong></p>
@@ -88,9 +88,9 @@ export default {
   border-radius: 5px;
 }
 .buttons {
-  display: flex;
-
   float: left;
+  align-items: left;
+
 }
 #description {
   width: 85%;
@@ -101,15 +101,18 @@ p {
   margin: 2px;
 }
 h2 {
+  margin: auto;
   margin-top: 0px;
   margin-bottom: 2px;
   color: darkslategray;
+  width:440px;
 }
 img {
   max-width: 300px;
   margin-top: 15px;
 }
 button {
+  font-size: 13px;
   margin: 5px;
   color: white;
   background: rgba(155, 153, 121, 0.671);
