@@ -32,6 +32,7 @@ app.get('/api/amps', (req, res) => {
   `).then(result => {
     res.send(result.rows);
   });
+  // console.log(request.body);
 });
 
 app.post('/api/amps', (req, res) => {
