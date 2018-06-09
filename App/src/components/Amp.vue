@@ -11,7 +11,7 @@
         <button @click="handleClick">Remove this amp</button>
       </p>
     </article>
-    <amp-form
+    <AmpForm
       v-else
       label="update"
       :amp="amp"

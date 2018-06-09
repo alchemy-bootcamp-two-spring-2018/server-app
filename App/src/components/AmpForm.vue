@@ -1,5 +1,5 @@
 <template id="amp-template">
-  <section class="add-amp">
+  <section >
     <h1>New Amp</h1>
     <form @submit.prevent="handleSubmit">
       <label>
@@ -21,11 +21,11 @@
         </select>
       </label>
 
-      <!-- <label>
+      <label>
         Country:
         <input type="text" name="country" placeholder="country" required
           v-model="edit.country">
-      </label> -->
+      </label>
 
       <label>
         Introduced:
@@ -43,7 +43,7 @@
         <button type="submit">{{ label }}</button>
       </label>
     </form>
-    {{ edit }}
+    
   </section>
 </template>
         
@@ -70,7 +70,7 @@ export default {
   },
   data() {
     return {
-      edit: this.neighborhood ? Object.assign({}, this.amp) : initAmp(),
+      edit: this.amp ? Object.assign({}, this.amp) : initAmp(),
       countries: []
     };
   },

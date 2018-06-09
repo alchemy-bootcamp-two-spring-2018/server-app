@@ -17,7 +17,6 @@ client.connect();
 
 //routes
 app.get('/api/amps', (req, res) => {
-  
   client.query(`
     select a.id,
       a.name,
