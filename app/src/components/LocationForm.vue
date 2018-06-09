@@ -41,14 +41,14 @@
           <textarea rows="5" cols="40" required
             v-model="edit.description"></textarea>
         </label>
-        <label>
+        <div>
           <button type="submit">{{ label }}</button>
           <button
             v-if="onCancel"
             @click="onCancel">
             Cancel
           </button>
-        </label>
+        </div>
       </form>
       <hr>
   </div>
@@ -98,7 +98,6 @@ export default {
 </script>
 
 <style >
-
   .addLocation {
     border-radius: 5px;
     width: 90%;
