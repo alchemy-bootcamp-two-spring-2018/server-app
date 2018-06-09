@@ -105,7 +105,7 @@ h2 {
   margin-top: 0px;
   margin-bottom: 2px;
   color: darkslategray;
-  width:440px;
+  width:44%;
 }
 img {
   max-width: 300px;
