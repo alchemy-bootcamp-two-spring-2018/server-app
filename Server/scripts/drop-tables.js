@@ -1,5 +1,5 @@
 
-const Client = require('../db.Client');
+const client = require('../db-client');
 
 client.query(`
     DROP TABLE IF EXISTS amps;

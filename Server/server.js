@@ -22,13 +22,13 @@ app.get('/api/amps', (req, res) => {
     select a.id,
       a.name,
       c.id as "countryId"
-      c.name || ' (' || ')' as "countryName",
+      c.name as "countryName",
       introduced,
       tubes
     from amps a
     join countries c
     on a.country_id = c.id
-    order by a.name;
+    order by name;
   `).then(result => {
     res.send(result.rows);
   });
@@ -40,7 +40,7 @@ app.post('/api/amps', (req, res) => {
   client.query(`
     INSERT INTO amps (name, country_id, introduced, tubes)
     VALUES ($1, $2, $3, $4)
-    RETURNING *;
+    RETURNING *, country_id as "countryId";
     `,
   [body.name, body.countryId, body.introduced, body.tubes]
   ).then(result => {

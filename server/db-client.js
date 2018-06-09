@@ -1,6 +1,6 @@
 const DATABASE_URL = 'postgres://localhost:5432/explore';
 const pg = require('pg');
-const CLIENT = pg.Client;
+const Client = pg.Client;
 
 const client = new Client(DATABASE_URL);
 client.connect()
@@ -11,4 +11,4 @@ client.on('error', err => {
   console.error('\n**** DATABASE ERROR ****\n\n', err);
 });
 
-module.exports = clients;
+module.exports = client;
