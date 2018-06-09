@@ -5,6 +5,7 @@
       <h2>Date: {{ event.date }}</h2>
       <h2>Time: {{ event.time }}</h2>
       <h4>Game: {{ boardGame }}</h4>
+      <h5>Max # of Players: {{ players }}</h5>
       <p>Guests Allowed? <span v-if="event.guestsAllowed">Yes</span><span v-else>No</span></p>
       <p>{{ event.message }}</p>
       <button v-if="!editing" @click="editing = true">Edit Event</button>
@@ -37,7 +38,12 @@ export default {
       if(!this.boardGames) return null;
       const boardGame = this.boardGames.find(g => g.id === this.event.gameID);
       return boardGame ? boardGame.name : 'Unknown';
-    }
+    },
+    players() {
+      if(!this.boardGames) return null;
+      const boardGame = this.boardGames.find(g => g.id === this.event.gameID);
+      return boardGame ? boardGame.players : 'Unknown';
+    },
   },
   props: [
     'event',
