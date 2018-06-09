@@ -8,7 +8,7 @@
         :systems="systems"
         :on-delete="handleDelete"
         :on-update="handleUpdate"
-        :key="game.name"
+        :key="game.id"
         :game="game"
       />
     </ul>

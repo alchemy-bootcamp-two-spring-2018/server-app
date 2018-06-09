@@ -36,7 +36,6 @@
         <button type="submit">{{ label }}</button>
       </label>
     </form>
-    {{ edit }}
   </section>
 </template>
 
