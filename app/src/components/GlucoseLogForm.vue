@@ -22,37 +22,37 @@
 
       <label for="checkbox">
         Changed Insulin?:
-        <input v-model="edit.changeInsulin" type="checkbox" id="checkbox" :value="true"> {{ edit.changeInsulin }}
+        <input v-model="edit.changeinsulin" type="checkbox" id="checkbox" :value="true"> {{ edit.changeinsulin }}
       </label>
       
       <label>
         Before Breakfast:
-        <input v-model="edit.beforeBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.beforebreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
       
       <label>
         After Breakfast:
-        <input v-model="edit.afterBreakfast" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.afterbreakfast" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Lunch:
-        <input v-model="edit.beforeLunch" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.beforelunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Lunch:
-        <input v-model="edit.afterLunch" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.afterlunch" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         Before Dinner:
-        <input v-model="edit.beforeDinner" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.beforedinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
         After Dinner:
-        <input v-model="edit.afterDinner" placeholder="Blood Sugar" type="number" min="0" required>
+        <input v-model="edit.afterdinner" placeholder="Blood Sugar" type="number" min="0" required>
       </label>
 
       <label>
@@ -69,13 +69,13 @@ const initglucoselog = () => {
   return {
     date: '',
     dayId: '',
-    changeInsulin: false,
-    beforeBreakfast: '',
-    afterBreakfast: '',
-    beforeLunch: '',
-    afterLunch: '',
-    beforeDinner: '',
-    afterDinner: ''
+    changeinsulin: false,
+    beforebreakfast: '',
+    afterbreakfast: '',
+    beforelunch: '',
+    afterlunch: '',
+    beforedinner: '',
+    afterdinner: ''
   };
 };
 

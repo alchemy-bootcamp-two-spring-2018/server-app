@@ -28,13 +28,13 @@ app.get('/api/glucoselogs', (req, res) => {
       date,
       days.id as "dayId",
       days.name,
-      changeInsulin, 
-      beforeBreakfast, 
-      afterBreakfast, 
-      beforeLunch, 
-      afterLunch, 
-      beforeDinner, 
-      afterDinner 
+      changeinsulin, 
+      beforebreakfast, 
+      afterbreakfast, 
+      beforelunch, 
+      afterlunch, 
+      beforedinner, 
+      afterdinner 
     FROM glucoselogs 
     JOIN days 
     ON glucoselogs.day = days.id
@@ -48,11 +48,11 @@ app.get('/api/glucoselogs', (req, res) => {
 app.post('/api/glucoselogs', (req, res) => {
   const body = req.body;
   client.query(`
-    INSERT INTO glucoselogs (date, day, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
+    INSERT INTO glucoselogs (date, day, changeinsulin, beforebreakfast, afterbreakfast, beforelunch, afterlunch, beforedinner, afterdinner)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING *;
   `,
-  [body.date, body.dayId, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner]
+  [body.date, body.dayId, body.changeinsulin, body.beforebreakfast, body.afterbreakfast, body.beforelunch, body.afterlunch, body.beforedinner, body.afterdinner]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -77,7 +77,7 @@ app.put('/api/glucoselogs/:id', (req, res) => {
     WHERE id = $10
     RETURNING *;
   `,
-  [body.date, body.dayId, body.changeInsulin, body.beforeBreakfast, body.afterBreakfast, body.beforeLunch, body.afterLunch, body.beforeDinner, body.afterDinner, req.params.id]
+  [body.date, body.dayId, body.changeinsulin, body.beforebreakfast, body.afterbreakfast, body.beforelunch, body.afterlunch, body.beforedinner, body.afterdinner, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
   });
