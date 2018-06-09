@@ -24,7 +24,6 @@ import {
   addEvent,
   updateEvent,
   deleteEvent,
-  getCategories,
   getBoardGames
 } from '../services/api';
 
@@ -32,8 +31,7 @@ export default {
   data() {
     return {
       events: null,
-      boardGames: null,
-      categories: null
+      boardGames: null
     };
   },
   created() {
@@ -43,9 +41,7 @@ export default {
     getBoardGames().then(boardGames => {
       this.boardGames = boardGames;
     });
-    getCategories().then(categories => {
-      this.categories = categories;
-    });
+    
   },
   components: {
     Event,
