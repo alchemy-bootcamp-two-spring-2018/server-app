@@ -5,11 +5,11 @@
          <label>
           Name:
           <input type="text" name="name" min="3" placeholder="Name" required
-            v-model="location.name">
+            v-model="edit.name">
         </label>
          <label>
           Type of Climbing:
-          <select v-model="location.climbingstyleID">
+          <select v-model="edit.climbingstyleID">
             <option value="">Select a type</option>
             <option 
               name="type"
@@ -23,25 +23,30 @@
         <label>
           Location:
           <input type="text" name="name" placeholder="Location" required
-            v-model="location.location">
+            v-model="edit.location">
         </label>
         <label>
           Elevation:
           <input type="number" name="elevation" placeholder="Elevation" required
-            v-model="location.elevation">ft
+            v-model="edit.elevation">ft
         </label>
         <label>
           Year round climbing?:
           <input type="checkbox" name="year-round" placeholder="false"
-            v-model="location.yearroundclimbing"> {{location.yearroundclimbing}} 
+            v-model="edit.yearroundclimbing"> {{edit.yearroundclimbing}} 
         </label>
         <label>
           Description:
           <input type="text" name="description" maxlenght="200" placeholder="Description" required
-            v-model="location.description">
+            v-model="edit.description">
         </label>
         <label>
-          <button type="submit">Add to List</button>
+          <button type="submit">{{ label }}</button>
+          <button
+            v-if="onCancel"
+            @click="onCancel">
+            onCancel
+          </button>
         </label>
       </form>
       {{location}}
@@ -61,25 +66,28 @@ const initLocation = () => {
 };
 export default {
   props: {
+    location: Object,
+    label: String,
     climbingStyles: {
       type: Array, 
       required: true
     },
-    onAdd: {
+    onEdit: {
       type: Function,
       required: true
-    }
+    },
+    onCancel: Function
   },
   data() {
     return {
-      location: initLocation()
+      edit: this.location ? Object.assign({}, this.location) : initLocation()
     };
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.location)
+      this.onEdit(this.edit)
         .then(() => {
-          this.location = initLocation();
+          this.edit = initLocation();
         });
     }
   }
@@ -94,8 +102,6 @@ export default {
     border: solid 1px black;
     width: 90%;
     margin: auto;
-    margin-top: 150px;
-
   }
   form {
     display: flex;

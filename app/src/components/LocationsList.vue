@@ -11,16 +11,17 @@
       />
     </div>
     <div class="add-location">
-      <AddLocation
+      <LocationForm
         :climbingStyles="climbingStyles"
-        :on-add="handleAdd"/>
+        :on-edit="handleAdd"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Location from './Location.vue';
-import AddLocation from './AddLocation.vue';
+import LocationForm from './LocationForm.vue';
 import { getClimbingStyles } from '../services/api';
 import { 
   getClimbingLocations,
@@ -45,7 +46,7 @@ export default {
   },
   components: {
     Location,
-    AddLocation
+    LocationForm
   },
   methods: {
     handleAdd(location) {

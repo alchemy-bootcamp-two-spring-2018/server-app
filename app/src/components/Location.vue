@@ -1,22 +1,29 @@
 <template>
   <div class="location">
     <button @click="handleDelete">Delete</button>
-    <div>
-    <h2>{{ location.name }}.</h2>
-    
-    <p><strong>Location: {{ location.location }}</strong></p>
-    <p><strong>Climbing Type: {{ climbingStyle }}</strong></p>
-    <p><strong>Elevation: {{ location.elevation }}ft.</strong></p>
-    <p v-if="location.yearroundclimbing == true"><strong>Year Round Climbing</strong></p>
-    <p v-if="location.yearroundclimbing !== true"><strong>Seasonal Climbing</strong></p>
-
-    <p id="description">{{location.description}}</p>
-    <button @click="handleUpdate">(-_-)</button>
-  </div>
+      <article v-if="!editing">
+      <h2>{{ location.name }}.</h2>
+      <p><strong>Location: {{ location.location }}</strong></p>
+      <p><strong>Climbing Type: {{ climbingStyle }}</strong></p>
+      <p><strong>Elevation: {{ location.elevation }}ft.</strong></p>
+      <p v-if="location.yearroundclimbing == true"><strong>Year Round Climbing</strong></p>
+      <p v-if="location.yearroundclimbing !== true"><strong>Seasonal Climbing</strong></p>
+      <p id="description">{{location.description}}</p>
+      <button v-if="!editing" @click="editing = true">edit</button>
+    </article>
+    <LocationForm
+      v-else
+      label="Update"
+      :location="location"
+      :climbingStyles="climbingStyles"
+      :on-edit="handleUpdate"
+      :on-cancel="() => editing = false"
+      />
   </div>
 </template>
 
 <script>
+import LocationForm from './LocationForm';
 export default {
   data() {
     return {
@@ -39,6 +46,9 @@ export default {
       type: Function,
       required: true
     }
+  },
+  components: {
+    LocationForm
   },
   computed: {
     climbingStyle() {
