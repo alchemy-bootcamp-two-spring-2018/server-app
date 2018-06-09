@@ -15,6 +15,7 @@
         :climbingStyles="climbingStyles"
         :on-edit="handleAdd"
         label="Submit"
+        label2="Add Location"
       />
     </div>
   </div>
@@ -86,7 +87,7 @@ export default {
     margin: auto;
     margin-top: -1px;
     border: solid 1px;
-    background-color: rgba(201, 201, 201, 0.438);
+    background-color: rgba(201, 201, 201, 0.753);
   }
   .add-location {
     float: right;
@@ -96,7 +97,6 @@ export default {
     margin: auto;
     margin-top: -1px;
     border: solid 1px;
-    background-color: rgba(201, 201, 201, 0.438);
-  }
+    background-color: rgba(201, 201, 201, 0.753);  }
  
 </style>

@@ -2,6 +2,7 @@
   <div class="addLocation">
       <h1></h1>
       <form @submit.prevent="handleSubmit">
+        <h3>{{ label2 }}</h3>
          <label>
           Name:
           <input type="text" name="name" min="3" placeholder="Name" required
@@ -49,6 +50,7 @@
           </button>
         </label>
       </form>
+      <hr>
   </div>
 </template>
 
@@ -68,6 +70,7 @@ export default {
     editing: false,
     location: Object,
     label: String,
+    label2: String,
     climbingStyles: {
       type: Array, 
       required: true
@@ -97,9 +100,7 @@ export default {
 <style >
 
   .addLocation {
-    background-color: rgba(176, 196, 222, 0.671);
     border-radius: 5px;
-    border: solid 1px black;
     width: 90%;
     margin: auto;
     margin-top: 5px;
