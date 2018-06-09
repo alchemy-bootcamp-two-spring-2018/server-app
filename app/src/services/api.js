@@ -34,7 +34,7 @@ export function removePodcast(id) {
 }
 
 export function getFormats() {
-  return fetch(`$URL}/formats`, {
+  return fetch(`${URL}/formats`, {
     headers: { 'Content-Type': 'application/json' }
   })
     .then(response => response.json());

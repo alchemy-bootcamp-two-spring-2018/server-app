@@ -17,13 +17,18 @@ app.get('/api/podcasts', (req, res) => {
   client.query(`
     SELECT n.id,
       n.name,
+      q.id as "formatId",
+      q.name as "formatname",
       published,
       averageminutes,
       category,
       nsfw,
       description
-
-  `).then(result => {
+    from podcasts n
+    join formats q
+    on n.format_id = q.id
+    order ny n.name;
+    `).then(result => {
     res.send(result.rows);
   });
 
@@ -33,12 +38,12 @@ app.post('/api/podcasts', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO podcasts (name, publisher, averageminutes, category, nsfw, description)
-    VALUES ($1, $2, $3, $4, $5, $6)
+    INSERT INTO podcasts (name, format_id, publisher, averageminutes, category, nsfw, description)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
   `,
 
-  [body.name, body.publisher, body.averageminutes, body.category, body.nsfw, body.description]
+  [body.name, body.formatId, body.publisher, body.averageminutes, body.category, body.nsfw, body.description]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -49,18 +54,19 @@ app.put('/api/podcasts/:id', (req, res) => {
   const body = req.body;
 
   client.query(`
-    update podcastss
+    update podcasts
     set
       name = $1,
-      publisher = $2,
-      averageminutes = $3,
-      category = $4,
-      nsfw = $5
-      description = $6
-    where id = $7
+      format_id = $2,
+      publisher = $3,
+      averageminutes = $4,
+      category = $5,
+      nsfw = $6,
+      description = $7
+    where id = $8
     returning *;
   `,
-  [body.name, body.publisher, body.averageminutes, body.category, body.nsfw, body.description, req.params.id]
+  [body.name, body.formatId, body.publisher, body.averageminutes, body.category, body.nsfw, body.description, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -76,6 +82,16 @@ app.delete('/api/podcasts/:id', (req, res) => {
   ).then(() => {
     res.send({ removed: true });
   });
+});
+
+app.get('/api/formats', (req, res) => {
+
+  client.query(`
+    SELECT * FROM formats;
+    `)
+    .then(result => {
+      res.send(result.rows);
+    });
 });
 
 

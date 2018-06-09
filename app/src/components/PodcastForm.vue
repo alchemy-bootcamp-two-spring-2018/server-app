@@ -84,11 +84,11 @@ export default {
       formats: []
     };
   },
-   created() {
-     getFormats().then(formats => {
-       this.formats = formats;
-     });
-   },
+  created() {
+    getFormats().then(formats => {
+      this.formats = formats;
+    });
+  },
   methods: {
     handleSubmit() {
       this.onEdit(this.edit)
