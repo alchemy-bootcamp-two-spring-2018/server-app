@@ -9,7 +9,7 @@
       :key="amp.name"
       :amp="amp"
       :on-remove="handleRemove"
-      ;on-update="handleUpdate"
+      :on-update="handleUpdate"
     />
   </ul>
 
