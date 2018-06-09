@@ -55,7 +55,7 @@ app.put('/api/subscriptions/:id', (req, res) => {
   `,
   [body.name, body.purposeId, body.price, body.ads, req.params.id]
   ).then(result => {
-    res.send(result.rows);
+    res.send(result.rows[0]);
   });
 });
 

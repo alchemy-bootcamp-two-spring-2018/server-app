@@ -1,5 +1,12 @@
 <template>
   <section id="subscription-section">
+    <h3 @click="adding = !adding">Add a new subscription</h3>
+    <SubscriptionForm
+      v-if="adding"
+      label="Add"
+      :purposes="purposes"
+      :onEdit="handleAdd"/>
+
     <h2>Streaming Service Subscriptions</h2>
     <p v-if="!subscriptions">Loading subscriptions...</p>
     <ul v-else class="list">
@@ -12,11 +19,6 @@
         :onUpdate="handleUpdate"
       />
     </ul>
-    <h3>Add a new subscription</h3>
-    <SubscriptionForm
-      label="Add"
-      :purposes="purposes"
-      :onEdit="handleAdd"/>
   </section>
 </template>
 
@@ -35,7 +37,8 @@ export default {
   data() {
     return {
       subscriptions: null,
-      purposes: null
+      purposes: null,
+      adding: false
     };
   },
   created() {

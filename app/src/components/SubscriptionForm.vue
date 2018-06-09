@@ -42,6 +42,11 @@
 
       <label class="input-button">
         <button type="submit">{{ label }}</button>
+        <button
+          v-if="onCancel"
+          @click="onCancel">
+          Cancel
+        </button>
       </label>
     </form>
   </section>
@@ -64,16 +69,17 @@ export default {
     onEdit: {
       type: Function,
       required: true
-    }
+    },
+    onCancel: Function
   },
   data() {
     return {
-      edit: this.subscription ? Object.assign({}, this.subscription) : initSubscription(),
+      edit: this.subscription ? Object.assign({}, this.subscription) : initSubscription()
     };
   },
   methods: {
     handleSubmit() {
-      this.onEdit(this.edit)
+      return this.onEdit(this.edit)
         .then(() => {
           this.edit = initSubscription();
         });

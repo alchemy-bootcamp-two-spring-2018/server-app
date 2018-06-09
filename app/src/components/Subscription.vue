@@ -5,6 +5,7 @@
       <p>Purpose: <em>{{ purpose }}</em></p>
       <p>Monthly Price: {{ subscription.price }}</p>
       <p>Includes ads: <strong>{{ ads }}</strong></p>
+      <button v-if="!editing" @click="editing = true">Edit</button>
       <button @click="handleClick">Remove</button>
     </article>
     <SubscriptionForm
@@ -12,9 +13,9 @@
       label="Update"
       :subscription="subscription"
       :purposes="purposes"
-      :onEdit="onUpdate"
+      :onEdit="handleUpdate"
+      :onCancel="() => editing = false"
     />
-      <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit' }}</button>
   </div>
 </template>
 
@@ -49,8 +50,14 @@ export default {
   methods: {
     handleClick() {
       if(confirm(`Are you sure you want to remove ${this.subscription.name}?`)) {
-        this.onRemove(this.subscription.id);
+        return this.onRemove(this.subscription.id);
       }
+    },
+    handleUpdate(toUpdate) {
+      return this.onUpdate(toUpdate)
+        .then(() => {
+          this.editing = false;
+        });
     }
   }
 };
