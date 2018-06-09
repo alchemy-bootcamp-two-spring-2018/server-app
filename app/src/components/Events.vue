@@ -1,34 +1,35 @@
 <template>
-<div>
-  <div class="events-list" >
-    <section class="new-event">
-      <transition name="slide-up">
-        <h1 v-if="!creating && !viewing">GAMEPLAN</h1>
-        
-      </transition>
-      <hr>
-      <h2 @click="creating = !creating">Create a New Event</h2>
-      <h2 @click="viewing = ! viewing">View Events</h2>
-      <transition name="slide-fade">
-        <EventForm 
-          v-if="creating"
-          :onEdit="handleAdd"
-          label="Create"
+  <div>
+    <div class="events-list" >
+      <section class="new-event">
+        <transition name="slide-up">
+          <h1 v-if="!creating && !viewing">GAMEPLAN</h1>
+          
+        </transition>
+        <hr>
+        <h2 @click="creating = !creating, viewing = false">Create a New Event</h2>
+        <h2 @click="viewing = !viewing, creating = false">View Events</h2>
+        <transition name="slide-fade">
+          <EventForm 
+            v-if="creating"
+            :onEdit="handleCreate"
+            label="Create"
+            :boardGames="boardGames"
+          />
+        </transition>
+      </section>
+      <section class="view-event">
+        <Event
+          v-if="viewing"
+          v-for="event in events"
+          :key="event.id"
+          :event="event"
           :boardGames="boardGames"
+          :onDelete="handleDelete"
+          :onUpdate="handleUpdate"
         />
-      </transition>
-    </section>
-    <section class="view-event">
-      <Event
-        v-for="event in events"
-        :key="event.id"
-        :event="event"
-        :boardGames="boardGames"
-        :onDelete="handleDelete"
-        :onUpdate="handleUpdate"
-      />
-    </section>
-  </div>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -37,7 +38,7 @@ import Event from './Event';
 import EventForm from './EventForm';
 import { 
   getEvents,
-  addEvent,
+  createEvent,
   updateEvent,
   deleteEvent,
   getBoardGames
@@ -66,10 +67,12 @@ export default {
     EventForm
   },
   methods: {
-    handleAdd(boardGame) {
-      return addEvent(boardGame)
+    handleCreate(boardGame) {
+      return createEvent(boardGame)
         .then(saved => {
-          this.events.push(saved);
+          this.events.unshift(saved);
+          this.creating = false;
+          this.viewing = true;
         });
     },
     handleDelete(id) {
@@ -99,14 +102,19 @@ export default {
   text-align: center;
 }
 
+view-event {
+  text-align: center;
+}
+
 h1 {
   margin-top: 250px;
-  font-weight: 600;
   font-size: 5em;
+  letter-spacing: 10px;
+  font-weight: 400;
 }
 
 h2 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Crimson Text', serif;
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;

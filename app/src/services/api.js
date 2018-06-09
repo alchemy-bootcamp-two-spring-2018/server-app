@@ -8,7 +8,7 @@ export function getEvents() {
     .then(response => response.json());
 }
 
-export function addEvent(event) {
+export function createEvent(event) {
   return fetch(EVENTS_URL, {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },

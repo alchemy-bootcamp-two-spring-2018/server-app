@@ -5,10 +5,10 @@
         <input type="text" required v-model="edit.name">
       </label>
       <label>Date:
-        <input type="text" v-model="edit.date">
+        <input type="date" v-model="edit.date">
       </label>
       <label>Time:
-        <input type="text" v-model="edit.time">
+        <input type="time" v-model="edit.time">
       </label>
       <label>Game:
         <select v-model.number="edit.gameID" required>
@@ -82,6 +82,10 @@ export default {
 form {
   display: flex;
   flex-direction: column;
+}
+
+input {
+  font-size: 2em;
 }
 
 input[type="number"] {

@@ -19,7 +19,7 @@ export default {
     category() {
       if(!this.categories) return null;
       const category = this.categories.find(c => c.id === this.boardGame.categoryID);
-      return category;
+      return category ? category.category : 'Unknown';
     }
   },
   created() {

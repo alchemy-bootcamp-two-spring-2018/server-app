@@ -25,7 +25,7 @@ app.get(API_URL, (req, res) => {
       guests_allowed as "guestsAllowed",
       message
     FROM events
-    ORDER BY date;
+    ORDER BY date DESC;
   `).then(result => {
     res.send(result.rows);
   });
@@ -104,7 +104,14 @@ app.delete(API_URL_ID, (req, res) => {
 
 app.get('/api/boardgames', (req, res) => {
   client.query(`
-    SELECT * FROM boardgames;
+    SELECT
+      id,
+      name,
+      category_id as "categoryID",
+      players,
+      avg_playing_time as "avgPlayingTime",
+      description
+    FROM boardgames;
   `)
     .then(result => {
       res.send(result.rows);

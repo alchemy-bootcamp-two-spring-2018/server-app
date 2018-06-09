@@ -6,6 +6,8 @@
       <h6>🗓</h6>
       <h6>💰</h6>
       <h6>🔮</h6>
+      <h6>🎲</h6>
+      <h6>🔍</h6>
     </header>
     <main>
       <Events />
@@ -42,19 +44,27 @@ header {
 }
 
 header>h1 {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Crimson Text', sans-serif;
   margin: 10px;
   font-size: 2em;
 }
 
 h1 {
-    font-family: 'Dosis', sans-serif;
-    font-weight: 400;
+    font-family: 'Crimson Text', sans-serif;
     color: #122A59;
-    letter-spacing: 5px;
+}
+
+h6 {
+  margin: 0px;
 }
 
 header>h6 {
   font-size: 1.5em;
+  opacity: .8;
+  transition: all .4s ease;
+}
+
+h6:hover {
+  opacity: 1;
 }
 </style>
