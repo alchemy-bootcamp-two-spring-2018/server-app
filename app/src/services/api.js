@@ -18,7 +18,6 @@ export function addRappers(rapper) {
 }
 
 export function updateRappers(rapper) {
-  console.log('HERE IS LOG IN API', rapper.id);
   return fetch('http://localhost:3000/api/rappers/' + rapper.id, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

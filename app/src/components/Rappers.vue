@@ -2,6 +2,7 @@
   <div>
     <h1>Rappers</h1>
   <div id="submit-wrapper">
+          <h2>Add a rapper!</h2>
     <RapperForm
 		label = 'Add'
     :on-edit="handleAdd"

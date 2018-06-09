@@ -1,6 +1,5 @@
 <template>
     <section>
-      <h2>Add a rapper!</h2>
       <form @submit.prevent="handleSubmit">
           <label>
               Name:
@@ -19,6 +18,7 @@
 						<option
 						v-for="position in positions"
 						:key="position.id"
+            :value="position.position"
 						>{{ position.position }}</option>
           </select>
           <label>

@@ -53,7 +53,6 @@ app.post('/api/rappers', (req, res) => {
 
 app.put('/api/rappers/:id', (req, res) => {
   const body = req.body;
-  console.log(req.params.id)
 
   client.query(`
     update rappers

@@ -11,19 +11,20 @@
       <p v-if="rapper.dead === false">{{ rapper.name }} is not dead</p>
       <p v-else>{{ rapper.name }} is dead.</p>
       <button
-      @click.prevent="handleClick"
+      v-if="!editing"
       @click="editing = true"
+      >Edit</button>
+      <button
+      @click.prevent="handleClick"
       >Remove</button>
     </article>
     <RapperForm
       v-else
       label="Update"
       :positions="positions"
-      :editing="editing"
       :rapper="rapper"
-      :on-edit="onUpdate"
+      :on-edit="handleUpdate"
     />
-    <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit' }}</button>
   </div>
 </template>
 
@@ -48,9 +49,15 @@ export default {
 
   methods: {
     handleClick() {
-      if(confirm('Are you sure you want to remove $this.rapper.name}?')) {
+      if(confirm('Are you sure you want to remove ' + this.rapper.name + '?')) {
         this.onDelete(this.rapper.id);
       }
+    },
+    handleUpdate(toUpdate) {
+      return this.onUpdate(toUpdate)
+        .then(() => {
+          this.editing = false;
+        });
     }
   }
 };
