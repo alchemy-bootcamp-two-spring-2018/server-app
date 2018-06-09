@@ -1,7 +1,7 @@
 <template>
   <ul class="board-game">
     <li>Category: {{ category }}</li>
-    <li>Maximum Number of PLayers: {{ boardGame.players }}</li>
+    <li>Maximum Number of Players: {{ boardGame.players }}</li>
     <li>Average Playing Time: {{ boardGame.avgPlayingTime }} minutes</li>
     <li>Description: {{ boardGame.description }}</li>
   </ul>

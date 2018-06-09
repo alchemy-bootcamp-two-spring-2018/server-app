@@ -1,6 +1,5 @@
 <template>
   <section class="event-form">
-    <h1>New Event</h1>
     <form @submit.prevent="handleSubmit">
       <label>Name:
         <input type="text" required v-model="edit.name">
@@ -21,8 +20,7 @@
           </option>
         </select>
       </label>
-      
-      <label>Guests Alowed?
+      <label>Guests Allowed?
         <input type="checkbox" v-model="edit.guestsAllowed">
       </label>
       <label>Message:

@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <header>
-      <h1>GAME</h1>
-      <h1>PLANNER</h1>
+      <h1>GP</h1>
+      <h6>🏠</h6>
+      <h6>🗓</h6>
+      <h6>💰</h6>
+      <h6>🔮</h6>
     </header>
     <main>
       <Events />
@@ -22,35 +25,36 @@ export default {
 
 <style>
 body {
-  margin: 100px;
-  font-family: 'Arial', sans-serif;
-  background:
-    linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
-    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
-    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+  margin: 0px;
 }
+
 #app {
   display: grid;
-  grid-template: 350px auto / 50px 1fr 50px;
-  grid-template-areas:
-    ". title ."
-    ". content .";
+  grid-template: 805px / 100px 1fr;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
-  grid-area: title;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 header>h1 {
-  font-family: 'Abril Fatface', cursive;
-  margin: 0px;
-  font-size: 5em;
+  font-family: 'Dosis', sans-serif;
+  margin: 10px;
+  font-size: 2em;
 }
 
-main {
-  grid-area: content;
+h1 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 400;
+    color: #122A59;
+    letter-spacing: 5px;
 }
 
-
+header>h6 {
+  font-size: 1.5em;
+}
 </style>
