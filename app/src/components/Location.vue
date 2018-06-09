@@ -7,7 +7,7 @@
       <p v-if="location.power">Yes</p>
       <p v-else>no</p>
       <p>Alchemist Rated: {{ location.rating }}</p>   
-      <button @click="handleCLick">Remove This Location</button>
+      <button @click="handleClick">Remove This Location</button>
       <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit Listing' }}</button>
   </div> 
      

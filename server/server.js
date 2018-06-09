@@ -16,17 +16,15 @@ client.connect();
 app.get('/api/locations', (req, res) => {
 
   client.query(`
-    SELECT n.id,
-      n.name,
-      q.id as "quadrantId",
-      q.name,
+    SELECT id,
+      name,
+      id as "quadrantId",
+      name,
       description,
       power,
       rating
-    FROM locations n
-    JOIN quadrants q
-    ON n.quadrant_id = q.id
-    order by n.name;
+    FROM locations 
+    order by name;
     `).then(result => {
     res.send(result.rows);
   });
@@ -36,11 +34,11 @@ app.post('/api/locations', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO locations (name, description, quadrantID, power, rating)
+    INSERT INTO locations (name, description, quadrant_id, power, rating)
     VALUES ($1, $2, $3, $4, $5)
-    RETURNING *;
+    RETURNING *, quadrant_id as "quadrantID";
   `,
-  [body.name, body.description, body.quadrantID, body.power, body.rating]
+  [body.name, body.description, body.quadrantId, body.power, body.rating]
   ).then(result => {
   //send back object
     res.send(result.rows[0]);
@@ -59,7 +57,7 @@ app.put('/api/locations/:id', (req, res) => {
       power = $4,
       rating = $5
     WHERE id = $6
-    returning *;
+    returning *, quadrant_id as "quadrantId";
   `,
   [body.name, body.description, body.quadrantId, body.power, body.rating, req.params.id]
   ).then(result => {

@@ -15,6 +15,19 @@
           v-model="edit.description">
       </label>
 
+      <label>
+        Quadrant:
+        <select v-model.number="edit.quadrantId" required>
+          <option disabled value="">Please select a quadrant</option>
+          <option
+            v-for="quadrant in quadrants"
+            :key="quadrant.id"
+            :value="quadrant.id">
+            {{quadrant.name}} 
+          </option>
+        </select>
+      </label>
+
       <label> Location:
         <input type="text" name="neighborhood" placeholder="Neighborhood" required
           v-model="edit.neighborhood">
@@ -76,9 +89,10 @@ export default {
 
   methods: {
     handleSubmit() {
+      console.log(this.edit);
       this.onEdit(this.edit)
         .then(() => {
-          this.location = initLocation();
+          this.edit = initLocation();
         });
     }
   }
