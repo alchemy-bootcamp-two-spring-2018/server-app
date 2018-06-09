@@ -25,7 +25,6 @@ import Amp from './Amp';
 import AmpForm from './AmpForm.vue';
 import {
   getAmps,
-  getCountries,
   addAmp,
   updateAmp,
   removeAmp } from '../services/api';
@@ -34,18 +33,12 @@ export default {
   data() {
     return {
       amps: null,
-      countries: null
     };
   },
   created() {
     getAmps()
       .then(amps => {
         this.amps = amps;
-      });
-    console.log('get amps');
-    getCountries()
-      .then(countries => {
-        this.countries = countries;
       });
   },
   components: {
@@ -54,7 +47,6 @@ export default {
   },
   methods: {
     handleAdd(amp) {
-      console.log('click sending');
       return addAmp(amp)
         .then(saved => {
           this.amps.push(saved);

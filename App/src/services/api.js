@@ -13,7 +13,7 @@ export function addAmp(amp) {
   return fetch(AMPS_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(amp)
+    body: JSON.(amp)
   })
     .then(response => response.json()); 
 }
@@ -22,7 +22,7 @@ export function updateAmp(amp) {
   return fetch(`${AMPS_URL}/${amp.id}`, {
     method: 'PUT',
     header: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(amp)
+    body: JSON.(amp)
   })
     .then(response => response.json());
 }
