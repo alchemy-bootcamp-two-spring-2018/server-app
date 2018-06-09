@@ -21,23 +21,21 @@ app.get('/api/amps', (req, res) => {
   client.query(`
     select a.id,
       a.name,
-      c.id as "countryId"
+      c.id as "countryId",
       c.name as "countryName",
       introduced,
       tubes
     from amps a
     join countries c
     on a.country_id = c.id
-    order by name;
+    order by a.name;
   `).then(result => {
     res.send(result.rows);
-  });
-  // console.log(request.body);
+  })
 });
 
 app.post('/api/amps', (req, res) => {
   const body = req.body;
-
   client.query(`
     INSERT INTO amps (name, country_id, introduced, tubes)
     VALUES ($1, $2, $3, $4)
@@ -69,11 +67,11 @@ app.put('/api/amps/:id', (req, res) => {
   });
 });
 
-app.delete('/api/amps/:id', (reg, res) => {
+app.delete('/api/amps/:id', (req, res) => {
   client.query(`
   delete from amps where id=$1;
   `,
-  [req,params.id]
+  [req.params.id]
   ).then(() => {
       res.send({ removed: true });
   });

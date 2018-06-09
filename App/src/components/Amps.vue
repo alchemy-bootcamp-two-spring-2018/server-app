@@ -2,7 +2,7 @@
 <section>
   <h2>Greatest Guitar Amplifiers</h2>
   <p v-if="!amps">Loading amps...</p>
-  console.log('loading amps');
+ 
   <ul v-else class="list">
     <Amp
       v-for="amp in amps"
