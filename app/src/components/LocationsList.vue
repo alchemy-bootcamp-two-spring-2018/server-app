@@ -61,14 +61,14 @@ export default {
         .then(this.locations = this.locations.filter(item => item.id !== location.id));
 
     },
-    handleUpdate() {
+    handleUpdate(toUpdate) {
       console.log('oh hey');
-      // return updateLocation(toUpdate)
-      //   .then(updated => {
-      //     this.location = this.locations.map(location => {
-      //       return location.id === updated.id ? updated : location;
-      //     });
-      //   });
+      return updateLocation(toUpdate)
+        .then(updated => {
+          this.location = this.locations.map(location => {
+            return location.id === updated.id ? updated : location;
+          });
+        });
     }
   }
 };

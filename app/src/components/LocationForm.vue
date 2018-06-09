@@ -1,6 +1,6 @@
 <template>
   <div class="addLocation">
-      <h1>Add Location</h1>
+      <h1></h1>
       <form @submit.prevent="handleSubmit">
          <label>
           Name:
@@ -35,10 +35,10 @@
           <input type="checkbox" name="year-round" placeholder="false"
             v-model="edit.yearroundclimbing"> {{edit.yearroundclimbing}} 
         </label>
+        Description:
         <label>
-          Description:
-          <input type="text" name="description" maxlenght="200" placeholder="Description" required
-            v-model="edit.description">
+          <textarea rows="5" cols="40" required
+            v-model="edit.description"></textarea>
         </label>
         <label>
           <button type="submit">{{ label }}</button>
@@ -65,6 +65,7 @@ const initLocation = () => {
 };
 export default {
   props: {
+    editing: false,
     location: Object,
     label: String,
     climbingStyles: {
@@ -101,6 +102,8 @@ export default {
     border: solid 1px black;
     width: 90%;
     margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   form {
     display: flex;

@@ -17,6 +17,7 @@ app.get('/api/climbingLocations/', (req, res) => {
     SELECT id,
     name,
     climbingstyle_id as "climbingstyleID",
+    elevation,
     location,
     yearroundclimbing, 
     description
@@ -49,12 +50,13 @@ app.put('/api/climbingLocations/:id', (req, res) => {
       name = $1,
       climbingstyle_id = $2,
       location = $3,
-      yearroundclimbing = $4,
-      description = $5
-      WHERE id = $6
-      returning *;
+      elevation = $4,
+      yearroundclimbing = $5,
+      description = $6
+      WHERE id = $7
+      RETURNING *, climbingstyle_id as "climbingstyleID";
       `,
-  [body.name, body.climbingstyleID, body.location, body.yearroundclimbing, body.description, req.params.id]
+  [body.name, body.climbingstyleID, body.location, body.elevation, body.yearroundclimbing, body.description, body.id]
   ).then(result => {
     res.send(result.rows[0]);
   });

@@ -1,7 +1,7 @@
 <template>
   <div class="location">
-    <button @click="handleDelete">Delete</button>
       <article v-if="!editing">
+    <button @click="handleDelete">Delete</button>
       <h2>{{ location.name }}.</h2>
       <p><strong>Location: {{ location.location }}</strong></p>
       <p><strong>Climbing Type: {{ climbingStyle }}</strong></p>
@@ -14,6 +14,7 @@
     <LocationForm
       v-else
       label="Update"
+      :editing="editing"
       :location="location"
       :climbingStyles="climbingStyles"
       :on-edit="handleUpdate"
@@ -65,11 +66,11 @@ export default {
       this.onDelete(this.location);
       return (this.location.id);
     },
-    handleUpdate() {
-      this.onUpdate();
-      // .then(() => {
-      this.editing = false;
-      // });
+    handleUpdate(toUpdate) {
+      return this.onUpdate(toUpdate)
+        .then(() => {
+          this.editing = false;
+        });
     }
   }
 };
