@@ -1,3 +1,4 @@
+
 <template id="add-location-template">
   <section class="add-location-data">
     <hr>
@@ -28,11 +29,6 @@
         </select>
       </label>
 
-      <label> Location:
-        <input type="text" name="neighborhood" placeholder="Neighborhood" required
-          v-model="edit.neighborhood">
-      </label>
-
       <label>Power Outlets Available?</label>
         <input type="checkbox" name="power" placeholder="power" v-model="edit.power">
         <label for="checkbox">Yes</label>
@@ -52,6 +48,8 @@
 </template>
 
 <script>
+
+///add computed value of quadrant so it displays on list entry
 import { getQuadrants } from '../services/api';
 
 const initLocation = () => {
