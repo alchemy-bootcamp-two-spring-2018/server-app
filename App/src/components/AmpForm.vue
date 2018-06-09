@@ -10,9 +10,22 @@
 
       <label>
         Country:
+        <select v-model.number="edit.countryId" required>
+          <option disabled value="">Please select a country</option>
+          <option
+            v-for="country in countries"
+            :key="country.id"
+            :value="country.id">
+            {{country.name}}
+          </option>
+        </select>
+      </label>
+
+      <!-- <label>
+        Country:
         <input type="text" name="country" placeholder="country" required
           v-model="edit.country">
-      </label>
+      </label> -->
 
       <label>
         Introduced:
@@ -25,6 +38,7 @@
         <input type="text" name="tubes" placeholder="tubes" required
           v-model="edit.tubes">
       </label>
+
       <label>
         <button type="submit">{{ label }}</button>
       </label>
@@ -34,6 +48,7 @@
 </template>
         
 <script>
+import { getCountries } from '../services/api';
 
 const initAmp = () => {
   return {
@@ -46,7 +61,9 @@ const initAmp = () => {
 
 export default {
   props: {
-    onAdd: {
+    amp: Object,
+    label: String,
+    onEdit: {
       type: Function,
       required: true
     }
@@ -54,11 +71,18 @@ export default {
   data() {
     return {
       edit: this.neighborhood ? Object.assign({}, this.amp) : initAmp(),
+      countries: []
     };
+  },
+  created() {
+    getCountries().then(countries => {
+      this.countries = countries;
+    });
   },
   methods: {
     handleSubmit() {
       this.onEdit(this.edit)
+      // this fires when save is complete and data added to amps array
         .then(() => {
           this.amp = initAmp();
         });

@@ -33,3 +33,10 @@ export function removeAmp(id) {
   })
     .then(response => response.json());
 }
+
+export function getCountries() {
+  return fetch(`${URL}/countries`, {
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json());
+}
