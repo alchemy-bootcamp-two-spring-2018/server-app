@@ -1,30 +1,33 @@
 <template>
   <div id="app">
     <header>
-      <h1>DOPE</h1>
-      <h1>BOARD</h1>
-      <h1>GAMES</h1>
+      <h1>GAME</h1>
+      <h1>PLANNER</h1>
     </header>
     <main>
-      <BoardGames />
+      <Events />
     </main>
   </div>
 </template>
 
 <script>
-import BoardGames from './components/BoardGames';
+import Events from './components/Events';
 
 export default {
   components: {
-    BoardGames
+    Events
   }
 };
 </script>
 
 <style>
 body {
-  margin: 0px;
+  margin: 100px;
   font-family: 'Arial', sans-serif;
+  background:
+    linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
 }
 #app {
   display: grid;
@@ -32,10 +35,6 @@ body {
   grid-template-areas:
     ". title ."
     ". content .";
-  background:
-    linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
-    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
-    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
 }
 
 header {
@@ -52,4 +51,6 @@ header>h1 {
 main {
   grid-area: content;
 }
+
+
 </style>
