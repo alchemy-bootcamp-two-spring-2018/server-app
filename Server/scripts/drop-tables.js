@@ -2,7 +2,8 @@
 const Client = require('../db.Client');
 
 client.query(`
-    DROP TABLE IF EXISTS country;
+    DROP TABLE IF EXISTS amps;
+    DROP TABLE IF EXISTS countries;
 `)
   .then(
     () => console.log('drop tables complete'),
