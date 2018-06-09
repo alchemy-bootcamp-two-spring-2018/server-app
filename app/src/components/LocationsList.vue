@@ -14,6 +14,7 @@
       <LocationForm
         :climbingStyles="climbingStyles"
         :on-edit="handleAdd"
+        label="Submit"
       />
     </div>
   </div>

@@ -45,11 +45,10 @@
           <button
             v-if="onCancel"
             @click="onCancel">
-            onCancel
+            Cancel
           </button>
         </label>
       </form>
-      {{location}}
   </div>
 </template>
 
