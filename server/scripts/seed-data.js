@@ -1,5 +1,5 @@
 const client = require('../db-client');
-const formats = require('/formats.json');
+const formats = require('./formats.json');
 
 Promise.all(
   formats.map(format => {

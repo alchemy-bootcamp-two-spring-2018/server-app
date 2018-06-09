@@ -18,7 +18,7 @@ app.get('/api/podcasts', (req, res) => {
     SELECT n.id,
       n.name,
       q.id as "formatId",
-      q.name as "formatname",
+      formatname",
       published,
       averageminutes,
       category,

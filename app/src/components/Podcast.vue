@@ -2,7 +2,7 @@
     <div>
         <article v-if="!editing">
             <h3>{{ podcast.name }}</h3>
-            <p>Format: {{ podcast.formatname }}</p>
+            <p>Format: {{ podcast.format }}</p>
             <p>Published by: {{ podcast.publisher }}</p>
             <p>Length (average minutes): {{ podcast.averageminutes }}</p>
             <p>Category: {{ podcast.category }}</p> 
@@ -44,10 +44,10 @@
             handleClick() {
                 if(confirm(`You want to remove ${this.podcast.name}?`)) {
                     this.onRemove(this.podcast.id);
-                }
             }
         }
-    };
+    }
+};
       
 </script>
         
