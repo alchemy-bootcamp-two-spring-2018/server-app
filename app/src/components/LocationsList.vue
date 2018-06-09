@@ -65,7 +65,7 @@ export default {
       console.log('oh hey');
       return updateLocation(toUpdate)
         .then(updated => {
-          this.location = this.locations.map(location => {
+          this.locations = this.locations.map(location => {
             return location.id === updated.id ? updated : location;
           });
         });
