@@ -51,7 +51,6 @@ app.get('/api/programs', (req, res) => {
 
 // ROUTE:  Post to programs
 app.post('/api/programs', (req, res) => {
-  console.log ('yes, I\'m logging!!');
   const body = req.body;
   client.query(`
     INSERT INTO programs (title, host, audienceSize, yearStarted, daily, genre_id, description)
@@ -114,4 +113,4 @@ app.delete('/api/programs/:id', (req, res) => {
 
 
 // start "listening" (run) the app (server)
-app.listen(3000, () => console.log('app running...'));
+app.listen(3000, () => ('app running...'));
