@@ -62,7 +62,6 @@ app.post('/api/programs', (req, res) => {
   ).then(result => {
     // once posted, return the same record so that genre name is returned
     const singleRowQuery = STANDARD_GET_QUERY + ' WHERE programs.id=' + result.rows[0].id + ';';
-    console.log (singleRowQuery);
     client.query(
       singleRowQuery
     ).then(result => {
@@ -87,11 +86,18 @@ app.put('/api/programs/:id', (req, res) => {
       genre_id = $6,
       description = $7
     WHERE id = $8
-    RETURNING *;
+    RETURNING id;
   `,
   [body.title, body.host, body.audienceSize, body.yearStarted, body.daily, body.genreId, body.description, req.params.id]
   ).then(result => {
-    res.send(result.rows[0]);
+  // once posted, return the same record so that genre name is returned
+    const singleRowQuery = STANDARD_GET_QUERY + ' WHERE programs.id=' + result.rows[0].id + ';';
+    client.query(
+      singleRowQuery
+    ).then(result => {
+    // send back object
+      res.send(result.rows[0]);
+    });
   });
 });
 

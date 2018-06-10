@@ -45,7 +45,7 @@
       </label>
 
       <label>
-        <strong>Description: </strong>
+        <strong>Description: </strong><br>
         <textarea name="body" rows="8" cols="40" required 
           v-model="editableProgram.description"></textarea>
       </label>
@@ -113,13 +113,12 @@ export default {
 </script>
 
 <style>
-.add-program {
-  width: 300px;
-  text-align: left;
-  margin: auto;
-}
+
 label {
   padding: 3px;
   display: block;
+}
+textarea {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 </style>

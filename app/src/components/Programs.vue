@@ -64,7 +64,7 @@ export default {
       return updateProgram(editedProgram)
         .then(updatedResult => {
           this.programs = this.programs.map(program => {
-            return program.programId === updatedResult.programID ? updatedResult : program;
+            return program.programId === updatedResult.programId ? updatedResult : program;
           });
         });
     }
@@ -75,7 +75,15 @@ export default {
 <style>
 
 .form {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     float: right;
+    border: solid;
+    width: 400px;
+    padding: 20px;
+    text-align: left;
+    color: white;
+    background-color: black;
+    cursor: pointer;
 }
 
 </style>

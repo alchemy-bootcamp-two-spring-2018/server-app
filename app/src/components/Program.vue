@@ -69,9 +69,9 @@ export default {
 h3 {
   margin: 20px 0 0;
 }
-article {
+div {
     text-align: center;
-    max-width: 25%;
+    width: 400px;
     border: solid;
     padding: 20px;
 }
