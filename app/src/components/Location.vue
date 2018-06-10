@@ -8,9 +8,26 @@
       <p v-else>no</p>
       <p>Alchemist Rated: {{ location.rating }}</p>   
       <button @click="handleClick">Remove This Location</button>
-      <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit Listing' }}</button>
+      <li :class="{ selected }">
+      <article 
+      v-if="!editing"
+      @click="handleSelect">
+        <strong>{{ location.name }}</strong>
+        <span in {{ quadrant }} ></span>
+        <button v-if="!editing" @click="editing = true"></button>
+        <button @click="handleClick">DELETE</button>
+    </article>
+    <LocationForm 
+      v-else 
+      label="Update"
+      :location="location" 
+      :quadrants="quadrants"
+      :on-edit="handleUpdate"
+      :on-cancel="() => editing = false"
+    />
+  </li>
   </div> 
-  <!-- refer to Marty recent code for cancel edit button above  -->
+  
 </template>
 
 <script>
@@ -29,16 +46,29 @@ export default {
 
   props: [
     'location',
+    'quadrants',
+    'selected',
     'onRemove',
     'onUpdate',
-    'onEdit'
+    'onSelect'
   ],
+
+  computed: {
+    quadrant() {
+      if(!this.quadrants) return null;
+      const quadrant = this.quadrants.find(q => q.id === this.location.quadrant.id);
+      return quadrant ? `${quadrant.name}` : 'Unknown';
+    }
+  },
 
   methods: {
     handleClick() {
       if(confirm('Not such a good place to code afterall?')) {
         this.onRemove(this.location.id);
       }
+    },
+    handleSelect() {
+      this.onSelect(this.location.id);
     }
   }
 };
