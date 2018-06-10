@@ -86,7 +86,7 @@ export default {
 
 ul {
   margin: auto;
-  width: 800px;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
