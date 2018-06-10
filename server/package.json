@@ -9,8 +9,6 @@
     "start:watch": "nodemon server.js",
     "create-tables": "node scripts/create-tables.js",
     "drop-tables": "node scripts/drop-tables.js"
-
-
   },
   "author": "",
   "license": "ISC",
