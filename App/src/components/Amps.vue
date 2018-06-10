@@ -15,7 +15,7 @@
 
   <h3>Add a new amp</h3>
   <AmpForm
-    label="Add"
+    label="Add an amp"
     :on-edit="handleAdd"/>
 </section>
 </template>
