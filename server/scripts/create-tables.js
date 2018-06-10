@@ -11,7 +11,7 @@ client.query(`
       name VARCHAR(256),
       classification_id INTEGER NOT NULL REFERENCES classifications(id),
       color VARCHAR(256),
-      skinEdible BOOLEAN,
+      skinedible BOOLEAN,
       calories INTEGER
     );
 `)

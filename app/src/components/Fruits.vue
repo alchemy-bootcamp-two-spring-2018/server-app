@@ -20,12 +20,13 @@
 
 <script>
 import Fruit from './Fruit';
-import AddFruit from './FruitForm.vue';
+import FruitForm from './FruitForm.vue';
 import { 
   getFruits, 
   addFruit, 
   updateFruit,
-  removeFruit } from '../services/api';
+  removeFruit,
+  getClassifications } from '../services/api';
 
 export default {
   data() {
@@ -36,8 +37,12 @@ export default {
   created() {
     getFruits()
       .then(fruits => {
-        this.fruits = fruits;
+        this.fruits = fruits;   
       });
+    getClassifications()
+      .then(classifications => {
+        this.classifications = classifications;
+      });  
   },
   components: { 
     Fruit,

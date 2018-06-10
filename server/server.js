@@ -24,37 +24,37 @@ client.connect();
 // routes
 app.get('/api/fruits', (req, res) => {
 
-    client.query(`
+  client.query(`
       select f.id,
         f.name,
-        c.id as classificationId,
+        c.id as "classificationId",
         c.classification,
         color,
-        skinEdible,
+        skinedible,
         calories
       from fruits f
       join classifications c
       on f.classification_id = c.id
       order by f.name;  
     `).then(result => {
-      res.send(result.rows);
-    });
-  
+    res.send(result.rows);
   });
+  
+});
 
 app.post('/api/fruits', (req, res) => {
-    const body = req.body;
+  const body = req.body;
 
-    client.query(`
-      insert into fruits (name, classification_id, color, skinEdible, calories)
+  client.query(`
+      insert into fruits (name, classification_id, color, skinedible, calories)
       values ($1, $2, $3, $4, $5)
-      returning *;
+      returning *, classification_id as "classificationId";
     `,
-    [body.name, body.classification, body.color, body.skinEdible, body.calories, req.params.id]
-    ).then(result => {
-      res.send(result.rows[0]);
-    })
+  [body.name, body.classificationId, body.color, body.skinedible, body.calories]
+  ).then(result => {
+    res.send(result.rows[0]);
   });
+});
 
 app.put('/api/fruits/:id', (req, res) => {
   const body = req.body;
@@ -65,16 +65,16 @@ app.put('/api/fruits/:id', (req, res) => {
        name = $1,
        classification_id = $2,
        color = $3,
-       skinEdible = $4,
+       skinedible = $4,
        calories = $5
      where id = $6
      returning *;
   `,
-    [body.name, body.classificationId, body.color, body.skinEdible, body.calories, req.params.id]
-    ).then(result => {
-      res.send(result.rows[0]);
-    });
+  [body.name, body.classificationId, body.color, body.skinedible, body.calories, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
   });
+});
 
 app.delete('/api/fruits/:id', (req, res) => {
   client.query(`

@@ -29,8 +29,8 @@
 
       <label>
         Skin Edible:
-        <input type="text" name="skinEdible" placeholder="Skin Edible" required
-          v-model="edit.skinEdible">
+        <input type="text" name="skinedible" placeholder="Skin Edible" required
+          v-model="edit.skinedible">
       </label>
 
       <label>
@@ -55,7 +55,7 @@ const initFruit = () => {
     name: '',
     classification: '',
     color: '',
-    skinEdible: '',
+    skinedible: '',
     calories: ''
   };
 };
@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       edit: this.fruit ? Object.assign({}, this.fruit) : initFruit(),
-      classification: []
+      classifications: []
     };
   },
   created() {
@@ -81,10 +81,10 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.onEdit(this.fruit)
+      this.onEdit(this.edit)
         // this fires when save is complete and data added to fruits array
         .then(() => {
-          this.fruit = initFruit();
+          this.edit = initFruit();
         });
     }
   }

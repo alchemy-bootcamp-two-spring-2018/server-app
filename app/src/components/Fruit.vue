@@ -4,7 +4,7 @@
       <h3>{{ fruit.name }}</h3>
       <p>Classification: {{ fruit.classificationClassification }}</p>
       <p>Color: {{ fruit.color }}</p>
-      <p>Skin Edible: {{fruit.skinEdible}}</p>
+      <p>Skin Edible: {{fruit.skinedible}}</p>
       <p>Calories: {{fruit.calories}}</p>
       <p>
         <button @click="handleClick">remove this fruit</button>

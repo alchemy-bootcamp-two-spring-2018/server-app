@@ -13,7 +13,7 @@ export function getFruits() {
 export function addFruit(fruit) {
   return fetch(FRUITS_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(fruit)
   })
     .then(response => response.json());
@@ -22,9 +22,9 @@ export function addFruit(fruit) {
 export function updateFruit(fruit) {
   return fetch(`${FRUITS_URL}/${fruit.id}`, {
     method: 'PUT',
-    headers: {'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(fruit)    
-})
+  })
     .then(response => response.json());
 }
 
@@ -33,7 +33,7 @@ export function removeFruit(id) {
     method: 'DELETE',
   })
     .then(response => response.json());
-  }
+}
 
 export function getClassifications() {
   return fetch(`${URL}/classifications`, {
