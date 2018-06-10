@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <header>
+        <img src="./assets/npr.png">
     </header>
     <main>
       <Programs/>
@@ -27,5 +28,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: 25px;
+}
+img {
+  margin: 20px;
 }
 </style>

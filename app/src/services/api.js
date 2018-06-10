@@ -25,7 +25,7 @@ export function addProgram(program) {
 }
 
 export function updateProgram(program) {
-  return fetch(`${PROGRAMS_URL}/${program.id}`, {
+  return fetch(`${PROGRAMS_URL}/${program.programId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(program)
