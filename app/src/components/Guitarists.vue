@@ -3,12 +3,14 @@
   <h1 id="title">Famous Guitarists</h1>
   <form-guitarist
     :on-add="handleAdd"
+    :guitars="guitars"
   />
   <ul>
     <guitarist 
       v-for="guitar in guitarists"
       :key="guitar.id"
       :guitarist="guitar"
+      :guitars="guitars"
       :on-close="handleClose"
       :on-update="handleUpdate"
     />
@@ -17,13 +19,15 @@
 </template>
 
 <script>
-import Guitarist from './Guitarist'
-import FormGuitarist from './FormGuitarist'
-import { getGuitarists,
+import Guitarist from './Guitarist';
+import FormGuitarist from './FormGuitarist';
+import {
+  getGuitars,
+  getGuitarists,
+  getCurrent,
   addGuitarist,
   removeGuitarist,
   updateGuitarist } from '../services/api';
-
 
 export default {
   components: {
@@ -33,23 +37,25 @@ export default {
   },
   data() {
     return {
-      guitarists: []
+      guitarists: null,
+      guitars: null
     }
   },
   created() {
     getGuitarists()
       .then(guitarists => {
-        console.log('in the created yo', guitarists);
         this.guitarists = guitarists;
-      });
+      })
+    getGuitars()
+      .then((res) => {
+        this.guitars = res;
+      })
   },
   methods: {
     handleAdd(guitarist) {
       return addGuitarist(guitarist)
         .then((res) => {
-          guitarist.id = res.id;
-          console.log('\n\n\nguitarists\n\n\n', guitarist);
-          this.guitarists.push(guitarist);
+          getCurrent(res).then(data => this.guitarists.push(data));
         });
     },
     handleClose(guitarist) {
@@ -62,10 +68,11 @@ export default {
     },
     handleUpdate(toUpdate) {
       return updateGuitarist(toUpdate)
-        .then(updated => {
-          this.guitarists = this.guitarists.map(guitarist => {
-            return guitarist.id === updated.id ? updated : guitarist;
-          });
+        .then(res => {
+          if(res.updated) {
+            getCurrent(toUpdate).then(current => this.guitarists.splice(this.guitarists.findIndex(i => i.id === current.id), 1, current));
+            return true;
+          }
         });
     }
   }

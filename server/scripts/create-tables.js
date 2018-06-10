@@ -9,7 +9,7 @@ client.query(`
 
     CREATE TABLE IF NOT EXISTS guitarists (
       id SERIAL PRIMARY KEY,
-      name VARCHAR(256),
+      name VARCHAR(256) UNIQUE,
       age INTEGER,
       living BOOLEAN,
       guitar_id INTEGER NOT NULL REFERENCES guitars(id),

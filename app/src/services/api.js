@@ -2,13 +2,10 @@ const URL = 'http://localhost:1337/api';
 const GUITARISTS_URL = `${URL}/guitarists`;
 
 export function getGuitarists() {
-  return fetch(GUITARISTS_URL, {
+  return fetch('http://localhost:1337/api/guitarists', {
     headers: { 'Content-Type': 'application/json' }
   })
-    .then(response => {
-      // console.log('\n\nthe response is', response.json());
-      response.json();
-    })
+    .then(response => response.json());
 }
 
 export function addGuitarist(guitarist) {
@@ -34,6 +31,13 @@ export function removeGuitarist(guitarist) {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' }
   })
+    .then(response => response.json());
+}
+
+export function getCurrent(guitarist) {
+  return fetch(`${GUITARISTS_URL}/${guitarist.id}`, {
+    headers: { 'Content-Type': 'application/json' }
+    })
     .then(response => response.json());
 }
 
