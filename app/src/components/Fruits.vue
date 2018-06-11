@@ -5,18 +5,29 @@
   <ul v-else class="list">
     <Fruit
       v-for="fruit in fruits"
-      :key="fruit.id"
+      :key="fruit.name"
       :fruit="fruit"
+      :on-remove="handleRemove"
+      :on-update="handleUpdate"
     />
   </ul>
-  <AddFruit :on-add="handleAdd"/>
+  <h3>Add a new fruit</h3>
+  <FruitForm
+    label="Add" 
+    :on-edit="handleAdd"/>
 </section>
 </template>
 
 <script>
 import Fruit from './Fruit';
-import AddFruit from './AddFruit.vue';
-import { getFruits, addFruit } from '../services/api';
+import FruitForm from './FruitForm.vue';
+import { 
+  getFruits, 
+  addFruit, 
+  updateFruit,
+  removeFruit,
+  getClassifications } from '../services/api';
+
 export default {
   data() {
     return { 
@@ -26,12 +37,16 @@ export default {
   created() {
     getFruits()
       .then(fruits => {
-        this.fruits = fruits;
+        this.fruits = fruits;   
       });
+    getClassifications()
+      .then(classifications => {
+        this.classifications = classifications;
+      });  
   },
   components: { 
     Fruit,
-    AddFruit 
+    FruitForm 
   },
   methods: {
     handleAdd(fruit) {
@@ -39,7 +54,23 @@ export default {
         .then(saved => {
           this.fruits.push(saved);
         });
-    }
+    },
+    handleRemove(id) {
+      return removeFruit(id)
+        .then(() => {
+          const index = this.fruits.findIndex(fruit => fruit.id === id);
+          if(index === -1) return;
+          this.fruits.splice(index, 1);
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateFruit(toUpdate)
+        .then(updated => {
+          this.fruits = this.fruits.map(fruit => {
+            return fruit.id === updated.id ? updated : fruit;
+          });
+        });
+    }  
   }
 };
 </script>

@@ -13,11 +13,6 @@ app.use(cors());
 // request body to deserialized request.body property
 app.use(express.json());
 
-
-const fs = require('fs');
-// path to data file:
-const dataPath = 'data/fruits.json';
-
 // connect to the database
 const pg = require('pg');
 const Client = pg.Client;
@@ -29,36 +24,76 @@ client.connect();
 // routes
 app.get('/api/fruits', (req, res) => {
 
-    client.query(`
-      SELECT * from fruits;
+  client.query(`
+      select f.id,
+        f.name,
+        c.id as "classificationId",
+        c.classification,
+        color,
+        skinedible,
+        calories
+      from fruits f
+      join classifications c
+      on f.classification_id = c.id
+      order by f.name;  
     `).then(result => {
-      res.send(result.rows);
-    });
-  
+    res.send(result.rows);
   });
+  
+});
 
 app.post('/api/fruits', (req, res) => {
-    const body = req.body;
+  const body = req.body;
 
-    client.query(`
-      INSERT INTO fruits (name, classification, color, skinEdible, calories)
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *;
+  client.query(`
+      insert into fruits (name, classification_id, color, skinedible, calories)
+      values ($1, $2, $3, $4, $5)
+      returning *, classification_id as "classificationId";
     `,
-    [body.name, body.classification, body.color, body.skinEdible, body.calories]
-    ).then(result => {
-      // send back object
-      res.send(result.rows[0]);
-    })
-  
+  [body.name, body.classificationId, body.color, body.skinedible, body.calories]
+  ).then(result => {
+    res.send(result.rows[0]);
   });
+});
+
+app.put('/api/fruits/:id', (req, res) => {
+  const body = req.body;
+  
+  client.query(`
+     update fruits
+     set
+       name = $1,
+       classification_id = $2,
+       color = $3,
+       skinedible = $4,
+       calories = $5
+     where id = $6
+     returning *;
+  `,
+  [body.name, body.classificationId, body.color, body.skinedible, body.calories, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+});
 
 app.delete('/api/fruits/:id', (req, res) => {
-  console.log(req.params.id);
-  
-  // implement client query
-    
-  res.send({ removed: true });
+  client.query(`
+    delete from fruits where id=$1;
+  `,
+  [req.params.id]
+  ).then(() => {
+    res.send({ removed: true });
+  });
+});
+
+app.get('/api/classifications', (req, res) => {
+
+  client.query(`
+    select * from classifications;
+  `)
+    .then(result => {
+      res.send(result.rows);
+    });
 });
   
 // start "listening" (run) the app (server)
