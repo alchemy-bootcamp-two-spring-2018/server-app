@@ -43,7 +43,6 @@
       </label>
 
     </form> 
-    {{ edit }}
   </section>
 </template>
 
@@ -56,7 +55,7 @@ const initLocation = () => {
   return {
     name: '',
     description: '',
-    neighborhood: '',
+    quadrant: '',
     rating:'',
     power: false
   };  

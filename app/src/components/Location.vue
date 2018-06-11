@@ -17,6 +17,7 @@
         <button v-if="!editing" @click="editing = true"></button>
         <button @click="handleClick">DELETE</button>
     </article>
+
     <LocationForm 
       v-else 
       label="Update"
@@ -25,8 +26,9 @@
       :on-edit="handleUpdate"
       :on-cancel="() => editing = false"
     />
+    
   </li>
-  </div> 
+</div>   
   
 </template>
 
@@ -57,7 +59,7 @@ export default {
     quadrant() {
       if(!this.quadrants) return null;
       const quadrant = this.quadrants.find(q => q.id === this.location.quadrant.id);
-      return quadrant ? `${quadrant.name}` : 'Unknown';
+      return quadrant;
     }
   },
 
@@ -66,6 +68,12 @@ export default {
       if(confirm('Not such a good place to code afterall?')) {
         this.onRemove(this.location.id);
       }
+    },
+    handleUpdate(toUpdate) {
+      return this.onUpdate(toUpdate)
+        .then(() => {
+          this.editing = false;
+        });
     },
     handleSelect() {
       this.onSelect(this.location.id);
