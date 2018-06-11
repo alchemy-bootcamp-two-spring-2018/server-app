@@ -135,15 +135,19 @@ export default {
   background-image: url('../assets/card.png');
   margin: 6px;
   box-shadow: 1px 1px 3px black;
+  border-top: 3px solid gray;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-left: 3px solid gray;
 }
 img {
   margin: 0;
   width: 200px;
   height: auto;
-  border-top: 2px solid black;
-  border-right: 2px solid gray;
-  border-bottom: 2px solid gray;
-  border-left: 2px solid black;
+  border-top: 3px solid black;
+  border-right: 3px solid gray;
+  border-bottom: 3px solid gray;
+  border-left: 3px solid black;
 }
 .button-holder {
   display: flex;
