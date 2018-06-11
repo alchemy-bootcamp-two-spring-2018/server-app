@@ -48,7 +48,7 @@ export default {
     handleAdd(program) {
       return addProgram(program)
         .then(saved => {
-          this.programs.push(saved);
+          this.programs.unshift(saved);
         });
     },
     handleDelete(program) {
