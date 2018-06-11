@@ -1,37 +1,78 @@
 <template>
-  <div>
+  <li>
+    <section v-if="!editing">
+      <h2>{{ cocktail.name.toUpperCase() }}</h2>
+      <img :src="cocktail.image">
+      <p><b>ALCOHOL:</b> {{ alcohol }}</p>
+      <p><b>MAIN INGREDIENTS: </b> {{ cocktail.ingredients }}</p>
+      <p><b>SERVED:</b> {{ cocktail.served }}</p>
+      <p><b>STANDARD GARNISH:</b> {{ cocktail.garnish }}</p>
+      <p><b>TRIED: </b> <span v-if="cocktail.tried">Yes</span> <span v-else>No</span></p>    
+    </section>
 
-    <ul>
-      <h2><b>{{ cocktail.name }}</b></h2>
-      <li><b style="color:burlywood">Alcohol:</b> {{ cocktail.alcohol }}</li>
-      <li><b style="color:burlywood">Main Ingredients:</b> {{ cocktail.ingredients }}</li>
-      <li><b style="color:burlywood">Served:</b> {{ cocktail.served }}</li>
-      <li><b style="color:burlywood">Standard garnish:</b> {{ cocktail.garnish }}</li>
-      <li><b style="color:burlywood">Tried: </b> <span v-if="cocktail.tried">Yes</span> <span v-else>No</span></li>
-      <button @click.prevent="handleRemove" type="submit">DELETE</button> 
-    </ul>
+    <CocktailForm
+    v-else
+    label="Update"
+    header=""
+    :cocktail="cocktail"
+    :alcohols="alcohols"
+    :onEdit="handleUpdate"
+    />
 
-    <img :src="cocktail.image">
+    <button @click="editing = !editing">{{ editing ? 'Cancel' : 'Edit' }}</button>
+    <button @click="handleRemove" type="submit">Delete</button> 
 
-  </div>
+  </li>
 </template>
 
 <script>
+import CocktailForm from './CocktailForm';
 
 export default {
 
-  methods: {
-    handleRemove() {
-      return this.onDelete(this.cocktail);
+  data() {
+    return {
+      editing: false
+    };
+  },  
+
+  computed: {
+    alcohol() {
+      if(!this.alcohols) return null;
+      const alcohol = this.alcohols.find(a => a.id === this.cocktail.alcoholID);
+      return alcohol ? alcohol.alcohol : 'Unknown';
     }
   },
 
-  props: {
-    onDelete: {
-      type: Function,
-      required: true
+  methods: {
+
+    handleRemove() {
+      if(confirm(`Are you sure you want to remove ${this.cocktail.name}?`)) {
+        return this.onDelete(this.cocktail);
+      }
     },
-    cocktail: Object,
+
+    // handleRemove() {
+    //   return this.onDelete(this.cocktail);
+    // },
+
+    handleUpdate(toUpdate) {
+      return this.onUpdate(toUpdate)
+        .then(() => {
+          this.editing = false;
+        });
+    }
+  },
+
+  props: [
+    'onDelete',
+    'onUpdate',
+    'cocktail',
+    'alcohols',
+  ],
+
+  components: {
+    CocktailForm
   }
 };
 
@@ -40,39 +81,40 @@ export default {
 <style scoped>
 
 h2 {
-  color: mediumseagreen;
-  margin-top: 0;
-}
-
-ul {
-  list-style-type: none;
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 1.25em;
-  font-family: 'Song Myung', serif;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: firebrick;
+  font-weight: bold;
 }
 
 li {
-  color: whitesmoke;
-  margin-bottom: 2px;
+  background: rgb(0, 0, 0, .85);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 30px;
+  color: white;
+  font-size: 20px;
+  font-family: 'Architects Daughter', cursive;
+}
+
+p {
+  margin: 0px;
 }
 
 img {
-  display: flex;
-  align-self: center;
   width: 225px;
 }
 
-div {
-  display: flex;
-  justify-content: space-around;
-  background: rgba(0, 0, 0, .85);
+button {
+  margin-top: 15px;
+  margin-right: 10px;
+  font-size: 15px;
   border-radius: 5px;
-  padding: 20px 0px 20px 10px;
-  margin-bottom: 20px;
 }
 
+b {
+  color: peru;
+}
 </style>
 
 

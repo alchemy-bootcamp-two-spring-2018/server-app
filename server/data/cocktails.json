@@ -1,7 +1,7 @@
 [
   {
     "name": "Margarita",
-    "alcohol": "Tequila",
+    "alcohol_id": 4,
     "ingredients": "Tequila, Lime juice, Cointreau",
     "served": "On the rocks",
     "garnish": "Lime slice, Salt on the rim",
@@ -10,7 +10,7 @@
   },
   {
     "name": "Old Fashioned",
-    "alcohol": "Whiskey",
+    "alcohol_id": 2,
     "ingredients": "Bourbon or Rye whiskey, Angostura bitters, Sugar cube, plain water",
     "served": "On the rocks",
     "garnish": "Orange slice, Cocktail cherry",
@@ -19,7 +19,7 @@
   },
   {
     "name": "Mojito",
-    "alcohol": "Rum",
+    "alcohol_id": 3,
     "ingredients": "White rum, Leaves of Mint, Soda Water, Fresh lime juice, Sugar",
     "served": "On the rocks",
     "garnish": "Sprig of mint, Yerba buena",

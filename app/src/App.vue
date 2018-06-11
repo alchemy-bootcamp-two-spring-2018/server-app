@@ -23,21 +23,19 @@ export default {
 <style>
 
 html {
-  background-image: url('./assets/background.jpg');
-  background-attachment: fixed;
+  background: url('./assets/background.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 h1 {
   display: flex;
   justify-content: center;
   font-size: 4em;
-  color: whitesmoke;
   font-family: 'Cinzel Decorative', cursive;
-}
-
-.main-div {
-  display: flex;
-  flex-direction: column;
+  color: mediumseagreen;
 }
 
 </style>
