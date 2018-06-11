@@ -21,11 +21,11 @@
         </select>
       </label>
 
-      <label>
+      <!-- <label>
         Country:
         <input type="text" name="country" placeholder="country" required
           v-model="edit.country">
-      </label>
+      </label> -->
 
       <label>
         Introduced:
