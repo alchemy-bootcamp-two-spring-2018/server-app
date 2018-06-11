@@ -4,7 +4,7 @@
   <div id="submit-wrapper">
           <h2>Add a rapper!</h2>
     <RapperForm
-		label = 'Add'
+		label = "Add"
     :on-edit="handleAdd"
     :positions="positions"
     />
