@@ -1,28 +1,44 @@
 <template>
   <section id="subscription-section">
+    <h3 @click="adding = !adding">Add a new subscription</h3>
+    <SubscriptionForm
+      v-if="adding"
+      label="Add"
+      :purposes="purposes"
+      :onEdit="handleAdd"/>
+
     <h2>Streaming Service Subscriptions</h2>
     <p v-if="!subscriptions">Loading subscriptions...</p>
     <ul v-else class="list">
       <Subscription
         v-for="subscription in subscriptions"
-        :key="subscription.service"
+        :key="subscription.name"
         :subscription="subscription"
+        :purposes="purposes"
         :onRemove="handleRemove"
+        :onUpdate="handleUpdate"
       />
     </ul>
-    <AddSubscription :onAdd="handleAdd"/>
   </section>
 </template>
 
 <script>
 import Subscription from './Subscription';
-import AddSubscription from './AddSubscription';
-import { getSubscriptions, addSubscription, removeSubscription } from '../services/api';
+import SubscriptionForm from './SubscriptionForm';
+
+import {
+  getSubscriptions,
+  addSubscription,
+  updateSubscription,
+  removeSubscription,
+  getPurposes } from '../services/api';
 
 export default {
   data() {
     return {
-      subscriptions: null
+      subscriptions: null,
+      purposes: null,
+      adding: false
     };
   },
   created() {
@@ -30,10 +46,15 @@ export default {
       .then(subscriptions => {
         this.subscriptions = subscriptions;
       });
+
+    getPurposes()
+      .then(purposes => {
+        this.purposes = purposes;
+      });
   },
   components: {
     Subscription,
-    AddSubscription
+    SubscriptionForm
   },
   methods: {
     handleAdd(subscription) {
@@ -42,9 +63,21 @@ export default {
           this.subscriptions.push(saved);
         });
     },
-    handleRemove(subscription) {
-      return removeSubscription(subscription)
-        .then(this.subscriptions = this.subscriptions.filter(item => item.id !== subscription.id));
+    handleRemove(id) {
+      return removeSubscription(id)
+        .then(() => {
+          const index = this.subscriptions.findIndex(subscription => subscription.id === id);
+          if(index === -1) return;
+          this.subscriptions.splice(index, 1);
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateSubscription(toUpdate)
+        .then(updated => {
+          this.subscriptions = this.subscriptions.map(subscription => {
+            return subscription.id === updated.id ? updated : subscription;
+          });
+        });
     }
   }
 };

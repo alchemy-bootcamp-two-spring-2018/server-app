@@ -61,18 +61,20 @@ article {
   text-align: center;
   background: #eee;
   width: 225px;
-  height: 250px;
+  height: 300px;
   border-radius: 5px;
 }
 
 .add-subscription {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   text-align: left;
+  margin: 10px;
   background: #eee;
-  width: 40%;
+  width: 225px;
+  height: 300px;
   border-radius: 3px;
 }
 
@@ -101,6 +103,11 @@ button {
 }
 
 input {
+  margin-left: 5px;
+}
+
+select {
+  width: 130px;
   margin-left: 5px;
 }
 </style>
