@@ -16,10 +16,10 @@ client.query(`
         stageid INTEGER NOT NULL REFERENCES stages(id)
       );
     `)
-      .then(
-        () => console.log('Tables creation complete'),
-        err => console.log(err)
-      )
-      .then(() => {
-        client.end();
-      });
+  .then(
+    () => console.log('Tables creation complete'),
+    err => console.log(err)
+  )
+  .then(() => {
+    client.end();
+  });

@@ -49,7 +49,7 @@ app.post('/api/meleeCharacters', (req, res) => {
   });
 });
 
-app.put('api/meleeCharacters/:id', (req, res) => {
+app.put('/api/meleeCharacters/:id', (req, res) => {
   const body = req.body;
 
   client.query(`
@@ -63,8 +63,8 @@ app.put('api/meleeCharacters/:id', (req, res) => {
     WHERE id = $6
     RETURNING *;
   `,
-  [body.name, body.universe, body.difficulty, body.walljump, body.stageid, req.params.id]
-  ).then(result => {
+  [body.name, body.universe, body.difficulty, body.walljump, body.stageId, req.params.id]
+  ).then(results => {
     res.send(results.rows[0]);
   });
 });

@@ -11,7 +11,6 @@
     "db-load-all": "npm run recreate-tables && npm run seed-data",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:watch": "nodemon server.js"
-
   },
   "author": "Robyn Navarro",
   "license": "ISC",
@@ -21,7 +20,9 @@
     "pg": "^7.4.3"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
+    "eslint-plugin-vue": "^4.5.0",
     "nodemon": "^1.17.5"
   }
 }
