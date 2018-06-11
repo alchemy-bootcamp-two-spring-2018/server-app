@@ -1,0 +1,42 @@
+[
+  {
+    "eventID": 1,
+    "username": "Arthur",
+    "comment": "Yes"
+  },
+  {
+    "eventID": 1,
+    "username": "Alex",
+    "comment": "Cant tonight - likely could tomorrow."
+  },
+  {
+    "eventID": 1,
+    "username": "White Danny",
+    "comment": "I'm in Montana. In th middle of a nerve-wracking inspection."
+  },
+  {
+    "eventID": 1,
+    "username": "Asian Danny",
+    "comment": "My window is only open 6 - 9:30 is and then I need to go home and sing myself some lullabies."
+  },
+  {
+    "eventID": 1,
+    "username": "Tom",
+    "comment": "Let's do 6:30!"
+  },
+  {
+    "eventID": 2,
+    "username": "Tom",
+    "comment": "Can we play Kingdominos instead?"
+  },
+  {
+    "eventID": 2,
+    "username": "Gabe",
+    "comment": "I'll be there!"
+  },
+  {
+    "eventID": 2,
+    "username": "Stephanie",
+    "comment": "Bringing some 🍷"
+  }
+]

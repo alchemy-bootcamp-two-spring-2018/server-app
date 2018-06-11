@@ -1,24 +1,38 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/bg';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS boardgames (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(256),
-        published VARCHAR(8),
-        minPlayers INTEGER,
-        maxPlayers INTEGER,
-        avgPlayingTime INTEGER,
-        description VARCHAR(512),
-        owned BOOLEAN
-      );
-    `);
-  })
+client.query(`
+  CREATE TABLE IF NOT EXISTS categories (
+    id SERIAL PRIMARY KEY,
+    category VARCHAR(64) NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS boardgames (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256),
+    category_id INTEGER NOT NULL REFERENCES categories(id),
+    players INTEGER,
+    avg_playing_time INTEGER,
+    description VARCHAR(1024)
+  );
+
+  CREATE TABLE IF NOT EXISTS events (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256),
+    date VARCHAR(32),
+    time VARCHAR(8),
+    game_id INTEGER NOT NULL REFERENCES boardgames(id),
+    guests_allowed BOOLEAN,
+    message VARCHAR(1024)
+  );
+
+  CREATE TABLE IF NOT EXISTS comments (
+    id SERIAL PRIMARY KEY,
+    event_id INTEGER NOT NULL REFERENCES events(id),
+    username VARCHAR(64),
+    comment VARCHAR(1024)
+  );
+`)
   .then(
     () => console.log('creating tables complete'),
     err => console.log(err)

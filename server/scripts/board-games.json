@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Azul",
+    "categoryID": 1,
+    "players": 4,
+    "avgPlayingTime": 40,
+    "description": "In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how they've placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the player's score. The player with the most points at the end of the game wins."
+  },
+  {
+    "name": "Scythe",
+    "categoryID": 2,
+    "players": 7,
+    "avgPlayingTime": 100,
+    "description": "Scythe is an engine-building game set in an alternate-history 1920s period. Each player represents a character from one of five factions of Eastern Europe who are attempting to earn their fortune and claim their faction's stake in the land around the mysterious Factory."
+  },
+  {
+    "name": "Terraforming Mars",
+    "categoryID": 2,
+    "players": 5,
+    "avgPlayingTime": 120,
+    "description": "In Terraforming Mars, you play one of those corporations and work together in the terraforming process, but compete for getting victory points that are awarded not only for your contribution to the terraforming, but also for advancing human infrastructure throughout the solar system, and doing other commendable things."
+  },
+  {
+    "name": "Codenames",
+    "categoryID": 5,
+    "players": 8,
+    "avgPlayingTime": 15,
+    "description": "In Codenames, two teams compete to see who can make contact with all of their agents first. Spymasters give one-word clues that can point to multiple words on the board. Their teammates try to guess words of the right color while avoiding those that belong to the opposing team. And everyone wants to avoid the assassin."
+  },
+  {
+    "name": "Kingdomino",
+    "categoryID": 6,
+    "players": 4,
+    "avgPlayingTime": 15,
+    "description": "In Kingdomino, you are a Lord seeking new lands in which to expand your kingdom. You must explore all the lands, wheat fields, lakes, and mountains in order to spot the best plots. But be careful as some other Lords also covet these lands..."
+  },
+  {
+    "name": "Splendor",
+    "categoryID": 1,
+    "players": 4,
+    "avgPlayingTime": 30,
+    "description": "Splendor is a game of chip-collecting and card development. Players are merchants of the Renaissance trying to buy gem mines, means of transportation, shops—all in order to acquire the most prestige points. If you're wealthy enough, you might even receive a visit from a noble at some point, which of course will further increase your prestige."
+  },
+  {
+    "name": "Avalon",
+    "categoryID": 5,
+    "players": 4,
+    "avgPlayingTime": 30,
+    "description": "The Resistance: Avalon pits the forces of Good and Evil in a battle to control the future of civilization. Arthur represents the future of Britain, a promise of prosperity and honor, yet hidden among his brave warriors are Mordred's unscrupulous minions. These forces of evil are few in number but have knowledge of each other and remain hidden from all but Merlin."
+  }
+]

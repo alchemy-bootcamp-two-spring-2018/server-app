@@ -1,22 +1,26 @@
 <template>
   <div id="app">
     <header>
-      <h1>DOPE</h1>
-      <h1>BOARD</h1>
-      <h1>GAMES</h1>
+      <h1>GP</h1>
+      <h6>🏠</h6>
+      <h6>🗓</h6>
+      <h6>💰</h6>
+      <h6>🔮</h6>
+      <h6>🎲</h6>
+      <h6>🔍</h6>
     </header>
     <main>
-      <BoardGames />
+      <Events />
     </main>
   </div>
 </template>
 
 <script>
-import BoardGames from './components/BoardGames';
+import Events from './components/Events';
 
 export default {
   components: {
-    BoardGames
+    Events
   }
 };
 </script>
@@ -24,32 +28,43 @@ export default {
 <style>
 body {
   margin: 0px;
-  font-family: 'Arial', sans-serif;
 }
+
 #app {
   display: grid;
-  grid-template: 350px auto / 50px 1fr 50px;
-  grid-template-areas:
-    ". title ."
-    ". content .";
-  background:
-    linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
-    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
-    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+  grid-template: 805px / 100px 1fr;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
-  grid-area: title;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 header>h1 {
-  font-family: 'Abril Fatface', cursive;
-  margin: 0px;
-  font-size: 5em;
+  font-family: 'Crimson Text', sans-serif;
+  margin: 10px;
+  font-size: 2em;
 }
 
-main {
-  grid-area: content;
+h1 {
+    font-family: 'Crimson Text', sans-serif;
+    color: #122A59;
+}
+
+h6 {
+  margin: 0px;
+}
+
+header>h6 {
+  font-size: 1.5em;
+  opacity: .8;
+  transition: all .4s ease;
+}
+
+h6:hover {
+  opacity: 1;
 }
 </style>

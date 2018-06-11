@@ -1,36 +1,38 @@
 <template>
-  <div class="board-game">
-    <h1>{{ boardGame.name }} ({{ boardGame.published }})</h1>
-    <h4>{{ boardGame.minPlayers }} to {{ boardGame.maxPlayers }} players / {{ boardGame.avgPlayingTime }} minutes average playing time</h4>
-    <p>{{ boardGame.description }}</p>
-    <p>Owned: <span v-if="boardGame.owned">Yes</span><span v-else>No</span></p>
-    <button @click="handleClick">Remove</button>
-  </div>
+  <ul class="board-game">
+    <li>Category: {{ category }}</li>
+    <li>Maximum Number of Players: {{ boardGame.players }}</li>
+    <li>Average Playing Time: {{ boardGame.avgPlayingTime }} minutes</li>
+    <li>Description: {{ boardGame.description }}</li>
+  </ul>
 </template>
 
 <script>
+import { getCategories } from '../services/api';
 export default {
-  props: {
-    boardGame: Object,
-    onDelete: {
-      type: Function,
-      required: true
+  data() {
+    return {
+      categories: null
+    };
+  },
+  computed: {
+    category() {
+      if(!this.categories) return null;
+      const category = this.categories.find(c => c.id === this.boardGame.categoryID);
+      return category ? category.category : 'Unknown';
     }
   },
-  methods: {
-    handleClick() {
-      this.onDelete(this.boardGame);
-    }
-  }
+  created() {
+    getCategories().then(categories => {
+      this.categories = categories;
+    });
+  },
+  props: ['boardGame']
 };
 </script>
 
 <style>
-.board-game {
-  background: lightblue;
-  width: 280px;
-  height: 600px;
-  margin: 10px auto;
-  padding: 15px;
+ul {
+  background: #B9BF8E;
 }
 </style>
