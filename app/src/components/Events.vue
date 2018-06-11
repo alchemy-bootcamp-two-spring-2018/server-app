@@ -1,34 +1,41 @@
 <template>
   <div>
     <div class="events-list" >
-      <section class="new-event">
-        <transition name="slide-up">
-          <h1 v-if="!creating && !viewing">GAMEPLAN</h1>
-          
-        </transition>
-        <hr>
-        <h2 @click="creating = !creating, viewing = false">Create a New Event</h2>
-        <h2 @click="viewing = !viewing, creating = false">View Events</h2>
-        <transition name="slide-fade">
-          <EventForm 
-            v-if="creating"
-            :onEdit="handleCreate"
-            label="Create"
+      <div>
+        <section class="new-event">
+          <transition name="slide-up">
+            <h1 v-if="!creating && !viewing">GAMEPLAN</h1>
+            
+          </transition>
+          <hr>
+          <h2 @click="creating = !creating, viewing = false">Create a New Event</h2>
+          <h2 @click="viewing = !viewing, creating = false">View Events</h2>
+          <transition name="slide-fade">
+            <EventForm 
+              v-if="creating"
+              :onEdit="handleCreate"
+              label="Create"
+              :boardGames="boardGames"
+            />
+          </transition>
+        </section>
+        <section class="view-event">
+          <Event
+            v-if="viewing"
+            v-for="event in events"
+            :key="event.id"
+            :event="event"
             :boardGames="boardGames"
+            :onDelete="handleDelete"
+            :onUpdate="handleUpdate"
           />
-        </transition>
-      </section>
-      <section class="view-event">
-        <Event
-          v-if="viewing"
-          v-for="event in events"
-          :key="event.id"
-          :event="event"
-          :boardGames="boardGames"
-          :onDelete="handleDelete"
-          :onUpdate="handleUpdate"
+        </section>
+      </div>
+      <div class="comments-section">
+        <Comments
+        v-if="selectedEvent"
         />
-      </section>
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +43,7 @@
 <script>
 import Event from './Event';
 import EventForm from './EventForm';
+import Comments from './Comments';
 import { 
   getEvents,
   createEvent,
@@ -50,7 +58,8 @@ export default {
       events: null,
       boardGames: null,
       creating: false,
-      viewing: false
+      viewing: false,
+      selectedEvent: true
     };
   },
   created() {
@@ -64,7 +73,8 @@ export default {
   },
   components: {
     Event,
-    EventForm
+    EventForm,
+    Comments
   },
   methods: {
     handleCreate(boardGame) {

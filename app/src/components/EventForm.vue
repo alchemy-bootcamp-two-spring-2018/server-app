@@ -1,36 +1,48 @@
 <template>
   <section class="event-form">
     <form @submit.prevent="handleSubmit">
-      <label>Name:
-        <input type="text" required v-model="edit.name">
-      </label>
-      <label>Date:
-        <input type="date" v-model="edit.date">
-      </label>
-      <label>Time:
-        <input type="time" v-model="edit.time">
-      </label>
-      <label>Game:
-        <select v-model.number="edit.gameID" required>
-          <option disabled value="">Please select a game.</option>
-          <option v-for="boardGame in boardGames"
-          :key="boardGame.id"
-          :value="boardGame.id">
-          {{ boardGame.name }}
-          </option>
-        </select>
-      </label>
-      <label>Guests Allowed?
-        <input type="checkbox" v-model="edit.guestsAllowed">
-      </label>
-      <label>Message:
-        <textarea v-model="edit.message"></textarea>
-      </label>
-        <button type="submit">{{ label }}</button>
-        <button 
-          v-if="onCancel"
-          @click="onCancel"
-          >Cancel</button>
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" required v-model="edit.name"></td>
+        </tr>
+        <tr>
+          <td>Date:</td>
+          <td><input type="date" v-model="edit.date"></td>
+        </tr>
+        <tr>
+          <td>Time:</td>
+          <td><input type="time" v-model="edit.time"></td>
+        </tr>
+        <tr>
+          <td>Game:</td>
+          <td>
+            <select v-model.number="edit.gameID" required>
+              <option disabled value="">Please select a game.</option>
+              <option v-for="boardGame in boardGames"
+              :key="boardGame.id"
+              :value="boardGame.id">
+              {{ boardGame.name }}
+              </option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Guests Allowed?</td>
+          <td> Yes <input type="radio" value="true" v-model="edit.guestsAllowed"> No <input type="radio" value="false" v-model="edit.guestsAllowed"></td>
+        </tr>
+        <tr>
+          <td>Message:</td>
+          <td><textarea v-model="edit.message"></textarea></td>
+        </tr>
+      </table>
+      
+      <button type="submit">{{ label }}</button>
+      <button 
+        v-if="onCancel"
+        @click="onCancel"
+        >Cancel
+      </button>
     </form>
   </section>
 </template>
@@ -82,10 +94,19 @@ export default {
 form {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
-input {
-  font-size: 2em;
+table {
+  text-align: left;
+}
+
+td {
+  padding: 15px;
+}
+
+input, select {
+  font-size: 1.5em;
 }
 
 input[type="number"] {

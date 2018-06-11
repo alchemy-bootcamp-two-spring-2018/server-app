@@ -1,16 +1,15 @@
 <template>
-  <div class="event">
+  <div >
 
-    <div v-if="!editing">
+    <div class="event" v-if="!editing">
       <h1>{{ event.name }}</h1>
-      <h2>Date: {{ event.date }}</h2>
-      <h2>Time: {{ event.time }}</h2>
-      <h4 @click="gameExpanded = !gameExpanded" class="board-game-name">Game: {{ boardGameName }}</h4>
+      <p>{{ event.date }} @ {{ event.time }}</p>
+      <p @click="gameExpanded = !gameExpanded" class="board-game-name">Game: {{ boardGameName }}</p>
       <BoardGame
         v-if="gameExpanded"
         :boardGame="boardGame"
        />
-      <h5>Max # of Players: {{ players }}</h5>
+      <p>Max # of Players: {{ players }}</p>
       <p>Guests Allowed? 
         <span v-if="event.guestsAllowed">Yes</span>
         <span v-else>No</span>
@@ -89,10 +88,11 @@ export default {
 
 <style>
 .event {
-  margin: 10px auto;
+  margin: 50px;
   padding: 30px;
   background: white;
-  opacity: .8;
+  transition: all .3s ease;
+  border: 1px solid black;
 }
 
 .board-game-name {

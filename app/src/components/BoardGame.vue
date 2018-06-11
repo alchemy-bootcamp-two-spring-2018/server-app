@@ -33,6 +33,6 @@ export default {
 
 <style>
 ul {
-  background: lightgrey;
+  background: #B9BF8E;
 }
 </style>
