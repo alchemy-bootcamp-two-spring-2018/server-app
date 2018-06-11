@@ -110,7 +110,7 @@ label {
   width: 35px;
   height: 35px;
   background-color: rgb(7, 7, 78);
-  background-image: url('./SmashBall.png');
+  background-image: url('../assets/SmashBall.png');
   background-repeat: no-repeat;
 }
 
@@ -119,7 +119,7 @@ label {
   border-radius: 50%;
   width: 35px;
   height: 35px;
-  background-image: url('./SmashBall.png');
+  background-image: url('../assets/SmashBall.png');
   background-repeat: no-repeat;
   box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.5), -3px -3px 6px rgba(255, 255, 255, 0.5),
   -3px 3px 6px rgba(255, 255, 255, 0.5), 3px -3px 6px rgba(255, 255, 255, 0.5);
