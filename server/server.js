@@ -51,7 +51,6 @@ app.get('/api/programs', (req, res) => {
 
 // ROUTE:  Post to programs
 app.post('/api/programs', (req, res) => {
-  console.log ('yes, I\'m logging!!');
   const body = req.body;
   client.query(`
     INSERT INTO programs (title, host, audienceSize, yearStarted, daily, genre_id, description)
@@ -62,11 +61,40 @@ app.post('/api/programs', (req, res) => {
   ).then(result => {
     // once posted, return the same record so that genre name is returned
     const singleRowQuery = STANDARD_GET_QUERY + ' WHERE programs.id=' + result.rows[0].id + ';';
-    console.log (singleRowQuery);
     client.query(
       singleRowQuery
     ).then(result => {
       // send back object
+      res.send(result.rows[0]);
+    });
+  });
+});
+
+// ROUTE:  Update a program
+app.put('/api/programs/:id', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    UPDATE programs
+    SET
+      title = $1,
+      host = $2,
+      audienceSize = $3,
+      yearStarted = $4,
+      daily = $5,
+      genre_id = $6,
+      description = $7
+    WHERE id = $8
+    RETURNING id;
+  `,
+  [body.title, body.host, body.audienceSize, body.yearStarted, body.daily, body.genreId, body.description, req.params.id]
+  ).then(result => {
+  // once posted, return the same record so that genre name is returned
+    const singleRowQuery = STANDARD_GET_QUERY + ' WHERE programs.id=' + result.rows[0].id + ';';
+    client.query(
+      singleRowQuery
+    ).then(result => {
+    // send back object
       res.send(result.rows[0]);
     });
   });
@@ -85,4 +113,4 @@ app.delete('/api/programs/:id', (req, res) => {
 
 
 // start "listening" (run) the app (server)
-app.listen(3000, () => console.log('app running...'));
+app.listen(3000, () => ('app running...'));

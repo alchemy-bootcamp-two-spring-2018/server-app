@@ -1,6 +1,6 @@
 # My First Server (to run NPR program app)
 
-This server provides a JSON file containing a list of npr programs for the accompanying app.  
+This app contains a database of npr programs.  Programs can be added, deleted, and edited.
 
 ## To run
 

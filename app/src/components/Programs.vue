@@ -1,30 +1,36 @@
 <template>
 <section>
-  <h2>NPR Programs</h2>
-  <p v-if="!programs">Loading list of npr programs...</p>
   <div class="form">
-    <AddProgram :onAdd="handleAdd"/>
+    <h3 @click="showAddForm = !showAddForm">Add a new program</h3>
+    <ProgramForm 
+      v-if="showAddForm"
+      label="Add"
+      :onFormSubmit="handleAdd"
+    />
   </div>
   <div>
-    <Program :onDelete="handleDelete"
+    <p v-if="!programs">Loading list of npr programs...</p>
+    <Program
       v-for="program in programs"
       :key="program.title"
       :program="program"
+      :onUpdate="handleUpdate"
+      :onDelete="handleDelete"
     />
   </div>
-
 </section>
 </template>
 
 <script>
 import Program from './Program';
-import AddProgram from './AddProgram.vue';
-import { getPrograms, addProgram, deleteProgram } from '../services/api';
+import ProgramForm from './ProgramForm.vue';
+import { getPrograms, addProgram, updateProgram, deleteProgram } from '../services/api';
 
 export default {
   data() {
-    return { 
-      programs: null
+    return {
+      programs: null,
+      showAddForm: false
     };
   },
   created() {
@@ -33,16 +39,16 @@ export default {
          this.programs = programs;
        });
   },
-  components: { 
+  components: {
     Program,
-    AddProgram 
+    ProgramForm
   },
 
   methods: {
     handleAdd(program) {
       return addProgram(program)
         .then(saved => {
-          this.programs.push(saved);
+          this.programs.unshift(saved);
         });
     },
     handleDelete(program) {
@@ -52,7 +58,15 @@ export default {
           const index = this.programs.findIndex(p => p.programId === id);
           if(index === -1) return;
           this.programs.splice(index, 1);
-        });    
+        });
+    },
+    handleUpdate(editedProgram) {
+      return updateProgram(editedProgram)
+        .then(updatedResult => {
+          this.programs = this.programs.map(program => {
+            return program.programId === updatedResult.programId ? updatedResult : program;
+          });
+        });
     }
   }
 };
@@ -61,7 +75,15 @@ export default {
 <style>
 
 .form {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     float: right;
+    border: solid;
+    width: 400px;
+    padding: 20px;
+    text-align: left;
+    color: white;
+    background-color: black;
+    cursor: pointer;
 }
 
 </style>
