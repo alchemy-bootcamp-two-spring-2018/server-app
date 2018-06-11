@@ -84,7 +84,7 @@ export default {
       this.onEdit(this.edit)
       // this fires when save is complete and data added to amps array
         .then(() => {
-          this.amp = initAmp();
+          this.edit = initAmp();
         });
     }
   }
