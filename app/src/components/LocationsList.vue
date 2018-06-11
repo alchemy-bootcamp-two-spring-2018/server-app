@@ -6,25 +6,41 @@
         :key="location.name"
         :location="location"
         :on-delete="handleDelete"
+        :on-update="handleUpdate"
+        :climbingStyles="climbingStyles"
       />
     </div>
     <div class="add-location">
-      <AddLocation :on-add="handleAdd"/>
+      <LocationForm
+        :climbingStyles="climbingStyles"
+        :on-edit="handleAdd"
+        label="Submit"
+        label2="Add Location"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Location from './Location.vue';
-import AddLocation from './AddLocation.vue';
-import { getClimbingLocations, addLocation, deleteLocation } from '../services/api.js';
+import LocationForm from './LocationForm.vue';
+import { getClimbingStyles } from '../services/api';
+import { 
+  getClimbingLocations,
+  addLocation, 
+  deleteLocation,
+  updateLocation } from '../services/api.js';
 export default {
   data() {
     return {
+      climbingStyles: [],
       locations: null
     };
   },
   created() {
+    getClimbingStyles().then(climbingStyles => {
+      this.climbingStyles = climbingStyles;
+    }),
     getClimbingLocations()
       .then(locations => {
         this.locations = locations;
@@ -32,7 +48,7 @@ export default {
   },
   components: {
     Location,
-    AddLocation
+    LocationForm
   },
   methods: {
     handleAdd(location) {
@@ -45,6 +61,15 @@ export default {
       return deleteLocation(location)
         .then(this.locations = this.locations.filter(item => item.id !== location.id));
 
+    },
+    handleUpdate(toUpdate) {
+      console.log('oh hey');
+      return updateLocation(toUpdate)
+        .then(updated => {
+          this.locations = this.locations.map(location => {
+            return location.id === updated.id ? updated : location;
+          });
+        });
     }
   }
 };
@@ -62,7 +87,7 @@ export default {
     margin: auto;
     margin-top: -1px;
     border: solid 1px;
-    background-color: rgba(201, 201, 201, 0.438);
+    background-color: rgba(201, 201, 201, 0.753);
   }
   .add-location {
     float: right;
@@ -72,7 +97,6 @@ export default {
     margin: auto;
     margin-top: -1px;
     border: solid 1px;
-    background-color: rgba(201, 201, 201, 0.438);
-  }
+    background-color: rgba(201, 201, 201, 0.753);  }
  
 </style>

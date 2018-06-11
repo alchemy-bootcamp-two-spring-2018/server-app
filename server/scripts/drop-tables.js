@@ -1,15 +1,13 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/timetoclimb';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-    `);
-  })
+client.query(`
+  DROP TABLE IF EXISTS climbinglocations;
+  DROP TABLE IF EXISTS climbingstyles;
+  `)
   .then(
     () => console.log('drop tables complete'),
-    err => {
-      client.end(err);
-    });
+    err => console.log(err)
+  )
+  .then(() => {
+    client.end();
+  });
