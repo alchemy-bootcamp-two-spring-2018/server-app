@@ -16,12 +16,12 @@
       :walrus="walrus"
       :on-edit="onUpdate"
       />
-      <button @click="editing = !editing">{{editing ? 'Cancel' : '✏️'}}</button>
+      <button @click="editing = !editing">{{editing ? 'Cancel' : 'cancel'}}</button>
   </div>
 </template>
 
 <script>
-import WalrusForm from './WalrusForm';
+//import WalrusForm from './WalrusForm';
 
 export default {
   data() {
@@ -30,7 +30,7 @@ export default {
     };
   },
   components: {
-    WalrusForm
+   // WalrusForm
   },
   props: 
     ['walrus',

@@ -68,7 +68,7 @@ export default {
   },
   data() {
     return {
-      edit: this.walrus ? Obnject.assign({}, this.walrus) : initWalrus(),
+      edit: this.walrus ? Object.assign({}, this.walrus) : initWalrus(),
       types: []
     };
   },

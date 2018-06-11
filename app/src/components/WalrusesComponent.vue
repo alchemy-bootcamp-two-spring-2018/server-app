@@ -17,7 +17,7 @@
 
 <script>
 import IndividualWalrus from './IndividualWalrus';
-import WalrusForm from './WalrusForm';
+// import WalrusForm from './WalrusForm';
 import { getWalruses, addWalrus, getTypes } from '../services/api';
 
 export default {
@@ -34,8 +34,8 @@ export default {
   },
   components: {
     IndividualWalrus,
-    AddWalrus,
-    WalrusForm
+    AddWalrus
+    //WalrusForm
   },
   methods: {
     handleAdd(walrus) {
