@@ -7,6 +7,7 @@ Complete [Kata 1](https://www.codewars.com/kata/regex-validate-pin-code) and [Ka
 
 ## Lab
 
+
 Create your first app and server (fullstack minus database)!
 
 You can pick an "entity" (resource) **but** should:

@@ -7,6 +7,7 @@
         v-for="subscription in subscriptions"
         :key="subscription.service"
         :subscription="subscription"
+        :onRemove="handleRemove"
       />
     </ul>
     <AddSubscription :onAdd="handleAdd"/>
@@ -16,7 +17,7 @@
 <script>
 import Subscription from './Subscription';
 import AddSubscription from './AddSubscription';
-import { getSubscriptions, addSubscription } from '../services/api';
+import { getSubscriptions, addSubscription, removeSubscription } from '../services/api';
 
 export default {
   data() {
@@ -40,6 +41,10 @@ export default {
         .then(saved => {
           this.subscriptions.push(saved);
         });
+    },
+    handleRemove(subscription) {
+      return removeSubscription(subscription)
+        .then(this.subscriptions = this.subscriptions.filter(item => item.id !== subscription.id));
     }
   }
 };

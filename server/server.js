@@ -5,30 +5,46 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-// eslint-disable-next-line
-const subscriptions = require('./data/subscriptions.json');
-
-const fs = require('fs');
-const dataPath = 'data/subscriptions.json';
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/subs';
+const client = new Client(databaseUrl);
+client.connect();
 
 app.get('/api/subscriptions', (req, res) => {
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  res.send(data);
+  
+  client.query(`
+    SELECT * FROM subscriptions;
+  `).then(result => {
+    res.send(result.rows);
+  });
 });
 
 app.post('/api/subscriptions', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-  res.send(req.body);
+  const body = req.body;
+  
+  client.query(`
+    INSERT INTO subscriptions (service, price, ads)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+  `,
+  [body.service, body.price, body.ads]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
 });
 
-app.use((req, res) => {
-  console.log(res.method, res.url, res.body.service);
-  res.send({ error: 'path not found' });
+app.delete('/api/subscriptions/:id', (req, res) => {
+  const params = req.params;
+
+  client.query(`
+    DELETE FROM subscriptions 
+    WHERE id = $1;
+  `,
+  [params.id]
+  ).then(() => {
+    res.send({ message: 'subscription deleted successfully!' });
+  });
 });
 
 app.listen(3000, () => console.log('app running...'));
