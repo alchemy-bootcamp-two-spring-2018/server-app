@@ -8,17 +8,33 @@
       <li><b style="color:burlywood">Served:</b> {{ cocktail.served }}</li>
       <li><b style="color:burlywood">Standard garnish:</b> {{ cocktail.garnish }}</li>
       <li><b style="color:burlywood">Tried: </b> <span v-if="cocktail.tried">Yes</span> <span v-else>No</span></li>
+      <button @click.prevent="handleRemove" type="submit">DELETE</button> 
     </ul>
 
-    <img :src="cocktail.image"> 
+    <img :src="cocktail.image">
 
   </div>
 </template>
 
 <script>
+
 export default {
-  props: ['cocktail']
+
+  methods: {
+    handleRemove() {
+      return this.onDelete(this.cocktail);
+    }
+  },
+
+  props: {
+    onDelete: {
+      type: Function,
+      required: true
+    },
+    cocktail: Object,
+  }
 };
+
 </script>
 
 <style scoped>

@@ -13,3 +13,10 @@ export function addCocktail(cocktail) {
   })
     .then(response => response.json());
 }
+
+export function deleteCocktail(cocktail) {
+  return fetch('http://localhost:3000/api/cocktails/' + cocktail.id, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+}

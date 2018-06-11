@@ -6,6 +6,7 @@
         v-for="cocktail in cocktails"
         :key="cocktail.name"
         :cocktail="cocktail"
+        :onDelete="handleDelete"
         />
     </section>
 
@@ -19,7 +20,7 @@
 <script>
 import Cocktail from './Cocktail';
 import AddCocktail from './AddCocktail';
-import { getCocktails, addCocktail } from '../services/api';
+import { getCocktails, addCocktail, deleteCocktail } from '../services/api';
 
 export default {
 
@@ -41,6 +42,16 @@ export default {
       return addCocktail(cocktail)
         .then(saved => {
           this.cocktails.push(saved);
+        });
+    },
+
+    handleDelete(cocktail) {
+      return deleteCocktail(cocktail)
+        .then(() => {
+          getCocktails()
+            .then(cocktails => {
+              this.cocktails = cocktails;
+            });
         });
     }
   },

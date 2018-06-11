@@ -12,10 +12,10 @@
       <input type="text" name="image" placeholder="Enter image url" v-model="cocktail.image">
       
       <label>Tried before?
-      <input id="checkbox" type="checkbox" name="tried" v-model="cocktail.tried">
+      <input type="checkbox" v-model="cocktail.tried">
       </label>
       
-      <button type="submit">Enter</button>
+      <button id="form-button" type="submit">Enter</button>
     </form>
 
   </div>
@@ -30,7 +30,7 @@ const initCocktail = () => {
     ingredients: '',
     served: '',
     garnish: '',
-    tried: '',
+    tried: false,
     image: ''
 
   };
@@ -53,7 +53,7 @@ export default {
   methods: {
     handleSubmit() {
       this.onAdd(this.cocktail)
-        // this fires when save is complete and data added to nieghborhoods array
+        // this fires when save is complete and data added to cocktails array
         .then(() => {
           this.cocktail = initCocktail();
         });
@@ -69,6 +69,7 @@ export default {
   position: sticky;
   top: 50px;
   border-radius: 5px;
+  background: rgba(0, 0, 0, .70);
 }
 
 #add-cocktail {
@@ -90,7 +91,7 @@ input {
   font-size: 1.75em;
   padding-left: .25em;
   border-top: none;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 select {
@@ -98,18 +99,18 @@ select {
   margin-bottom: 10px;
 }
 
-button {
+#form-button {
   font-size: 1.5em;
   padding: 8px;
   color: white;
-  background: rgba(0, 0, 0, .80);
+  background: brown;
   border: none;
   border-radius: 5px;
 }
 
 label {
   color: whitesmoke;
-  background: rgba(0, 0, 0, .80);
+  /* background: rgba(0, 0, 0, .80); */
   font-size: 1.5em;
   margin-bottom: 10px;
   padding-top: .25em;
