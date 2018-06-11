@@ -1,6 +1,7 @@
 <template>
-  <div class="comment">
-    <p>here's a comment</p>
+  <div v-if="comment" class="comment">
+    <p><strong>{{ comment.username }}</strong></p>
+    <p>{{ comment.comment }}</p>
     <CommentForm />
   </div>
 </template>
@@ -10,10 +11,10 @@ import CommentForm from './CommentForm';
 export default {
   components: {
     CommentForm
-  }
+  },
+  props: ['comment']
 };
 </script>
 
 <style>
-
 </style>

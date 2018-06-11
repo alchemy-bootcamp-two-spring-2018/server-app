@@ -7,7 +7,7 @@
     "create-tables": "node scripts/create-tables.js",
     "drop-tables": "node scripts/drop-tables.js",
     "recreate-tables": "npm run drop-tables && npm run create-tables",
-    "seed-data": "node scripts/seed-categories-data.js && node scripts/seed-boardgame-data.js && node scripts/seed-events-data.js",
+    "seed-data": "node scripts/seed-categories-data.js && node scripts/seed-boardgame-data.js && node scripts/seed-events-data.js && node scripts/seed-comments-data.js",
     "db-load-all": "npm run recreate-tables && npm run seed-data",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:watch": "nodemon server.js",

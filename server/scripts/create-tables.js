@@ -24,7 +24,14 @@ client.query(`
     game_id INTEGER NOT NULL REFERENCES boardgames(id),
     guests_allowed BOOLEAN,
     message VARCHAR(1024)
-  )
+  );
+
+  CREATE TABLE IF NOT EXISTS comments (
+    id SERIAL PRIMARY KEY,
+    event_id INTEGER NOT NULL REFERENCES events(id),
+    username VARCHAR(64),
+    comment VARCHAR(1024)
+  );
 `)
   .then(
     () => console.log('creating tables complete'),

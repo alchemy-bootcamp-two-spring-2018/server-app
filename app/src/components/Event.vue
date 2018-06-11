@@ -1,7 +1,10 @@
 <template>
   <div >
 
-    <div class="event" v-if="!editing">
+    <div class="event"
+      @click="handleSelect"
+      v-if="!editing"
+    >
       <h1>{{ event.name }}</h1>
       <p>{{ event.date }} @ {{ event.time }}</p>
       <p @click="gameExpanded = !gameExpanded" class="board-game-name">Game: {{ boardGameName }}</p>
@@ -68,7 +71,8 @@ export default {
     'boardGames',
     'categories',
     'onUpdate',
-    'onDelete'
+    'onDelete',
+    'onSelect'
   ],
   methods: {
     handleClick() {
@@ -81,6 +85,9 @@ export default {
         .then(() => {
           this.editing = false;
         });
+    },
+    handleSelect() {
+      this.onSelect(this.event.id);
     }
   }
 };

@@ -13,6 +13,7 @@ client.connect();
 
 const API_URL = '/api/events';
 const API_URL_ID = '/api/events/:id';
+const API_COMMENTS_URL = '/api/comments';
 
 app.get(API_URL, (req, res) => {
   client.query(`
@@ -126,5 +127,26 @@ app.get('/api/categories', (req, res) => {
       res.send(result.rows);
     });
 });
+
+
+app.get(API_COMMENTS_URL, (req, res) => {
+  client.query(`
+    SELECT
+      id,
+      event_id as "eventID",
+      username,
+      comment
+    FROM comments
+    where event_id = $1;
+  `,
+  [req.query.eventID]
+  )
+    .then(result => {
+      res.send(result.rows);
+    });
+});
+
+
+
 
 app.listen(3000);

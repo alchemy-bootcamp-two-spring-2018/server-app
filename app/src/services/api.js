@@ -54,8 +54,8 @@ export function getCategories() {
 
 
 
-export function getComments() {
-  return fetch(COMMENTS_URL, {
+export function getComments(eventID) {
+  return fetch(`${COMMENTS_URL}?eventID=${eventID}`, {
     headers: { 'Content-type': 'application/json' }
   })
     .then(response => response.json());

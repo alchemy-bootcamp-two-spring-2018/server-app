@@ -6,5 +6,13 @@
     "gameID": 3,
     "guestsAllowed": false,
     "message": "Hoping to get some strategy game time going this week. Who's in?"
+  },
+  {
+    "name": "Game Night",
+    "date": "6/13/18",
+    "time": "7:00 pm",
+    "gameID": 4,
+    "guestsAllowed": true,
+    "message": "Same time, same place."
   }
 ]

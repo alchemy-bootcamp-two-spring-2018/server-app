@@ -28,12 +28,15 @@
             :boardGames="boardGames"
             :onDelete="handleDelete"
             :onUpdate="handleUpdate"
+            :onSelect="handleSelect"
           />
         </section>
       </div>
       <div class="comments-section">
         <Comments
-        v-if="selectedEvent"
+        v-if="selectedEventID"
+        :key="selectedEventID"
+        :eventID="selectedEventID"
         />
       </div>
     </div>
@@ -59,7 +62,7 @@ export default {
       boardGames: null,
       creating: false,
       viewing: false,
-      selectedEvent: true
+      selectedEventID: null
     };
   },
   created() {
@@ -96,6 +99,9 @@ export default {
             return event.id === updated.id ? updated : event;
           });
         });
+    },
+    handleSelect(eventID) {
+      this.selectedEventID = eventID;
     }
   }
 };
