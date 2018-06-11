@@ -13,3 +13,11 @@ export function addBoardGame(boardGame) {
   })
     .then(response => response.json());
 }
+
+export function deleteBoardGame(boardGame) {
+  return fetch('http://localhost:3000/api/boardGames/' + boardGame.id, {
+    method: 'DELETE',
+    headers: { 'Content-type': 'application/json' },
+  })
+    .then(response => response.json());
+}
