@@ -20,24 +20,28 @@
           </transition>
         </section>
         <section class="view-event">
-          <Event
-            v-if="viewing"
-            v-for="event in events"
-            :key="event.id"
-            :event="event"
-            :boardGames="boardGames"
-            :onDelete="handleDelete"
-            :onUpdate="handleUpdate"
-            :onSelect="handleSelect"
-          />
+          <transition-group name="slide-fade">
+            <Event
+              v-if="viewing"
+              v-for="event in events"
+              :key="event.id"
+              :event="event"
+              :boardGames="boardGames"
+              :onDelete="handleDelete"
+              :onUpdate="handleUpdate"
+              :onSelect="handleSelect"
+            />
+          </transition-group>
         </section>
       </div>
       <div class="comments-section">
-        <Comments
-        v-if="selectedEventID"
-        :key="selectedEventID"
-        :eventID="selectedEventID"
-        />
+        <transition-group name="slide-side">
+          <Comments
+          v-if="selectedEventID"
+          :key="selectedEventID"
+          :eventID="selectedEventID"
+          />
+        </transition-group>
       </div>
     </div>
   </div>
@@ -161,4 +165,12 @@ h2:hover {
   opacity: 0;
 }
 
+.slide-side-enter-active, .slide-side-leave-active  {
+  transition: all .8s ease;
+}
+
+.slide-side-enter, .slide-side-leave-to {
+  transform: translateX(100px);
+  opacity: 0;
+}
 </style>

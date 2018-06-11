@@ -17,4 +17,9 @@ export default {
 </script>
 
 <style>
+.comment {
+  border: 1px solid #A3A646;
+  margin: 10px;
+  padding: 10px;
+}
 </style>
