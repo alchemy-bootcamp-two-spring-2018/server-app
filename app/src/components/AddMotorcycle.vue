@@ -33,13 +33,15 @@
 
       <label>
         For Sale:
-        <input type="checkbox" name="sold" v-model="motorcycle.forSale">
+        <input type="checkbox" name="available" v-model="motorcycle.available">
       </label>
 
       <label>
-        <button type="submit">Add motorcycle</button>
+        <button type="submit">Add Motorcycle</button>
       </label>
+
     </form>
+
   </div>
 </template>
 
@@ -50,7 +52,8 @@ const initMotorcycle = () => {
     make: '',
     model: '',
     color: 'Red',
-    forSale: false
+    available: false,
+    delete: false
   };
 };
 
@@ -83,6 +86,7 @@ form {
   flex-flow: column nowrap;
   margin-top: 30px;
   margin-left: 50px;
+  border: 2px solid black;
 }
 label {
   margin: 10px;

@@ -1,14 +1,17 @@
 <template>
   <div class="motorcycles">
-    <ul>
+    <ul class="tiles">
       <Motorcycle
       v-for="motorcycle in motorcycles"
-      :key="motorcycle.index"
+      :key="motorcycle.id"
       :motorcycle="motorcycle"
+      :on-remove="handleRemove"
       />
     </ul>
     
-    <AddMotorcycle :on-add="handleAdd"/>
+    <AddMotorcycle
+    :on-add="handleAdd"
+    />
 
   </div>
 </template>
@@ -16,7 +19,7 @@
 <script>
 import Motorcycle from './Motorcycle';
 import AddMotorcycle from './AddMotorcycle';
-import { getMotorcycles, addMotorcycle } from '../services/api';
+import { getMotorcycles, addMotorcycle, removeMotorcycle } from '../services/api';
 
 export default {
   data() {
@@ -40,12 +43,20 @@ export default {
   methods: {
     handleAdd(motorcycle) {
       return addMotorcycle(motorcycle)
-        .then(saved => {
-          this.motorcycles.push(saved);
+        .then(data => {
+          this.motorcycles.push(data);
+        });
+    },
+    handleRemove(motorcycle) {
+      return removeMotorcycle(motorcycle)
+        .then(() => {
+          getMotorcycles()
+            .then(motorcycles => {
+              this.motorcycles = motorcycles;
+            });
         });
     }
   }
-
 };
 </script>
 
@@ -53,7 +64,12 @@ export default {
 .motorcycles {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-around;
   margin: 10px;
+}
+.tiles {
+  width: 300px;
+  min-width: 300px;
 }
 
 </style>

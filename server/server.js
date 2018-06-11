@@ -5,23 +5,47 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-/* eslint-disable-next-line */
-const motorcycles = require('./data/motorcycles');
-const fs = require('fs');
-const dataPath = 'data/motorcycles.json';
+//connect
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/motorcycles';
+const client = new Client(databaseUrl);
+client.connect();
+
 
 app.get('/api/motorcycles', (req, res) => {
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  res.send(data);
+
+  client.query(`
+  SELECT * from motorcycles;
+  `).then(result => {
+    res.send(result.rows);
+  });
+
 });
 
 app.post('/api/motorcycles', (req, res) => {
-  const raw = fs.readFileSync(dataPath);
-  const data = JSON.parse(raw);
-  data.push(req.body);
-  fs.writeFileSync(dataPath, JSON.stringify(data));
-  res.send(req.body);
+  const body = req.body;
+
+  client.query(`
+    INSERT INTO motorcycles (year, make, model, color, available, delete)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *;
+  `,
+  [body.year, body.make, body.model, body.color, body.available, body.delete]
+  ).then(result => {
+    res.send(result.rows[0]);
+  });
+
 });
 
-app.listen(3000);
+app.delete('/api/motorcycles/', (req, res) => {
+
+  client.query(`
+    DELETE FROM motorcycles WHERE id = ($1);
+  `,
+  [req.body.id]);
+
+  res.send({ removed: true });
+});
+
+app.listen(3000, () => console.log('Application is running...'));
