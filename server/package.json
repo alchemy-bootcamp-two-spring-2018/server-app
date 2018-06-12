@@ -10,7 +10,8 @@
     "seed-data": "node scripts/seed-data.js",
     "db-load-all": "npm run recreate-tables && npm run seed-data",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:watch": "nodemon server.js"
+    "start:watch": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "Robyn Navarro",
   "license": "ISC",
