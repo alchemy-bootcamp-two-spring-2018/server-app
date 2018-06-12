@@ -1,6 +1,7 @@
 <template id="amp-template">
   <section >
     <h1>New Amp</h1>
+    {{ edit }}
     <form @submit.prevent="handleSubmit">
       <label>
         Name:
@@ -20,12 +21,6 @@
           </option>
         </select>
       </label>
-
-      <!-- <label>
-        Country:
-        <input type="text" name="country" placeholder="country" required
-          v-model="edit.country">
-      </label> -->
 
       <label>
         Introduced:
@@ -48,7 +43,6 @@
 </template>
         
 <script>
-import { getCountries } from '../services/api';
 
 const initAmp = () => {
   return {
@@ -63,6 +57,7 @@ export default {
   props: {
     amp: Object,
     label: String,
+    countries: Array,
     onEdit: {
       type: Function,
       required: true
@@ -71,13 +66,7 @@ export default {
   data() {
     return {
       edit: this.amp ? Object.assign({}, this.amp) : initAmp(),
-      countries: []
     };
-  },
-  created() {
-    getCountries().then(countries => {
-      this.countries = countries;
-    });
   },
   methods: {
     handleSubmit() {

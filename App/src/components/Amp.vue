@@ -1,8 +1,9 @@
 <template id="amp-template">
   <div>
     <article v-if="!editing">
+      {{ amp }}
       <h3>{{ amp.name }}</h3>
-      <p>Country of Origin: {{ amp.countryName }}</p>
+      <p>Country of Origin: {{ country }}</p>
       <p>Introduced: {{ amp.introduced }}</p>
       <p class="tubes">
         Uses tubes: {{ amp.tubes }}
@@ -15,6 +16,7 @@
       v-else
       label="update"
       :amp="amp"
+      :countries="countries"
       :on-edit="onUpdate"
       />
       <button @click="editing = !editing">{{ editing ? 'Cancel' : '✏️' }}</button>
@@ -36,14 +38,28 @@ export default {
   props: [
     'amp',
     'onRemove',
-    'onUpdate'
+    'onUpdate',
+    'countries'
   ],
+  computed: {
+    country() {
+      if(!this.countries) return null;
+      const country = this.countries.find(c => c.id === this.amp.countryId);
+      return country ? country.name : 'Unknown';
+    }
+  },
   methods: {
     handleClick() {
       if(confirm(`Are you sure you want to remove ${this.amp.name}$`)) {
         this.onRemove(this.amp.id);
       }
-    }
+    },
+    handleUpdate(toUpdate) {
+      return this.onUpdate(toUpdate)
+        .then(() => {
+          this.editing = false;
+        });
+    },
   }
 };
 

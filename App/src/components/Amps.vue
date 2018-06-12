@@ -8,6 +8,7 @@
       v-for="amp in amps"
       :key="amp.name"
       :amp="amp"
+      :countries="countries"
       :on-remove="handleRemove"
       :on-update="handleUpdate"
     />
@@ -16,7 +17,9 @@
   <h3>Add a new amp</h3>
   <AmpForm
     label="Add an amp"
-    :on-edit="handleAdd"/>
+    :on-edit="handleAdd"
+    :countries="countries"/>
+    
 </section>
 </template>
 
@@ -27,12 +30,14 @@ import {
   getAmps,
   addAmp,
   updateAmp,
+  getCountries,
   removeAmp } from '../services/api';
 
 export default {
   data() {
     return {
       amps: null,
+      countries: []
     };
   },
   created() {
@@ -40,6 +45,9 @@ export default {
       .then(amps => {
         this.amps = amps;
       });
+    getCountries().then(countries => {
+      this.countries = countries;
+    });
   },
   components: {
     Amp,
