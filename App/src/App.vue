@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <header>
-    </header>
-
     <main>
       <Amps/>      
     </main>

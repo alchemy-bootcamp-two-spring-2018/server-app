@@ -1,32 +1,44 @@
 <template id="amp-template">
-  <section class="add-amp">
+  <section >
     <h1>New Amp</h1>
+    {{ edit }}
     <form @submit.prevent="handleSubmit">
       <label>
         Name:
         <input type="text" name="name" placeholder="name" required
-          v-model="amp.name">
+          v-model="edit.name">
       </label>
 
       <label>
         Country:
-        <input type="text" name="country" placeholder="country" required
-          v-model="amp.country">
+        <select v-model.number="edit.countryId" required>
+          <option disabled value="">Please select a country</option>
+          <option
+            v-for="country in countries"
+            :key="country.id"
+            :value="country.id">
+            {{country.name}}
+          </option>
+        </select>
       </label>
 
       <label>
         Introduced:
         <input type="text" name="introduced" placeholder="introduced" required
-          v-model="amp.introduced">
+          v-model="edit.introduced">
       </label>
 
       <label>
         Tubes:
         <input type="text" name="tubes" placeholder="tubes" required
-          v-model="amp.tubes">
+          v-model="edit.tubes">
       </label>
-      <button type="submit">Add Amp</button>
+
+      <label>
+        <button type="submit">{{ label }}</button>
+      </label>
     </form>
+    
   </section>
 </template>
         
@@ -43,21 +55,25 @@ const initAmp = () => {
 
 export default {
   props: {
-    onAdd: {
+    amp: Object,
+    label: String,
+    countries: Array,
+    onEdit: {
       type: Function,
       required: true
     }
   },
   data() {
     return {
-      amp:initAmp()
+      edit: this.amp ? Object.assign({}, this.amp) : initAmp(),
     };
   },
   methods: {
     handleSubmit() {
-      this.onAdd(this.amp)
+      this.onEdit(this.edit)
+      // this fires when save is complete and data added to amps array
         .then(() => {
-          this.amp = initAmp();
+          this.edit = initAmp();
         });
     }
   }
