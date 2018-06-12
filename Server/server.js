@@ -58,7 +58,7 @@ app.put('/api/amps/:id', (req, res) => {
       introduced = $3,
       tubes = $4
     where id = $5
-    returning *;
+    returning *, country_id as "countryId";
   `,
   [body.name, body.countryId, body.introduced, body.tubes, req.params.id]
 ).then(result => {

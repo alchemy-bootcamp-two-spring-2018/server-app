@@ -6,7 +6,7 @@
   <ul v-else class="list">
     <Amp
       v-for="amp in amps"
-      :key="amp.name"
+      :key="amp.id"
       :amp="amp"
       :countries="countries"
       :on-remove="handleRemove"
