@@ -1,48 +1,37 @@
 <template id="amp-template">
-  <section >
+  <section class="add-amp">
     <h1>New Amp</h1>
     <form @submit.prevent="handleSubmit">
       <label>
         Name:
         <input type="text" name="name" placeholder="name" required
-          v-model="edit.name">
+          v-model="amp.name">
       </label>
 
       <label>
         Country:
-        <select v-model.number="edit.countryId" required>
-          <option disabled value="">Please select a country</option>
-          <option
-            v-for="country in countries"
-            :key="country.id"
-            :value="country.id">
-            {{country.name}}
-          </option>
-        </select>
+        <input type="text" name="country" placeholder="country" required
+          v-model="amp.country">
       </label>
-      
+
       <label>
         Introduced:
         <input type="text" name="introduced" placeholder="introduced" required
-          v-model="edit.introduced">
+          v-model="amp.introduced">
       </label>
 
       <label>
         Tubes:
         <input type="text" name="tubes" placeholder="tubes" required
-          v-model="edit.tubes">
+          v-model="amp.tubes">
       </label>
-
-      <label>
-        <button type="submit">{{ label }}</button>
-      </label>
+      <button type="submit">Add Amp</button>
+      <button type="delete">Delete</button>
     </form>
-    
   </section>
 </template>
         
 <script>
-import { getCountries } from '../services/api';
 
 const initAmp = () => {
   return {
@@ -55,28 +44,19 @@ const initAmp = () => {
 
 export default {
   props: {
-    amp: Object,
-    label: String,
-    onEdit: {
+    onAdd: {
       type: Function,
       required: true
     }
   },
   data() {
     return {
-      edit: this.amp ? Object.assign({}, this.amp) : initAmp(),
-      countries: []
+      amp:initAmp()
     };
-  },
-  created() {
-    getCountries().then(countries => {
-      this.countries = countries;
-    });
   },
   methods: {
     handleSubmit() {
-      this.onEdit(this.edit)
-      // this fires when save is complete and data added to amps array
+      this.onAdd(this.amp)
         .then(() => {
           this.amp = initAmp();
         });
