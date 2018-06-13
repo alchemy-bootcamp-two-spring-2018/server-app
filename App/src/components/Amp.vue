@@ -1,19 +1,52 @@
 <template id="amp-template">
-  <article>
-    <h3>{{ amp.name }}</h3>
-    <p>Country of Origin: {{ amp.country }}</p>
-    <p>Introduced: {{ amp.introduced }}</p>
-    <p class="tubes">
-      Uses tubes: {{ amp.tubes }}
-    </p>
-    
-  </article>
+  <div>
+    <article v-if="!editing">
+      <h3>{{ amp.name }}</h3>
+      <p>Country of Origin: {{ amp.countryName }}</p>
+      <p>Introduced: {{ amp.introduced }}</p>
+      <p class="tubes">
+        Uses tubes: {{ amp.tubes }}
+      </p>
+      <p>
+        <button @click="handleClick">Remove this amp</button>
+      </p>
+    </article>
+    <AmpForm
+      v-else
+      label="update"
+      :amp="amp"
+      :on-edit="onUpdate"
+      />
+      <button @click="editing = !editing">{{ editing ? 'Cancel' : '✏️' }}</button>
+  </div>  
 </template>
       
 <script>
+import AmpForm from './AmpForm';
+
 export default {
-  props: ['amp'],
+  data() {
+    return {
+      editing: false
+    };
+  },
+  components: {
+    AmpForm
+  },
+  props: [
+    'amp',
+    'onRemove',
+    'onUpdate'
+  ],
+  methods: {
+    handleClick() {
+      if(confirm(`Are you sure you want to remove ${this.amp.name}$`)) {
+        this.onRemove(this.amp.id);
+      }
+    }
+  }
 };
+
 </script>
       
 <style scoped>

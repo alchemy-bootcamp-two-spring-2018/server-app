@@ -2,26 +2,37 @@
 <section>
   <h2>Greatest Guitar Amplifiers</h2>
   <p v-if="!amps">Loading amps...</p>
+ 
   <ul v-else class="list">
     <Amp
       v-for="amp in amps"
       :key="amp.name"
       :amp="amp"
+      :on-remove="handleRemove"
+      :on-update="handleUpdate"
     />
   </ul>
-  <AddAmp :on-add="handleAdd"/>
+
+  <h3>Add a new amp</h3>
+  <AmpForm
+    label="Add"
+    :on-edit="handleAdd"/>
 </section>
 </template>
 
 <script>
 import Amp from './Amp';
-import AddAmp from './AddAmp';
-import { getAmps, addAmp } from '../services/api';
+import AmpForm from './AmpForm.vue';
+import {
+  getAmps,
+  addAmp,
+  updateAmp,
+  removeAmp } from '../services/api';
 
 export default {
   data() {
     return {
-      amps: null
+      amps: null,
     };
   },
   created() {
@@ -32,13 +43,29 @@ export default {
   },
   components: {
     Amp,
-    AddAmp
+    AmpForm
   },
   methods: {
     handleAdd(amp) {
       return addAmp(amp)
         .then(saved => {
           this.amps.push(saved);
+        });
+    },
+    handleRemove(id) {
+      return removeAmp(id)
+        .then(() => {
+          const index = this.amps.findIndex(amp => amp.id === id);
+          if(index === -1) return;
+          this.amps.splice(index, 1);
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateAmp(toUpdate)
+        .then(updated => {
+          this.amps = this.amps.map(amp => {
+            return amp.id === updated.id ? updated : amp;
+          });
         });
     }
   }
