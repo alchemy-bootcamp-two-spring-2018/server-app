@@ -1,23 +1,26 @@
 <template>
   <section>
-    <h2>Melee Characters</h2>
     <ul>
       <Character
         v-for="character in meleeCharacters"
         :key="character.name"
         :character="character"
+        :on-remove="handleRemove"
+        :on-update="handleUpdate"
       />
     </ul>
-    <add-character :on-add="handleAdd"/>
+
+
+    <character-form
+      label="Add"
+      :on-edit="handleAdd"/>
   </section>
-
-
 </template>
 
 <script>
-import AddCharacter from './AddCharacter.vue';
-import { getMeleeCharacters, addMeleeCharacter } from '../services/api.js';
+import CharacterForm from './CharacterForm.vue';
 import Character from './Character.vue';
+import { getMeleeCharacters, addMeleeCharacter, updateMeleeCharacter, removeMeleeCharacter } from '../services/api.js';
 
 export default {
   data() {
@@ -33,13 +36,29 @@ export default {
   },
   components: {
     Character,
-    AddCharacter
+    CharacterForm
   },
   methods: {
     handleAdd(character) {
       return addMeleeCharacter(character)
         .then(saved => {
           this.meleeCharacters.push(saved);
+        });
+    },
+    handleRemove(id) {
+      return removeMeleeCharacter(id)
+        .then(() => {
+          const index = this.meleeCharacters.findIndex(character => character.id === id);
+          if(index === -1) return;
+          this.meleeCharacters.splice(index, 1);
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateMeleeCharacter(toUpdate)
+        .then(updated => {
+          this.meleeCharacters = this.meleeCharacters.map(character => {
+            return character.id === updated.id ? updated : character;
+          });
         });
     }
   }
@@ -51,7 +70,9 @@ h2 {
   background: -webkit-linear-gradient(rgb(199, 179, 255), rgb(3, 1, 77));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
   text-align: center;
+  font-size: 2.5em;
+  margin: 0;
 }
 </style>
