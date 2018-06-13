@@ -1,0 +1,68 @@
+[
+  {
+    "date": "05/04/18",
+    "day": "Monday",
+    "changeInsulin": true,
+    "beforeBreakfast": "70",
+    "afterBreakfast": "75",
+    "beforeLunch": "140",
+    "afterLunch": "90",
+    "beforeDinner": "153",
+    "afterDinner": "85"
+  },
+  {
+    "date": "05/05/18",
+    "day": "Tuesday",
+    "changeInsulin": false,
+    "beforeBreakfast": "100",
+    "afterBreakfast": "120",
+    "beforeLunch": "85",
+    "afterLunch": "112",
+    "beforeDinner": "200",
+    "afterDinner": "95"
+  },
+  {
+    "date": "05/06/18",
+    "day": "Wednesday",
+    "changeInsulin": false,
+    "beforeBreakfast": "65",
+    "afterBreakfast": "110",
+    "beforeLunch": "85",
+    "afterLunch": "95",
+    "beforeDinner": "120",
+    "afterDinner": "110"
+  },
+  {
+    "date": "05/07/18",
+    "day": "Thursday",
+    "changeInsulin": true,
+    "beforeBreakfast": "70",
+    "afterBreakfast": "90",
+    "beforeLunch": "120",
+    "afterLunch": "110",
+    "beforeDinner": "170",
+    "afterDinner": "150"
+  },
+  {
+    "date": "2018-06-13",
+    "day": "Monday",
+    "changeInsulin": true,
+    "beforeBreakfast": "70",
+    "afterBreakfast": "80",
+    "beforeLunch": "80",
+    "afterLunch": "90",
+    "beforeDinner": "87",
+    "afterDinner": "98"
+  },
+  {
+    "date": "2018-06-08",
+    "day": "Friday",
+    "changeInsulin": true,
+    "beforeBreakfast": "89",
+    "afterBreakfast": "90",
+    "beforeLunch": "90",
+    "afterLunch": "78",
+    "beforeDinner": "78",
+    "afterDinner": "89"
+  }
+]
