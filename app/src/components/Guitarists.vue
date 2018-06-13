@@ -1,55 +1,78 @@
 <template>
 <div id="main">
   <h1 id="title">Famous Guitarists</h1>
-  <add-guitarist
+  <form-guitarist
     :on-add="handleAdd"
+    :guitars="guitars"
   />
   <ul>
     <guitarist 
       v-for="guitar in guitarists"
       :key="guitar.id"
       :guitarist="guitar"
+      :guitars="guitars"
       :on-close="handleClose"
+      :on-update="handleUpdate"
     />
   </ul>
 </div>
 </template>
 
 <script>
-import Guitarist from './Guitarist'
-import AddGuitarist from './AddGuitarist'
-import { getGuitarists, addGuitarist, removeGuitarist } from '../services/api';
+import Guitarist from './Guitarist';
+import FormGuitarist from './FormGuitarist';
+import {
+  getGuitars,
+  getGuitarists,
+  getCurrent,
+  addGuitarist,
+  removeGuitarist,
+  updateGuitarist } from '../services/api';
+
 export default {
   components: {
     Guitarist,
-    AddGuitarist,
+    FormGuitarist,
     removeGuitarist
   },
   data() {
     return {
-      guitarists: null
+      guitarists: null,
+      guitars: null
     }
   },
   created() {
     getGuitarists()
       .then(guitarists => {
         this.guitarists = guitarists;
-      });
+      })
+    getGuitars()
+      .then((res) => {
+        this.guitars = res;
+      })
   },
   methods: {
     handleAdd(guitarist) {
       return addGuitarist(guitarist)
-        .then(data => {
-          this.guitarists.push(data);
+        .then((res) => {
+          getCurrent(res).then(data => this.guitarists.push(data));
         });
     },
     handleClose(guitarist) {
       return removeGuitarist(guitarist)
-        .then(() => {
-          getGuitarists()
-            .then(guitarists => {
-              this.guitarists = guitarists;
-            });
+        .then((res) => {
+          if(res.removed) {
+            this.guitarists.splice(this.guitarists.indexOf(guitarist), 1);
+          }
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateGuitarist(toUpdate)
+        .then(res => {
+          if(res.updated) {
+            getCurrent(toUpdate).then(current => this.guitarists.splice(this.guitarists.findIndex(i => i.id === current.id), 1, current));
+            return true;
+          }
         });
     }
   }
@@ -63,7 +86,7 @@ export default {
 
 ul {
   margin: auto;
-  width: 800px;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;

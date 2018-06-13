@@ -10,9 +10,9 @@
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(black, black 25%, red 45%, black 50%, white 90%);
+  background: radial-gradient(black, maroon 45%, black 50%, white 90%);
   background-size: 1666% 1666%;
-  animation: back-glow 127s alternate infinite;
+  animation: back-glow 333s alternate infinite;
 }
 
 #background {
@@ -22,7 +22,7 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background-image: url('../src/assets/tile.png');
+  background-image: url('/tile.png');
   background-size: 27%;
   background-repeat: repeat;
   z-index: 1;
