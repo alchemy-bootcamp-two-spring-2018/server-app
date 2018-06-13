@@ -11,7 +11,4 @@ This app is part of a project for Alchemy Code Lab titled "First Server App".
 
 ## To Run
 
-* Fork repository, clone locally, navigate to repository directory,
-* Download all the files,
-* Launch app in Vue,
-* Start server with npm on local host.
+See project README.md for more detailed instructions.

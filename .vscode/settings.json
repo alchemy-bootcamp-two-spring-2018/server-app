@@ -6,10 +6,13 @@
     "beforebreakfast",
     "beforedinner",
     "beforelunch",
+    "bootcamp",
     "changeinsulin",
     "glucoselog",
     "glucoselogs",
+    "postgre",
     "postgres",
+    "sql",
     "url",
     "varchar"
   ]

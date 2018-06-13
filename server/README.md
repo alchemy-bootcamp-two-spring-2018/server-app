@@ -1,4 +1,4 @@
-# My First Server App
+# Blood Glucose Log Server
 
 ## About
 
@@ -6,7 +6,4 @@ This server includes a JSON file containing a list of sample daily blood glucose
 
 ## To Run
 
-* Fork repository, clone locally, navigate to repository directory,
-* Download all the files,
-* Launch app in Vue,
-* Start server with npm on local host.
+See project README.md for more detailed instructions.
