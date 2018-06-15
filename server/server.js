@@ -28,7 +28,7 @@ app.get('/api/fruits', (req, res) => {
       select f.id,
         f.name,
         c.id as "classificationId",
-        c.classification,
+        c.classification as "classification",
         color,
         skinedible,
         calories
