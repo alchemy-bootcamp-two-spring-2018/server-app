@@ -13,13 +13,16 @@
 
 <script>
 export default {
-  props: ['walrus'],
-  onRemove,
+  props: [
+    'walrus',
+    'onRemove'
+  ],
   methods: {
-    deleteWalrus() {
-      console.log('into delete walrus');
-      this.onRemove(this.walruses.id);
+    handleClick() {
+      if(confirm(`Are you sure you want to remove ${this.walrus.name}?`)) {
+        this.onRemove(this.walruses.id);      
     }
+}
 }
 };
 

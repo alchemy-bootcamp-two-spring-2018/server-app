@@ -47,9 +47,9 @@ export default {
     handleRemove(id) {
       return removeWalrus(id)
         .then(() => {
-          const index = this.walrus.findIndex(walrus => walrus.id === id);
+          const index = this.walruses.findIndex(walrus => walrus.id === id);
           if(index === -1) return;
-          this.walrus.splice(index, 1);
+          this.walruses.splice(index, 1);
         });
     },
   }
