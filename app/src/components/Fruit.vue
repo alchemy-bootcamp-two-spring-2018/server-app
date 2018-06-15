@@ -2,7 +2,7 @@
   <div>
     <article v-if="!editing">
       <h3>{{ fruit.name }}</h3>
-      <p>Classification: {{ fruit.classificationClassification }}</p>
+      <p>Classification: {{ fruit.classification }}</p>
       <p>Color: {{ fruit.color }}</p>
       <p>Skin Edible: {{fruit.skinedible}}</p>
       <p>Calories: {{fruit.calories}}</p>
