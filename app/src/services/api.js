@@ -28,7 +28,8 @@ export function updatePodcast(podcast) {
 
 export function removePodcast(id) {
   return fetch(`${PODCASTS_URL}/${id}`, {
-    method: 'DELETE'  
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },  
   })
     .then(response => response.json());
 }

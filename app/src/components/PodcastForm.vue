@@ -6,19 +6,17 @@
             <input type="text" name="name" placeholder="Name of Podcast" required
                 v-model="edit.name">
             </label>
-            <label>
-            Format:
-            <select v-model.number="edit.formatId" required>
-              <option disables value="">Please select a format.</option>
+            <label>Format:
+            <select v-model="edit.format" required>
+              <option disabled value="">Please select a format.</option>
               <option
                 v-for="format in formats"
                 :key="format.id"
-                :value="format.id">
-                {{format.name}} 
-                </option>
-              </select>
+                :value="format.format">
+                {{ format.format }}
+              </option>
+            </select>
             </label>
-            
             <label>
               Published By:
               <input type="text" name="publisher" placeholder="Publisher" required
@@ -62,6 +60,7 @@ import { getFormats } from '../services/api';
 const initPodcast = () => {
   return {
     name: '',
+    format: '',
     publisher: '',
     averageminutes: '',
     category: '',
@@ -73,6 +72,7 @@ export default {
   props: {
     podcast: Object,
     label: String,
+    formats: String,
     onEdit: {
       type: Function,
       required: true
@@ -81,7 +81,6 @@ export default {
   data() {
     return {
       edit: this.podcast ? Object.assign({}, this.podcast) : initPodcast(),
-      formats: []
     };
   },
   created() {

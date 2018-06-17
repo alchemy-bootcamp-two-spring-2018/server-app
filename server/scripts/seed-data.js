@@ -4,10 +4,10 @@ const formats = require('./formats.json');
 Promise.all(
   formats.map(format => {
     return client.query(`
-        INSERT INTO formats (name)
+        INSERT INTO formats(format)
         VALUES ($1);
     `,
-    [format.name]
+    [format.format]
     ).then(result => result.rows[0]);
   })
 )

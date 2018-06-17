@@ -7,14 +7,16 @@
             v-for="podcast in podcasts"
             :key="podcast.name"
             :podcast="podcast"
+            :formats="formats"
             :on-remove="handleRemove"
-            :onUpdate="handleUpdate"
+            :on-update="handleUpdate"
         />
     </ul>
     <h3>Add a Podcast</h3>
     <PodcastForm 
-        label="Add"
-        :on-edit="handleAdd"/>
+        label= "Add"
+        :on-edit="handleAdd"
+        :formats="formats"/>
 </section>
 </template>
             

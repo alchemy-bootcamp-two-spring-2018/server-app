@@ -15,19 +15,15 @@ client.connect();
 app.get('/api/podcasts', (req, res) => {
 
   client.query(`
-    SELECT n.id,
-      n.name,
-      q.id as "formatId",
-      formatname",
-      published,
+    SELECT podcasts.id,
+      name,
+      formattype,
+      publisher,
       averageminutes,
       category,
       nsfw,
       description
-    from podcasts n
-    join formats q
-    on n.format_id = q.id
-    order ny n.name;
+    FROM podcasts 
     `).then(result => {
     res.send(result.rows);
   });
@@ -38,12 +34,12 @@ app.post('/api/podcasts', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO podcasts (name, format_id, publisher, averageminutes, category, nsfw, description)
+    INSERT INTO podcasts (name, formattype, publisher, averageminutes, category, nsfw, description)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
   `,
 
-  [body.name, body.formatId, body.publisher, body.averageminutes, body.category, body.nsfw, body.description]
+  [body.name, body.format, body.publisher, body.averageminutes, body.category, body.nsfw, body.description]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -57,7 +53,7 @@ app.put('/api/podcasts/:id', (req, res) => {
     update podcasts
     set
       name = $1,
-      format_id = $2,
+      formattype = $2,
       publisher = $3,
       averageminutes = $4,
       category = $5,
@@ -66,7 +62,7 @@ app.put('/api/podcasts/:id', (req, res) => {
     where id = $8
     returning *;
   `,
-  [body.name, body.formatId, body.publisher, body.averageminutes, body.category, body.nsfw, body.description, req.params.id]
+  [body.name, body.format, body.publisher, body.averageminutes, body.category, body.nsfw, body.description, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
   });
@@ -74,9 +70,8 @@ app.put('/api/podcasts/:id', (req, res) => {
 
 
 app.delete('/api/podcasts/:id', (req, res) => {
-  console.log(req.params.id);
   client.query(`
-    delete from podcasts where id=$1;
+    DELETE FROM podcasts where id=$1;
   `,
   [req.params.id]
   ).then(() => {
@@ -93,6 +88,5 @@ app.get('/api/formats', (req, res) => {
       res.send(result.rows);
     });
 });
-
 
 app.listen(3000, () => console.log('app running, please be running'));

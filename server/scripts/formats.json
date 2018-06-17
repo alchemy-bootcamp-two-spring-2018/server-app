@@ -1,8 +1,8 @@
 [
-    { "name": "Interview" },
-    { "name": "Multi-Host Talk Show" },
-    { "name": "Panel Discussion" },
-    { "name": "Narrative Storytelling" },
-    { "name": "Hybrid" }
+    { "format": "Interview" },
+    { "format": "Multi-Host Talk Show" },
+    { "format": "Panel Discussion" },
+    { "format": "Narrative Storytelling" },
+    { "format": "Hybrid" }
 
 ]

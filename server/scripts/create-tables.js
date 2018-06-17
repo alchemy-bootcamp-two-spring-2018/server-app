@@ -3,13 +3,13 @@ const client = require('../db-client');
 client.query(`
   CREATE TABLE IF NOT EXISTS formats (
     id SERIAL PRIMARY KEY,  
-    name VARCHAR(256) NOT NULL
+    format VARCHAR(256) NOT NULL
     );
 
   CREATE TABLE IF NOT EXISTS podcasts (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256),
-    format_id INTEGER NOT NULL REFERENCES formats(id),
+    formattype VARCHAR(256) NOT NULL,
     publisher VARCHAR(256),
     averageminutes INTEGER,
     category VARCHAR(256),
