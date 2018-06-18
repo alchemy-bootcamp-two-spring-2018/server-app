@@ -1,0 +1,50 @@
+[
+  {
+    "name": "The Daily",
+    "publisher": "The New York Times",
+    "averageminutes": 25,
+    "category": "current events",
+    "nsfw": "false",
+    "description": "This is how the news should sound. Twenty minutes a day, five days a week, hosted by Michael Barbaro and powered by New York Times journalism."
+  },
+  {
+    "name": "HBR Ideacast",
+    "publisher": "Harvard Business Review",
+    "averageminutes": 22,
+    "category": "business",
+    "nsfw": "false",
+    "description": "A weekly podcast featuring the leading thinkers in business and management."
+  },
+  {
+    "name": "How I Built This",
+    "publisher": "NPR",
+    "averageminutes": 45,
+    "category": "business",
+    "nsfw": "false",
+    "description": "Guy Raz dives into the stories behind some of the world's best known companies. How I Built This weaves a narrative journey about innovators, entrepreneurs and idealists—and the movements they built."
+  },
+  {
+    "name": "2 Dope Queens",
+    "publisher": "WNYC Studios",
+    "averageminutes": 52,
+    "category": "comedy",
+    "nsfw": "true",
+    "description": "Phoebe Robinson and Jessica Williams are funny. They're black. They're BFFs. And they host a live comedy show in Brooklyn. Join the 2 Dope Queens, along with their favorite comedians, for stories about sex, romance, race, hair journeys, living in New York, and Billy Joel. Plus a whole bunch of other s**t."
+  },
+  {
+    "name": "Test",
+    "publisher": "testington",
+    "averageminutes": "45",
+    "category": "testery",
+    "nsfw": "true",
+    "description": "a thing of a show"
+  },
+  {
+    "name": "How to Survive the End of the World",
+    "publisher": "The Brown Sisters",
+    "averageminutes": "65",
+    "category": "Literary and Discussion",
+    "nsfw": "False",
+    "description": "Sisters talking about the apocalypse."
+  }
+]
