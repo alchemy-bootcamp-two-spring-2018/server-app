@@ -1,21 +1,22 @@
 <template>
   <section>
-    <h3>All Time Games List</h3>
     <ul class="list">
+    <AddGame :on-add="handleAdd"/>
+    <h2>Games List:</h2>
       <Game
+        :onDelete="handleDelete"
         v-for="game in games"
         :key="game.name"
         :game="game"
       />
     </ul>
-    <AddGame :on-add="handleAdd"/>
   </section>
 </template>
 
 <script>
 import Game from './Game';
 import AddGame from './AddGame';
-import { getGames, addGame } from '../services/api';
+import { getGames, addGame, deleteGame } from '../services/api';
 
 export default {
   data() {
@@ -39,6 +40,13 @@ export default {
         .then(saved => {
           this.games.push(saved);
         });
+    },
+    handleDelete(game) {
+      deleteGame(game);
+      getGames()
+        .then(games => {
+          this.games = games;
+        });'';
     }
   }
 };

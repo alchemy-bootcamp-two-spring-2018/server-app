@@ -1,57 +1,57 @@
-//this makes the express module required
+//create a basic express app
 const express = require('express');
-
-//this makes an express app, note the lack of a 'new'
 const app = express();
 
-//this imports the cors "middleware" and enables our server to do CORS
+//middleware"(cors and read json body)
 const cors = require('cors');
-
-//register the cors
 app.use(cors());
-
-//register the express "middleware" for converting the incoming 
-//request boy to "de-serialized request.body property" <-- says marty (what the hell does this mean)
 app.use(express.json());
 
 
-// require our "mock" data
-//eslint-disable-next-line
-const games = require('./data/games');
+//connect to the database 'gameslist'
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/gameslist';
+const client = new Client(databaseUrl);
+client.connect();
 
-//temp solution dont worry if you dont remember
-const fs = require('fs');
-// path to data file
-const dataPath = 'data/games.json';
-
-
-// app.<method>(<path>, handler)
+//routes
 app.get('/api/games', (req, res) => {
-// fs file paths are relative to pwd (cwd) aka where you started node
-  const raw = fs.readFileSync(dataPath);
-  //make into a js array with objects
-  const data = JSON.parse(raw);
-  res.send(data);
+  client.query(`
+    SELECT * FROM games;
+  `).then(result => {
+    res.send(result.rows);
+  });
 });
 
 app.post('/api/games', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  const raw = fs.readFileSync(dataPath);
-  //make into js array w/ objects
-  const data = JSON.parse(raw);
-  // push the new object into the array
-  data.push(req.body);
-  //save the file
-  fs.writeFileSync(dataPath, JSON.stringify(data));
-  //send back the object
-  res.send(req.body);
+  const body = req.body;
+
+  client.query(`
+    INSERT INTO games (name, system, year, completed)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;
+  `,
+  [body.name, body.system, body.year, body.completed]
+  ).then(result => {
+    //send back object
+    res.send(result.rows[0]);
+  });
 });
 
-app.use((req, res) => {
-  console.log(req.method, req.url, req.body.name);
-  res.send({ error: 'path not found' });
-});
+app.delete('/api/games/:id', (req, res) => {
+  console.log(req.params.id);
+  const params = req.params;
 
+  client.query(`
+    DELETE FROM games
+    WHERE id = $1
+  `,
+  [params.id]
+  ).then(() => {
+    res.send({ removed: params.id });
+  });
+});
 
 //this starts "listening" and (run) the app (server)
 app.listen(3000, () => console.log('app running...'));
