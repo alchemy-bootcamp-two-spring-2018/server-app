@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>My First Server, Hurrrrr..!</h1>
+    <h1>Games TODO Server</h1>
     <Games/>
   </div>
 </template>

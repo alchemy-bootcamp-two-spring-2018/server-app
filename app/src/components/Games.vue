@@ -1,36 +1,49 @@
 <template>
   <section>
-    <h3>All Time Games List</h3>
-    <ul class="list">
+    <h2>Games List:</h2>
+    <p v-if="!games">Loading Games...</p>
+    <ul v-else class="list">
       <Game
         v-for="game in games"
-        :key="game.name"
+        :systems="systems"
+        :on-delete="handleDelete"
+        :on-update="handleUpdate"
+        :key="game.id"
         :game="game"
       />
     </ul>
-    <AddGame :on-add="handleAdd"/>
+    <h2>Add A Game to the Database</h2>
+    <GameForm
+      :on-edit="handleAdd"
+      label = "Add Game"
+    />
   </section>
 </template>
 
 <script>
 import Game from './Game';
-import AddGame from './AddGame';
-import { getGames, addGame } from '../services/api';
+import GameForm from './GameForm';
+import { getGames, addGame, deleteGame, updateGame, getSystems } from '../services/api';
 
 export default {
   data() {
     return {
-      games: null
+      games: null,
+      systems: null
     };
   },
   components: {
     Game,
-    AddGame,
+    GameForm,
   },
   created() {
     getGames()
       .then(games => {
         this.games = games;
+      });
+    getSystems()
+      .then(systems => {
+        this.systems = systems;
       });
   },
   methods: {
@@ -38,6 +51,22 @@ export default {
       return addGame(game)
         .then(saved => {
           this.games.push(saved);
+        });
+    },
+    handleDelete(id) {
+      return deleteGame(id)
+        .then(() => {
+          const index = this.games.findIndex(game => game.id === id);
+          if(index === -1) return;
+          this.games.splice(index, 1);
+        });
+    },
+    handleUpdate(toUpdate) {
+      return updateGame(toUpdate)
+        .then(updated => {
+          this.games = this.games.map(game => {
+            return game.id === updated.id ? updated : game;
+          });
         });
     }
   }
