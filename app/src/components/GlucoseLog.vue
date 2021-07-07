@@ -2,13 +2,13 @@
   <article>
     <h2>{{ glucoseLog.date }} {{ glucoseLog.day }}</h2>
     <div>
-    <p>Changed insulin?: {{ glucoseLog.changeInsulin }}</p>
-    <p>Before Breakfast: {{ glucoseLog.beforeBreakfast }}</p>
-    <p>After Breakfast: {{ glucoseLog.afterBreakfast }}</p>
-    <p>Before Lunch: {{ glucoseLog.beforeLunch }}</p>
-    <p>After Lunch: {{ glucoseLog.afterLunch }}</p>
-    <p>Before Dinner: {{ glucoseLog.beforeDinner }}</p>
-    <p>After Dinner: {{ glucoseLog.afterDinner }}</p>
+    <p>Changed insulin: {{ glucoseLog.changeinsulin }}</p>
+    <p>Before Breakfast: {{ glucoseLog.beforebreakfast }}</p>
+    <p>After Breakfast: {{ glucoseLog.afterbreakfast }}</p>
+    <p>Before Lunch: {{ glucoseLog.beforelunch }}</p>
+    <p>After Lunch: {{ glucoseLog.afterlunch }}</p>
+    <p>Before Dinner: {{ glucoseLog.beforedinner }}</p>
+    <p>After Dinner: {{ glucoseLog.afterdinner }}</p>
     </div>
   </article>
 </template>

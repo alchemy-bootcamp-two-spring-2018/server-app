@@ -12,44 +12,56 @@ app.use(cors());
 //request body to deserialized request.body property
 app.use(express.json());
 
-//require our "mock" data
-const glucoseLogs = require('./data/glucoseLogs');
+//connect to the database
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/glucoselogs';
+const client = new Client(databaseUrl);
+client.connect();
 
-//temp solution to update data... 
-const fs = require('fs');
-//path to data file:
-const dataPath = 'data/glucoseLogs.json';
-
+/* routes: */
 //recipe: app.<method>(<path>, handler)
-//app.get
-app.get('/api/glucoseLogs', (req, res) => {
-  //fs file paths are relative to pwd (cwd) aka where you started node
-  const raw = fs.readFileSync(dataPath);
-  //make into js array with objects
-  const data = JSON.parse(raw);
-  res.send(data);
+app.get('/api/glucoselogs', (req, res) => {
+
+  client.query(`
+    SELECT * FROM glucoselogs;
+  `).then(result => {
+    res.send(result.rows);
+  });
+  
 });
 
 //app.post
-app.post('/api/glucoseLogs', (req, res) => {
-  console.log(req.method, req.url, req.body);
-  //fs file paths are relative to pwd (cwd) aka where you started node
-  const raw = fs.readFileSync(dataPath);
-  //make into js array with objects
-  const data = JSON.parse(raw);
-  //push our new object into array
-  data.push(req.body);
-  //save file
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-
-  //send back object
-  res.send(req.body);
+app.post('/api/glucoselogs', (req, res) => {
+  const body = req.body;
+  
+  client.query(`
+    INSERT INTO glucoselogs (date, day, changeInsulin, beforeBreakfast, afterBreakfast, beforeLunch, afterLunch, beforeDinner, afterDinner)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING *;
+  `,
+  [body.date, body.day, body.changeinsulin, body.beforebreakfast, body.afterbreakfast, body.beforelunch, body.afterlunch, body.beforedinner, body.afterdinner]
+  ).then(result => {
+    //send back object
+    res.send(result.rows[0]);
+  });
+  
 });
 
-app.use((req, res) => {
+//ADD app.delete
+// app.delete('/api/glucoseLogs', (req, res) => {
+//   console.log(req.params.id);
+
+//   //implement client query
+
+//   res.send({ removed: true });
+// });
+
+//keeping this code just in case:
+/* app.use((req, res) => {
   console.log(req.method, req.url, req.body.day);
   res.send({ error: 'path not found' });
-});
+}); */
 
 //start "listening" (run) the app (server)
 app.listen(3000, () => console.log('app is running...'));
